@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Calendar demo page!</title>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type='text/javascript' src='../../bower_components/requirejs/require.js'></script>
+    <script type='text/javascript' src='../../requirejsconfig.js'></script>
+    <script type='text/javascript'>
+      requirejs.config({
+          baseUrl : '../../'
+      })
+      requirejs(['controls/calendar/calendar'], function(Calendar){
+        new Calendar('#content');
+      })
+    </script>
+  </body>
+</html>
