@@ -1,24 +1,21 @@
-define(['can/util/string', 'ejs!./init', 'jquery', 'can/control', 'jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.datepicker'], function(can, initEjs, $){
+define([
+    'can/util/library',
+    'ejs!./views/init',
+    'jquery',
+    'can/control',
+    'models/enquiry',
+    'jqueryui/jquery.ui.core',
+    'jqueryui/jquery.ui.datepicker'
+], function( can, init ) {
     'use strict';
 
-    can.EJS.Helpers.prototype.plugin = function() {
-        var args = $.makeArray(arguments),
-            widget = args.shift();
-        return function( el ) {
-            var jq = $(el);
-            jq[widget].apply(jq, args);
-        };
-    };
-
     return can.Control({
-        defaults : {
+        defaults: {
 
         }
     },{
         init : function(){
-            this.element.append(initEjs({
-                engine : 'EJS'
-            }));
+            this.element.html( init() );
         }
     });
 

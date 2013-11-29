@@ -1,5 +1,8 @@
+# production files
 production.js
+.build
+
+# npm and bower bootstraper folders
 node_modules
 bower_components
 components
-.build

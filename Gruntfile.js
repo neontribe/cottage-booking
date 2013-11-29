@@ -71,13 +71,14 @@ module.exports = function(grunt) {
 			compile : {
 				options : {
 					paths: {
-						can      : 'bower_components/canjs/amd/can',
-						jquery   : 'bower_components/jquery/jquery',
-						ejs      : '.build/ejs'
+				        can      : 'bower_components/canjs/amd/can',
+				        jquery   : 'resources/jquery',
+				        ejs      : 'bower_components/require-can-renderers/lib/ejs',
+				        jqueryui : 'bower_components/jquery-ui/ui'
 					},
 					name : 'tocc_booking.js',
 					out : 'production.js',
-					exclude: ['jquery']
+					//exclude: ['jquery']
 				}
 			}
 		},
