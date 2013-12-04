@@ -6,15 +6,16 @@
   <body>
     <div id="content"></div>
     <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../fixtures/availability.js"></script>
     <script type='text/javascript' src='../../bower_components/requirejs/require.js'></script>
     <script type='text/javascript' src='../../requirejsconfig.js'></script>
     <script type='text/javascript'>
       requirejs.config({
           baseUrl : '../../'
-      })
+      });
       requirejs(['controls/calculator/calculator'], function(Calculator){
         new Calculator('#content');
-      })
+      });
     </script>
   </body>
 </html>

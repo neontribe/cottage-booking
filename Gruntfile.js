@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('createRenderers', function(){
-		fs.writeFileSync('.build/mustache.js', getRenderer('mustache', process.cwd()));
+		//fs.writeFileSync('.build/mustache.js', getRenderer('mustache', process.cwd()));
 		fs.writeFileSync('.build/ejs.js', getRenderer('ejs', process.cwd()));
 	});
 

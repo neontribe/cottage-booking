@@ -1,9 +1,18 @@
 define('jquery', function() {
 	'use strict';
-	var _jquery = jQuery;
-	return _jquery;
+
+	return jQuery;
+
+	// Not so sure about this
 	// return jQuery.extend(function() {
-	// 	return _jquery.apply( _jquery, [ arguments[0], arguments[1] || '#content' ] );
-	// }, _jquery);
+	// 	var args = jQuery.makeArray( arguments );
+
+	// 	if( !args[ 1 ] ) {
+	// 		// Splice in our selector for the root of the app
+	// 		args.splice( 1, 1, '#toccBooking' );
+	// 	}
+
+	// 	return jQuery.apply( jQuery, args );
+	// }, jQuery);
 
 });
