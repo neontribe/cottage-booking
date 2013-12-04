@@ -14,7 +14,7 @@
       requirejs.config({
           baseUrl : '../../'
       })
-      requirejs(['controls/calendar/calendar'], function(Calendar){
+      requirejs(['controls/calendar/calendar', 'fixtures/availabilities'/*'fixtures/fixtures!fixtures/availabilities'*/], function(Calendar){
         new Calendar('#content');
       })
     </script>
