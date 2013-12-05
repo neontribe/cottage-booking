@@ -93,7 +93,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			js: {
-				files: './*.js',
+				files: './**/*.js',
 				options: {
 					livereload: true,
 				},

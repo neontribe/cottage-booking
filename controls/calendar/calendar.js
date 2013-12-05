@@ -16,7 +16,8 @@ define([
 
     return can.Control({
         defaults: {
-            avail: avail
+            avail: avail,
+            //enquiry: enquiry
         }
     },{
         init: function(){
@@ -24,7 +25,7 @@ define([
             this.element.html( init({
                 datepickerOptions: {
                     'numberOfMonths': 6,
-                    'showButtonPanel': true,
+                    //'showButtonPanel': true,
                     'firstDay': 1,
                     // Use apply to enhance the onSelect callback, providing the dom element
                     // which contains the datepicker as an extra argument to the onSelect function
@@ -53,10 +54,19 @@ define([
          */
         beforeShowDay: function( el, date ) {
             var availability = this.options.avail(),
-                enableDay = false;
+                enableDay = false,
+                dayData,
+                dayClasses = [];
 
-            if( availability && availability.attr( date ) ) {
-                enableDay = availability.attr( date ).attr('available');
+            if( availability ) {
+                dayData = availability.attr( date );
+
+                if( dayData ) {
+                    enableDay = dayData.attr('available');
+
+                    dayClasses.push( dayData.attr('code'), dayData.attr('changeover') );
+                }
+
             }
 
             return [enableDay, ''];
