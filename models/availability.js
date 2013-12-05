@@ -2,28 +2,42 @@
  * This model represents the availability for a given cottage
  * @return {can.Model} availability the model
  */
-define(['can', 'moment'], function(can, moment){
+define(['can', 'models/availability_day', 'moment'], function(can, AvailabilityDay, moment){
     'use strict';
 
     return can.Model({
         // TODO: Figure out some way to populate the ref correctly
-        // findAll: 'GET tabs_property/{propRef}/availability',
-        findAll: 'GET tabs_property/G430_zz/availability',
-
-        models: function( raw ) {
-            return can.Model.models.call( this, raw.data );
-        },
+        // findOne: 'GET tabs_property/{propRef}/availability',
+        findOne: 'GET tabs_property/G430_zz/availability',
+        // myAvailabilityStore['25-01-2013'] => {'available': false...} etc
 
         model: function( raw ) {
-            // The dates come through in seconds from epoch, turn it into milliseconds
-            var date = moment( raw.date * 1000 ),
-                id = date.format('DD-MM-YYYY');
+            var newData = can.Model.model.call( this, {} );
 
-            return can.Model.model.call( this, can.extend(raw, {
-                'id': id,
-                'date': date
-            }));
+            can.each( raw, function( availData, key ) {
+                newData.attr( key, new AvailabilityDay( availData ) );
+            });
+
+            return newData;
         }
-    }, {});
+    }, {
+
+        /**
+         * attr function overrides the default attr behavior
+         * If the attr is a date, convert it to a string
+         * @return {Mixed} The value(s) found from this request
+         */
+        attr: function() {
+            var args = can.makeArray( arguments ),
+                _attr = args[0];
+
+            if( args.length && typeof args[0] !== 'string' ) {
+                _attr = moment( args[0] ).format('YYYY-MM-DD');
+            }
+
+            return can.Model.prototype.attr.apply( this, [_attr].concat( args.slice(1) ) );
+        }
+
+    });
 
 });
