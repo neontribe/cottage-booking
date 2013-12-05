@@ -65,6 +65,9 @@ module.exports = function(grunt) {
 			},
 			compileviews : {
 				cmd: 'node_modules/can-compile/bin/can-compile -o .build/views.js'
+			},
+			dependencies: {
+				cmd: './node_modules/bower/bin/bower install'
 			}
 		},
 		requirejs : {
@@ -86,6 +89,13 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: 9001,
+					base: '.',
+					keepalive : true
+				}
+			},
+			heroku: {
+				options: {
+					port: process.env.PORT || 3000,
 					base: '.',
 					keepalive : true
 				}
@@ -138,6 +148,9 @@ module.exports = function(grunt) {
 	// grunt.loadNpmTasks('grunt-exec');
 	// grunt.loadNpmTasks('grunt-contrib-connect');
 	// Load all grunt tasks
+
+	grunt.registerTask('heroku:development', 'exec:dependencies');
+
 	require('load-grunt-tasks')(grunt);
 
 };
