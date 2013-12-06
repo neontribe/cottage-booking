@@ -1,1 +1,1 @@
-web: echo my port number: $PORT && ./node_modules/grunt-cli/bin/grunt connect:heroku
+web: echo my port number: $PORT && node web.js
