@@ -148,9 +148,6 @@ module.exports = function(grunt) {
 	// grunt.loadNpmTasks('grunt-exec');
 	// grunt.loadNpmTasks('grunt-contrib-connect');
 	// Load all grunt tasks
-
-	grunt.registerTask('heroku:development', 'exec:dependencies');
-
 	require('load-grunt-tasks')(grunt);
 
 };

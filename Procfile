@@ -1,1 +1,1 @@
-web: echo my port number: $PORT && node web.js
+web: node web.js
