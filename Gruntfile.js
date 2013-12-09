@@ -77,9 +77,10 @@ module.exports = function(grunt) {
 				        can      : 'bower_components/canjs/amd/can',
 				        jquery   : 'resources/jquery',
 				        ejs      : 'bower_components/require-can-renderers/lib/ejs',
-				        jqueryui : 'bower_components/jquery-ui/ui'
+				        jqueryui : 'bower_components/jquery-ui/ui',
+				        moment : 'bower_components/momentjs/moment'
 					},
-					name : 'cottage_booking.js',
+					name : './cottage_booking.js',
 					out : 'production.js',
 					//exclude: ['jquery']
 				}

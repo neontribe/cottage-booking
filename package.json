@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "requirejs": "~2.1.6",
-    "express": "~3.4.6"
+    "express": "~3.4.6",
+    "phantomjs": "~1.9.2-5"
   },
   "devDependencies": {
     "load-grunt-tasks": "~0.2.0",
@@ -15,6 +16,7 @@
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-watch": "~0.5.3",
     "escodegen": "~0.0.22",
-    "esprima": "~1.0.3"
+    "esprima": "~1.0.3",
+    "testee": "0.0.8"
   }
 }
