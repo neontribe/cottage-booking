@@ -11,6 +11,7 @@ install:
   - bower install
 script:
   - echo "Hello Rob"
+  - testee test/index.html
 deploy:
   provider: heroku
   skip_cleanup: true
