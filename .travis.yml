@@ -1,5 +1,6 @@
+language: node_js
 node_js:
-  - "0.10.4"
+  - 0.10.4
 env:
   - NODE_ENV=development
 branches:
@@ -8,7 +9,8 @@ branches:
 install:
   - npm install
   - bower install
-script: "travis.sh"
+script:
+  - echo "Hello Rob"
 deploy:
   provider: heroku
   skip_cleanup: true
