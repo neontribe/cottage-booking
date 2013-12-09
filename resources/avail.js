@@ -1,7 +1,7 @@
 /**
  * Avail describes the singleton that will contain the availability
  * information for the cottage this app is constructed for
- * @return {[type]} [description]
+ * @return {can.compute} The can.compute wrapped object
  */
 define(['can', 'models/availability'], function( can, Availability ) {
 	'use strict';

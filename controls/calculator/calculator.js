@@ -2,19 +2,23 @@ define([
     'can',
     'ejs!./views/init',
     'can/control',
-    'models/enquiry',
+    'resources/enquiry',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
-], function( can, init ) {
+], function( can, init, enquiry ) {
     'use strict';
+
     return can.Control({
         defaults: {
-
+            enquiry: enquiry
         }
     },{
         'init' : function(){
             this.element.html(init({
-                'can': can
+                'can': can,
+                'datepickerOptions': {
+                    'dateFormat': 'dd/mm/yy'
+                }
             }));
         },
 

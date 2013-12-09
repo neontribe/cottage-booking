@@ -79,7 +79,7 @@ module.exports = function(grunt) {
 				        ejs      : 'bower_components/require-can-renderers/lib/ejs',
 				        jqueryui : 'bower_components/jquery-ui/ui'
 					},
-					name : 'tocc_booking.js',
+					name : 'cottage_booking.js',
 					out : 'production.js',
 					//exclude: ['jquery']
 				}
@@ -89,13 +89,6 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: 9001,
-					base: '.',
-					keepalive : true
-				}
-			},
-			heroku: {
-				options: {
-					port: process.env.PORT || 3000,
 					base: '.',
 					keepalive : true
 				}

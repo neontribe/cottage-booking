@@ -1,13 +1,16 @@
 node_js:
   - "0.10.4"
-before_script:
+env:
+  - NODE_ENV=development
+before_install:
   - "sudo apt-get update"
 install:
   - "npm install"
   - "bower install"
+script: "travis.sh"
 deploy:
   provider: heroku
   api_key:
     secure: F7K/2jWlL+kvvcf3wgHk1Y8TdfQ/NWn9nId6+u6Yb2kh6X4FhWZYTeEwJLv58GQ5RCmVfxs3CgTf3Q6M6u6CbWM62/R75EJ4E5tMLI/jmQLfwcrvHVyrsm+mvrCVIA/gqmD64vtgHGh5pwAyU5RIWGEcNF4O1SLhjw8FrNagwhs=
-  app: cottage-booking
-  on: heroku
+  app:
+    master: heroku

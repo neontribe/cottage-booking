@@ -2,6 +2,7 @@ define([
     'can',
     'ejs!./init',
     'resources/avail',
+    //'resources/enquiry',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
 ], function(can, init, avail) {
@@ -17,7 +18,7 @@ define([
     return can.Control({
         defaults: {
             avail: avail,
-            //enquiry: enquiry
+           // enquiry: enquiry
         }
     },{
         init: function(){
@@ -64,12 +65,13 @@ define([
                 if( dayData ) {
                     enableDay = dayData.attr('available');
 
-                    dayClasses.push( dayData.attr('code'), dayData.attr('changeover') );
+                    dayClasses.push( 'code-' + dayData.attr('code') );
+                    dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
                 }
 
             }
 
-            return [enableDay, ''];
+            return [enableDay, dayClasses.join(' ')];
             //return [ true, 'someClass', tooltipsss ];
         },
 
