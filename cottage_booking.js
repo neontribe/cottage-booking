@@ -1,14 +1,15 @@
-requirejs(['can'], function(can) {
+requirejs(['can', 'controls/calendar/calendar'], function(can, Calendar) {
 	'use strict';
 
-	var App = can.Control({
-		init : function() {
-		},
+	var components = [Calendar],
+		BookingPath = can.Control({
+			init: function() {
+			},
 
-		':page route': function() {
-			console.log.apply(console, arguments);
-		}
-	});
+			':page route': function() {
+				console.log.apply(console, arguments);
+			}
+		});
 
-	new App('#cottage-booking');
+	new BookingPath('#cottage-booking');
 });

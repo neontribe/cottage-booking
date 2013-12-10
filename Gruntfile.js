@@ -42,7 +42,7 @@ var getRenderer = function(ext, cwd){
  * The problem is that r.js is completely synchronous and can-compile uses
  * JSDom library which is async. That's why this build system is complicated
  * and kinda brittle. It should be only a temporary solution.
- *
+ * production
  * Build system works like this:
  *
  * 1. Create temp .build folder
@@ -50,7 +50,7 @@ var getRenderer = function(ext, cwd){
  * 3. Use esprima and escodegen to parse .build/views.js and convert it to a JSON file
  * 4. Provide custom renderers for mustache and EJS that will get compiled view from the JSON file
  * 5. Call require compile task to create production.js file
- * 6. Remoce .build folder to cleanup
+ * 6. Remove .build folder to cleanup
  */
 
 module.exports = function(grunt) {
