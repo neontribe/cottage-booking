@@ -7,26 +7,27 @@
 </head>
 <body>
     <div id="mocha"></div>
-    <!--
-        TODO: use require to load these files
-        include source files here...
-    -->
-    <script src="../bower_components/mocha/mocha.js"></script>
-    <!-- assertion framework -->
-    <script src="../bower_components/chai/chai.js"></script>
-
-    <script>mocha.setup('bdd')</script>
-    <script>var expect = chai.expect</script>
-
-    <!-- include spec files here... -->
-    <script src="spec/test.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/requirejs/require.js" data-main="config"></script>
+    <!-- Main app requirejs config -->
+    <script type="text/javascript" src="../requirejsconfig.js"></script>
 
     <script>
-        if (window.mochaPhantomJS) {
-            mochaPhantomJS.run();
-        } else {
-            mocha.run();
-        }
+        requirejs([
+            'test'
+        ], function() {
+            // List test files here
+            requirejs([
+                'spec/resources/avail_test.js'
+            ], function() {
+                if (window.mochaPhantomJS) {
+                    mochaPhantomJS.run();
+                } else {
+                    mocha.run();
+                }
+            });
+
+        });
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   "dependencies": {
     "requirejs": "~2.1.6",
     "express": "~3.4.6",
-    "phantomjs": "~1.9.2-5"
+    "jshint": "~2.3.0"
   },
   "devDependencies": {
     "load-grunt-tasks": "~0.2.0",
@@ -17,6 +17,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "escodegen": "~0.0.22",
     "esprima": "~1.0.3",
-    "testee": "0.0.8"
+    "phantomjs": "~1.9.2-5",
+    "grunt-contrib-jshint": "~0.7.2",
+    "mocha-phantomjs": "~3.2.0"
   }
 }

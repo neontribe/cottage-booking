@@ -65,25 +65,14 @@ module.exports = function(grunt) {
             },
             compileviews : {
                 cmd: 'node_modules/can-compile/bin/can-compile -o .build/views.js'
-            },
-            dependencies: {
-                cmd: './node_modules/bower/bin/bower install'
             }
         },
         requirejs : {
             compile : {
                 options : {
-                // paths: {
-                //        can      : 'bower_components/canjs/amd/can',
-                //        jquery   : 'resources/jquery',
-                //        ejs      : 'bower_components/require-can-renderers/lib/ejs',
-                //        jqueryui : 'bower_components/jquery-ui/ui',
-                //        moment : 'bower_components/momentjs/moment'
-                // },
                     mainConfigFile: 'requirejsconfig.js',
                     name : './cottage_booking.js',
-                    out : 'production.js',
-                    //exclude: ['jquery']
+                    out : 'production.js'
                 }
             }
         },
@@ -104,6 +93,19 @@ module.exports = function(grunt) {
                 },
             },
         },
+        jshint: {
+            prebuild: {
+                files: {
+                    src: ['./*.js', './**/*.js']
+                },
+                options: {
+                    ignores: ['./production.js', './bower_components/**', './node_modules/**', './Gruntfile.js'] // TODO: lint this file
+                }
+            },
+            postbuild: {
+                files: ['./production.js']
+            }
+        }
     });
 
     grunt.registerTask('extractViews', function(){

@@ -3,7 +3,7 @@ define(['can/util/string', 'can/util/fixture'], function(can){
     // TODO: This availability data may be worth randomizing/ only using a fixture if told to
 
     can.fixture({
-        'GET tabs_property/{propref}/availability': require.toUrl('fixtures/availability.json')
+        'GET tabs_property/{propRef}/availability': require.toUrl('fixtures/availabilities/availability_{propRef}.json')
     });
 
 });

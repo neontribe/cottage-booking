@@ -12,6 +12,8 @@
     "jquery": "~1.8.2",
     "devtools-snippets": "https://github.com/bgrins/devtools-snippets.git#498e47fe33f4e08e0626d16689ba2625234be8d6",
     "mocha": "~1.15.1",
-    "chai": "~1.8.1"
+    "chai": "~1.8.1",
+    "chai-jquery": "~1.1.2",
+    "underscore": "~1.5.2"
   }
 }
