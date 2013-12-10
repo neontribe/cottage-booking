@@ -1,9 +1,14 @@
-requirejs(['can', 'controls/calendar/calendar'], function(can, Calendar) {
+requirejs([
+	'can',
+	'controls/calendar/calendar',
+], function(can, Calendar) {
 	'use strict';
 
 	var components = [Calendar],
 		BookingPath = can.Control({
 			init: function() {
+
+				can.route.ready();
 			},
 
 			':page route': function() {
