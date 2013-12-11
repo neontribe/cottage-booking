@@ -2,7 +2,8 @@ var esprima   = require('esprima'),
     fs        = require('fs'),
     escodegen = require('escodegen');
 
-
+// THE PATHING IS FUCKED                                                                        !!!!!!
+// define('ejs!controls/calendar/init',['can/view/ejs', 'can/observe'], function(can){ return undefined });
 var getRenderer = function(ext, cwd){
     return "define(function() {\n"+
         "   var Rndrr = {},\n"+
@@ -77,6 +78,8 @@ module.exports = function(grunt) {
                     mainConfigFile: 'app/requirejsconfig.js',
                     paths: {
                         // Overwrite ejs to use the compiled templates
+                        // THE PATHING IS FUCKED                                                                        !!!!!!
+                        // define('ejs!controls/calendar/init',['can/view/ejs', 'can/observe'], function(can){ return undefined });
                         'ejs': '../.build/ejs'
                     },
                     name : 'bower_components/almond/almond',
