@@ -6,9 +6,12 @@
     <body>
         <h1>Welcome to CanJS!</h1>
         <div id="content"></div>
-        <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
-        <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
-        <script type="text/javascript" src="requirejsconfig.js"></script>
+        <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
+        <script type="text/javascript" src="app/bower_components/jquery/jquery.js"></script>
+        <!-- <script type="text/javascript" src="bower_components/requirejs/require.js"></script> -->
+        <!-- <script type="text/javascript" src="requirejsconfig.js"></script> -->
         <script type="text/javascript" src="production.js"></script>
+        <!-- Load fixture files, somehow... -->
+        <script type="text/javascript"></script>
     </body>
 </html>

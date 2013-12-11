@@ -70,9 +70,9 @@ module.exports = function(grunt) {
         requirejs : {
             compile : {
                 options : {
-                    mainConfigFile: 'requirejsconfig.js',
-                    name : './cottage_booking.js',
-                    out : 'production.js'
+                    mainConfigFile: 'app/requirejsconfig.js',
+                    name : 'app/cottage_booking.js',
+                    out : 'app/production.js'
                 }
             }
         },
@@ -87,7 +87,7 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: './**/*.js',
+                files: 'app/**/*.js',
                 options: {
                     livereload: true,
                 },
@@ -96,10 +96,18 @@ module.exports = function(grunt) {
         jshint: {
             prebuild: {
                 files: {
-                    src: ['./*.js', './**/*.js']
+                    src: [
+                        './app/*.js',
+                        './app/**/*.js'
+                    ]
                 },
                 options: {
-                    ignores: ['./production.js', './bower_components/**', './node_modules/**', './Gruntfile.js'] // TODO: lint this file
+                    ignores: [
+                        './production.js',
+                        './app/bower_components/**',
+                        './node_modules/**',
+                        './Gruntfile.js' // TODO: lint this file
+                    ]
                 }
             },
             postbuild: {
@@ -141,9 +149,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'build');
 
-    // grunt.loadNpmTasks('grunt-contrib-requirejs');
-    // grunt.loadNpmTasks('grunt-exec');
-    // grunt.loadNpmTasks('grunt-contrib-connect');
     // Load all grunt tasks
     require('load-grunt-tasks')(grunt);
 

@@ -19,3 +19,9 @@ deploy:
     secure: F7K/2jWlL+kvvcf3wgHk1Y8TdfQ/NWn9nId6+u6Yb2kh6X4FhWZYTeEwJLv58GQ5RCmVfxs3CgTf3Q6M6u6CbWM62/R75EJ4E5tMLI/jmQLfwcrvHVyrsm+mvrCVIA/gqmD64vtgHGh5pwAyU5RIWGEcNF4O1SLhjw8FrNagwhs=
   app:
     develop: cottage-booking
+notifications:
+  email:
+    recipients:
+    - karl@neontribe.co.uk
+    on_success: always
+    on_failure: always

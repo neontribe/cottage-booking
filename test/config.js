@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl : '../',
+    baseUrl : '../app',
     paths: {
         jquery:         'resources/jquery',
         mocha:          'bower_components/mocha/mocha',

@@ -7,7 +7,7 @@ requirejs([
 	var components = [Calendar],
 		BookingPath = can.Control({
 			init: function() {
-
+				new Calendar(this.element);
 				can.route.ready();
 			},
 
