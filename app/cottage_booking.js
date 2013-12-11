@@ -1,6 +1,7 @@
 requirejs([
 	'can',
 	'controls/calendar/calendar',
+	'controls/calculator/calculator'
 ], function(can, Calendar) {
 	'use strict';
 
@@ -16,5 +17,6 @@ requirejs([
 			}
 		});
 
+	// Initialise app on the cottage-booking element
 	new BookingPath('#cottage-booking');
 });

@@ -62,17 +62,32 @@ module.exports = function(grunt) {
             },
             rmbuilddir   : {
                 cmd : 'rm -rf .build'
-            },
-            compileviews : {
-                cmd: 'node_modules/can-compile/bin/can-compile -o .build/views.js'
+            }
+        },
+        cancompile: {
+            dist: {
+                src: ['app/**/*.ejs', '!app/bower_components/**'],
+                out: '.build/views.js'
             }
         },
         requirejs : {
             compile : {
                 options : {
+                    baseUrl: './app',
                     mainConfigFile: 'app/requirejsconfig.js',
-                    name : 'app/cottage_booking.js',
-                    out : 'app/production.js'
+                    paths: {
+                        // Overwrite ejs to use the compiled templates
+                        'ejs': '../.build/ejs'
+                    },
+                    name : 'bower_components/almond/almond',
+                    include: [
+                        'requirejsconfig',
+                        'cottage_booking'
+                    ],
+                    insertRequire: ['cottage_booking'],
+                    wrap: true,
+                    out : 'app/production.js',
+                    optimize: 'none'
                 }
             }
         },
@@ -139,11 +154,11 @@ module.exports = function(grunt) {
         grunt.task.run(
             'exec:rmbuilddir',
             'exec:mkbuilddir',
-            'exec:compileviews',
+            'cancompile',
             'extractViews',
             'createRenderers',
-            'requirejs:compile',
-            'exec:rmbuilddir'
+            'requirejs:compile'
+            //'exec:rmbuilddir'
         );
     });
 
@@ -151,5 +166,7 @@ module.exports = function(grunt) {
 
     // Load all grunt tasks
     require('load-grunt-tasks')(grunt);
+
+    grunt.loadNpmTasks('can-compile');
 
 };

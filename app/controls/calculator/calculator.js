@@ -2,6 +2,7 @@ define([
     'can',
     'ejs!./views/init',
     'can/control',
+    'can/control/plugin',
     'resources/enquiry',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
@@ -9,6 +10,9 @@ define([
     'use strict';
 
     return can.Control({
+
+        pluginName: 'calculator',
+
         defaults: {
             enquiry: enquiry
         }

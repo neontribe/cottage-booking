@@ -1,19 +1,19 @@
 {
   "name": "toccbooking",
   "version": "0.0.0",
-  "dependencies": {
-    "require-can-renderers": "git://github.com/retro/require-can-renderers.git",
-    "requirejs": "~2.1.6",
-    "canjs": "~2.0.0",
-    "jquery-ui": "~1.10.3",
-    "momentjs": "~2.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "jquery": "~1.8.2",
     "devtools-snippets": "https://github.com/bgrins/devtools-snippets.git#498e47fe33f4e08e0626d16689ba2625234be8d6",
     "mocha": "~1.15.1",
     "chai": "~1.8.1",
     "chai-jquery": "~1.1.2",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "require-can-renderers": "git://github.com/retro/require-can-renderers.git",
+    "requirejs": "~2.1.6",
+    "canjs": "~2.0.0",
+    "jquery-ui": "~1.10.3",
+    "momentjs": "~2.4.0",
+    "almond": "~0.2.7"
   }
 }

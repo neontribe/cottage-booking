@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>cottage-booking</title>
+    </head>
+    <body>
+        <h1>Welcome to cottage booking!</h1>
+        <div id="some-tabs">
+            <ul>
+                <li>Info</li>
+                <li>Map</li>
+                <li>Gallery</li>
+                <li class="active">Availability</li>
+            </ul>
+            <div class="cf"></div>
+        </div>
+        <div id="cottage-booking"></div>
+        <div id="calculator"></div>
+        <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
+        <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+
+        <!-- Load these files _just_ for fixtures -->
+            <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
+            <script type="text/javascript" src="requirejsconfig.js"></script>
+        <!-- Fixture files -->
+        <script type="text/javascript">
+            requirejs([
+                'fixtures/availabilities'
+            ], function() {
+                // EVERYTHING IS IN HERE
+                requirejs(['production.js']);
+            });
+        </script>
+    </body>
+</html>

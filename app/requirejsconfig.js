@@ -8,5 +8,10 @@ requirejs.config({
         //devtools : 'bower_components/devtools-snippets/snippets', reference full path for dev environments you lazy git
         //config   : 'config/config' <- A model available as a singlton
     },
+    shim: {
+        jquery: {
+            exports: 'jQuery'
+        }
+    },
     noGlobal: true
 });
