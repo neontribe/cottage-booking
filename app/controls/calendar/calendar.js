@@ -1,6 +1,6 @@
 define([
     'can',
-    'ejs!./init',
+    'ejs!./views/init',
     'resources/avail',
     //'resources/enquiry',
     'jqueryui/jquery.ui.core',
@@ -25,7 +25,7 @@ define([
 
             this.element.html( init({
                 datepickerOptions: {
-                    'numberOfMonths': 6,
+                    'numberOfMonths': [2,3],
                     //'showButtonPanel': true,
                     'firstDay': 1,
                     // Use apply to enhance the onSelect callback, providing the dom element
@@ -44,7 +44,7 @@ define([
          * @return {undefined}
          */
         onSelect: function( el, dateString, datepickerObject ) {
-            debugger;
+            console.log( el, dateString, datepickerObject );
         },
 
         /**

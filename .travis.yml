@@ -18,7 +18,7 @@ deploy:
   provider: heroku
   skip_cleanup: true
   api_key:
-    secure: U0Z5TQFhkoNmF0dtUwWwIaISubJdt/EDIcFfk2EQhAN1VSsUAznfp5zRwl8ERmNZJZ3eEvNM5vmDGQnifmiNMN3CT5Crt9cXxEq/4opTJuC8V7STyjedTbS2BmUuOIjbrJCQZsS/T1DX1ox8vSlP2jGGy4qK+PaZyW4dApo4kh4=
+    secure: YWyYhMOo9Z8KFW+8GDf9Oshkt0LDroHiWLm+7L6A/l16hAdaUaPZ48RNe8YzkqqwUOi2URUthuCBhqYAFKVYZW7kSYOwyXZ/mrQrAaoEoGpjTv3vF7OoP2kH3DhfWjPEXY2ZKU3NfIFB38dSBw+7UFggDxHJ4yh6jz1l7CYH8JI=
   app:
     develop: cottage-booking
 notifications:

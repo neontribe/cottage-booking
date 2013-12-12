@@ -113,7 +113,7 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: 'app/**/*.js',
+                files: ['app/**/*.js', '!app/production.js', '!app/bower_components/*'],
                 options: {
                     livereload: true,
                 },
@@ -129,16 +129,18 @@ module.exports = function(grunt) {
                 },
                 options: {
                     ignores: [
-                        './production.js',
+                        './app/production.js',
                         './app/bower_components/**',
-                        './node_modules/**',
                         './Gruntfile.js' // TODO: lint this file
                     ]
                 }
-            },
-            postbuild: {
-                files: ['./production.js']
             }
+            // Run this before uglifying
+            // postbuild: {
+            //     files: {
+            //         src: ['./app/production.js']
+            //     }
+            // }
         }
     });
 
@@ -163,6 +165,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', function(){
         grunt.task.run(
+            'jshint:prebuild',
             'exec:rmbuilddir',
             'exec:mkbuilddir',
             'cancompile',

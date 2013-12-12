@@ -12,7 +12,7 @@ define(['can', 'models/availability'], function( can, Availability ) {
 			var self = this;
 			if( fetch ) {
 				// TODO: sort out prop ref store, maybe use the fetch value
-				Availability.findOne({ propRef: 'some prop ref' }).done(function( availabilityList ) {
+				return Availability.findOne({ propRef: 'some prop ref' }).done(function( availabilityList ) {
 					self.attr('list', availabilityList);
 				});
 			} else {

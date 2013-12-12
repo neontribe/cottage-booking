@@ -28,7 +28,6 @@ define([
 
         '#depart change': function( $el ) {
             $el.val();
-            debugger;
         }
     });
 

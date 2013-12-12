@@ -3,7 +3,7 @@ define(['can/util/string', 'can/util/fixture'], function(can){
 
     can.fixture({
         'POST tabs_property/{propRef}/booking/enquiry' : function() {
-            debugger;
+            console.log.apply(console, arguments);
         }
     });
 

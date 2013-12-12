@@ -7,7 +7,5 @@ define([
 		'use strict';
 
 		onload();
-
-	debugger;
 	}
 });

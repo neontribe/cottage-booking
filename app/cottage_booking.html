@@ -57,14 +57,12 @@
         <!-- Fixture files -->
         <script type="text/javascript">
             requirejs([
-                'fixtures/availabilities'
-            ]);
-        </script>
-        <!-- Calculator initialisation -->
-        <script type="text/javascript">
-
-            $('#calculator').calculator();
-
+                'fixtures/availabilities',
+                'fixtures/enquiries'
+            ], function() {
+                // Calculator initialisation
+                $('#calculator').calculator();
+            });
         </script>
     </body>
 </html>
