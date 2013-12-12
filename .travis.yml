@@ -8,7 +8,7 @@ branches:
   - develop
 install:
   - npm install
-  - npm install -g grunt
+  - npm install -g grunt-cli
   - bower install
 script:
   - echo "Running tests"
