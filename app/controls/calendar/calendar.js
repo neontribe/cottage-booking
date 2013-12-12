@@ -2,11 +2,17 @@ define([
     'can',
     'ejs!./views/init',
     'resources/avail',
-    //'resources/enquiry',
+    'resources/enquiry',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
-], function(can, init, avail) {
+], function(can, init, avail, enquiry) {
     'use strict';
+
+    // TODO:Move this to a better place
+    /* globals jQuery */
+    jQuery.datepicker.setDefaults({
+        dateFormat: 'dd/mm/yy'
+    });
 
     var slice = Array.prototype.slice,
         bindWithThis = function( fn, context ) {
@@ -18,7 +24,7 @@ define([
     return can.Control({
         defaults: {
             avail: avail,
-           // enquiry: enquiry
+            enquiry: enquiry
         }
     },{
         init: function(){
@@ -45,6 +51,11 @@ define([
          */
         onSelect: function( el, dateString, datepickerObject ) {
             console.log( el, dateString, datepickerObject );
+            if( !this.options.enquiry.attr('fromDate') ) {
+                this.options.enquiry.attr('fromDate', dateString);
+            } else {
+                this.options.enquiry.attr('toDate', dateString);
+            }
         },
 
         /**

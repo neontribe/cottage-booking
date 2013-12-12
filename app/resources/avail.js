@@ -16,6 +16,9 @@ define(['can', 'models/availability'], function( can, Availability ) {
 					self.attr('list', availabilityList);
 				});
 			} else {
+				if( !this.attr('list') ) {
+					this.attr('list', new Availability());
+				}
 				return this.attr('list');
 			}
 		// create a new observable object to store the list on, so events propagate correctly

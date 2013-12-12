@@ -8,7 +8,6 @@ define([
     'jqueryui/jquery.ui.datepicker'
 ], function( can, init, enquiry ) {
     'use strict';
-
     return can.Control({
 
         pluginName: 'calculator',
@@ -21,7 +20,7 @@ define([
             this.element.html(init({
                 'can': can,
                 'datepickerOptions': {
-                    'dateFormat': 'dd/mm/yy'
+
                 }
             }));
         },
