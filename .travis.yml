@@ -1,24 +1,24 @@
 language: node_js
 node_js:
-  - 0.10.18
+- 0.10.18
 env:
-  - NODE_ENV=development
+- NODE_ENV=development
 branches:
   only:
   - develop
 install:
-  - npm install
-  - npm install -g grunt-cli
-  - bower install
+- npm install
+- npm install -g grunt-cli
+- bower install
 script:
-  - echo "Running tests"
-  - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
-  - grunt build
+- echo "Running tests"
+- ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
+- grunt build
 deploy:
   provider: heroku
   skip_cleanup: true
   api_key:
-    secure: F7K/2jWlL+kvvcf3wgHk1Y8TdfQ/NWn9nId6+u6Yb2kh6X4FhWZYTeEwJLv58GQ5RCmVfxs3CgTf3Q6M6u6CbWM62/R75EJ4E5tMLI/jmQLfwcrvHVyrsm+mvrCVIA/gqmD64vtgHGh5pwAyU5RIWGEcNF4O1SLhjw8FrNagwhs=
+    secure: U0Z5TQFhkoNmF0dtUwWwIaISubJdt/EDIcFfk2EQhAN1VSsUAznfp5zRwl8ERmNZJZ3eEvNM5vmDGQnifmiNMN3CT5Crt9cXxEq/4opTJuC8V7STyjedTbS2BmUuOIjbrJCQZsS/T1DX1ox8vSlP2jGGy4qK+PaZyW4dApo4kh4=
   app:
     develop: cottage-booking
 notifications:
