@@ -8,10 +8,12 @@ branches:
   - develop
 install:
   - npm install
+  - npm install -g grunt
   - bower install
 script:
   - echo "Running tests"
   - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
+  - grunt build
 deploy:
   provider: heroku
   skip_cleanup: true
@@ -23,5 +25,6 @@ notifications:
   email:
     recipients:
     - karl@neontribe.co.uk
+    - rob@neontribe.co.uk
     on_success: always
     on_failure: always

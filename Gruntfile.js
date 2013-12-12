@@ -1,21 +1,22 @@
 var esprima   = require('esprima'),
     fs        = require('fs'),
     escodegen = require('escodegen');
-
-// THE PATHING IS FUCKED                                                                        !!!!!!
-// define('ejs!controls/calendar/init',['can/view/ejs', 'can/observe'], function(can){ return undefined });
+/* jshint quotmark: false, strict: false */
 var getRenderer = function(ext, cwd){
     return "define(function() {\n"+
         "   var Rndrr = {},\n"+
         "       buildMap = {};\n"+
         "   Rndrr.load = function(name, parentRequire, load, config) {\n"+
+        // Parent require returns the full path to the item, ( the _whole_ path )
         "       var path = parentRequire.toUrl(name + '." + ext + "'),\n"+
         "           fs, views, output;\n"+
+        // So remove it, TODO: Investigate better fix
+        "           path   = path.replace('" + cwd + "', '');\n" +
         "       if(config.isBuild){\n"+
         "           path   = path.replace(/\\.|\\//g, '_').replace(/^_+|_+$/g, '');\n"+
         "           fs     = require.nodeRequire('fs'),\n"+
         "           views  = JSON.parse(fs.readFileSync('" + cwd + "/.build/views.json')),\n"+
-        "           output = 'define([\\'can/view/" + ext + "\\', \\'can/observe\\'], function(can){ return ' + views[path] + ' });'\n"+
+        "           output = '\/* Template for ' + path + '*\/define([\\'can/view/" + ext + "\\', \\'can/observe\\'], function(can){ return ' + views[path] + ' });'\n"+
         "           buildMap[name] = output;\n"+
         "           load(output);\n"+
         "       } else {\n"+
@@ -34,7 +35,7 @@ var getRenderer = function(ext, cwd){
         "   };\n"+
         "   return Rndrr;\n"+
         "});";
-}
+};
 
 /**
  * This Gruntfile provides a `build` task that enables you to combine your
@@ -78,19 +79,26 @@ module.exports = function(grunt) {
                     mainConfigFile: 'app/requirejsconfig.js',
                     paths: {
                         // Overwrite ejs to use the compiled templates
-                        // THE PATHING IS FUCKED                                                                        !!!!!!
-                        // define('ejs!controls/calendar/init',['can/view/ejs', 'can/observe'], function(can){ return undefined });
                         'ejs': '../.build/ejs'
                     },
+                    // we don't actually need to compile the generator
+                    exclude: ['ejs'],
+                    // Use the almond library as the base, so we don't need requirejs
                     name : 'bower_components/almond/almond',
                     include: [
                         'requirejsconfig',
-                        'cottage_booking'
+                        'cottage_booking',
+                        'can/view/ejs'
                     ],
                     insertRequire: ['cottage_booking'],
-                    wrap: true,
+                    // Wrap the production to make a fake module for ejs
+                    wrap: {
+                        start:  "(function() {",
+                        end:    "   define('ejs', function() {});\n" +
+                                "}());"
+                    },
                     out : 'app/production.js',
-                    optimize: 'none'
+                    optimize: 'uglify2'
                 }
             }
         },
@@ -160,8 +168,8 @@ module.exports = function(grunt) {
             'cancompile',
             'extractViews',
             'createRenderers',
-            'requirejs:compile'
-            //'exec:rmbuilddir'
+            'requirejs:compile',
+            'exec:rmbuilddir'
         );
     });
 

@@ -1,7 +1,5 @@
 define([
     'can',
-    // THE PATHING IS FUCKED                                                                        !!!!!!
-    // define('ejs!controls/calendar/init',['can/view/ejs', 'can/observe'], function(can){ return undefined });
     'ejs!./views/init',
     'can/control',
     'can/control/plugin',
