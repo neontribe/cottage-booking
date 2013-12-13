@@ -1,11 +1,13 @@
 define([
     'can',
-    'ejs!./views/init',
+    'jquery',
+    'moment',
+    'ejs!./views/init', // If the views stack because too big see controls/calculator/views.js for a good pattern
     'resources/avail',
     'resources/enquiry',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
-], function(can, init, avail, enquiry) {
+], function(can, $, moment, init, avail, enquiry) {
     'use strict';
 
     // TODO:Move this to a better place
@@ -51,10 +53,11 @@ define([
          */
         onSelect: function( el, dateString, datepickerObject ) {
             console.log( el, dateString, datepickerObject );
+            var date = moment( $(el).datepicker('getDate' ) );
             if( !this.options.enquiry.attr('fromDate') ) {
-                this.options.enquiry.attr('fromDate', dateString);
+                this.options.enquiry.attr('fromDate', date);
             } else {
-                this.options.enquiry.attr('toDate', dateString);
+                this.options.enquiry.attr('toDate', date);
             }
         },
 

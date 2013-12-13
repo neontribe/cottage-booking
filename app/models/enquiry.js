@@ -7,15 +7,6 @@ define(['can/util/string', 'resources/avail', 'can/model', 'can/map/validations'
         update  : 'POST tabs_property/nope/booking/enquiry',
         create  : 'POST tabs_property/nope/booking/enquiry',
 
-        // attributes: {
-        //     'propRef': 'string',
-        //     'fromDate': 'string',
-        //     'nights': 'string',
-        //     'adults': 'string',
-        //     'children': 'string',
-        //     'infants': 'string',
-        //     'pets': 'string',
-        // }
         defaults: {
             // The availability object so we can validate stays
             'avail': avail,
@@ -32,8 +23,27 @@ define(['can/util/string', 'resources/avail', 'can/model', 'can/map/validations'
 
     }, {
 
+        // We only need this attributes to make an enquiry
+        // attributes: {
+        //     'propRef': 'string',
+        //     'fromDate': 'string',
+        //     'nights': 'string',
+        //     'adults': 'string',
+        //     'children': 'string',
+        //     'infants': 'string',
+        //     'pets': 'string',
+        // }
         'serialize': function() {
+            // only include the attributes above
             var serialized = can.Model.prototype.serialize.call( this );
+
+            if( this.attr('fromDate') ) {
+                serialized.fromDate = this.attr('fromDate').format('YYYY-MM-DD');
+            }
+            if( this.attr('toDate') ) {
+                serialized.toDate = this.attr('toDate').format('YYYY-MM-DD');
+            }
+
             return serialized;
         }
 
