@@ -15,7 +15,7 @@ script:
 - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
 - grunt build
 - rm .gitignore
-- git add .
+- git add -A
 deploy:
   provider: heroku
   skip_cleanup: true
