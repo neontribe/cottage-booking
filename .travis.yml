@@ -14,6 +14,8 @@ script:
 - echo "Running tests"
 - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
 - grunt build
+- git add .
+- git commit -am 'Added files for deployment'
 deploy:
   provider: heroku
   skip_cleanup: true
