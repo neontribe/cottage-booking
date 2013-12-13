@@ -83,13 +83,21 @@ define([
                     dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
                 }
 
+                if( enquiry.fallsBetween( date ) ) {
+                    dayClasses.push('selected');
+                }
+
             }
 
             return [enableDay, dayClasses.join(' ')];
             //return [ true, 'someClass', tooltipsss ];
         },
 
+        // TODO: Improve the selector, attach the datepicker as an option?
         '{avail} change': function() {
+            this.element.find('.hasDatepicker').first().datepicker('refresh');
+        },
+        '{enquiry} change': function() {
             this.element.find('.hasDatepicker').first().datepicker('refresh');
         }
     });

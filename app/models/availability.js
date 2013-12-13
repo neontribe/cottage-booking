@@ -8,7 +8,7 @@ define(['can', 'models/availability_day', 'moment'], function(can, AvailabilityD
     return can.Model({
         // TODO: Figure out some way to populate the ref correctly
         // findOne: 'GET tabs_property/{propRef}/availability',
-        findOne: 'GET tabs_property/G430_zz/availability',
+        findOne: 'GET tabs_property/A223_ZZ/availability',
         // myAvailabilityStore['25-01-2013'] => {'available': false...} etc
 
         model: function( raw ) {
