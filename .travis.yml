@@ -14,17 +14,16 @@ script:
 - echo "Running tests"
 - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
 - grunt build
-# - git add .
-# - git commit -am 'Added files for deployment'
 deploy:
   provider: heroku
   skip_cleanup: true
   api_key:
     secure: PBJ38fdDq0rd2bIcWNb6DfUP7OI+ddwVoEE/XcfZ6BiLIohWhzde4JMX1hsb6Uk5Eaa7O+bMd8+22k7HFs8B+WBQ3wCYENFCtUpvdRPsRPzz0xT3zbJnRPbE+3hXBY2ZXAyR4myzTg/gT6Aw403dR++4fVsyoWGihOxVNMRKVJQ=
-  app: cottage-booking
-  on:
-    repo: RpprRoger/cottage-booking
-    branch: develop
+  app:
+    develop: cottage-booking
+  # on:
+  #   repo: RpprRoger/cottage-booking
+  #   branch: develop
 notifications:
   email:
     recipients:
