@@ -3,7 +3,7 @@
  * information for the cottage this app is constructed for
  * @return {Model} The enquiry model to be shared by the app
  */
-define(['can', 'models/enquiry'], function( can, Enquiry ) {
+define(['can/util/string', 'models/enquiry'], function( can, Enquiry ) {
 	'use strict';
 
 	//var enquiry = new Enquiry();

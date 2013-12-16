@@ -10,7 +10,7 @@ define(['can/util/string', 'jquery', 'can/util/fixture'], function(can, $){
             })).done(function( resp ) {
                 reply( can.extend(resp, {
                     'wesentthis': options.data,
-                    'to': url
+                    'wesentthisto': url
                 }) );
             });
         }

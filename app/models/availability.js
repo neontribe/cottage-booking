@@ -2,7 +2,7 @@
  * This model represents the availability for a given cottage
  * @return {can.Model} availability the model
  */
-define(['can', 'models/availability_day', 'moment'], function(can, AvailabilityDay, moment){
+define(['can/util/string', 'models/availability_day', 'moment'], function(can, AvailabilityDay, moment){
     'use strict';
 
     return can.Model({
@@ -31,8 +31,8 @@ define(['can', 'models/availability_day', 'moment'], function(can, AvailabilityD
             var args = can.makeArray( arguments ),
                 _attr = args[0];
 
-            if( args.length && typeof args[0] !== 'string' ) {
-                _attr = moment( args[0] ).format('YYYY-MM-DD');
+            if( args.length && args[0] && args[0].constructor === Date ) {
+                _attr = moment( args[0] ).format( 'YYYY-MM-DD' );
             }
 
             return can.Model.prototype.attr.apply( this, [_attr].concat( args.slice(1) ) );

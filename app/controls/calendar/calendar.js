@@ -1,5 +1,5 @@
 define([
-    'can',
+    'can/util/string',
     'jquery',
     'moment',
     'ejs!./views/init', // If the views stack because too big see controls/calculator/views.js for a good pattern
@@ -52,13 +52,29 @@ define([
          * @param  {Object} datepickerObject The object containing date on the datepicker
          * @return {undefined}
          */
-        onSelect: function( el, dateString, datepickerObject ) {
-            console.log( el, dateString, datepickerObject );
-            var date = moment( $(el).datepicker('getDate' ) );
-            if( !this.options.enquiry.attr('fromDate') ) {
-                this.options.enquiry.attr('fromDate', date);
+        onSelect: function( el, dateString, datepickerInst ) {
+            console.log( el, dateString, datepickerInst );
+            var date = moment( $(el).datepicker('getDate' ) ),
+                enq = this.options.enquiry,
+                fromDate = enq.attr('fromDate'),
+                toDate = enq.attr('toDate');
+
+            // TODO: neatify
+            if( !fromDate || ( fromDate && toDate ) ) {
+                enq.attr('fromDate', date);
+                enq.attr('toDate', null);
             } else {
-                this.options.enquiry.attr('toDate', date);
+                if( !toDate ) {
+                    if( date < fromDate ) {
+                        enq.attr('fromDate', date);
+                        enq.attr('toDate', null);
+                    } else {
+                        enq.attr('toDate', date);
+                    }
+                } else {
+                    enq.attr('fromDate', date);
+                    enq.attr('toDate', null);
+                }
             }
         },
 
@@ -76,18 +92,20 @@ define([
 
             if( date > new Date() ) {
                 if( availability ) {
+                    // Availability is still a model, but for speed
                     dayData = availability.attr( date );
 
                     if( dayData ) {
                         enableDay = dayData.attr('available');
 
+                        if( enableDay && enquiry.fallsBetween( date ) ) {
+                            dayClasses.push('selected');
+                        }
+
                         dayClasses.push( 'code-' + dayData.attr('code') );
                         dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
                     }
 
-                    if( enquiry.fallsBetween( date ) ) {
-                        dayClasses.push('selected');
-                    }
 
                 }
             }
@@ -99,6 +117,7 @@ define([
         '{avail} change': function() {
             this.element.find('.hasDatepicker').first().datepicker('refresh');
         },
+        // TODO: find out to to distinguish between date selection on here and external changes, which we care about
         '{enquiry} change': function( model, evt, what ) {
             if( what === 'toDate' || what === 'fromDate' ) {
                 this.element.find('.hasDatepicker').first().datepicker('refresh');

@@ -1,7 +1,8 @@
-requirejs([
-    'can',
+define([
+    'can/util/string',
     'controls/calendar/calendar',
     'controls/calculator/calculator',
+    'can/control',
     'can/control/plugin',
 ], function(can, Calendar) {
     'use strict';
@@ -22,6 +23,6 @@ requirejs([
         });
 
     // Initialise app on the cottage-booking element
-    new BookingPath('#cottage-booking');
-    //return BookingPath;
+    //new BookingPath('#cottage-booking');
+    return BookingPath;
 });

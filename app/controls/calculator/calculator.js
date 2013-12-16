@@ -1,9 +1,10 @@
 define([
-    'can',
+    'can/util/string',
     'ejs!./views/init',
+    'resources/enquiry',
+    // extras
     'can/control',
     'can/control/plugin',
-    'resources/enquiry',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
 ], function( can, init, enquiry ) {
@@ -18,10 +19,7 @@ define([
     },{
         'init' : function(){
             this.element.html(init({
-                'can': can,
-                'datepickerOptions': {
-
-                }
+                'can': can
             }));
         },
 

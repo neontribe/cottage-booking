@@ -33,8 +33,24 @@
                 padding:1em;
                 margin: 1em;
                 border: 1px solid black;
+            },
+            .ui-datepicker-today {
+                background: orange;
+            }
+            .ui-datepicker-today > span {
+                background: blue !important;
+            }
+            .selected {
+                background-color: #f3f3d1 !important;
+                background-image: none !important;
+            }
+            .selected * {
+                background-color: #f3f3d1 !important;
+                background-image: none !important;
             }
         </style>
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>
@@ -49,18 +65,18 @@
         </div>
         <div id="cottage-booking"></div>
         <div id="calculator"></div>
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
         <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
-        <script type="text/javascript" src="bower_components/requirejs/require.js" data-main="cottage_booking"></script>
+        <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="requirejsconfig.js"></script>
         <!-- Fixture files -->
         <script type="text/javascript">
             requirejs([
+                'cottage_booking',
                 'fixtures/availabilities',
                 'fixtures/enquiries'
-            ], function(cb) {
+            ], function() {
                 // Calculator initialisation
+                $('#cottage-booking').booking_path();
                 $('#calculator').booking_calculator();
             });
         </script>
