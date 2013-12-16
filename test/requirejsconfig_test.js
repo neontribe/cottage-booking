@@ -7,5 +7,3 @@ requirejs.config({
         'chai-jquery':  'bower_components/chai-jquery/chai-jquery'
     }
 });
-
-define(['requirejsconfig']);

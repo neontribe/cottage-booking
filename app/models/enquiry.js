@@ -2,10 +2,9 @@ define([
     'can/util/string',
     'resources/avail',
     'underscore',
-    'moment',
     'can/model',
     'can/map/validations'
-], function(can, avail, _, moment){
+], function(can, avail, _){
     'use strict';
 
     return can.Model({
@@ -17,8 +16,8 @@ define([
         defaults: {
             // The availability object so we can validate stays
             'avail': avail,
-            'adults': 4,
-            'stayDays': []
+            'saveOnValid': false,
+            'adults': 4
         },
 
         // We only need this attributes to make an enquiry
@@ -30,11 +29,35 @@ define([
             'adults',
             'children',
             'infants',
-            'pets',
+            'pets'
         ],
 
         'init': function() {
-            this.validate('fromDate', function(/*fromDate*/) {
+            this.validate('fromDate', function( fromDate ) {
+                if( !this.attr('toDate') ) {
+                    return false;
+                }
+
+                if( fromDate < new Date() ) {
+                    return 'Your stay should be in the future';
+                }
+
+                if( fromDate > this.attr('toDate') ) {
+                    return 'The start of your stay must be before the end';
+                }
+
+                return false;
+            });
+
+            this.validate('toDate', function( toDate ) {
+                if( !this.attr('fromDate') ) {
+                    return false;
+                }
+
+                if( toDate < this.attr('fromDate') ) {
+                    return 'The end of your stay must be after the start';
+                }
+
                 return false;
             });
 
@@ -44,9 +67,23 @@ define([
     }, {
 
         'init': function() {
-            // There must be a better way to do this
-            this.on('fromDate', can.proxy( this.datesChangedHandler, this ));
-            this.on('toDate', can.proxy( this.datesChangedHandler, this ));
+            if( this.saveOnValid ) {
+                var prox = can.proxy( this.datesChangedHandler, this );
+                this.on('fromDate', prox);
+                this.on('toDate', prox);
+            }
+
+            // Tidy
+            delete this.saveOnValid;
+        },
+
+        'datesChangedHandler': function() {
+            var from = this.attr('fromDate'),
+                to = this.attr('toDate');
+
+            if( from && to ) {
+
+            }
         },
 
         'serialize': function() {
@@ -63,12 +100,6 @@ define([
             return serialized;
         },
 
-        'datesChangedHandler': function() {
-            if( this.attr('fromDate') && this.attr('toDate') ) {
-                //debugger;
-            }
-        },
-
         // TODO: move this sort of functionality into getClassesFor or something
         'fallsBetween': function( date ) {
 
@@ -79,11 +110,7 @@ define([
                 return false;
             }
 
-            if( from.isSame( date, 'day' ) || to.isSame( date, 'day' ) ) {
-                return true;
-            }
-
-            return false && date.isAfter( this.attr('fromDate') );
+            return ( date >= from && date <= to );
         }
 
     });

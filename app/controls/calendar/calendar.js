@@ -24,6 +24,7 @@ define([
         };
 
     return can.Control({
+
         defaults: {
             avail: avail,
             enquiry: enquiry
@@ -73,23 +74,24 @@ define([
                 dayData,
                 dayClasses = [];
 
-            if( availability ) {
-                dayData = availability.attr( date );
+            if( date > new Date() ) {
+                if( availability ) {
+                    dayData = availability.attr( date );
 
-                if( dayData ) {
-                    enableDay = dayData.attr('available');
+                    if( dayData ) {
+                        enableDay = dayData.attr('available');
 
-                    dayClasses.push( 'code-' + dayData.attr('code') );
-                    dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
+                        dayClasses.push( 'code-' + dayData.attr('code') );
+                        dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
+                    }
+
+                    if( enquiry.fallsBetween( date ) ) {
+                        dayClasses.push('selected');
+                    }
+
                 }
-
-                if( enquiry.fallsBetween( date ) ) {
-                    dayClasses.push('selected');
-                }
-
             }
-
-            return [enableDay, dayClasses.join(' ')];
+            return [enableDay, dayClasses.join(' '), 'Hey there'];
             //return [ true, 'someClass', tooltipsss ];
         },
 
@@ -97,8 +99,10 @@ define([
         '{avail} change': function() {
             this.element.find('.hasDatepicker').first().datepicker('refresh');
         },
-        '{enquiry} change': function() {
-            this.element.find('.hasDatepicker').first().datepicker('refresh');
+        '{enquiry} change': function( model, evt, what ) {
+            if( what === 'toDate' || what === 'fromDate' ) {
+                this.element.find('.hasDatepicker').first().datepicker('refresh');
+            }
         }
     });
 

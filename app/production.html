@@ -39,6 +39,7 @@
 
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
+
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>
@@ -53,9 +54,10 @@
         </div>
         <div id="cottage-booking"></div>
         <div id="calculator"></div>
-        <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
-        <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
 
+        <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
+            <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+            <script type="text/javascript" src="production.js"></script>
         <!-- Load these files _just_ for fixtures -->
             <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
             <script type="text/javascript" src="requirejsconfig.js"></script>
@@ -64,8 +66,10 @@
             requirejs([
                 'fixtures/availabilities'
             ], function() {
-                // EVERYTHING IS IN HERE
-                requirejs(['production.js']);
+
+                jQuery('#cottage-booking').booking_path();
+                jQuery('#calculator').booking_calculator();
+
             });
         </script>
     </body>

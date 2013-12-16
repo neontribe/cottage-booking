@@ -1,4 +1,4 @@
-# Tocc Booking Path using canJS
+# Cottage Booking Path using canJS
 
 [![Build Status](https://travis-ci.org/RpprRoger/cottage-booking.png)](https://travis-ci.org/RpprRoger/cottage-booking)
 

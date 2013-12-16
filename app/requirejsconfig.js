@@ -1,13 +1,14 @@
 requirejs.config({
     paths: {
-        can         : 'bower_components/canjs/amd/can',
-        jquery      : 'resources/jquery',
-        ejs         : 'bower_components/require-can-renderers/lib/ejs',
-        jqueryui    : 'bower_components/jquery-ui/ui',
-        moment      : 'bower_components/momentjs/moment',
-        underscore  : 'bower_components/underscore/underscore'
-        //devtools : 'bower_components/devtools-snippets/snippets', reference full path for dev environments you lazy git
-        //config   : 'config/config' <- A model available as a singleton, which will integrate options from drupal
+        'can'             : 'bower_components/canjs/amd/can',
+        'jquery'          : 'resources/jquery',
+        'ejs'             : 'bower_components/require-can-renderers/lib/ejs',
+        'jqueryui'        : 'bower_components/jquery-ui/ui',
+        'moment'          : 'bower_components/momentjs/moment',
+        'moment-range'    : 'bower_components/moment-range/lib/moment-range',
+        'moment-bundle'   : 'resources/moment-bundle',
+        'underscore'      : 'bower_components/underscore/underscore',
+        'config'          : 'resources/config' // A model available as a singleton, which will integrate options from drupal
     },
     shim: {
         jquery: {
@@ -24,11 +25,6 @@ requirejs.config({
                 /* globals _ */
                 return _.noConflict();
             }
-        },
-        moment: {
-            exports: 'moment',
-            // TODO: Incorperate moment ranges some how
-            deps: ['bower_components/moment-range/lib/moment-range']
         }
     },
     noGlobal: true

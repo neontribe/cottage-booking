@@ -10,7 +10,7 @@ define([
     'use strict';
     return can.Control({
 
-        pluginName: 'calculator',
+        pluginName: 'booking_calculator',
 
         defaults: {
             enquiry: enquiry

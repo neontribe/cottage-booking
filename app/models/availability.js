@@ -36,6 +36,10 @@ define(['can', 'models/availability_day', 'moment'], function(can, AvailabilityD
             }
 
             return can.Model.prototype.attr.apply( this, [_attr].concat( args.slice(1) ) );
+        },
+
+        getRange: function() {
+
         }
 
     });
