@@ -1,10 +1,13 @@
-define(['can/util/string', 'can/util/fixture'], function(can){
+define(['can/util/string', 'can/util/string/deparam', 'can/util/fixture'], function(can){
     'use strict';
     // TODO: This availability data may be worth randomizing/ only using a fixture if told to
-
+    /* globals location */
+    var queryObj = can.deparam( location.search.slice(1) ),
+        fixture = !queryObj.noFixture ?
+            require.toUrl('fixtures/availabilities/availability_{propRef}.json') :
+            'http://localhost/NeonTABS/demosite/property/{propRef}/availability';
     can.fixture({
-        //'GET tabs_property/{propRef}/availability': 'http://localhost/NeonTABS/demosite/property/{propRef}/availability'
-        'GET tabs_property/{propRef}/availability': require.toUrl('fixtures/availabilities/availability_{propRef}.json')
+        'GET tabs_property/{propRef}/availability': fixture
     });
 
 });

@@ -5,10 +5,8 @@ requirejs.config({
         'ejs'             : 'bower_components/require-can-renderers/lib/ejs',
         'jqueryui'        : 'bower_components/jquery-ui/ui',
         'moment'          : 'bower_components/momentjs/moment',
-        'moment-range'    : 'bower_components/moment-range/lib/moment-range',
-        'moment-bundle'   : 'resources/moment-bundle',
         'underscore'      : 'bower_components/underscore/underscore',
-        'config'          : 'resources/config' // A model available as a singleton, which will integrate options from drupal
+        'accounting'      : 'bower_components/accounting.js/accounting'// A model available as a singleton, which will integrate options from drupal
     },
     shim: {
         jquery: {

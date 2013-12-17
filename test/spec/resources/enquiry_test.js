@@ -1,18 +1,40 @@
+/* jshint unused: false */
 /* global describe, it, expect */
-define(['fixtures/enquiries', 'resources/enquiry', 'underscore'], function( fixture, avail, _ ) {
+define([
+    'fixtures/enquiries',
+    'resources/enquiry',
+    'underscore',
+    'moment'
+], function( fixture, enq, _, moment ) {
     'use strict';
 
     var chai = requirejs('chai'),
         should = chai.should();
 
-    describe('the state of the avail resource', function () {
-        describe('require works', function () {
-            it('completes successfully and has expected data', function () {
-                var availability = avail();
+    enq.attr('propRef', 'A223_ZZ');
 
-                _.size( availability.attr() ).should.be.equal(423);
+    describe('the state of the enquiry resource', function () {
+        describe('enquire produces correct render array', function () {
+            it('completes successfully', function () {
+                var date = new Date( 2014, 4, 17),
+                    arr = enq.generateCalendarRenderArray(date);
 
-                availability.attr('2013-12-01').should.have.property('available').be.equal( false );
+                enq.should.have.property('avail');
+
+                arr.should.have.property('length').be.equal(3);
+
+                expect( arr[0] ).to.be.a('boolean');
+
+                arr[0].should.be.equal(true);
+
+                arr[1].should.be.equal('code-_ changeover');
+
+                enq.attr('fromDate', moment( date ) );
+                enq.attr('toDate', moment( new Date( 2014, 4, 18) ));
+
+                arr = enq.generateCalendarRenderArray( date );
+
+                arr[1].should.contain('selected');
 
             });
         });

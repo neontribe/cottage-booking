@@ -1,3 +1,4 @@
+/* jshint unused: false */
 /* global describe, it, expect */
 define(['fixtures/availabilities', 'resources/avail', 'underscore'], function( fixture, avail, _ ) {
     'use strict';
@@ -5,14 +6,16 @@ define(['fixtures/availabilities', 'resources/avail', 'underscore'], function( f
     var chai = requirejs('chai'),
         should = chai.should();
 
+    avail( 'A223_ZZ' );
+
     describe('the state of the avail resource', function () {
         describe('require works', function () {
             it('completes successfully and has expected data', function () {
                 var availability = avail();
 
-                _.size( availability.attr() ).should.be.equal(423);
+                _.size( availability.attr() ).should.be.equal(384);
 
-                availability.attr('2013-12-01').should.have.property('available').be.equal( false );
+                availability.attr('2014-01-01').should.have.property('available').be.equal( false );
 
             });
         });

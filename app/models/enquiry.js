@@ -10,14 +10,15 @@ define([
     return can.Model({
         // update  : 'POST tabs_property/{propRef}/booking/enquiry',
         // create  : 'POST tabs_property/{propRef}/booking/enquiry',
-        update  : 'POST tabs_property/A223_ZZ/booking/enquiry',
-        create  : 'POST tabs_property/A223_ZZ/booking/enquiry',
+        update  : 'POST tabs_property/{propRef}/booking/enquiry',
+        create  : 'POST tabs_property/{propRef}/booking/enquiry',
 
         defaults: {
             // The availability object so we can validate stays
             'avail': avail,
             'saveOnValid': false,
-            'adults': 4
+            'adults': 4,
+            'propRef': 'A223_ZZ'
         },
 
         // We only need this attributes to make an enquiry
@@ -25,11 +26,11 @@ define([
             'propRef',
             'fromDate',
             'toDate',
-            'nights',
-            'adults',
-            'children',
-            'infants',
-            'pets'
+            // 'nights',
+            'adults'
+            // 'children',
+            // 'infants',
+            // 'pets'
         ],
 
         'init': function() {
@@ -67,17 +68,26 @@ define([
     }, {
 
         'init': function() {
+
             if( this.saveOnValid ) {
-                var prox = can.proxy( this.datesChangedHandler, this );
+                var prox = can.proxy( this.datesChangeHandler, this );
                 this.on('fromDate', prox);
                 this.on('toDate', prox);
             }
 
             // Tidy
             delete this.saveOnValid;
+
+            this.on( 'propRef', can.proxy( this.propRefChangeHandler, this ) );
         },
 
-        'datesChangedHandler': function() {
+        // If we hear about a new propref re-fetch the availability data
+        'propRefChangeHandler': function( obj, old, newVal ) {
+            this.avail( newVal );
+            // we _could_ clear stuff etc
+        },
+
+        'datesChangedandler': function() {
             var from = this.attr('fromDate'),
                 to = this.attr('toDate');
 
@@ -111,6 +121,40 @@ define([
             }
 
             return ( date >= from && date <= to );
+        },
+
+        /**
+         * This function generates the array required for each day to be represented correctly
+         * on a jquery datepicker calendar.
+         * TODO: Tooltips contain error data and other nice information
+         * TODO: Investigate whether this hard working function should be else where
+         * @function generateCalendarRenderArray
+         * @param  {Date} date   Date to generate for
+         * @return {Array}       array of data to populate [available, classe(s), tooltips?]
+         */
+        'generateCalendarRenderArray': function( date ) {
+            var availability = this.avail(),
+                enableDay = false,
+                dayData,
+                dayClasses = [];
+
+            if( date > new Date() ) {
+                if( availability ) {
+                    dayData = availability.attr( date );
+
+                    if( dayData ) {
+                        enableDay = dayData.attr('available');
+
+                        if( enableDay && this.fallsBetween( date ) ) {
+                            dayClasses.push('selected');
+                        }
+
+                        dayClasses.push( 'code-' + dayData.attr('code') );
+                        dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
+                    }
+                }
+            }
+            return [enableDay, dayClasses.join(' '), 'Hey there'];
         }
 
     });

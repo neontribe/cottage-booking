@@ -15,6 +15,7 @@
     "jquery-ui": "~1.10.3",
     "momentjs": "~2.4.0",
     "almond": "~0.2.7",
-    "moment-range": "~0.1.9"
+    "moment-range": "~0.1.9",
+    "accounting.js": "https://github.com/josscrowcroft/accounting.js.git#~0.3.2"
   }
 }
