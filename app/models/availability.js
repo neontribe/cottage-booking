@@ -11,9 +11,7 @@ define([
     'use strict';
 
     return can.Model({
-        // TODO: Figure out some way to populate the ref correctly
-        // findOne: 'GET tabs_property/{propRef}/availability',
-        findOne: 'GET tabs_property/{propRef}/availability',
+        findOne: 'GET property/availability/{propRef}',
         // myAvailabilityStore['25-01-2013'] => {'available': false...} etc
 
         defaults: {

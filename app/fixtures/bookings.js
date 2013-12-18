@@ -1,21 +1,40 @@
-define(['can/util/string', 'can/util/fixture'], function(can){
+define(['can/util/string', 'jquery', 'can/util/fixture'], function(can, $){
     'use strict';
-    var store = can.fixture.store(100, function(i){
-        var id = i + 1; // Make ids 1 based instead of 0 based
-        return {
-            id   : id,
-            name : 'Booking ' + id
+
+    /* globals location */
+    var queryObj = can.deparam( location.search.slice(1) ),
+        fixture = !queryObj.noFixture ? require.toUrl('fixtures/bookings/booking_A223_ZZ.json') : function( options, reply ) {
+            var url = 'http://localhost/NeonTABS/demosite/property/booking/create'; // Grumble
+            can.fixture.on = false;
+            $.ajax(can.extend(options, {
+                url: url
+            })).done(function( resp ) {
+                reply( can.extend(resp, {
+                    'wesentthis': options.data,
+                    'wesentthisto': url
+                }) );
+            });
+            can.fixture.on = true;
+        },
+        fixture1 = !queryObj.noFixture ? require.toUrl('fixtures/bookings/booking_A223_ZZ.json') : function( options, reply ) {
+            var url = can.sub('http://localhost/NeonTABS/demosite/property/booking/{bookingId}', options.data); // Grumble
+            can.fixture.on = false;
+            $.ajax(can.extend(options, {
+                url: url
+            })).done(function( resp ) {
+                reply( can.extend(resp, {
+                    'wesentthis': options.data,
+                    'wesentthisto': url
+                }) );
+            });
+            can.fixture.on = true;
         };
-    });
 
     can.fixture({
-        'GET /bookings'         : store.findAll,
-        'GET /bookings/{id}'    : store.findOne,
-        'POST /bookings'        : store.create,
-        'PUT /bookings/{id}'    : store.update,
-        'DELETE /bookings/{id}' : store.destroy
+        'POST property/booking/create' : fixture,
+        'GET property/booking/{bookingId}' : fixture1,
     });
 
-    return store;
+    return can;
 
 });

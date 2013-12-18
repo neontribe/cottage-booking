@@ -5,9 +5,9 @@ define(['can/util/string', 'can/util/string/deparam', 'can/util/fixture'], funct
     var queryObj = can.deparam( location.search.slice(1) ),
         fixture = !queryObj.noFixture ?
             require.toUrl('fixtures/availabilities/availability_{propRef}.json') :
-            'http://localhost/NeonTABS/demosite/property/{propRef}/availability';
+            'http://localhost/NeonTABS/demosite/property/availability/{propRef}';
     can.fixture({
-        'GET tabs_property/{propRef}/availability': fixture
+        'GET property/availability/{propRef}': fixture
     });
 
 });

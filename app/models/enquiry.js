@@ -1,17 +1,16 @@
 define([
     'can/util/string',
     'resources/avail',
+    'resources/book',
     'underscore',
     'can/model',
     'can/map/validations'
-], function(can, avail, _){
+], function(can, avail, booking, _){
     'use strict';
 
     return can.Model({
-        // update  : 'POST tabs_property/{propRef}/booking/enquiry',
-        // create  : 'POST tabs_property/{propRef}/booking/enquiry',
-        update  : 'POST tabs_property/{propRef}/booking/enquiry',
-        create  : 'POST tabs_property/{propRef}/booking/enquiry',
+        update  : 'POST property/booking/enquiry',
+        create  : 'POST property/booking/enquiry',
 
         defaults: {
             // The availability object so we can validate stays
@@ -80,29 +79,10 @@ define([
                 this.on('toDate', prox);
             }
 
-            // Tidy
-            delete this.saveOnValid;
+            // *welsh accent* Tidy
+            this.removeAttr('saveOnValid');
 
             this.on( 'propRef', can.proxy( this.propRefChangeHandler, this ) );
-        },
-
-        // If we hear about a new propref re-fetch the availability data
-        'propRefChangeHandler': function( obj, newVal ) {
-            this.avail( newVal );
-            // we _could_ clear stuff etc
-        },
-
-        'datesChangeHandler': function() {
-            var from = this.attr('fromDate'),
-                to = this.attr('toDate');
-
-            if( from && to ) {
-
-                if( !this.errors( this.constructor.required ) ) {
-                    this.save();
-                }
-
-            }
         },
 
         'serialize': function() {
@@ -117,6 +97,29 @@ define([
             }
 
             return serialized;
+        },
+
+        'make': function() {
+            return booking( this.serialize() );
+        },
+
+        // If we hear about a new propref re-fetch the availability data
+        'propRefChangeHandler': function( obj, newVal ) {
+            return this.avail( newVal );
+            // we _could_ clear stuff etc
+        },
+
+        'datesChangeHandler': function() {
+            var from = this.attr('fromDate'),
+                to = this.attr('toDate');
+
+            if( from && to ) {
+
+                if( !this.errors( this.constructor.required ) ) {
+                    this.save();
+                }
+
+            }
         },
 
         // TODO: move this sort of functionality into getClassesFor or something

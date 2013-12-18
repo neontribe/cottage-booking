@@ -57,11 +57,17 @@ define([
         },
 
         '#depart change': function( $el ) {
-            enquiry.attr('toDate', moment( $el.datepicker( 'getDate' ) ) );
+            this.options.enquiry.attr('toDate', moment( $el.datepicker( 'getDate' ) ) );
         },
 
         '#arrive change': function( $el ) {
-            enquiry.attr('fromDate', moment( $el.datepicker( 'getDate' ) ) );
+            this.options.enquiry.attr('fromDate', moment( $el.datepicker( 'getDate' ) ) );
+        },
+
+        'button click': function() {
+            if( !this.options.enquiry.errors() ) {
+                this.options.enquiry.make();
+            }
         }
     });
 
