@@ -21,6 +21,7 @@
       });
       requirejs(['controls/calculator/calculator', 'fixtures/availabilities', 'fixtures/enquiries'], function(Calculator){
         new Calculator('#content');
+        require('resources/enquiry').attr('propRef', 'A223_ZZ');
         require('resources/enquiry').on('change', function() {
           jQuery('#results > div').html(
             '<textarea style="width:710px; height:400px;">'

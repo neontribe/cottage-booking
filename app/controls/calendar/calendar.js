@@ -55,10 +55,14 @@ define([
                 fromDate = enq.attr('fromDate'),
                 toDate = enq.attr('toDate');
 
+            // hehehehe...
+            //
+            this.ignoreRedraw = true;
+
             // TODO: neatify
             if( !fromDate || ( fromDate && toDate ) ) {
-                enq.attr('fromDate', date);
                 enq.attr('toDate', null);
+                enq.attr('fromDate', date);
             } else {
                 if( !toDate ) {
                     if( date < fromDate ) {
@@ -72,6 +76,8 @@ define([
                     enq.attr('toDate', null);
                 }
             }
+
+            this.ignoreRedraw = false;
         },
 
         /**
@@ -89,8 +95,9 @@ define([
             this.element.find('.hasDatepicker').first().datepicker('refresh');
         },
         // TODO: find out how to distinguish between date selection on here and external changes, which we care about
+        // like this.ignoreRedraw?
         '{enquiry} change': function( model, evt, what ) {
-            if( what === 'toDate' || what === 'fromDate' ) {
+            if( !this.ignoreRedraw && ( what === 'toDate' || what === 'fromDate' || what === 'message' ) ) {
                 this.element.find('.hasDatepicker').first().datepicker('refresh');
             }
         }

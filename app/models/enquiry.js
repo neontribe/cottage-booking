@@ -16,9 +16,8 @@ define([
         defaults: {
             // The availability object so we can validate stays
             'avail': avail,
-            'saveOnValid': false,
-            'adults': 4,
-            'propRef': 'A223_ZZ'
+            'saveOnValid': true,
+            'adults': 4
         },
 
         // We only need this attributes to make an enquiry
@@ -62,6 +61,12 @@ define([
                 return false;
             });
 
+            this.validate('status', function( status ) {
+                if( status && status !== 'ok' ) {
+                    return this.attr('message') || 'An unknown error occurred';
+                }
+            });
+
             this.validatePresenceOf( this.required );
         }
 
@@ -82,16 +87,20 @@ define([
         },
 
         // If we hear about a new propref re-fetch the availability data
-        'propRefChangeHandler': function( obj, old, newVal ) {
+        'propRefChangeHandler': function( obj, newVal ) {
             this.avail( newVal );
             // we _could_ clear stuff etc
         },
 
-        'datesChangedandler': function() {
+        'datesChangeHandler': function() {
             var from = this.attr('fromDate'),
                 to = this.attr('toDate');
 
             if( from && to ) {
+
+                if( !this.errors( this.constructor.required ) ) {
+                    this.save();
+                }
 
             }
         },
@@ -136,25 +145,41 @@ define([
             var availability = this.avail(),
                 enableDay = false,
                 dayData,
-                dayClasses = [];
+                errors = this.errors(),
+                dayClasses = [],
+                tooltip = '';
 
+            // TODO: Look to change new Date() to like require('utils').today() or something
+            // SO we could mox it in tests
             if( date > new Date() ) {
                 if( availability ) {
                     dayData = availability.attr( date );
 
                     if( dayData ) {
+                        // Get availability
                         enableDay = dayData.attr('available');
 
                         if( enableDay && this.fallsBetween( date ) ) {
                             dayClasses.push('selected');
+
+                            // If we have a selection to show, and there's errors
+                            if( errors ) {
+                                dayClasses.push('errors');
+
+                                // Look to add errors
+                                if( errors.status ) {
+                                    tooltip = errors.status[0];
+                                }
+                            }
                         }
 
+                        // Add other misc classes
                         dayClasses.push( 'code-' + dayData.attr('code') );
                         dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
                     }
                 }
             }
-            return [enableDay, dayClasses.join(' '), 'Hey there'];
+            return [enableDay, dayClasses.join(' '), tooltip];
         }
 
     });

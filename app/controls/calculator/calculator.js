@@ -35,7 +35,7 @@ define([
     },{
         'init' : function() {
 
-            this.options.enquiry.attr('propRef', this.options.propRef);
+            this.options.enquiry.attr('propRef', this.options.propref);
 
             this.element.html( views.init({
                 'can': can,

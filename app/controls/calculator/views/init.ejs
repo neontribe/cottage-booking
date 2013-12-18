@@ -15,7 +15,14 @@
         <%= (el) -> el.datepicker( datepickerOptions ) %>
     />
 
-    <h3><%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %></h3>
+    <% if( enquiry.errors() ) { %>
+        <% list( enquiry.errors(), function( errorArray, key ) { %>
 
+            <h3><%= key %> : <%= errorArray.join(' | ') %></h3>
+
+        <% }) %>
+    <% } else { %>
+        <h3><%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %></h3>
+    <% } %>
     <button>Book now</button>
 </div>

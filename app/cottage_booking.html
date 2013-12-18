@@ -48,6 +48,11 @@
                 background-color: #f3f3d1 !important;
                 background-image: none !important;
             }
+
+            .selected.errors * {
+                background-color: rgba(255, 86, 86, 0.5) !important;
+                background-image: none !important;
+            }
         </style>
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
@@ -63,8 +68,10 @@
             </ul>
             <div class="cf"></div>
         </div>
+
         <div id="cottage-booking" data-propRef="A223_ZZ" data-bplugin="booking_path"></div>
         <div id="calculator" data-propRef="A223_ZZ" data-bplugin="booking_calculator"></div>
+
         <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
         <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="requirejsconfig.js"></script>

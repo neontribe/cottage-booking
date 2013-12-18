@@ -38,5 +38,13 @@ define([
 
             });
         });
+
+        describe('enquiry object reports errors', function () {
+            it('should error with bad data', function () {
+
+
+
+            });
+        });
     });
 });

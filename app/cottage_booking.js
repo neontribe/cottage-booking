@@ -32,7 +32,6 @@ define([
         init: function() {
             this.options.enquiry.attr( 'propRef', this.options.propref );
 
-
             new Calendar(this.element);
             can.route.ready();
         },
