@@ -37,10 +37,10 @@ define([
             can.route.ready();
         },
 
-        ':page route': function() {
-            console.log('Page changed!');
-            console.log.apply( console, arguments );
-        },
+        // ':page route': function() {
+        //     console.log('Page changed!');
+        //     console.log.apply( console, arguments );
+        // },
 
         ':booking route': function( routeAttr ) {
             console.log('booking changed!');

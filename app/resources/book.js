@@ -21,7 +21,7 @@ define(['can/util/string', 'models/booking', 'can/observe'], function( can, Book
                     return Booking.findOne({
                         'bookingId': fetch
                     }).done(function( booking ) {
-                        self.attr( booking );
+                        self.attr( booking.attr() );
                     });
 
                     //break;

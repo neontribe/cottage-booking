@@ -1,6 +1,7 @@
 <%# Fragment %>
 <!-- Fragment -->
 <h2>Stay Summary</h2>
+<span>Booking ID: <%= booking.attr('bookingId') %></span>
 <br>
 <span>Property reference: <%= booking.attr('propertyRef') %>_<%= booking.attr('brandCode') %></span>
 <br>
@@ -8,4 +9,4 @@
 <br>
 <span> Depart: <%= booking.attr('toDate').format('DD-MM-YYYY') %></span>
 <br>
-<span> Price: <%= booking.attr('price.totalPrice') %></span>
+<span> Price: <%= money( booking.attr('price.totalPrice') ) %></span>
