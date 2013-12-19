@@ -2,6 +2,9 @@
 production.js
 .build
 
+# Built css
+style.out.css
+
 # npm and bower bootstraper folders
 node_modules
 bower_components

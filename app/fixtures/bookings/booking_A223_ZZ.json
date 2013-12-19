@@ -1,0 +1,57 @@
+{
+     "bookingId":"d76c8badd8448cc9d1d888778966d140",
+     "id":"A223_ZZ",
+     "propertyRef":"A223",
+     "brandCode":"ZZ",
+     "fromDate":1400284800,
+     "toDate":1400889600,
+     "customer":{
+            "name":{
+                 "title":"",
+                 "firstName":"",
+                 "surname":""
+            },
+            "address":{
+                 "addr1":"",
+                 "addr2":"",
+                 "town":"",
+                 "county":"",
+                 "postcode":"",
+                 "country":""
+            },
+            "daytimePhone":"",
+            "eveningPhone":"",
+            "mobilePhone":"",
+            "email":"",
+            "emailOptIn":false,
+            "source":"",
+            "which":""
+     },
+     "adults":4,
+     "children":0,
+     "infants":0,
+     "partyDetails":[
+
+     ],
+     "pets":0,
+     "confirmation":[
+
+     ],
+     "payments":[
+
+     ],
+     "notes":[
+
+     ],
+     "price":{
+            "outstandingBalance":"300.00",
+            "basicPrice":"300.00",
+            "extras":[
+
+            ],
+            "totalPrice":300,
+            "securityDeposit":"0.00",
+            "depositAmount":"100.00"
+     },
+     "totalPrice":300
+}

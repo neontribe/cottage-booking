@@ -64,6 +64,9 @@ module.exports = function(grunt) {
             },
             rmbuilddir   : {
                 cmd : 'rm -rf .build'
+            },
+            myth: {
+                cmd: 'myth app/style/style.css app/style/style.out.css'
             }
         },
         cancompile: {
@@ -118,6 +121,13 @@ module.exports = function(grunt) {
                     livereload: true,
                 },
             },
+            css: {
+                files: 'app/style/style.css',
+                tasks: ['exec:myth'],
+                options: {
+                    event: ['changed'],
+                }
+            }
         },
         jshint: {
             prebuild: {
@@ -172,7 +182,8 @@ module.exports = function(grunt) {
             'extractViews',
             'createRenderers',
             'requirejs:compile',
-            'exec:rmbuilddir'
+            'exec:rmbuilddir',
+            'exec:myth'
         );
     });
 

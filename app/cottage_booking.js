@@ -2,13 +2,13 @@ define([
     'can/util/string',
     'controls/calendar/calendar', // TODO: Move these two things into a model init or something so we only load one file
     'resources/enquiry',
-
+    'resources/book',
     // All the rest
     'controls/calculator/calculator',
     'can/control',
     'can/control/plugin',
     'can/control/route'
-], function(can, Calendar, enquiry) {
+], function(can, Calendar, enquiry, book ) {
     'use strict';
 
     var init = false,
@@ -19,12 +19,13 @@ define([
             }
         ],
         BookingPath;
-
+    /* -==== router and main controller ====- */
     BookingPath = can.Control({
         pluginName: 'booking_path',
 
         defaults: {
-            enquiry: enquiry
+            enquiry: enquiry,
+            book: book
         }
 
     }, {
@@ -38,6 +39,19 @@ define([
 
         ':page/:id route': function() {
             console.log.apply(console, arguments);
+        },
+
+        '{book} change': function() {
+            console.log.apply( console, arguments);
+            // If we already have a booking unbind/off
+            if( this.options.booking ) {
+
+            }
+
+            this.options.booking = this.options.book();
+
+            // Then rebind
+
         }
     });
 

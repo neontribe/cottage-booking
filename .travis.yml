@@ -9,6 +9,8 @@ branches:
 install:
 - npm install
 - npm install -g grunt-cli
+# TODO: move this into a grunt task properly like
+- npm install -g myth
 - bower install
 script:
 - echo "Running tests"
