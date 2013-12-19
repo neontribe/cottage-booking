@@ -5,13 +5,17 @@
  */
 define([
 	'utils/helpers',
-	'ejs!./views/init'
+	'ejs!./views/init',
+	'ejs!./views/calculator',
+	'ejs!./views/summary'
 ], function() {
 	'use strict';
 
 	var args = [].slice.call( arguments, 1 );
 
 	return {
-		'init': args[0]
+		'init': args[0],
+		'calculator': args[1],
+		'summary': args[2]
 	};
 });

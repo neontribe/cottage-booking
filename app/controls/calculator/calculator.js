@@ -2,13 +2,14 @@ define([
     'can/util/string',
     './views',
     'resources/enquiry',
+    'resources/book',
     'moment',
     // extras
     'can/control',
     'can/control/plugin',
     'jqueryui/jquery.ui.core',
     'jqueryui/jquery.ui.datepicker'
-], function( can, views, enquiry, moment ) {
+], function( can, views, enquiry, booking, moment ) {
     'use strict';
 
     // TODO:Move this to a better place
@@ -30,19 +31,22 @@ define([
         pluginName: 'booking_calculator',
 
         defaults: {
-            enquiry: enquiry
+            enquiry: enquiry,
+            booking: booking
         }
     },{
         'init' : function() {
-
             this.options.enquiry.attr('propRef', this.options.propref);
 
             this.element.html( views.init({
                 'can': can,
-                'enquiry': enquiry,
+                'enquiry': this.options.enquiry,
                 'datepickerOptions': {
                     'beforeShowDay': bindWithThis( this.beforeShowDay, this )
-                }
+                },
+                'route': can.route,
+                'views': views,
+                'booking': this.options.booking
             }));
         },
 

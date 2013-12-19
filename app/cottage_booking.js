@@ -37,21 +37,26 @@ define([
             can.route.ready();
         },
 
-        ':page/:id route': function() {
-            console.log.apply(console, arguments);
+        ':page route': function() {
+            console.log('Page changed!');
+            console.log.apply( console, arguments );
         },
 
-        '{book} change': function() {
-            console.log.apply( console, arguments);
-            // If we already have a booking unbind/off
-            if( this.options.booking ) {
+        ':booking route': function( routeAttr ) {
+            console.log('booking changed!');
+            console.log.apply(console, arguments);
+            var id = routeAttr.booking;
 
+            if( this.options.book.attr('bookingId') !== id ) {
+                book.fetchBooking( id );
             }
 
-            this.options.booking = this.options.book();
 
-            // Then rebind
+        },
 
+        '{book} bookingId': function( obj, evt, newVal ) {
+            console.log.apply(console, arguments);
+            can.route.attr('booking', newVal);
         }
     });
 

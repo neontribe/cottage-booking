@@ -1,28 +1,13 @@
-<div>
-    <h2>Price Calculator</h2>
-    <label for="arrive">Arrive </label>
-    <input
-        id="arrive"
-        type="text"
-        value="<%= enquiry.attr('fromDate') ? enquiry.attr('fromDate').format('DD/MM/YYYY') : '' %>"
-        <%= (el) -> el.datepicker( datepickerOptions ) %>
-    />
-    <label for="depart">Depart </label>
-    <input
-        id="depart"
-        type="text"
-        value="<%= enquiry.attr('toDate') ? enquiry.attr('toDate').format('DD/MM/YYYY') : '' %>"
-        <%= (el) -> el.datepicker( datepickerOptions ) %>
-    />
+<div class="calculator">
 
-    <% if( enquiry.errors() ) { %>
-        <% list( enquiry.errors(), function( errorArray, key ) { %>
+<% if( booking.attr('bookingId') ) { %>
 
-            <h3><%= key %> : <%= errorArray.join(' | ') %></h3>
+    <div <%= template( views.summary, this ) %>></div>
 
-        <% }) %>
-    <% } else { %>
-        <h3><%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %></h3>
-    <% } %>
-    <button>Book now</button>
+<% } else { %>
+
+    <div <%= template( views.calculator, this ) %>></div>
+
+<% } %>
+
 </div>

@@ -100,7 +100,7 @@ define([
         },
 
         'make': function() {
-            return booking( this.serialize() );
+            return booking.fetchBooking( this.serialize() );
         },
 
         // If we hear about a new propref re-fetch the availability data
@@ -172,6 +172,8 @@ define([
                                 // Look to add errors
                                 if( errors.status ) {
                                     tooltip = errors.status[0];
+                                } else {
+                                    tooltip = 'Good to go!';
                                 }
                             }
                         }

@@ -1,0 +1,32 @@
+<%# Fragment %>
+<!-- Fragment -->
+<h2>Price Calculator</h2>
+
+<label for="arrive">Arrive </label>
+<input
+    id="arrive"
+    type="text"
+    value="<%= enquiry.attr('fromDate') ? enquiry.attr('fromDate').format('DD/MM/YYYY') : '' %>"
+    <%= (el) -> el.datepicker( datepickerOptions ) %>
+/>
+<label for="depart">Depart </label>
+<input
+    id="depart"
+    type="text"
+    value="<%= enquiry.attr('toDate') ? enquiry.attr('toDate').format('DD/MM/YYYY') : '' %>"
+    <%= (el) -> el.datepicker( datepickerOptions ) %>
+/>
+
+<% if( enquiry.errors() ) { %>
+    <% list( enquiry.errors(), function( errorArray, key ) { %>
+
+        <h3><%= key %> : <%= errorArray.join(' | ') %></h3>
+
+    <% }) %>
+<% } else { %>
+    <h3><%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %></h3>
+<% } %>
+
+<br>
+
+<button>Book now</button>

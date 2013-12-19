@@ -6,36 +6,36 @@ define(['can/util/string', 'models/booking', 'can/observe'], function( can, Book
     'use strict';
 
     // Initialize the booking store and setup the getter using can.compute
-    var getBooking = can.compute( function( fetch ) {
+    var booking = new Booking();
 
-        var self = this,
-            booking = this.attr('booking');
+    booking.attr({
+        'fetchBooking': can.compute( function( fetch ) {
 
-        if( fetch ) {
+            var self = this;
+            // If we pass anything we can expect the deferred object to be returned, so we can attach done methods
+            if( fetch ) {
 
-            switch( typeof fetch ) {
-            case 'string':
+                switch( typeof fetch ) {
+                case 'string':
 
-                return Booking.findOne({
-                    'bookingId': fetch
-                }).done(function( booking ) {
-                    self.attr('booking', booking);
-                });
+                    return Booking.findOne({
+                        'bookingId': fetch
+                    }).done(function( booking ) {
+                        self.attr( booking );
+                    });
 
-                //break;
-            case 'object':
-                booking = new Booking( fetch );
-                this.attr('booking', booking);
-                return booking.save();
+                    //break;
+                case 'object':
+                    this.attr( fetch );
+                    return this.save();
+                }
+
+            } else {
+                return this;
             }
+        }, booking)
+    });
 
-        } else {
-            return booking || this.attr('booking', new Booking()).attr('booking');
-        }
-
-
-    }, new can.Observe());
-
-    // Return the compute wrapped object, so we can listen for changes
-    return getBooking;
+    // Return the model so we can listen for changes
+    return booking;
 });

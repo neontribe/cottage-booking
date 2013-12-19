@@ -7,6 +7,12 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
                 format: format,
                 symbol: '£'
             });
+        },
+
+        template: function( templFn, data ) {
+            return function( el ) {
+                can.$(el).html( templFn( data ) );
+            };
         }
     });
 
