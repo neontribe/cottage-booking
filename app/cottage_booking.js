@@ -31,7 +31,7 @@ define([
     }, {
 
         init: function() {
-            this.options.enquiry.attr( 'propRef', this.options.propref );
+            this.options.enquiry.attr( 'propRef', this.options.propRef );
 
             new Calendar(this.element);
             can.route.ready();
@@ -47,8 +47,16 @@ define([
             console.log.apply(console, arguments);
             var id = routeAttr.booking;
 
-            if( this.options.book.attr('bookingId') !== id ) {
-                book.fetchBooking( id );
+            if( id ) {
+
+                if( this.options.book.attr('bookingId') !== id ) {
+                    book.fetchBooking( id ).fail(function() {
+                        // We assume all failures are due to booking not found
+                        can.route.removeAttr('booking');
+                        book.reset();
+                    });
+                }
+
             }
 
 

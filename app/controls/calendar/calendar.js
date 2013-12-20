@@ -4,8 +4,8 @@ define([
     './views',
     'resources/enquiry',
     // extras
-    'jqueryui/jquery.ui.core',
-    'jqueryui/jquery.ui.datepicker'
+    'jqueryui/jquery.ui.datepicker',
+    'jqueryui/jquery.ui.tooltip'
 ], function(can, moment, views, enquiry) {
     'use strict';
 

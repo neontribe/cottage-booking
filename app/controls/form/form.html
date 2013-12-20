@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Calendar demo page!</title>
+    <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../style/style.out.css" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
+  </head>
+  <body>
+    <h1>Welcome to calendar demo page</h1>
+    <div id="content" style="float:left;"></div>
+    <script type="text/javascript" src="../../bower_components/requirejs/require.js"></script>
+    <script type="text/javascript" src="../../requirejsconfig.js"></script>
+    <script type="text/javascript">
+      requirejs.config({
+        baseUrl : '../../'
+      });
+      requirejs([
+        'controls/details/details',
+        'fixtures/availabilities',
+        'fixtures/enquiries'
+        /*'fixtures/fixtures!fixtures/availabilities'*/
+      ], function( Details ){
+        new Details('#content');
+      });
+    </script>
+  </body>
+</html>

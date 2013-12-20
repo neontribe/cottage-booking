@@ -100,7 +100,7 @@ define([
         },
 
         'make': function() {
-            return booking.fetchBooking( this.serialize() );
+            return booking.fetchBooking( this.attr() );
         },
 
         // If we hear about a new propref re-fetch the availability data

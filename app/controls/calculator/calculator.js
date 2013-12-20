@@ -7,8 +7,7 @@ define([
     // extras
     'can/control',
     'can/control/plugin',
-    'jqueryui/jquery.ui.core',
-    'jqueryui/jquery.ui.datepicker'
+    'controls/form/form'
 ], function( can, views, enquiry, booking, moment ) {
     'use strict';
 
@@ -36,7 +35,7 @@ define([
         }
     },{
         'init' : function() {
-            this.options.enquiry.attr('propRef', this.options.propref);
+            this.options.enquiry.attr('propRef', this.options.propRef);
 
             this.element.html( views.init({
                 'can': can,
@@ -68,7 +67,7 @@ define([
             this.options.enquiry.attr('fromDate', moment( $el.datepicker( 'getDate' ) ) );
         },
 
-        'button click': function() {
+        '{enquiry} submit': function() {
             if( !this.options.enquiry.errors() ) {
                 this.options.enquiry.make();
             }

@@ -13,7 +13,7 @@ define(['can/util/string', 'jquery', 'can/util/fixture'], function(can, $){
                     'wesentthis': options.data,
                     'wesentthisto': url
                 }) );
-            });
+            }).fail( reply );
             can.fixture.on = true;
         },
         fixture1 = !queryObj.noFixture ? require.toUrl('fixtures/bookings/booking_A223_ZZ.json') : function( options, reply ) {
@@ -26,7 +26,7 @@ define(['can/util/string', 'jquery', 'can/util/fixture'], function(can, $){
                     'wesentthis': options.data,
                     'wesentthisto': url
                 }) );
-            });
+            }).fail( reply );
             can.fixture.on = true;
         };
 

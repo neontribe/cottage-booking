@@ -18,6 +18,8 @@ define(['can/util/string', 'models/booking', 'can/observe'], function( can, Book
                 switch( typeof fetch ) {
                 case 'string':
 
+                    this.attr('bookingId', fetch);
+
                     return Booking.findOne({
                         'bookingId': fetch
                     }).done(function( booking ) {
@@ -33,7 +35,14 @@ define(['can/util/string', 'models/booking', 'can/observe'], function( can, Book
             } else {
                 return this;
             }
-        }, booking)
+        }, booking),
+
+        'reset': function() {
+            var self = this;
+            this.each(function ( value, key ) {
+                self.removeAttr(key);
+            });
+        }
     });
 
     // Return the model so we can listen for changes

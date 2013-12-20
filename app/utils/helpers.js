@@ -12,6 +12,7 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
         template: function( templFn, data ) {
             return function( el ) {
                 can.$(el).html( templFn( data ) );
+                return '';
             };
         }
     });

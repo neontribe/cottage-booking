@@ -23,7 +23,10 @@ requirejs.config({
                 /* globals _ */
                 return _.noConflict();
             }
-        }
+        },
+        // Add these as I need them
+        'jqueryui/jquery.ui.datepicker':    ['jqueryui/jquery.ui.core'],
+        'jqueryui/jquery.ui.tooltip':       ['jqueryui/jquery.ui.core','jqueryui/jquery.ui.widget','jqueryui/jquery.ui.position']
     },
     noGlobal: true
 });

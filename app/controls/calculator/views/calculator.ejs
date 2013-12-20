@@ -2,31 +2,24 @@
 <!-- Fragment -->
 <h2>Price Calculator</h2>
 
-<label for="arrive">Arrive </label>
-<input
-    id="arrive"
-    type="text"
-    value="<%= enquiry.attr('fromDate') ? enquiry.attr('fromDate').format('DD/MM/YYYY') : '' %>"
-    <%= (el) -> el.datepicker( datepickerOptions ) %>
-/>
-<label for="depart">Depart </label>
-<input
-    id="depart"
-    type="text"
-    value="<%= enquiry.attr('toDate') ? enquiry.attr('toDate').format('DD/MM/YYYY') : '' %>"
-    <%= (el) -> el.datepicker( datepickerOptions ) %>
-/>
+<form <%= (el) -> el.bindForm({ model: enquiry, datepickerOptions: datepickerOptions }) %>>
+    <%# This uses the form controller to populate the markup make that more clear %>
+    <input name="fromDate" data-label="Arrive" type="datepicker" />
 
-<% if( enquiry.errors() ) { %>
-    <% list( enquiry.errors(), function( errorArray, key ) { %>
+    <%# This uses the form controller to populate the markup make that more clear %>
+    <input name="toDate" data-label="Depart" type="datepicker" />
 
-        <h3><%= key %> : <%= errorArray.join(' | ') %></h3>
+    <% if( enquiry.errors() ) { %>
+        <% list( enquiry.errors(), function( errorArray, key ) { %>
 
-    <% }) %>
-<% } else { %>
-    <h3><%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %></h3>
-<% } %>
+            <h3><%= key %> : <%= errorArray.join(' | ') %></h3>
 
-<br>
+        <% }) %>
+    <% } else { %>
+        <h3><%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %></h3>
+    <% } %>
 
-<button>Book now</button>
+    <br>
+
+    <button type="submit">Book now</button>
+</form>
