@@ -15,7 +15,7 @@ define(['fixtures/availabilities', 'resources/avail', 'underscore'], function( f
 
                 _.size( availability.attr() ).should.be.equal(384);
 
-                availability.attr('2014-01-01').should.have.property('available').be.equal( false );
+                availability.attr('2014-02-01').should.have.property('available').be.equal( false );
 
             });
         });
