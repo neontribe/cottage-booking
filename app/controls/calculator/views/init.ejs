@@ -2,11 +2,11 @@
 
 <% if( booking.attr('bookingId') ) { %>
 
-    <div <%= template( views.summary, this ) %>></div>
+    <div <%= appendTemplate( views.summary, this ) %>> </div>
 
 <% } else { %>
 
-    <div <%= template( views.calculator, this ) %>></div>
+    <div <%= appendTemplate( views.calculator, this ) %>> </div>
 
 <% } %>
 

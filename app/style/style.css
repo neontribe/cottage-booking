@@ -53,6 +53,6 @@
     background-image: none !important;
 }
 
-input[title] {
+.form-item .error {
     border: 1px solid red;
 }

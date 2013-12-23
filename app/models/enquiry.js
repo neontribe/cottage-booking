@@ -66,23 +66,51 @@ define([
                 }
             });
 
-            this.validatePresenceOf( this.required );
+            this.validatePresenceOf( this.required, {
+                'message': 'The {label} field is required'
+            });
         }
 
     }, {
 
         'init': function() {
-
+            var prox;
             if( this.saveOnValid ) {
-                var prox = can.proxy( this.datesChangeHandler, this );
+                prox = can.proxy( this.validSaveHandler, this );
                 this.on('fromDate', prox);
                 this.on('toDate', prox);
             }
+
+            prox = can.proxy( this.resetOnDateChangeHandler, this );
+            this.on('fromDate', prox);
+            this.on('toDate', prox);
 
             // *welsh accent* Tidy
             this.removeAttr('saveOnValid');
 
             this.on( 'propRef', can.proxy( this.propRefChangeHandler, this ) );
+        },
+
+        'resetOnDateChangeHandler': function() {
+            var keep;
+
+            if( this.attr('status') || this.errors() ) {
+                keep = _.keys( this.constructor.defaults ).concat( this.constructor.required );
+                this.each(function( val, attr ) {
+                    if( can.inArray( attr, keep ) === -1 ) {
+                        this.removeAttr( attr );
+                    }
+                }, this);
+            }
+
+        },
+
+        'destroy': function() {
+            this.off('fromDate');
+            this.off('toDate');
+            this.off('propRef');
+
+            can.Model.prototype.destroy.call( this );
         },
 
         'serialize': function() {
@@ -100,7 +128,7 @@ define([
         },
 
         'make': function() {
-            return booking.fetchBooking( this.attr() );
+            return booking.fetchBooking( this.serialize() );
         },
 
         // If we hear about a new propref re-fetch the availability data
@@ -109,7 +137,7 @@ define([
             // we _could_ clear stuff etc
         },
 
-        'datesChangeHandler': function() {
+        'validSaveHandler': function() {
             var from = this.attr('fromDate'),
                 to = this.attr('toDate');
 

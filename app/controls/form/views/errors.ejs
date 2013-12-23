@@ -1,0 +1,11 @@
+<ul>
+<% list(errors, function( val, key ) { %>
+
+    <% for( var i = 0; i < val.length ; i++ ) { %>
+        <li><%= sub( val[i], {
+            label: control.getLabelForAttr( key )
+        }) %></li>
+    <% } %>
+
+<% }); %>
+</ul>

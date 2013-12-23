@@ -1,13 +1,11 @@
-<div class="form-item" >
-    <label for="<%= attrName %>"><%= label %></label>
-    <input
-        name="<%= attrName %>"
-        type="text"
-        data-type="<%= type %>"
-        class="<% classes %>"
-        value="<%= model.attr( attrName ) ? model.attr( attrName ).format('DD/MM/YYYY') : '' %>"
-        <%# if datepickerOptions is undefined, perfect! %>
-        <%= (el) -> el.datepicker( this.datepickerOptions ) %>
-        <%= (el) -> el.tooltip( tooltipOptions ) %>
-    />
-</div>
+<input
+    name="<%= attrName %>"
+    type="text"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<% classes %>"
+    value="<%= model.attr( attrName ) ? model.attr( attrName ).format('DD/MM/YYYY') : '' %>"
+    <%# if datepickerOptions is undefined, perfect! %>
+    <%= (el) -> el.datepicker( this.datepickerOptions ) %>
+    <%= (el) -> el.tooltip( tooltipOptions ) %>
+/>

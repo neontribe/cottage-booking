@@ -41,14 +41,49 @@ define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/setter'
             // only include the attributes above
             var serialized = _.pick( can.Model.prototype.serialize.call( this), this.constructor.required );
 
-            if( this.attr('fromDate') ) {
+            if( typeof this.attr('fromDate') !== 'string' ) {
                 serialized.fromDate = this.attr('fromDate').format('YYYY-MM-DD');
             }
-            if( this.attr('toDate') ) {
+            if( typeof this.attr('toDate') !== 'string'  ) {
                 serialized.toDate = this.attr('toDate').format('YYYY-MM-DD');
             }
 
             return serialized;
+        },
+
+        'fetchBooking': function( fetch ) {
+
+            var self = this;
+            // If we pass anything we can expect the deferred object to be returned, so we can attach done methods
+            if( fetch ) {
+
+                switch( typeof fetch ) {
+                case 'string':
+
+                    this.attr('bookingId', fetch);
+
+                    return this.constructor.findOne({
+                        'bookingId': fetch
+                    }).done(function( booking ) {
+                        self.attr( booking.attr() );
+                    });
+
+                    //break;
+                case 'object':
+                    this.attr( fetch );
+                    return this.save().done(function () {});
+                }
+
+            } else {
+                return this;
+            }
+        },
+
+        'reset': function() {
+            var self = this;
+            this.each(function ( value, key ) {
+                self.removeAttr(key);
+            });
         }
 
     });
