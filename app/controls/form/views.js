@@ -4,22 +4,26 @@
  * plugin type thing in requirejs
  */
 define([
-    'utils/helpers',
+    'helpers',
     'ejs!./views/wrapper',
     'ejs!./views/errors',
     'ejs!./views/text',
     'ejs!./views/datapicker',
-    'ejs!./views/error_box'
+    'ejs!./views/errors_wrapper',
+    'ejs!./views/select',
+    'ejs!./views/checkbox'
 ], function() {
     'use strict';
 
     var args = [].slice.call( arguments, 1 );
 
     return {
-        'wrapper':      args[0],
-        'errors':       args[1],
-        'text':         args[2],
-        'datepicker':   args[3],
-        'error_box':    args[4]
+        'wrapper':          args[0],
+        'errors':           args[1],
+        'text':             args[2],
+        'datepicker':       args[3],
+        'errorsWrapper':    args[4],
+        'select':           args[5],
+        'checkbox':         args[6]
     };
 });

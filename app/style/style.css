@@ -3,6 +3,11 @@
     clear:both;
 }
 
+#cottage-booking > div {
+    height: 515px;
+    width: 907px;
+}
+
 #some-tabs ul li {
     float:left;
     padding:0 1em 0.2em;
@@ -55,4 +60,12 @@
 
 .form-item .error {
     border: 1px solid red;
+}
+
+.name {
+    width:50%;
+}
+
+.name > * {
+    float:left;
 }

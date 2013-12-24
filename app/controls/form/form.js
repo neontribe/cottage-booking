@@ -3,23 +3,13 @@ define([
     './views',
     'moment',
     'underscore',
+    'utils',
     'can/control',
     'can/control/plugin',
-    'jqueryui/jquery.ui.core',
+    'jqueryui/jquery.ui.tooltip',
     'jqueryui/jquery.ui.datepicker'
-], function(can, views, moment, _) {
+], function(can, views, moment, _, utils) {
     'use strict';
-
-    // TODO:Move this to a better place resources/utulities?
-    var slice = Array.prototype.slice,
-        fragmentToString = function( frag ) {
-            return can.$('<div>').html( frag ).html();
-        },
-        bindWithThat = function( fn, context, that ) {
-            return function() {
-                return fn.apply( context, [that].concat( [].slice.call( arguments ) ) );
-            };
-        };
 
     return can.Control({
         'pluginName': 'bindForm',
@@ -30,21 +20,31 @@ define([
             },
             'defaultGetter': function( $el ) {
                 return $el.val();
+            },
+            'checkbox': function( $el ) {
+                return !!$el.is(':checked');
             }
         },
 
         defaults: {
             model: null,
             proxy: null,
+            // When set to true this option will use the attr name as the default field name
+            defaultLabel: false,
             tooltipOptions: {
                 track: true
             },
             getterMap: {},
+            optionsMap: {},
             // Attributes for which this form bound controller is responsible
-            attributes: []
+            attributes: null
         }
     },{
         init: function() {
+
+            // Set up a new observable as our attributes, so we can magically bind to changes
+            this.options.attributes = new can.List();
+            this.options.optionsMap = new can.Map( this.options.optionsMap );
 
             this.element.find('[name]').each( can.proxy( this.formElement, this ) );
             // Once we've replaced and sorted out inputs, set the title to empty string
@@ -66,7 +66,7 @@ define([
                 attr = $el.attr('name'),
                 type = $el.attr('type'),
                 classes = $el.attr('class'),
-                wrapper = views.wrapper,
+                wrapper = views[ type + 'Wrapper' ] || views.wrapper,
                 options;
 
             options = can.extend(true, {
@@ -75,7 +75,10 @@ define([
                 'classes': classes || '',
                 // Look for a template which matches the type and default to text input
                 'view': ( views[type] || views.text ),
-                'label': ''
+                'label': this.options.defaultLabel ? attr : '',
+                'control': this,
+                'valueAttr': 0,
+                'textAttr': 1
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for
@@ -126,7 +129,7 @@ define([
 
                 _errors[ attr ] = errors;
 
-                html = fragmentToString( views.errors({
+                html = utils.fragmentToString( views.errors({
                     errors: _errors,
                     control: this
                 }));
@@ -139,13 +142,13 @@ define([
         },
         'getLabelForAttr': function( attr ) {
             var $el = this.getElementsFor( attr );
-            if( !$el ) {
+            if( !$el.length ) {
                 return '';
             }
             return this.getElementsFor( attr ).attr('data-label') || '';
         },
         'addErrors': function() {
-            var errors = this.options.model.errors( this.options.attributes );
+            var errors = this.options.model.errors( this.options.attributes.attr() );
 
             if( errors ) {
                 can.each( errors, function( value, key ) {
@@ -155,12 +158,15 @@ define([
             }
         },
         'removeErrors': function() {
-            can.each( this.options.attributes, this.removeErrorsForAttr, this );
+            can.each( this.options.attributes.attr(), this.removeErrorsForAttr, this );
         },
         'removeErrorsForAttr': function( attr ) {
             this.getElementsFor( attr )
                 .tooltip('option', 'content', '')
                 .removeClass('error');
+        },
+        'getUnHandledErrors': function( omit ) {
+            return _.omit( this.options.model.errors(), omit );
         },
 
         /**
@@ -171,21 +177,16 @@ define([
          * @return {undefined}
          */
         '{model} change': function( model, batchEvt, attr ) {
-            var errors = this.options.model.errors( attr );
-            if( !errors && can.inArray( attr, this.options.attributes ) !== -1 ) {
-                // If we don't have any errors, remove them
-                this.removeErrorsForAttr( attr );
-            }
-            // TODO: Cleverer way to do this?
-            if( this.lastBatch !== batchEvt.batchNum && can.inArray('error_box', this.options.attributes) !== -1 ) {
-                errors = _.omit( this.options.model.errors(), this.options.attributes );
-                if( errors ) {
-                    this.getElementsFor('error_box').replaceWith( views.errors({
-                        errors: errors,
-                        control: this
-                    }));
-                    this.lastBatch = batchEvt.batchNum;
+            var errors;
+            if( this.lastBatch !== batchEvt.batchNum ) {
+                errors = this.options.model.errors( attr );
+                if( !errors && can.inArray( attr, this.options.attributes.attr() ) !== -1 ) {
+                    // If we don't have any errors, remove them
+                    this.removeErrorsForAttr( attr );
                 }
+            }
+            if( batchEvt.batchNum ) {
+                this.lastBatch = batchEvt.batchNum;
             }
         },
         lastBatch: null,

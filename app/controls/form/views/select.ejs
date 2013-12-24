@@ -1,0 +1,22 @@
+<select
+    name="<%= attrName %>"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<% classes %>"
+    <%= (el) -> el.tooltip( tooltipOptions ) %>
+>
+    <% if( this.placeholder ) { %>
+
+    <% } %>
+    <% list( optionsMap.attr( attrName ), function( element ) {
+        var value = element.attr( valueAttr ) || element.attr( textAttr ),
+            text = element.attr( textAttr ) || element.attr( valueAttr );
+    %>
+        <option
+            value="<%= value %>"
+            <%= ( value === model.attr( attrName ) ) ? 'selected="selected"' : '' %>
+        >
+            <%= sub( text,  this ) %>
+        </option>
+    <% }) %>
+</select>

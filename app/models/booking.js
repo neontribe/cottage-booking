@@ -1,4 +1,4 @@
-define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/setter'], function(can, moment, _){
+define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/validations'], function(can, moment, _){
     'use strict';
 
     // Abstract! Why not
@@ -33,7 +33,11 @@ define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/setter'
             'children',
             'infants',
             'pets'
-        ]
+        ],
+
+        'init': function() {
+            this.validatePresenceOf( this.required );
+        }
 
     }, {
 

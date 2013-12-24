@@ -6,7 +6,9 @@ requirejs.config({
         'jqueryui'        : 'bower_components/jquery-ui/ui',
         'moment'          : 'bower_components/momentjs/moment',
         'underscore'      : 'bower_components/underscore/underscore',
-        'accounting'      : 'bower_components/accounting.js/accounting'// A model available as a singleton, which will integrate options from drupal
+        'accounting'      : 'bower_components/accounting.js/accounting',
+        'utils'           : 'utilities/utils',
+        'helpers'         : 'utilities/helpers'
     },
     shim: {
         jquery: {

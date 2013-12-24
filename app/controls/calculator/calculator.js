@@ -4,11 +4,12 @@ define([
     'resources/enquiry',
     'resources/book',
     'moment',
+    'utils',
     // extras
     'can/control',
     'can/control/plugin',
     'controls/form/form'
-], function( can, views, enquiry, booking, moment ) {
+], function( can, views, enquiry, booking, moment, utils ) {
     'use strict';
 
     // TODO:Move this to a better place
@@ -16,14 +17,6 @@ define([
     jQuery.datepicker.setDefaults({
         dateFormat: 'dd/mm/yy'
     });
-
-    var slice = Array.prototype.slice,
-        bindWithThis = function( fn, context ) {
-            return function() {
-                return fn.apply( context, [this].concat( slice.call( arguments ) ) );
-            };
-        };
-
 
     return can.Control({
 
@@ -41,7 +34,7 @@ define([
                 'can': can,
                 'enquiry': this.options.enquiry,
                 'datepickerOptions': {
-                    'beforeShowDay': bindWithThis( this.beforeShowDay, this )
+                    'beforeShowDay': utils.bindWithThis( this.beforeShowDay, this )
                 },
                 'route': can.route,
                 'views': views,

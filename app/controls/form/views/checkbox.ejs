@@ -1,0 +1,9 @@
+<input
+    name="<%= attrName %>"
+    type="checkbox"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<% classes %>"
+    <%= model.attr( attrName ) ? 'checked="checked"' : '' %>
+    <%= (el) -> el.tooltip( tooltipOptions ) %>
+/>

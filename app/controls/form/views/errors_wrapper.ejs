@@ -1,0 +1,17 @@
+<div
+    name="<%= attrName %>"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<% classes %>"
+>
+<%
+    var errors = control.getUnHandledErrors( control.options.attributes.attr() );
+    if( errors ) {
+%>
+    <div <%= appendTemplate( view, {
+        'errors': errors,
+        'control': control
+    }) %> ></div>
+
+<% } %>
+</div>

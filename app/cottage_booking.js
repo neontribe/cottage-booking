@@ -1,6 +1,7 @@
 define([
     'can/util/string',
     'controls/calendar/calendar', // TODO: Move these two things into a model init or something so we only load one file
+    'controls/details/details',
     'resources/enquiry',
     'resources/book',
     // All the rest
@@ -8,7 +9,7 @@ define([
     'can/control',
     'can/control/plugin',
     'can/control/route'
-], function(can, Calendar, enquiry, book ) {
+], function(can, Calendar, Details, enquiry, book ) {
     'use strict';
 
     var init = false,

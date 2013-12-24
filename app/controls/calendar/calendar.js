@@ -3,10 +3,12 @@ define([
     'moment',
     './views',
     'resources/enquiry',
+    'utils',
     // extras
+    'can/control',
     'jqueryui/jquery.ui.datepicker',
     'jqueryui/jquery.ui.tooltip'
-], function(can, moment, views, enquiry) {
+], function(can, moment, views, enquiry, utils) {
     'use strict';
 
     // TODO:Move this to a better place resources/utulities?
@@ -14,13 +16,6 @@ define([
     jQuery.datepicker.setDefaults({
         dateFormat: 'dd/mm/yy'
     });
-    // TODO:Move this to a better place resources/utulities?
-    var slice = Array.prototype.slice,
-        bindWithThis = function( fn, context ) {
-            return function() {
-                return fn.apply( context, [this].concat( slice.call( arguments ) ) );
-            };
-        };
 
     return can.Control({
 
@@ -36,8 +31,8 @@ define([
                     'firstDay': 1,
                     // Use apply to enhance the onSelect callback, providing the dom element
                     // which contains the datepicker as an extra argument to the onSelect function
-                    'onSelect': bindWithThis( this.onSelect, this ),
-                    'beforeShowDay': bindWithThis( this.beforeShowDay, this )
+                    'onSelect': utils.bindWithThis( this.onSelect, this ),
+                    'beforeShowDay': utils.bindWithThis( this.beforeShowDay, this )
                 }
             }));
         },

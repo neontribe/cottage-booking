@@ -1,1 +1,23 @@
-<div></div>
+<form <%= (el) -> el.bindForm( formOptions ) %> >
+
+    <input name="customer.name.title" type="select" data-label="Title" />
+    <input name="customer.name.firstName" data-label="First Name" />
+    <input name="customer.name.surname" data-label="Surname" />
+
+    <input name="customer.address.addr1" />
+    <input name="customer.address.addr2" />
+    <input name="customer.address.town" />
+    <input name="customer.address.county" />
+    <input name="customer.address.postcode" />
+    <input name="customer.address.country" />
+
+    <input name="customer.daytimePhone" />
+    <input name="customer.eveningPhone" />
+    <input name="customer.mobilePhone" />
+    <input name="customer.email" />
+    <input name="customer.emailOptIn" type="checkbox"/>
+    <input name="customer.src" />
+    <input name="customer.which" />
+
+    <input type="submit" />
+</form>

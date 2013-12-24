@@ -4,7 +4,7 @@
  * plugin type thing in requirejs
  */
 define([
-	'utils/helpers',
+	'helpers',
 	'ejs!./views/init'
 ], function() {
 	'use strict';
