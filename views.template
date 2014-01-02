@@ -1,4 +1,4 @@
-/** <%# ======= This file is used to generate the views.js file in each of the controllers ======== %>
+/** <% /** ======= This file is used to generate the views.js file in each of the controllers ========  **/ %>
  * This AMD module will return the template render map
  * Questioning the usefulness of such a pattern. Also would be cool as a
  * plugin type thing in requirejs
