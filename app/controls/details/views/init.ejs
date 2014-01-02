@@ -21,3 +21,11 @@
 
     <input type="submit" />
 </form>
+
+<div>
+    <h2>Party information</h2>
+    <form <%= (el) -> el.bindForm({ model: formOptions.model }) %> >
+        <input name="adults" data-as="number" data-placeholder="Adults" data-label="Number of adults:" />
+        <input name="children" data-as="number" data-placeholder="Children" />
+    </form>
+</div>

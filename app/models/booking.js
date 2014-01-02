@@ -1,26 +1,49 @@
-define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/validations'], function(can, moment, _){
+define([
+    'can/util/string',
+    'moment',
+    'underscore',
+    'models/traveller',
+    'can/model',
+    'can/map/validations',
+    'can/map/attributes',
+    'can/map/setter'
+], function(can, moment, _, Traveller){
     'use strict';
-
-    // Abstract! Why not
-    var dateify = function( raw ) {
-        if( typeof raw === 'number' ) {
-            return moment( raw * 1000 );
-        } else if( typeof raw === 'string' ) {
-            return moment( raw, 'YYYY-MM-DD' );
-        }
-        return raw;
-    };
 
     return can.Model({
         findOne : 'GET property/booking/{bookingId}',
         create  : 'POST property/booking/create',
         update  : 'POST property/booking/{bookingId}',
 
+        attributes: {
+
+            partyDetails: 'Traveller.models',
+            fromDate: 'date',
+            toDate: 'date'
+        },
+
+        convert: {
+            'date': function( raw ) {
+                if( typeof raw === 'number' ) {
+                    return moment( raw * 1000 );
+                } else if( typeof raw === 'string' ) {
+                    return moment( raw, 'YYYY-MM-DD' );
+                }
+                return raw;
+            }
+        },
+
+        'serialize': {
+            date: function( val ) {
+                if( val ) {
+                    return val.toString('YYYY-MM-DD');
+                }
+            }
+        },
+
         model: function( rawData ) {
             return can.Model.model.call( this, can.extend( rawData, {
-                'propRef': rawData.propertyRef + '_' + rawData.brandCode,
-                'fromDate': dateify( rawData.fromDate ),
-                'toDate': dateify( rawData.toDate )
+                'propRef': rawData.propertyRef + '_' + rawData.brandCode
             }));
         },
 
@@ -40,20 +63,6 @@ define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/validat
         }
 
     }, {
-
-        'serialize': function() {
-            // only include the attributes above
-            var serialized = _.pick( can.Model.prototype.serialize.call( this), this.constructor.required );
-
-            if( typeof this.attr('fromDate') !== 'string' ) {
-                serialized.fromDate = this.attr('fromDate').format('YYYY-MM-DD');
-            }
-            if( typeof this.attr('toDate') !== 'string'  ) {
-                serialized.toDate = this.attr('toDate').format('YYYY-MM-DD');
-            }
-
-            return serialized;
-        },
 
         'fetchBooking': function( fetch ) {
 
@@ -75,7 +84,7 @@ define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/map/validat
                     //break;
                 case 'object':
                     this.attr( fetch );
-                    return this.save().done(function () {});
+                    return this.save();//.done(function () {});
                 }
 
             } else {

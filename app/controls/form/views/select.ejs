@@ -5,12 +5,22 @@
     class="<% classes %>"
     <%= (el) -> el.tooltip( tooltipOptions ) %>
 >
-    <% if( this.placeholder ) { %>
-
+    <%
+        var value, text;
+        if( this.placeholder ) {
+            value = this.placeholder[0] || '';
+            text  = this.placeholder[1] || 'Please select';
+    %>
+        <option
+            value="<%= value %>"
+            <%= ( model.attr( attrName ) === value || !value ) ? 'selected="selected"' : '' %>
+        >
+            <%= text %>
+        </option>
     <% } %>
     <% list( optionsMap.attr( attrName ), function( element ) {
-        var value = element.attr( valueAttr ) || element.attr( textAttr ),
-            text = element.attr( textAttr ) || element.attr( valueAttr );
+        value = element.attr( valueAttr ) || element.attr( textAttr ),
+        text = element.attr( textAttr ) || element.attr( valueAttr );
     %>
         <option
             value="<%= value %>"

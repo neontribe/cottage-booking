@@ -17,8 +17,8 @@ define([
             var formOptions, titles;
 
             titles = new can.List([
-                ['mr', 'Mr.'],
-                ['ms', 'Ms.']
+                ['Mr.'],
+                ['Ms.']
             ]);
 
             formOptions = {
@@ -35,7 +35,7 @@ define([
         },
 
         '{booking} submit': function() {
-            this.options.booking.attr('customer.name.title', 'mr');
+            this.options.booking.save();
         }
     });
 

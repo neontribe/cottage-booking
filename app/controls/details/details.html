@@ -11,8 +11,9 @@
     <h1>Welcome to details demo page</h1>
     <div id="cottage-booking">
       <div id="content" style="float:left;"></div>
+      <div id="results" style="float:left; width:550px;"><textarea style="width:550px; height:100%;"></textarea></div>
+      <span class="cf"></span>
     </div>
-    <div id="results"><textarea style="width:550px;"></textarea></div>
     <script type="text/javascript" src="../../bower_components/requirejs/require.js"></script>
     <script type="text/javascript" src="../../requirejsconfig.js"></script>
     <script type="text/javascript">
@@ -29,6 +30,7 @@
       ], function( Details, booking ){
         // This could be any string, but for completeness..
         booking.fetchBooking('d76c8badd8448cc9d1d888778966d140').done(function() {
+        //booking.fetchBooking('71ab5f1240afdfb103e8e63e359ddd33').done(function() {
          new Details('#content');
         });
 

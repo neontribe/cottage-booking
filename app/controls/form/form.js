@@ -37,7 +37,9 @@ define([
             getterMap: {},
             optionsMap: {},
             // Attributes for which this form bound controller is responsible
-            attributes: null
+            attributes: null,
+            // This can be set per input as well
+            placeholder: true
         }
     },{
         init: function() {
