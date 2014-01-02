@@ -40,9 +40,27 @@ define([
         });
 
         describe('enquiry object reports errors', function () {
-            it('should error with bad data TODO: MAKE THIS TEST SOMEHTING', function () {
+            it('should error with bad data', function () {
 
+                var badEnquiryFromDate = new Date( 2014, 4, 1 ),
+                    errors;
 
+                enq.attr('fromDate', moment( badEnquiryFromDate ) );
+                enq.attr('toDate', moment( new Date( 2014, 3, 8 ) ) );
+
+                errors = enq.errors();
+
+                errors.fromDate[0].should.be.ok;
+
+                errors.fromDate[0].should.be.equal('The start of your stay must be before the end');
+
+                errors.toDate[0].should.be.equal('The end of your stay must be after the start');
+
+                enq.attr('toDate', null);
+
+                errors = enq.errors();
+
+                errors.toDate.should.have.length.above( 1 );
 
             });
         });

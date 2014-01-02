@@ -110,7 +110,7 @@ define([
             this.off('toDate');
             this.off('propRef');
 
-            can.Model.prototype.destroy.call( this );
+            return can.Model.prototype.destroy.call( this );
         },
 
         'serialize': function() {

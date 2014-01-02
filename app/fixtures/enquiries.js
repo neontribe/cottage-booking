@@ -1,8 +1,21 @@
-define(['can/util/string', 'jquery', 'can/util/string/deparam', 'can/util/fixture'], function(can, $){
+define(['can/util/string', 'jquery', 'moment', 'can/util/string/deparam', 'can/util/fixture'], function(can, $, moment){
     'use strict';
     /* globals location */
     var queryObj = can.deparam( location.search.slice(1) ),
-        fixture = !queryObj.noFixture ? require.toUrl('fixtures/enquiries/enquiry_A223_ZZ.json') : function( options, reply ) {
+        fixture = !queryObj.noFixture ? function( options, reply ) {
+
+            var fromDate = moment( options.data.fromDate, 'YYYY-MM-DD' ),
+                url;
+
+            if( (fromDate.get('M') + 1) % 2 === 0 ) {
+                url = require.toUrl('fixtures/enquiries/enquiry_A223_ZZ_error.json');
+            } else {
+                url = require.toUrl('fixtures/enquiries/enquiry_A223_ZZ.json');
+            }
+
+            $.get( url ).done( reply );
+
+        } : function( options, reply ) {
             var url = 'http://localhost/NeonTABS/demosite/property/booking/enquiry'; // Grumble
             can.fixture.on = false;
             $.ajax(can.extend(options, {
