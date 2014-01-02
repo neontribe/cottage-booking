@@ -9,7 +9,7 @@ define([
 ], function() {
     'use strict';
 
-    var args = Array.prototype.call( arguments, 1 );
+    var args = Array.prototype.slice.call( arguments, 1 );
 
     return {<% for( var i = 0; i < views.length ; i++ ) { %>
         '<%= nameify( views[i] ) %>': args[<%= i %>]<%= views.length - 1 === i ? '' : ',' %><% } %>

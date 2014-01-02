@@ -1,17 +1,18 @@
-/**
+/** 
  * This AMD module will return the template render map
  * Questioning the usefulness of such a pattern. Also would be cool as a
  * plugin type thing in requirejs
  */
 define([
-	'helpers',
-	'ejs!./views/init'
+    'helpers',
+    'ejs!./views/init'
 ], function() {
-	'use strict';
+    'use strict';
 
-	var args = [].slice.call( arguments, 1 );
+    var args = Array.prototype.slice.call( arguments, 1 );
 
-	return {
-		'init': args[0]
-	};
+    return {
+        'init': args[0]
+    };
 });
+/* End of file */
