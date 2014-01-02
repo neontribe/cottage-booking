@@ -12,6 +12,7 @@
     <div id="cottage-booking">
       <div id="content" style="float:left;"></div>
     </div>
+    <div id="results"><textarea style="width:550px;"></textarea></div>
     <script type="text/javascript" src="../../bower_components/requirejs/require.js"></script>
     <script type="text/javascript" src="../../requirejsconfig.js"></script>
     <script type="text/javascript">
@@ -29,6 +30,10 @@
         // This could be any string, but for completeness..
         booking.fetchBooking('d76c8badd8448cc9d1d888778966d140').done(function() {
          new Details('#content');
+        });
+
+        booking.on('change', function() {
+          $('#results textarea').html(JSON.stringify( booking.attr(), null, '\t' ) );
         });
       });
     </script>

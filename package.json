@@ -18,6 +18,7 @@
     "mocha-phantomjs": "~3.2.0",
     "requirejs": "~2.1.6",
     "express": "~3.4.6",
-    "jshint": "~2.3.0"
+    "jshint": "~2.3.0",
+    "underscore": "~1.5.2"
   }
 }

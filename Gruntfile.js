@@ -1,6 +1,7 @@
 var esprima   = require('esprima'),
     fs        = require('fs'),
-    escodegen = require('escodegen');
+    escodegen = require('escodegen'),
+    _         = require('underscore');
 /* jshint quotmark: false, strict: false */
 var getRenderer = function(ext, cwd){
     return "define(function() {\n"+
@@ -185,6 +186,39 @@ module.exports = function(grunt) {
             'exec:rmbuilddir',
             'exec:myth'
         );
+    });
+
+    grunt.registerTask('buildViewFiles', function() {
+        var viewsTemplate = String( fs.readFileSync('views.template') ),
+            controls, views, nameify, removeExt;
+
+        controls = grunt.file.expand([
+            'app/controls/*'
+        ]);
+
+        nameify = function( name ) {
+            return name.replace(/(_|-)./, function( found ) {
+                return found.charAt(1).toUpperCase();
+            });
+        };
+
+        removeExt = function( view ) {
+            return view.replace(/\.ejs$/, '');
+        };
+
+        for (var i = 0; i < controls.length; i++) {
+
+            views = grunt.file.expand({
+                'cwd': controls[i] + '/views'
+            }, '*' );
+
+            views = _.map( views, removeExt );
+
+            fs.writeFileSync( controls[i] + '/views.js', _.template( viewsTemplate , {
+                views: views,
+                nameify: nameify
+            }));
+        }
     });
 
     grunt.registerTask('default', 'build');

@@ -15,7 +15,7 @@ define([
 ], function() {
     'use strict';
 
-    var args = [].slice.call( arguments, 1 );
+    var args = Array.prototype.call( arguments, 1 );
 
     return {
         'wrapper':          args[0],

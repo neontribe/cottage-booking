@@ -1,0 +1,18 @@
+/** <%# ======= This file is used to generate the views.js file in each of the controllers ======== %>
+ * This AMD module will return the template render map
+ * Questioning the usefulness of such a pattern. Also would be cool as a
+ * plugin type thing in requirejs
+ */
+define([
+    'helpers'<%= views.length ? ',' : '' %><% for( var i = 0; i < views.length ; i++ ) { %>
+    'ejs!./views/<%= views[i] %>'<%= views.length - 1 === i ? '' : ',' %><% } %>
+], function() {
+    'use strict';
+
+    var args = Array.prototype.call( arguments, 1 );
+
+    return {<% for( var i = 0; i < views.length ; i++ ) { %>
+        '<%= nameify( views[i] ) %>': args[<%= i %>]<%= views.length - 1 === i ? '' : ',' %><% } %>
+    };
+});
+/* End of file */
