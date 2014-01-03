@@ -19,7 +19,8 @@ define([
 
             partyDetails: Traveller,
             fromDate: 'date',
-            toDate: 'date'
+            toDate: 'date',
+            _partyDetails: 'noSend'
         },
 
         convert: {
@@ -38,13 +39,16 @@ define([
                 if( val ) {
                     return val.toString('YYYY-MM-DD');
                 }
-            }
+            },
+            'noSend': can.$.noop
         },
 
         model: function( rawData ) {
-            return can.Model.model.call( this, can.extend( rawData, {
+            var model = can.Model.model.call( this, can.extend( rawData, {
                 'propRef': rawData.propertyRef + '_' + rawData.brandCode
             }));
+
+            model.attr('_partyDetails')
         },
 
         required: [
@@ -108,6 +112,14 @@ define([
 
         'partySize': can.compute(function() {
             return this.attr('adults') + this.attr('children');
+        }),
+
+        'partyDetails': can.compute(function() {
+            var partySize = this.attr('partySize');
+
+            if( partySize !== this.attr('partyDetails').length ) {
+
+            }
         })
 
     });
