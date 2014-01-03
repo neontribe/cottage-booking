@@ -48,7 +48,7 @@ define([
                 'propRef': rawData.propertyRef + '_' + rawData.brandCode
             }));
 
-            model.attr('_partyDetails')
+            model.attr('_partyDetails');
         },
 
         required: [
