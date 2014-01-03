@@ -9,6 +9,7 @@ define([
     'ejs!./views/datepicker',
     'ejs!./views/errors',
     'ejs!./views/errors_wrapper',
+    'ejs!./views/number',
     'ejs!./views/select',
     'ejs!./views/text',
     'ejs!./views/wrapper'
@@ -22,9 +23,10 @@ define([
         'datepicker': args[1],
         'errors': args[2],
         'errorsWrapper': args[3],
-        'select': args[4],
-        'text': args[5],
-        'wrapper': args[6]
+        'number': args[4],
+        'select': args[5],
+        'text': args[6],
+        'wrapper': args[7]
     };
 });
 /* End of file */

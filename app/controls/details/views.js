@@ -5,6 +5,8 @@
  */
 define([
     'helpers',
+    'ejs!./views/adult',
+    'ejs!./views/child',
     'ejs!./views/init'
 ], function() {
     'use strict';
@@ -12,7 +14,9 @@ define([
     var args = Array.prototype.slice.call( arguments, 1 );
 
     return {
-        'init': args[0]
+        'adult': args[0],
+        'child': args[1],
+        'init': args[2]
     };
 });
 /* End of file */

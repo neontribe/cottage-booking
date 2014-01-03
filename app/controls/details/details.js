@@ -9,28 +9,30 @@ define([
 
     return can.Control({
         defaults: {
-            booking: booking
+            booking: booking,
+            childAge: 17
         }
     },{
         init: function() {
 
-            var formOptions, titles;
+            var titles;
 
             titles = new can.List([
-                ['Mr.'],
-                ['Ms.']
+                ['Mr', 'Mr.'],
+                ['Ms', 'Ms.']
             ]);
 
-            formOptions = {
+            this.element.html( views.init({
                 model: this.options.booking,
                 defaultLabel: true,
-                optionsMap: {
-                    'customer.name.title': titles
-                }
-            };
-
-            this.element.html( views.init({
-                formOptions: formOptions
+                titles: titles,
+                views: views,
+                ages: new can.List([
+                    ['18-35'],
+                    ['36-50'],
+                    ['50+']
+                ]),
+                childAge: this.options.childAge
             }) );
         },
 

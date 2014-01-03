@@ -16,6 +16,13 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
             };
         },
 
+        replaceWithTemplate: function( templFn, data ) {
+            return function( el ) {
+                can.$(el).replace( templFn( data ) );
+                //can.$(templFn( data )).insertAfter( el );
+            };
+        },
+
         sub: can.sub
     });
 

@@ -11,6 +11,12 @@ define([
 ], function(can, views, moment, _, utils) {
     'use strict';
 
+    can.EJS.Helpers.prototype.bindForm = function( options ) {
+        return function( el ) {
+            can.$(el).bindForm( options );
+        };
+    };
+
     return can.Control({
         'pluginName': 'bindForm',
 
@@ -23,6 +29,9 @@ define([
             },
             'checkbox': function( $el ) {
                 return !!$el.is(':checked');
+            },
+            'number': function( $el ) {
+                return Number( $el.val() );
             }
         },
 
@@ -57,6 +66,11 @@ define([
 
         },
 
+        // destroy: function() {
+        //     console.log('form being destroyed!');
+        //     return can.Control.prototype.destroy.call( this );
+        // },
+
         /**
          * This handles the bulk of the rendering logic
          * @param  {Number} index The index of the element in the jquery list
@@ -66,27 +80,56 @@ define([
         'formElement': function( index, el ) {
             var $el = can.$(el),
                 attr = $el.attr('name'),
-                type = $el.attr('type'),
-                classes = $el.attr('class'),
+                // default to text input
+                type = $el.attr('type') || 'text',
                 wrapper = views[ type + 'Wrapper' ] || views.wrapper,
                 options;
 
             options = can.extend(true, {
                 'attrName': attr,
-                'type': type || 'text',
-                'classes': classes || '',
-                // Look for a template which matches the type and default to text input
-                'view': ( views[type] || views.text ),
+                'type': type,
+                'classes': $el.attr('class') || '',
+                // Look for a template which matches the type
+                'view': views[type] || views.text,
                 'label': this.options.defaultLabel ? attr : '',
                 'control': this,
                 'valueAttr': 0,
-                'textAttr': 1
+                'textAttr': 1,
+                'id': _.uniqueId( 'attr_' + attr + '_' )
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for
             this.options.attributes.push( attr );
 
             $el.replaceWith( wrapper( options ) );
+        },
+
+        // These should be bound before we make changes to the model
+        // so we can stop the change being made to it.
+        ':input[type="number"][data-min] change': function( $el ) {
+            var max = $el.data('max'),
+                min = $el.data('min');
+
+            /* jshint -W018 */
+            // JSHint rightly complains about this use of '!', but we want this here
+            // because if one of them is falsey (undefined) then the equation is falsey
+            // so ( max > min ) would be falsey ( incorrectly )
+            if( $el.val() < min && !(max < min) ) {
+            /* jshint +W018 */
+                $el.val( min );
+                return false;
+            }
+        },
+        ':input[type="number"][data-max] change': function( $el ) {
+            var max = $el.data('max'),
+                min = $el.data('min');
+
+            /* jshint -W018 */
+            if( $el.val() > max && !(max < min) ) {
+            /* jshint +W018 */
+                $el.val( $el.data('max') );
+                return false;
+            }
         },
 
         /**

@@ -6,7 +6,7 @@ define([
     'can/model',
     'can/map/validations',
     'can/map/attributes',
-    'can/map/setter'
+    'can/compute'
 ], function(can, moment, _, Traveller){
     'use strict';
 
@@ -48,6 +48,7 @@ define([
         },
 
         required: [
+            // this are required to make a booking
             'propRef',
             'fromDate',
             'toDate',
@@ -55,7 +56,9 @@ define([
             'adults',
             'children',
             'infants',
-            'pets'
+            'pets',
+            // these are required to complete a booking
+            'customer.address.addr1'
         ],
 
         'init': function() {
@@ -63,6 +66,10 @@ define([
         }
 
     }, {
+
+        'init': function() {
+
+        },
 
         'fetchBooking': function( fetch ) {
 
@@ -97,7 +104,11 @@ define([
             this.each(function ( value, key ) {
                 self.removeAttr(key);
             });
-        }
+        },
+
+        'partySize': can.compute(function() {
+            return this.attr('adults') + this.attr('children');
+        })
 
     });
 

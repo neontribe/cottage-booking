@@ -1,16 +1,24 @@
-<form <%= (el) -> el.bindForm( formOptions ) %> >
+<form <%= bindForm({
+    model: model,
+    optionsMap: {
+        'customer.name.title': titles
+    },
+    defaultLabel: defaultLabel
+}) %> >
 
     <input name="customer.name.title" type="select" data-label="Title" />
     <input name="customer.name.firstName" data-label="First Name" />
     <input name="customer.name.surname" data-label="Surname" />
 
-    <input name="customer.address.addr1" />
-    <input name="customer.address.addr2" />
-    <input name="customer.address.town" />
-    <input name="customer.address.county" />
-    <input name="customer.address.postcode" />
-    <input name="customer.address.country" />
-
+    <fieldset>
+        <legend>Address</legend>
+        <input name="customer.address.addr1" />
+        <input name="customer.address.addr2" />
+        <input name="customer.address.town" />
+        <input name="customer.address.county" />
+        <input name="customer.address.postcode" />
+        <input name="customer.address.country" />
+    </fieldset>
     <input name="customer.daytimePhone" />
     <input name="customer.eveningPhone" />
     <input name="customer.mobilePhone" />
@@ -19,13 +27,28 @@
     <input name="customer.src" />
     <input name="customer.which" />
 
-    <input type="submit" />
+    <button type="submit">Submit</button>
 </form>
 
 <div>
     <h2>Party information</h2>
-    <form <%= (el) -> el.bindForm({ model: formOptions.model }) %> >
-        <input name="adults" data-as="number" data-placeholder="Adults" data-label="Number of adults:" />
-        <input name="children" data-as="number" data-placeholder="Children" />
+    <form <%= (el) -> el.bindForm({ model: model }) %> >
+        <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults:" data-min="0" />
+        <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
     </form>
+    <div class="party-list">
+        <% list( model.attr('partyDetails'), function( traveller ) { %>
+            <div
+                <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
+                    'model': traveller,
+                    'optionsMap': {
+                        'title': titles,
+                        'age': ages,
+                        'childAge': childAge
+                    }
+                }) %>
+                class="<%= traveller.type %> traveller"
+            ></div>
+        <% }); %>
+    </div>
 </div>

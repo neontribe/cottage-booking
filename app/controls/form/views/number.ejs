@@ -1,0 +1,14 @@
+<input
+    id="<%= id %>"
+    name="<%= attrName %>"
+    type="number"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<% classes %>"
+    value="<%= typeof model.attr( attrName ) === 'number' ? model.attr( attrName ) : '' %>"
+    placeholder="<%= this.placeholder && typeof this.placeholder === 'string' ? this.placeholder : '' %>"
+    <%# for some reson the strings max and min are printed with "", so we don't need to include them in the string to be printed %>
+    <%= this.max || this.max === 0 ? 'data-max=' + max : '' %>
+    <%= this.min || this.min === 0 ? 'data-min=' + min : '' %>
+    <%= (el) -> el.tooltip( tooltipOptions ) %>
+/>
