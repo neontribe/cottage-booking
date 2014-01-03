@@ -32,12 +32,19 @@ define(['can/util/string', 'jquery', 'underscore', 'can/util/fixture'], function
         },
         fixture2 = function( options, reply ) {
             var url = !queryObj.noFixture ? require.toUrl('fixtures/bookings/booking_A223_ZZ.json') :
-                        can.sub('http://localhost/NeonTABS/demosite/property/booking/{bookingId}', options.data); // Grumble
+                    can.sub('http://localhost/NeonTABS/demosite/property/booking/{bookingId}', options.data),
+                ajaxObj = can.extend(options, {
+                    url: url
+                }); // Grumble
+
+            if( !queryObj.noFixture ) {
+                can.extend(ajaxObj, {
+                    'type': 'get'
+                });
+            }
 
             can.fixture.on = false;
-            $.ajax(can.extend(options, {
-                url: url
-            })).done(function( resp ) {
+            $.ajax( ajaxObj ).done(function( resp ) {
                 var data = can.extend(resp, {
                     'wesentthis': options.data,
                     'wesentthisto': url
