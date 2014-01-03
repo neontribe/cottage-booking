@@ -6,7 +6,6 @@
     class="<% classes %>"
     value="<%= model.attr( attrName ) ? model.attr( attrName ).format('DD/MM/YYYY') : '' %>"
     <%# if datepickerOptions is undefined, perfect! %>
-    <% debugger; %>
     <%= (el) -> el.datepicker( this.datepickerOptions ) %>
     <%= (el) -> el.tooltip( tooltipOptions ) %>
 />
