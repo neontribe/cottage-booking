@@ -17,7 +17,7 @@ define([
 
         attributes: {
 
-            partyDetails: 'Traveller.models',
+            partyDetails: Traveller,
             fromDate: 'date',
             toDate: 'date'
         },
