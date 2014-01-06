@@ -2,12 +2,13 @@ define([
     'can/util/string',
     'moment',
     'underscore',
-    'models/traveller',
+    'models/travellers',
+    'utils',
     'can/model',
     'can/map/validations',
     'can/map/attributes',
     'can/compute'
-], function(can, moment, _, Traveller){
+], function(can, moment, _, Traveller ){
     'use strict';
 
     return can.Model({
@@ -17,10 +18,9 @@ define([
 
         attributes: {
 
-            partyDetails: Traveller,
+            partyDetails: Traveller.List,
             fromDate: 'date',
-            toDate: 'date',
-            _partyDetails: 'noSend'
+            toDate: 'date'
         },
 
         convert: {
@@ -39,16 +39,13 @@ define([
                 if( val ) {
                     return val.toString('YYYY-MM-DD');
                 }
-            },
-            'noSend': can.$.noop
+            }
         },
 
         model: function( rawData ) {
-            var model = can.Model.model.call( this, can.extend( rawData, {
-                'propRef': rawData.propertyRef + '_' + rawData.brandCode
+            return can.Model.model.call( this, can.extend( rawData, {
+                'propRef': rawData.propertyRef + '_' + rawData.brandCode,
             }));
-
-            model.attr('_partyDetails');
         },
 
         required: [
@@ -72,7 +69,21 @@ define([
     }, {
 
         'init': function() {
+            this.on( 'partySize', can.proxy( this.partyChangeHandler, this ) );
+        },
 
+        'partyChangeHandler': function() {
+            var mutate = {};
+            can.each( _.pick( this, _.keys( Traveller.types ) ), function( value, key ) {
+                mutate[ Traveller.types[key] ] = value;
+            });
+            this.attr('partyDetails').mutate( mutate );
+        },
+
+        'destroy': function() {
+            this.off('partySize');
+
+            return can.Model.prototype.destroy.call( this );
         },
 
         'fetchBooking': function( fetch ) {
@@ -89,7 +100,7 @@ define([
                     return this.constructor.findOne({
                         'bookingId': fetch
                     }).done(function( booking ) {
-                        self.attr( booking.attr() );
+                        self.attr( booking.__get() );
                     });
 
                     //break;
@@ -111,15 +122,8 @@ define([
         },
 
         'partySize': can.compute(function() {
-            return this.attr('adults') + this.attr('children');
-        }),
-
-        'partyDetails': can.compute(function() {
-            var partySize = this.attr('partySize');
-
-            if( partySize !== this.attr('partyDetails').length ) {
-
-            }
+            // TODO: use the Traveller.types static object keys
+            return this.attr('adults') + this.attr('children') + this.attr('infants');
         })
 
     });

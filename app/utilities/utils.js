@@ -7,6 +7,7 @@ define([
 
     return {
         fragmentToString: function( frag ) {
+            // Slight overhead..
             return can.$('<div>').html( frag ).html();
         },
         bindWithThat: function( fn, context, that ) {
@@ -18,6 +19,23 @@ define([
             return function() {
                 return fn.apply( context, [this].concat( slice.call( arguments ) ) );
             };
+        },
+        constructWith: function( Constructor, args ) {
+            // Instantiate a new Class style function, which will create the Constructor with the given args
+            function C() {
+                return Constructor.apply( this, args );
+            }
+            // Properly sort out the prototype
+            C.prototype = Constructor.prototype;
+            // Return the new Class
+            return new C();
+        },
+        rangeOfClasses: function( size, Construct ) {
+            var args = slice.call( arguments, 2 );
+
+            return can.map( new Array( size ), function( undef, key, that ) {
+                return that.constructWith( Construct, args );
+            }, this);
         }
     };
 

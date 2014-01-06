@@ -6,7 +6,14 @@ define([
     'use strict';
 
     return can.Model({
-
+        types: {
+            /*
+            'Count key' : 'type'
+             */
+            'children'  : 'child',
+            'adults'    : 'adult',
+            'infants'   : 'infant'
+        }
     }, {
         'init': function() {
             console.log('IM HERE');
