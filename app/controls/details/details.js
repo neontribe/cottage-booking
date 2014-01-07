@@ -36,6 +36,10 @@ define([
             }) );
         },
 
+        '{booking.partyDetails} change': function( partyDetails, evt, attrName, type, newVal, oldVal ) {
+            can.$.noop( partyDetails, evt, attrName, type, newVal, oldVal );
+        },
+
         '{booking} submit': function() {
             this.options.booking.save();
         }

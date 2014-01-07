@@ -10,19 +10,18 @@ define(['can/util/string', 'models/traveller', 'underscore', 'utils'], function(
         },
 
         'removeType': function( type ) {
-            var removeIndex;
-            this.each(function( trav, index ) {
-                if( trav.attr('type') === type ) {
-                    // Don't return false, so we can find the last instance of this type
-                    removeIndex = index;
+            for (var i = this.length - 1; i >= 0; i--) {
+                if( this[i].type === type ) {
+                    return this.removeAttr( i );
                 }
-            });
-            return this.removeAttr( removeIndex );
+            }
+            return false;
         },
 
         'mutate': function( types ) {
 console.log('miuteate');
-            var current = this.type();
+            var current = this.type(),
+                status = true;
 
             can.each( current, function( travs, type ) {
                 var add;
@@ -38,13 +37,18 @@ console.log('miuteate');
                     add = travs.length;
 
                     while( this.type( type ).length < types[ type ] ) {
-                        this.push( this._store[add++] || new Traveller({'type': type}) );
+                        if( this._store[ type ] ) {
+                            this.push( this._store[ type ][ add++ ] || new Traveller({'type': type}) );
+                        } else {
+                            this.push( new Traveller({'type': type}) );
+                        }
                     }
                 } else if( current[ type ] ) {
 
-                    while( this.type( type ).length > types[ type ] ) {
-                        this.removeType( type );
+                    while( this.type( type ).length > types[ type ] && status ) {
+                        status = this.removeType( type );
                     }
+
                 }
 
                 delete types[ type ];
@@ -53,7 +57,9 @@ console.log('miuteate');
 
             // By now we should only need to add new ones
             can.each( types, function( count, type ) {
-                this.push.apply( this, utils.rangeOfClasses( count, Traveller, {'type': type} ) );
+                if( count ) {
+                    this.push.apply( this, utils.rangeOfClasses( count, Traveller, {'type': type} ) );
+                }
             }, this );
 
             return this;

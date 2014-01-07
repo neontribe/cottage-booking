@@ -125,6 +125,9 @@ define([
                 min = $el.data('min');
 
             /* jshint -W018 */
+            // JSHint rightly complains about this use of '!', but we want this here
+            // because if one of them is falsey (undefined) then the equation is falsey
+            // so ( max > min ) would be falsey ( incorrectly )
             if( $el.val() > max && !(max < min) ) {
             /* jshint +W018 */
                 $el.val( $el.data('max') );
@@ -141,13 +144,16 @@ define([
             // Add errors when an input is changed
             var type = $el.attr('data-type'),
                 attr = $el.attr('name'),
-                getter;
+                getter, val;
 
-            if( type && attr ) {
+            if( type && attr  ) {
 
                 getter = this.options.getterMap[ type ] || this.options.getterMap.defaultGetter;
 
-                this.options.model.attr( attr, getter.call( this, $el, attr ) );
+                val = getter.call( this, $el, attr );
+                if( val !== this.options.model.attr( attr ) ) {
+                    this.options.model.attr( attr, val );
+                }
 
                 this.addErrorsForAttr( attr );
             }

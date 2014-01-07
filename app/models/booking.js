@@ -75,7 +75,7 @@ define([
         'partyChangeHandler': function() {
             var mutate = {};
             can.each( _.pick( this, _.keys( Traveller.types ) ), function( value, key ) {
-                mutate[ Traveller.types[key] ] = value;
+                mutate[ Traveller.types[key] ] = parseInt( value, 10 );
             });
             this.attr('partyDetails').mutate( mutate );
         },
