@@ -3,9 +3,11 @@ define([
     'resources/avail',
     'resources/book',
     'underscore',
+    'moment',
     'can/model',
-    'can/map/validations'
-], function(can, avail, booking, _){
+    'can/map/validations',
+    'can/map/attributes'
+], function(can, avail, booking, _, moment){
     'use strict';
 
     return can.Model({
@@ -17,6 +19,28 @@ define([
             'avail': avail,
             'saveOnValid': true,
             'adults': 4
+        },
+
+        attributes: {
+            fromDate: 'date',
+            toDate: 'date'
+        },
+
+        convert: {
+            'date': function( raw ) {
+                if( typeof raw === 'number' ) {
+                    return moment( raw * 1000 );
+                } else if( typeof raw === 'string' ) {
+                    return moment( raw, 'YYYY-MM-DD' );
+                }
+                return raw;
+            }
+        },
+
+        serialize: {
+            'date': function( raw ) {
+                return typeof raw === 'object' ? raw.format('YYYY-MM-DD') : raw;
+            }
         },
 
         // We only need this attributes to make an enquiry
@@ -111,20 +135,6 @@ define([
             this.off('propRef');
 
             return can.Model.prototype.destroy.call( this );
-        },
-
-        'serialize': function() {
-            // only include the attributes above
-            var serialized = _.pick( can.Model.prototype.serialize.call( this ), this.constructor.required );
-
-            if( this.attr('fromDate') ) {
-                serialized.fromDate = this.attr('fromDate').format('YYYY-MM-DD');
-            }
-            if( this.attr('toDate') ) {
-                serialized.toDate = this.attr('toDate').format('YYYY-MM-DD');
-            }
-
-            return serialized;
         },
 
         'make': function() {

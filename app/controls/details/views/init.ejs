@@ -38,7 +38,7 @@
     </form>
     <div class="party-list">
         <% list( model.attr('partyDetails'), function( traveller ) { %>
-            <div
+            <div <% console.log('re-rendering') %>
                 <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
                     'model': traveller,
                     'optionsMap': {
