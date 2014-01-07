@@ -13,12 +13,14 @@ define([
     'use strict';
 
     var init = false,
-        components = [
-            {
-                page: 'calendar',
-                control: Calendar
+        stages = {
+            'calendar': {
+                'Control': Calendar
+            },
+            'details': {
+                'Control': Details
             }
-        ],
+        },
         BookingPath;
     /* -==== router and main controller ====- */
     BookingPath = can.Control({
@@ -26,7 +28,8 @@ define([
 
         defaults: {
             enquiry: enquiry,
-            book: book
+            book: book,
+            stages: stages
         }
 
     }, {
@@ -34,37 +37,72 @@ define([
         init: function() {
             this.options.enquiry.attr( 'propRef', this.options.propRef );
 
-            new Calendar(this.element);
             can.route.ready();
         },
 
-        // ':page route': function() {
-        //     console.log('Page changed!');
-        //     console.log.apply( console, arguments );
-        // },
+        applyStage: function( stageName ) {
+            var stage = this.options.stages[ stageName ],
+                $el = stage.element;
 
-        ':booking route': function( routeAttr ) {
-            console.log('booking changed!');
-            console.log.apply(console, arguments);
+            if( !stage ) {
+                can.route.attr('page', 'calendar');
+                return;
+            }
+
+            if( !$el ) {
+                $el = stage.element = can.$('<div class="controller ' + stageName + '" >').appendTo( this.element );
+            }
+
+            this.element.find('> .active').each(function() {
+                can.$( this )
+                    .removeClass('active')
+                    .control().destroy();
+            });
+
+            new stage.Control( $el.addClass('active') );
+        },
+
+        changeStage: function( newStage ) {
+            var chosenStage = this.options.stages[ newStage ] || this.options.stages.details;
+
+
+        },
+
+        // Empty route
+        'route': function() {
+            can.route.attr('page', 'details');
+        },
+
+        // We only have a page on the hash-bang, _usually_ only happens when we don't have a booking
+        ':page route': function( routeData ) {
+            this.changeStage( routeData.page );
+        },
+
+        '{can.route} booking': function( routeAttr ) {
             var id = routeAttr.booking;
 
             if( id ) {
 
                 if( this.options.book.attr('bookingId') !== id ) {
-                    book.fetchBooking( id ).fail(function() {
+                    this.options.book.fetchBooking( id ).fail(function() {
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
-                        book.reset();
                     });
+
+                    can.route.attr('page', 'details');
                 }
 
+            } else {
+                this.options.book.reset();
             }
 
+        },
+
+        ':page/:booking route': function( routeAttr ) {
 
         },
 
         '{book} bookingId': function( obj, evt, newVal ) {
-            console.log.apply(console, arguments);
             can.route.attr('booking', newVal);
         }
     });

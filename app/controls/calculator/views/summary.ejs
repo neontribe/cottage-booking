@@ -5,8 +5,10 @@
 <br>
 <span>Property reference: <%= booking.attr('propertyRef') %>_<%= booking.attr('brandCode') %></span>
 <br>
-<span> Arrive: <%= booking.attr('fromDate').format('DD-MM-YYYY') %></span>
+<span>Arrive: <%= booking.attr('fromDate') ? booking.attr('fromDate').format('DD-MM-YYYY') : '' %></span>
 <br>
-<span> Depart: <%= booking.attr('toDate').format('DD-MM-YYYY') %></span>
+<span>Depart: <%= booking.attr('toDate') ? booking.attr('toDate').format('DD-MM-YYYY') : '' %></span>
 <br>
-<span> Price: <%= money( booking.attr('price.totalPrice') ) %></span>
+<% if( booking.attr('price') ) { %>
+    <span>Price: <%= money( booking.attr('price.totalPrice') ) %></span>
+<% } %>

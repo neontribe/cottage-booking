@@ -20,21 +20,6 @@ define([
     return can.Control({
         'pluginName': 'bindForm',
 
-        'getterMap': {
-            'datepicker': function( $el ) {
-                return moment( $el.datepicker('getDate') );
-            },
-            'defaultGetter': function( $el ) {
-                return $el.val();
-            },
-            'checkbox': function( $el ) {
-                return !!$el.is(':checked');
-            },
-            'number': function( $el ) {
-                return Number( $el.val() );
-            }
-        },
-
         defaults: {
             model: null,
             proxy: null,
@@ -43,12 +28,32 @@ define([
             tooltipOptions: {
                 track: true
             },
-            getterMap: {},
+            'getterMap': {
+                'datepicker': function( $el ) {
+                    return moment( $el.datepicker('getDate') );
+                },
+                'defaultGetter': function( $el ) {
+                    return $el.val();
+                },
+                'checkbox': function( $el ) {
+                    return !!$el.is(':checked');
+                },
+                'number': function( $el ) {
+                    return Number( $el.val() );
+                }
+            },
+            'setterMap': {
+                'defaultSetter': function( attr, val ) {
+                    return this.options.model.attr( attr, val );
+                }
+            },
             optionsMap: {},
             // Attributes for which this form bound controller is responsible
             attributes: null,
             // This can be set per input as well
-            placeholder: true
+            placeholder: true,
+            // delay changes to the model's attribute by this amount of milliseconds
+            debounceDelay: 250
         }
     },{
         init: function() {
@@ -62,8 +67,15 @@ define([
             // so we can display tooltips
             this.element.find(':input').attr('title', '');
 
-            can.extend( this.options.getterMap, this.constructor.getterMap );
+            this.setter = _.debounce( this.setter, this.options.debounceDelay );
 
+        },
+
+        'setter': function( type ) {
+            var setter = this.options.setterMap[ type ] || this.options.setterMap.defaultSetter,
+                args = Array.prototype.slice.call( arguments, 1 );
+
+            return setter.apply( this, args );
         },
 
         // destroy: function() {
@@ -146,13 +158,13 @@ define([
                 attr = $el.attr('name'),
                 getter, val;
 
-            if( type && attr  ) {
+            if( type && attr ) {
 
                 getter = this.options.getterMap[ type ] || this.options.getterMap.defaultGetter;
 
                 val = getter.call( this, $el, attr );
                 if( val !== this.options.model.attr( attr ) ) {
-                    this.options.model.attr( attr, val );
+                    this.setter( type, attr, val, $el );
                 }
 
                 this.addErrorsForAttr( attr );
@@ -199,10 +211,10 @@ define([
             return this.getElementsFor( attr ).attr('data-label') || '';
         },
         'addErrors': function() {
-            var errors = this.options.model.errors( this.options.attributes.attr() );
+            var errors = this.options.model.errors();
 
             if( errors ) {
-                can.each( errors, function( value, key ) {
+                can.each( _.pick( errors, this.options.attributes.attr() ), function( value, key ) {
                     this.addTheseErrorsForAttr( key, value );
                 }, this);
                 return true;

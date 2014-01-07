@@ -19,12 +19,12 @@ define(['can/util/string', 'models/traveller', 'underscore', 'utils'], function(
         },
 
         'mutate': function( types ) {
-console.log('miuteate');
             var current = this.type(),
                 status = true;
 
             can.each( current, function( travs, type ) {
                 var add;
+
                 if( !this._store[type] || this._store[type].length < travs.length ) {
                     this._store[ type ] = travs;
                 }
@@ -55,13 +55,12 @@ console.log('miuteate');
 
             }, this );
 
-            // By now we should only need to add new ones
-            can.each( types, function( count, type ) {
-                if( count ) {
+            if( _.filter( types, _.identity ).length ) {
+                // By now we should only need to add new ones
+                can.each( types, function( count, type ) {
                     this.push.apply( this, utils.rangeOfClasses( count, Traveller, {'type': type} ) );
-                }
-            }, this );
-
+                }, this );
+            }
             return this;
         }
     });

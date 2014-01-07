@@ -193,7 +193,8 @@ module.exports = function(grunt) {
             controls, views, nameify, removeExt;
 
         controls = grunt.file.expand([
-            'app/controls/*'
+            'app/controls/*',
+            'app'
         ]);
 
         nameify = function( name ) {

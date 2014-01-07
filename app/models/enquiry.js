@@ -138,7 +138,19 @@ define([
         },
 
         'make': function() {
-            return booking.fetchBooking( this.serialize() );
+            return booking.fetchBooking( this.serialize() ).fail(can.proxy(function( failedBooking ) {
+                // On error proxy the failed booking object back over here, just taking the interesting bits
+                var err;
+                if( failedBooking.responseText ) {
+                    err = JSON.parse( failedBooking.responseText );
+                    this.attr( err );
+                } else {
+                    this.attr({
+                        'status': 'error',
+                        'message': 'A fatal error has occurred, sorry for any inconveniences.'
+                    });
+                }
+            }, this));
         },
 
         // If we hear about a new propref re-fetch the availability data

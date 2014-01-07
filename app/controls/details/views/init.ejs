@@ -32,23 +32,25 @@
 
 <div>
     <h2>Party information</h2>
-    <form <%= (el) -> el.bindForm({ model: model }) %> >
+    <form <%= (el) -> el.bindForm({ model: model, debounceDelay: 50 }) %> >
         <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults:" data-min="0" />
         <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
     </form>
     <div class="party-list">
-        <% model.attr('partyDetails').each(function( traveller ) { %>
-            <div
-                <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
-                    'model': traveller,
-                    'optionsMap': {
-                        'title': titles,
-                        'age': ages,
-                        'childAge': childAge
-                    }
-                }) %>
-                class="<%= traveller.type %> traveller"
-            ></div>
-        <% }); %>
+        <% if( model.attr('partyDetails') ) {
+            model.attr('partyDetails').each(function( traveller ) { %>
+                <div
+                    <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
+                        'model': traveller,
+                        'optionsMap': {
+                            'title': titles,
+                            'age': ages,
+                            'childAge': childAge
+                        }
+                    }) %>
+                    class="<%= traveller.type %> traveller"
+                ></div>
+        <%  });
+        } %>
     </div>
 </div>

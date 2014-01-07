@@ -23,7 +23,14 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
             };
         },
 
-        sub: can.sub
+        sub: can.sub,
+
+        content: function( controlInst ) {
+            return function( el ) {
+                //can.$( el ).addClass();
+                controlInst.options.content = can.$( el );
+            };
+        }
     });
 
     return can;
