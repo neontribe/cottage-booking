@@ -40,6 +40,10 @@ define([
                     stage: stage,
                     name: stageName
                 }));
+
+                if( stage.Control) {
+                    new stage.Control( stage.content );
+                }
             }, this);
 
             can.route.ready();
