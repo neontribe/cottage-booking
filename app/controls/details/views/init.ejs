@@ -24,7 +24,7 @@
     <input name="customer.mobilePhone" />
     <input name="customer.email" />
     <input name="customer.emailOptIn" type="checkbox"/>
-    <input name="customer.src" />
+    <input name="customer.source" />
     <input name="customer.which" />
 
     <button type="submit">Submit</button>
@@ -37,8 +37,8 @@
         <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
     </form>
     <div class="party-list">
-        <% if( model.attr('partyDetails') ) {
-            model.attr('partyDetails').each(function( traveller ) { %>
+        <% if( model.attr('partyDetails.length') ) { %>
+            <% model.attr('partyDetails').each(function( traveller ) { %>
                 <div
                     <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
                         'model': traveller,
@@ -50,7 +50,7 @@
                     }) %>
                     class="<%= traveller.type %> traveller"
                 ></div>
-        <%  });
-        } %>
+        <%  }); %>
+        <% } %>
     </div>
 </div>

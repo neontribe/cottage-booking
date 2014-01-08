@@ -18,7 +18,7 @@ define([
             // The availability object so we can validate stays
             'avail': avail,
             'saveOnValid': true,
-            'adults': 4
+            'adults': 1
         },
 
         attributes: {

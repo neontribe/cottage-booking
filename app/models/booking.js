@@ -37,7 +37,7 @@ define([
         'serialize': {
             date: function( val ) {
                 if( val ) {
-                    return val.toString('YYYY-MM-DD');
+                    return val.format('YYYY-MM-DD');
                 }
             }
         },
@@ -63,6 +63,12 @@ define([
 
         'init': function() {
             this.validatePresenceOf( this.required );
+
+            this.validate('status', function( status ) {
+                if( status && status !== 'ok' ) {
+                    return this.attr('message') || 'An unknown error occurred';
+                }
+            });
         }
 
     }, {
