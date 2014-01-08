@@ -20,7 +20,7 @@ define([
 
     return can.Control({
 
-        pluginName: 'booking_calculator',
+        pluginName: 'bookingCalculator',
 
         defaults: {
             enquiry: enquiry,

@@ -44,7 +44,7 @@ define([
 
         model: function( rawData ) {
             return can.Model.model.call( this, can.extend( rawData, {
-                'propRef': rawData.propertyRef + '_' + rawData.brandCode,
+                'propRef': rawData.propertyRef + '_' + rawData.brandCode
             }));
         },
 
@@ -53,7 +53,6 @@ define([
             'propRef',
             'fromDate',
             'toDate',
-            'nights',
             'adults',
             'children',
             'infants',
@@ -73,16 +72,19 @@ define([
         },
 
         'partyChangeHandler': function() {
-            var mutate;
+            var mutate = {};
 
             can.trigger( this, 'partyDetailsUpdating' );
-            if( this.attr('partyDetails') ) {
-                mutate = {};
-                can.each( _.pick( this, _.keys( Traveller.types ) ), function( value, key ) {
-                    mutate[ Traveller.types[key] ] = parseInt( value, 10 );
-                });
-                this.attr('partyDetails').mutate( mutate );
+
+            if( !this.attr('partyDetails') ) {
+                this.attr('partyDetails', []);
             }
+
+            can.each( _.pick( this, _.keys( Traveller.types ) ), function( value, key ) {
+                mutate[ Traveller.types[key] ] = parseInt( value, 10 );
+            });
+
+            this.attr('partyDetails').mutate( mutate );
             can.trigger( this, 'partyDetailsUpdated' );
         },
 

@@ -13,6 +13,20 @@ define([
             'children'  : 'child',
             'adults'    : 'adult',
             'infants'   : 'infant'
+        },
+
+        'default': {
+            'type': 'adult'
+        },
+
+        init: function() {
+            this.validatePresenceOf(['firstName', 'surname', 'age']);
+
+            this.validate(['age'], function( age ) {
+                if( this.attr('type') === 'adult' && !age ) {
+
+                }
+            });
         }
     }, {
         'init': function() {

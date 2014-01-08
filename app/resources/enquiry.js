@@ -1,5 +1,5 @@
 /**
- * Avail describes the singleton that will contain the availability
+ * enquiry describes the singleton that will contain the availability
  * information for the cottage this app is constructed for
  * @return {Model} The enquiry model to be shared by the app
  */

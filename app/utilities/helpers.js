@@ -25,10 +25,9 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
 
         sub: can.sub,
 
-        content: function( controlInst ) {
+        assignAsContent: function( self ) {
             return function( el ) {
-                //can.$( el ).addClass();
-                controlInst.options.content = can.$( el );
+                self.content = can.$( el );
             };
         }
     });

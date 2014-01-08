@@ -53,7 +53,7 @@ define([
             // This can be set per input as well
             placeholder: true,
             // delay changes to the model's attribute by this amount of milliseconds
-            debounceDelay: 250
+            debounceDelay: 0
         }
     },{
         init: function() {

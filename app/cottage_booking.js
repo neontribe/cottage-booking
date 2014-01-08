@@ -1,30 +1,22 @@
 define([
     'can/util/string',
-    'controls/calendar/calendar', // TODO: Move these two things into a model init or something so we only load one file
-    'controls/details/details',
+    './views',
     'resources/enquiry',
     'resources/book',
+    'resources/stages',
     // All the rest
     'controls/calculator/calculator',
     'can/control',
     'can/control/plugin',
     'can/control/route'
-], function(can, Calendar, Details, enquiry, book ) {
+], function(can, views,enquiry, book, stages ) {
     'use strict';
 
     var init = false,
-        stages = {
-            'calendar': {
-                'Control': Calendar
-            },
-            'details': {
-                'Control': Details
-            }
-        },
         BookingPath;
     /* -==== router and main controller ====- */
     BookingPath = can.Control({
-        pluginName: 'booking_path',
+        pluginName: 'booking',
 
         defaults: {
             enquiry: enquiry,
@@ -37,33 +29,24 @@ define([
         init: function() {
             this.options.enquiry.attr( 'propRef', this.options.propRef );
 
+            this.element.html( views.init({
+                control: this
+            }) );
+
+            //
+            this.options.stages.each(function( stage, stageName ) {
+                // We expect the content to be set as part of the render of the init template
+                this.content.append(views.stage({
+                    stage: stage,
+                    name: stageName
+                }));
+            }, this);
+
             can.route.ready();
         },
 
-        applyStage: function( stageName ) {
-            var stage = this.options.stages[ stageName ],
-                $el = stage.element;
-
-            if( !stage ) {
-                can.route.attr('page', 'calendar');
-                return;
-            }
-
-            if( !$el ) {
-                $el = stage.element = can.$('<div class="controller ' + stageName + '" >').appendTo( this.element );
-            }
-
-            this.element.find('> .active').each(function() {
-                can.$( this )
-                    .removeClass('active')
-                    .control().destroy();
-            });
-
-            new stage.Control( $el.addClass('active') );
-        },
-
         changeStage: function( newStage ) {
-            var chosenStage = this.options.stages[ newStage ] || this.options.stages.details;
+            var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('details');
 
 
         },
@@ -104,6 +87,27 @@ define([
 
         '{book} bookingId': function( obj, evt, newVal ) {
             can.route.attr('booking', newVal);
+        },
+
+        /**
+         * This function exposes an api to modify the settings
+         * attached to this top level controller, importantly it is possible
+         * to make changes to the settings used to launch each of the components
+         * @param  {Object} settingsObj The object to change the settings
+         * @return {undefined}
+         */
+        'setOptions': function( settingsObj ) {
+            can.each( settingsObj, function( value, key ) {
+                if( this.options[key] ) {
+                    if( this.options[key].attr ) {
+                        this.options[key].attr( value );
+                    } else {
+                        can.extend( true, this.options[key], value );
+                    }
+                } else {
+                    this.options[key] = value;
+                }
+            }, this);
         }
     });
 
@@ -115,7 +119,9 @@ define([
 
         init = $this[ plugin ];
 
-        init.call( $this, $this.data() );
+        if( init ) {
+            init.call( $this, $this.data() );
+        }
     });
 
     if( !init ) {

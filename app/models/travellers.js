@@ -22,6 +22,9 @@ define(['can/util/string', 'models/traveller', 'underscore', 'utils'], function(
             var current = this.type(),
                 status = true;
 
+            // This is awesome
+            can.batch.start();
+
             can.each( current, function( travs, type ) {
                 var add;
 
@@ -61,6 +64,9 @@ define(['can/util/string', 'models/traveller', 'underscore', 'utils'], function(
                     this.push.apply( this, utils.rangeOfClasses( count, Traveller, {'type': type} ) );
                 }, this );
             }
+
+            // down here, only fire the events once we've made all our changes
+            can.batch.stop();
             return this;
         }
     });
