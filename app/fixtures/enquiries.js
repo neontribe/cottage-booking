@@ -12,8 +12,9 @@ define(['can/util/string', 'jquery', 'moment', 'can/util/string/deparam', 'can/u
             } else {
                 url = require.toUrl('fixtures/enquiries/enquiry_A223_ZZ.json');
             }
-
+            can.fixture.on = false;
             $.get( url ).done( reply );
+            can.fixture.on = true;
 
         } : function( options, reply ) {
             var url = 'http://localhost/NeonTABS/demosite/property/booking/enquiry'; // Grumble
