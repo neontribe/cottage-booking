@@ -42,7 +42,7 @@ define([
                 control: this,
                 tabsOptions: {
                     beforeActivate: function() {
-                        debugger;
+
                     }
                 }
             }) );
