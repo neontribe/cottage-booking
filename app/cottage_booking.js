@@ -8,7 +8,8 @@ define([
     'controls/calculator/calculator',
     'can/control',
     'can/control/plugin',
-    'can/control/route'
+    'can/control/route',
+    'jqueryui/jquery.ui.tabs'
 ], function(can, views,enquiry, book, stages ) {
     'use strict';
 
@@ -38,21 +39,13 @@ define([
             this.element.addClass('booking-path');
 
             this.element.html( views.init({
-                control: this
+                control: this,
+                tabsOptions: {
+                    beforeActivate: function() {
+                        debugger;
+                    }
+                }
             }) );
-
-            //
-            this.options.stages.each(function( stage, stageName ) {
-                // We expect the content to be set as part of the render of the init template
-                this.content.append(views.stage({
-                    stage: stage,
-                    name: stageName
-                }));
-
-                // if( stage.Control) {
-                //     new stage.Control( stage.content );
-                // }
-            }, this);
 
             can.route(':page/:booking');
 
@@ -63,7 +56,7 @@ define([
             var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('calendar');
 
             if( chosenStage.content && chosenStage.Control ) {
-                new chosenStage.Control( chosenStage.content );
+
             }
 
             if( oldPage ) {

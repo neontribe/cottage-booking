@@ -38,7 +38,13 @@ var getRenderer = function(ext, cwd){
         "});";
 };
 
-var sheets = [],
+var sheets = [
+        'jquery.ui.base.css',
+        'jquery.ui.theme.css',
+        'jquery.ui.datepicker.css',
+        'jquery.ui.tooltip.css',
+        'jquery.ui.button.css'
+    ],
     banner =    '/**\n' +
                 ' * This is a compilation of a stylesheets used to put things in there places.\n' +
                 ' * If you wish to roll your own theme from the jquery ui themeroller the jquery ui components,\n' +
@@ -180,13 +186,9 @@ module.exports = function(grunt) {
                     banner: banner
                 },
                 files: {
-                    'app/prod/jqueryui.css': [
-                        'app/bower_components/jquery-ui/themes/base/jquery.ui.base.css',
-                        'app/bower_components/jquery-ui/themes/base/jquery.ui.theme.css',
-                        'app/bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css',
-                        'app/bower_components/jquery-ui/themes/base/jquery.ui.tooltip.css',
-                        'app/bower_components/jquery-ui/themes/base/jquery.ui.button.css'
-                    ]
+                    'app/prod/jqueryui.css': _.map(sheets, function( cssPath ) {
+                        return 'app/bower_components/jquery-ui/themes/base/' + cssPath;
+                    })
                 }
             }
         },

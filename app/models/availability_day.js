@@ -4,7 +4,7 @@
  * TODO: Investigate whether we can just instantiate a model on the fly, rather than this
  * @return {can.Model} availability the model
  */
-define(['can', 'moment'], function(can, moment){
+define(['can/util/string', 'moment', 'can/model'], function(can, moment){
     'use strict';
 
     return can.Model({

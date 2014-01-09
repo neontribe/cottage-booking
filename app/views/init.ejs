@@ -1,1 +1,12 @@
-<div <%= assignAsContent( control ) %>></div>
+<div <%= assignAsContent( control ) %> <%= (el) -> el.tabs( tabsOptions ) %>>
+
+    <ul>
+        <% control.options.stages.each(function( stage, name ) { %>
+            <li><a <%= link() %> href="#<%= name %>"><%= capitalize( name ) %></a></li>
+        <% }); %>
+    </ul>
+
+    <% control.options.stages.each(function( stage, name ) { %>
+        <div id="<%= name %>" class="<%= name %>" <%= assignAsContent( stage ) %> ></div>
+    <% }); %>
+</div>

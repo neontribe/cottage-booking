@@ -28,7 +28,8 @@ requirejs.config({
         },
         // Add these as I need them
         'jqueryui/jquery.ui.datepicker':    ['jqueryui/jquery.ui.core'],
-        'jqueryui/jquery.ui.tooltip':       ['jqueryui/jquery.ui.core','jqueryui/jquery.ui.widget','jqueryui/jquery.ui.position']
+        'jqueryui/jquery.ui.tooltip':       ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget', 'jqueryui/jquery.ui.position'],
+        'jqueryui/jquery.ui.tabs':          ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget']
     },
     noGlobal: true
 });

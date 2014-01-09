@@ -217,7 +217,7 @@ define([
                 can.each( _.pick( errors, this.options.attributes.attr() ), function( value, key ) {
                     this.addTheseErrorsForAttr( key, value );
                 }, this);
-                return true;
+                return errors;
             }
         },
         'removeErrors': function() {
@@ -264,8 +264,12 @@ define([
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );
             } else {
-                can.trigger( this.options.model, 'errors' );
+                can.trigger( this.options.model, 'errors', [ hasErrors ] );
             }
+        },
+
+        '{model} errors': function() {
+            debugger;
         }
     });
 

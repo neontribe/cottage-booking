@@ -24,10 +24,26 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
         },
 
         sub: can.sub,
+        capitalize: can.capitalize,
 
         assignAsContent: function( self ) {
             return function( el ) {
                 self.content = can.$( el );
+            };
+        },
+
+        link: function( cb ) {
+            return function( el ) {
+                can.$( el ).on('click', cb ? cb : function() {
+
+                    var page = this.href ? this.href.split('#').pop() : false;
+
+                    if( page ) {
+                        can.route.attr('page', page);
+                    }
+
+                    return false;
+                });
             };
         }
     });

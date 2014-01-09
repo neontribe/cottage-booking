@@ -138,7 +138,13 @@ define([
         'partySize': can.compute(function() {
             // TODO: use the Traveller.types static object keys
             return this.attr('adults') + this.attr('children') + this.attr('infants');
-        })
+        }),
+
+        // In most cases we need to clear this error before continuing
+        // So we just remove it
+        'clearServerError': function() {
+            this.removeAttr('status');
+        }
 
     });
 
