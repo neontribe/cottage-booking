@@ -70,12 +70,10 @@ define([
         },
 
         '{can.route} booking set': function() {
-            debugger;
         },
 
         '{can.route} booking change': function( routeAttr ) {
             var id = routeAttr.booking;
-            debugger;
             if( id ) {
 
                 if( this.options.book.attr('bookingId') !== id ) {
