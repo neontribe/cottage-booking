@@ -4,10 +4,11 @@ define([
     'resources/book',
     'underscore',
     'moment',
+    'utils',
     'can/model',
     'can/map/validations',
     'can/map/attributes'
-], function(can, avail, booking, _, moment){
+], function(can, avail, booking, _, moment, utils){
     'use strict';
 
     return can.Model({
@@ -32,6 +33,8 @@ define([
                     return moment( raw * 1000 );
                 } else if( typeof raw === 'string' ) {
                     return moment( raw, 'YYYY-MM-DD' );
+                } else if( typeof raw === 'object' && raw.isValid && !raw.isValid() ) {
+                    return null;
                 }
                 return raw;
             }
@@ -61,7 +64,11 @@ define([
                     return false;
                 }
 
-                if( fromDate < new Date() ) {
+                if( fromDate && !fromDate.isValid() ) {
+                    return 'Invalid date';
+                }
+
+                if( fromDate < utils.now() ) {
                     return 'Your stay should be in the future';
                 }
 
@@ -75,6 +82,10 @@ define([
             this.validate('toDate', function( toDate ) {
                 if( !this.attr('fromDate') ) {
                     return false;
+                }
+
+                if( toDate && !toDate.isValid() ) {
+                    return 'Invalid date';
                 }
 
                 if( toDate < this.attr('fromDate') ) {
@@ -165,7 +176,7 @@ define([
 
             if( from && to ) {
 
-                if( !this.errors( this.constructor.required ) ) {
+                if( !this.errors() ) {
                     this.save();
                 }
 
@@ -202,9 +213,8 @@ define([
                 dayClasses = [],
                 tooltip = '';
 
-            // TODO: Look to change new Date() to like require('utils').today() or something
-            // SO we could mox it in tests
-            if( date > new Date() ) {
+            // mox it in tests
+            if( date > utils.now() ) {
                 if( availability ) {
                     dayData = availability.attr( date );
 

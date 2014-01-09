@@ -1,6 +1,7 @@
 define([
-    'can/util/string'
-], function( can ) {
+    'can/util/string',
+    'moment'
+], function( can, moment ) {
     'use strict';
 
     var slice = Array.prototype.slice;
@@ -36,6 +37,9 @@ define([
             return can.map( new Array( size ), function( undef, key, that ) {
                 return that.constructWith( Construct, args );
             }, this);
+        },
+        now: function() {
+            return moment( new Date() );
         }
     };
 

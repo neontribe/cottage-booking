@@ -41,23 +41,23 @@ define([
                     name: stageName
                 }));
 
-                if( stage.Control) {
-                    new stage.Control( stage.content );
-                }
+                // if( stage.Control) {
+                //     new stage.Control( stage.content );
+                // }
             }, this);
 
             can.route.ready();
         },
 
         changeStage: function( newStage ) {
-            var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('details');
+            var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('calendar');
 
 
         },
 
         // Empty route
         'route': function() {
-            can.route.attr('page', 'details');
+            can.route.attr('page', 'calendar');
         },
 
         // We only have a page on the hash-bang, _usually_ only happens when we don't have a booking
@@ -65,9 +65,17 @@ define([
             this.changeStage( routeData.page );
         },
 
-        '{can.route} booking': function( routeAttr ) {
-            var id = routeAttr.booking;
+        ':page/:booking route': function( routeAttr ) {
 
+        },
+
+        '{can.route} booking set': function() {
+            debugger;
+        },
+
+        '{can.route} booking change': function( routeAttr ) {
+            var id = routeAttr.booking;
+            debugger;
             if( id ) {
 
                 if( this.options.book.attr('bookingId') !== id ) {
@@ -75,17 +83,11 @@ define([
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
                     });
-
-                    can.route.attr('page', 'details');
                 }
 
             } else {
                 this.options.book.reset();
             }
-
-        },
-
-        ':page/:booking route': function( routeAttr ) {
 
         },
 

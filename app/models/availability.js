@@ -6,8 +6,11 @@ define([
     'can/util/string',
     'models/availability_day',
     'moment',
-    'underscore'
-], function(can, AvailabilityDay, moment, _){
+    'underscore',
+    'utils',
+    'can/model',
+    'can/compute'
+], function(can, AvailabilityDay, moment, _, utils){
     'use strict';
 
     return can.Model({
@@ -35,6 +38,24 @@ define([
                 .isEmpty()
                 .value();
         },
+
+        firstAvailableDate: can.compute(function() {
+            var current = utils.now(),
+                availDate;
+
+            this.each(function() {
+                var date = this.attr( current.format('YYYY-MM-DD') );
+
+                if( date && date.attr && date.attr('available') ) {
+                    availDate = current;
+                    return false;
+                }
+
+                current.add('d', 1);
+            }, this);
+
+            return availDate;
+        }),
 
         /**
          * attr function overrides the default attr behavior

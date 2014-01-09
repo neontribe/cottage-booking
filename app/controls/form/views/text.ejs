@@ -4,7 +4,7 @@
     type="<%= type %>"
     data-type="<%= type %>"
     data-label="<%= label %>"
-    class="<% classes %>"
+    class="<%= classes %>"
     value="<%= model.attr( attrName ) ? model.attr( attrName ) : '' %>"
     placeholder="<%= this.placeholder && typeof this.placeholder === 'string' ? this.placeholder : '' %>"
     <%= (el) -> el.tooltip( tooltipOptions ) %>

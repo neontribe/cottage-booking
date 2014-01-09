@@ -4,7 +4,7 @@
     type="number"
     data-type="<%= type %>"
     data-label="<%= label %>"
-    class="<% classes %>"
+    class="<%= classes %>"
     value="<%= typeof model.attr( attrName ) === 'number' ? model.attr( attrName ) : '' %>"
     placeholder="<%= this.placeholder && typeof this.placeholder === 'string' ? this.placeholder : '' %>"
     <%# for some reson the strings max and min are printed with "", so we don't need to include them in the string to be printed %>
