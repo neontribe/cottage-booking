@@ -2,10 +2,13 @@
     float:none;
     clear:both;
 }
+/* example styling */
+#cottage-booking {
+    width: 910px;
+}
 
-#cottage-booking > div {
-    height: 515px;
-    width: 907px;
+.booking-path > div {
+    width: 100%;
 }
 
 #some-tabs ul li {
@@ -28,8 +31,6 @@
     vertical-align: top;
 }
 #some-tabs + div {
-    /*width:1000px;
-    height: 800px;*/
     padding:1em;
     margin: 1em;
     border: 1px solid black;
@@ -62,14 +63,6 @@
     border: 1px solid red;
 }
 
-.name {
-    width:50%;
-}
-
-.name > * {
-    float:left;
-}
-
 .party-list > .traveller > form {
     width:100%;
     font-size:0;
@@ -96,4 +89,9 @@
 
 .loading * {
     cursor: wait;
+}
+
+.details > * {
+    float: left;
+    width: 50%;
 }

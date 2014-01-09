@@ -1,6 +1,7 @@
 # production files
 production.js
 .build
+app/prod/*
 
 # Built css
 style.out.css

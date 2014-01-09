@@ -38,6 +38,15 @@ var getRenderer = function(ext, cwd){
         "});";
 };
 
+var sheets = [],
+    banner =    '/**\n' +
+                ' * This is a compilation of a stylesheets used to put things in there places.\n' +
+                ' * If you wish to roll your own theme from the jquery ui themeroller the jquery ui components,\n' +
+                ' * the following style sheets are required:\n' +
+                sheets.join('\n * - ') + '\n' +
+                ' * documentation for jqueryui theming' +
+                ' **/';
+
 /**
  * This Gruntfile provides a `build` task that enables you to combine your
  * EJS and mustache views in the production build.
@@ -65,6 +74,9 @@ module.exports = function(grunt) {
             },
             rmbuilddir   : {
                 cmd : 'rm -rf .build'
+            },
+            clean: {
+                cmd: 'rm -rf app/prod'
             },
             myth: {
                 cmd: 'myth app/style/style.css app/style/style.out.css'
@@ -101,7 +113,7 @@ module.exports = function(grunt) {
                         end:    "   define('ejs', function() {});\n" +
                                 "}());"
                     },
-                    out : 'app/production.js',
+                    out : 'app/prod/production.js',
                     optimize: 'uglify2'
                 }
             }
@@ -117,7 +129,7 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: ['app/**/*.js', '!app/production.js', '!app/bower_components/*'],
+                files: ['app/**/*.js', '!app/prod/production.js', '!app/bower_components/*'],
                 options: {
                     livereload: true,
                 },
@@ -140,7 +152,7 @@ module.exports = function(grunt) {
                 },
                 options: {
                     ignores: [
-                        './app/production.js',
+                        './app/prod/production.js',
                         './app/bower_components/**',
                         './Gruntfile.js' // TODO: lint this file
                     ]
@@ -152,6 +164,39 @@ module.exports = function(grunt) {
             //         src: ['./app/production.js']
             //     }
             // }
+        },
+        cssmin: {
+            build: {
+                options: {
+                    banner: banner
+                },
+                files: {
+                    // the out file should have been passed through myth
+                    'app/prod/production.css': ['app/style/style.out.css']
+                }
+            },
+            jqueryui: {
+                options: {
+                    banner: banner
+                },
+                files: {
+                    'app/prod/jqueryui.css': [
+                        'app/bower_components/jquery-ui/themes/base/jquery.ui.base.css',
+                        'app/bower_components/jquery-ui/themes/base/jquery.ui.theme.css',
+                        'app/bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css',
+                        'app/bower_components/jquery-ui/themes/base/jquery.ui.tooltip.css',
+                        'app/bower_components/jquery-ui/themes/base/jquery.ui.button.css'
+                    ]
+                }
+            }
+        },
+        copy: {
+            build: {
+                src: '*',
+                dest: 'app/prod/images/',
+                cwd: 'app/bower_components/jquery-ui/themes/base/images/',
+                expand: true
+            }
         }
     });
 
@@ -177,6 +222,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', function(){
         grunt.task.run(
             'jshint:prebuild',
+            'exec:clean',
             'exec:rmbuilddir',
             'exec:mkbuilddir',
             'cancompile',
@@ -184,7 +230,9 @@ module.exports = function(grunt) {
             'createRenderers',
             'requirejs:compile',
             'exec:rmbuilddir',
-            'exec:myth'
+            'exec:myth',
+            'cssmin',
+            'copy'
         );
     });
 

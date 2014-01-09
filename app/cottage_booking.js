@@ -12,22 +12,30 @@ define([
 ], function(can, views,enquiry, book, stages ) {
     'use strict';
 
+    // TODO:Move this to a better place
+    can.$.datepicker.setDefaults({
+        dateFormat: 'dd/mm/yy',
+        firstDay: 1
+    });
+
     var init = false,
         BookingPath;
     /* -==== router and main controller ====- */
     BookingPath = can.Control({
-        pluginName: 'booking',
+        pluginName: 'bookingPath',
 
         defaults: {
             enquiry: enquiry,
             book: book,
-            stages: stages
+            stages: stages,
+            route: can.route
         }
 
     }, {
-
         init: function() {
             this.options.enquiry.attr( 'propRef', this.options.propRef );
+
+            this.element.addClass('booking-path');
 
             this.element.html( views.init({
                 control: this
@@ -46,13 +54,21 @@ define([
                 // }
             }, this);
 
+            can.route(':page/:booking');
+
             can.route.ready();
         },
 
-        changeStage: function( newStage ) {
+        changeStage: function( newStage, oldPage ) {
             var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('calendar');
 
+            if( chosenStage.content && chosenStage.Control ) {
+                new chosenStage.Control( chosenStage.content );
+            }
 
+            if( oldPage ) {
+
+            }
         },
 
         // Empty route
@@ -61,32 +77,33 @@ define([
         },
 
         // We only have a page on the hash-bang, _usually_ only happens when we don't have a booking
-        ':page route': function( routeData ) {
-            this.changeStage( routeData.page );
+        // ':page route': function( routeData ) {
+        //     this.changeStage( routeData.page );
+        // },
+
+        '{route} page': function( route, evt, newPage, oldPage ) {
+            this.changeStage( newPage, oldPage );
         },
 
-        ':page/:booking route': function( routeAttr ) {
+        '{route} booking': function( route, evt, newId, oldId ) {
+            if( newId ) {
 
-        },
-
-        '{can.route} booking set': function() {
-        },
-
-        '{can.route} booking change': function( routeAttr ) {
-            var id = routeAttr.booking;
-            if( id ) {
-
-                if( this.options.book.attr('bookingId') !== id ) {
-                    this.options.book.fetchBooking( id ).fail(function() {
+                if( this.options.book.attr('bookingId') !== newId ) {
+                    this.options.book.fetchBooking( newId ).fail(function() {
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
                     });
                 }
 
+                // if this is a newly created booking, auto advance
+                if( !oldId ) {
+                    can.route.attr('page', 'details');
+                }
+
             } else {
                 this.options.book.reset();
+                can.route.removeAttr('booking');
             }
-
         },
 
         '{book} bookingId': function( obj, evt, newVal ) {

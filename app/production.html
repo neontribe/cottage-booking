@@ -3,9 +3,8 @@
     <head>
         <title>cottage-booking</title>
 
-        <link rel="stylesheet" type="text/css" href="style/style.out.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
+        <link rel="stylesheet" type="text/css" href="prod/production.css" />
+        <link rel="stylesheet" type="text/css" href="prod/jqueryui.css" />
 
     </head>
     <body>
@@ -20,8 +19,8 @@
             <div class="cf"></div>
         </div>
 
-        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="booking_path"></div>
-        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="booking_calculator"></div>
+        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath"></div>
+        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
 
         <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
             <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
@@ -36,7 +35,7 @@
             ], function() {
 
                 // We do this here so the fixtures have had a chance to load
-                require(['production.js']);
+                require(['prod/production.js']);
 
             });
         </script>
