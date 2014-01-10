@@ -199,6 +199,17 @@ module.exports = function(grunt) {
                 cwd: 'app/bower_components/jquery-ui/themes/base/images/',
                 expand: true
             }
+        },
+        compress: {
+            build: {
+                options: {
+                    mode: 'zip',
+                    archive: 'app/prod.zip'
+                },
+                expand: true,
+                src: '**',
+                cwd: 'app/prod'
+            }
         }
     });
 
@@ -234,7 +245,8 @@ module.exports = function(grunt) {
             'exec:rmbuilddir',
             'exec:myth',
             'cssmin',
-            'copy'
+            'copy',
+            'compress'
         );
     });
 
@@ -248,7 +260,7 @@ module.exports = function(grunt) {
         ]);
 
         nameify = function( name ) {
-            return name.replace(/(_|-)./, function( found ) {
+            return name.replace(/(_|-)./g, function( found ) {
                 return found.charAt(1).toUpperCase();
             });
         };

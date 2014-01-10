@@ -1,7 +1,8 @@
 <form <%= bindForm({
     model: model,
     optionsMap: {
-        'customer.name.title': titles
+        'customer.name.title': titles,
+        'price.extras': model.attr('webExtras')
     },
     defaultLabel: defaultLabel
 }) %> >
@@ -26,6 +27,8 @@
     <input name="customer.emailOptIn" type="checkbox"/>
     <input name="customer.source" />
     <input name="customer.which" />
+
+    <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" />
 
     <button type="submit">Submit</button>
 </form>

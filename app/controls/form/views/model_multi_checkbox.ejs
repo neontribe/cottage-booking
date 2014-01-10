@@ -1,0 +1,21 @@
+<%
+    list( optionsMap.attr( attrName ), function( option ) {
+        var value = option.attr( valueAttr ) || option.attr( textAttr ),
+            text = option.attr( textAttr ) || option.attr( valueAttr ),
+            checkboxId = uniqueId( id + '_' );
+%>
+    <label for="<%= checkboxId %>">
+        <input
+            id="<%= checkboxId %>"
+            name="<%= attrName %>"
+            type="checkbox"
+            data-type="<%= type %>"
+            data-label="<%= label %>"
+            class="<%= classes %>"
+            value="<%= value %>"
+            <%= (el) -> el.data( 'formModel', option ) %>
+            <%= model.attr( attrName + '.' + value ) ? 'checked="checked"' : '' %>
+        />
+        <%= text %>
+    </label>
+<% }) %>

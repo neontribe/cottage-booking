@@ -64,6 +64,12 @@ define([
         'init': function() {
             this.validatePresenceOf( this.required );
 
+            this.validate(['adults', 'children', 'infants'], function() {
+                if( this.attr('partySize') > this.attr('propertyData.sleeps') ) {
+                    return 'The party size exceeds the maximum size this property can accommodate';
+                }
+            });
+
             this.validate('status', function( status ) {
                 if( status && status !== 'ok' ) {
                     return this.attr('message') || 'An unknown error occurred';

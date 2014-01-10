@@ -1,4 +1,4 @@
-define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, accounting ) {
+define(['can/util/string', 'accounting', 'underscore', 'can/view/ejs'], function( can, accounting, _ ) {
     'use strict';
 
     can.extend( can.EJS.Helpers.prototype, {
@@ -25,6 +25,7 @@ define(['can/util/string', 'accounting', 'can/view/ejs'], function( can, account
 
         sub: can.sub,
         capitalize: can.capitalize,
+        uniqueId: _.uniqueId,
 
         assignAsContent: function( self ) {
             return function( el ) {

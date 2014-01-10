@@ -2,6 +2,7 @@
 production.js
 .build
 app/prod/*
+prod.zip
 
 # Built css
 style.out.css

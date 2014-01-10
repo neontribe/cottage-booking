@@ -40,11 +40,23 @@ define([
                 },
                 'number': function( $el ) {
                     return Number( $el.val() );
+                },
+                'modelMultiCheckbox': function( $el ) {
+                    // if this val is set
+                    return this.options.getterMap.checkbox( $el ) ? $el.data('formModel') : null;
                 }
             },
             'setterMap': {
                 'defaultSetter': function( attr, val ) {
                     return this.options.model.attr( attr, val );
+                },
+                'modelMultiCheckbox': function( attr, val, $element ) {
+                    var location = attr + '.' + $element.attr('value');
+                    if( val ) {
+                        return this.options.model.attr( location, val );
+                    } else {
+                        return this.options.model.removeAttr( location );
+                    }
                 }
             },
             optionsMap: {},
@@ -221,7 +233,7 @@ define([
             }
         },
         'removeErrors': function() {
-            can.each( this.options.attributes.attr(), this.removeErrorsForAttr, this );
+            this.options.attributes.each( this.removeErrorsForAttr, this );
         },
         'removeErrorsForAttr': function( attr ) {
             this.getElementsFor( attr )
@@ -242,7 +254,21 @@ define([
         '{model} change': function( model, batchEvt, attr ) {
             var errors;
             if( this.lastBatch !== batchEvt.batchNum ) {
-                errors = this.options.model.errors( attr );
+                // check for errors for which we are responsible
+                errors = this.options.model.errors( this.options.attributes.attr() );
+                if( errors ) {
+
+                    _.chain( this.options.attributes.attr() )
+                        .difference( _.keys( errors ) )
+                        .each(can.proxy(function( validAttr ) {
+                            // loop through the attributes which don't have any errors
+                            this.removeErrorsForAttr( validAttr );
+                        }, this));
+
+                } else {
+                    this.removeErrors();
+                }
+
                 if( !errors && can.inArray( attr, this.options.attributes.attr() ) !== -1 ) {
                     // If we don't have any errors, remove them
                     this.removeErrorsForAttr( attr );
@@ -268,8 +294,10 @@ define([
             }
         },
 
-        '{model} errors': function() {
-
+        '{model} errors': function( model, evt, errors ) {
+            if( _.intersection( _.keys( errors ) , this.options.attributes.attr() ).length ) {
+                this.addErrors();
+            }
         }
     });
 

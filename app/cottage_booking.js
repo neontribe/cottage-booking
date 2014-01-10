@@ -40,13 +40,10 @@ define([
 
             this.element.html( views.init({
                 control: this,
-                tabsOptions: {
-                    beforeActivate: function() {
-debugger;
-                    }
-                }
+                tabsOptions: {}
             }) );
 
+            can.route(':page');
             can.route(':page/:booking');
 
             can.route.ready();
