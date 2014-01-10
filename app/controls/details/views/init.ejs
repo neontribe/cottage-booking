@@ -37,8 +37,8 @@
         <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
     </form>
     <div class="party-list">
-        <% if( model.attr('partyDetails') && model.attr('partyDetails.length') ) { %>
-            <% model.attr('partyDetails').each(function( traveller ) { %>
+        <% if( model.attr('partyDetails') ) { %>
+            <% list( model.attr('partyDetails'), function( traveller ) { %>
                 <div
                     <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
                         'model': traveller,

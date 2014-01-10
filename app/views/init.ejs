@@ -7,6 +7,6 @@
     </ul>
 
     <% control.options.stages.each(function( stage, name ) { %>
-        <div id="<%= name %>" class="<%= name %>" <%= assignAsContent( stage ) %> ></div>
+        <div id="<%= name %>" class="<%= name %>" <%= assignAsContent( stage ) %> <%= (el) -> stage.Control ? new stage.Control( el ) : '' %> ></div>
     <% }); %>
 </div>

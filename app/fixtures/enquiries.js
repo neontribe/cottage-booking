@@ -13,7 +13,9 @@ define(['can/util/string', 'jquery', 'moment', 'can/util/string/deparam', 'can/u
                 url = require.toUrl('fixtures/enquiries/enquiry_A223_ZZ.json');
             }
             can.fixture.on = false;
-            $.get( url ).done( reply );
+            $.get( url ).done(function( resp ) {
+                reply( resp );
+            });
             can.fixture.on = true;
 
         } : function( options, reply ) {
