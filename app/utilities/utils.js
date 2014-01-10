@@ -34,9 +34,13 @@ define([
         rangeOfClasses: function( size, Construct ) {
             var args = slice.call( arguments, 2 );
 
-            return can.map( new Array( size ), function( undef, key, that ) {
-                return that.constructWith( Construct, args );
-            }, this);
+            if( size > 0 ) {
+                return can.map( new Array( size ), function( undef, key, that ) {
+                    return that.constructWith( Construct, args );
+                }, this);
+            }
+
+            return [];
         },
         now: function() {
             return moment( new Date() );

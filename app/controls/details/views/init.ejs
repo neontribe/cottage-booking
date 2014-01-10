@@ -29,6 +29,9 @@
     <input name="customer.which" />
 
     <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" />
+    <% if( model.attr('propertyData.pets') ) { %>
+        <input name="pets" type="number" data-min="0" />
+    <% } %>
 
     <button type="submit">Submit</button>
 </form>

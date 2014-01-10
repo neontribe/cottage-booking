@@ -61,7 +61,20 @@ define(['can/util/string', 'models/traveller', 'underscore', 'utils'], function(
             if( _.filter( types, _.identity ).length ) {
                 // By now we should only need to add new ones
                 can.each( types, function( count, type ) {
-                    this.push.apply( this, utils.rangeOfClasses( count, Traveller, {'type': type} ) );
+                    var makeThisMany, newTravs;
+                    if( this._store[type] ) {
+                        makeThisMany = count - this._store[type].length;
+                        newTravs = utils.rangeOfClasses( makeThisMany, Traveller, {'type': type} );
+
+                        newTravs = this
+                            ._store[ type ]
+                            .concat( newTravs )
+                            .slice(0, count);
+
+                        this.push.apply( this, newTravs );
+                    } else {
+                        this.push.apply( this, utils.rangeOfClasses( count, Traveller, {'type': type} ) );
+                    }
                 }, this );
             }
 

@@ -130,7 +130,7 @@ define([
 
         // These should be bound before we make changes to the model
         // so we can stop the change being made to it.
-        ':input[type="number"][data-min] change': function( $el ) {
+        ':input[data-type="number"][data-min] change': function( $el ) {
             var max = $el.data('max'),
                 min = $el.data('min');
 
@@ -144,7 +144,7 @@ define([
                 return false;
             }
         },
-        ':input[type="number"][data-max] change': function( $el ) {
+        ':input[data-type="number"][data-max] change': function( $el ) {
             var max = $el.data('max'),
                 min = $el.data('min');
 
@@ -243,6 +243,7 @@ define([
         'getUnHandledErrors': function( omit ) {
             return _.omit( this.options.model.errors(), omit );
         },
+        //************ END API THINGS ***************
 
         /**
          * This function handles model change events, we need to do this last

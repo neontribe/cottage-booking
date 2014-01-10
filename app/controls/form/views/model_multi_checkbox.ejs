@@ -15,6 +15,7 @@
             value="<%= value %>"
             <%= (el) -> el.data( 'formModel', option ) %>
             <%= model.attr( attrName + '.' + value ) ? 'checked="checked"' : '' %>
+            <%= (el) -> el.tooltip( tooltipOptions ) %>
         />
         <%= text %>
     </label>
