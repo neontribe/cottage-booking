@@ -1,11 +1,8 @@
 .cf {
-    float:none;
+    float:none !important;
     clear:both;
 }
 /* example styling */
-#cottage-booking {
-    width: 910px;
-}
 
 .booking-path > div {
     width: 100%;
@@ -78,7 +75,7 @@
 }
 
 .party-list > .traveller .form-item > * {
-    /*font-size: 1rem;*/
+    font-size: 1rem;
     width: 93%;
     padding: 0 1.5%;
     margin: 1.5%;

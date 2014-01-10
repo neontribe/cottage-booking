@@ -236,9 +236,16 @@ define([
             this.options.attributes.each( this.removeErrorsForAttr, this );
         },
         'removeErrorsForAttr': function( attr ) {
-            this.getElementsFor( attr )
-                .tooltip('option', 'content', '')
-                .removeClass('error');
+            this.getElementsFor( attr ).each(function() {
+                var $this = can.$( this );
+                if( $this.data('uiTooltip') ) {
+                    $this
+                        .tooltip('option', 'content', '')
+                        .removeClass('error');
+                }
+                //     .tooltip('option', 'content', '')
+                //
+            });
         },
         'getUnHandledErrors': function( omit ) {
             return _.omit( this.options.model.errors(), omit );

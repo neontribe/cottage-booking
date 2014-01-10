@@ -39,9 +39,24 @@ define([
             this.element.addClass('booking-path');
 
             this.element.html( views.init({
-                control: this,
-                tabsOptions: {}
+                control: this
             }) );
+
+            // We expect this.content to be set as part of the render, TODO: is this too fragile?
+            // This _can't_ happen in the template as the fragment hasn't entered the dom yet
+            this.content.tabs({
+                'show': {
+                    'effect': 'blind',
+                    'duration': 500
+                },
+                'hide': {
+                    'effect': 'blind',
+                    'duration': 500
+                },
+                'beforeActivate': function() {
+                    // Do some stuff
+                }
+            });
 
             can.route(':page');
             can.route(':page/:booking');
@@ -53,7 +68,6 @@ define([
             var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('calendar');
 
             if( chosenStage.content && chosenStage.Control ) {
-
             }
 
             if( oldPage ) {
