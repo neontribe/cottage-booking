@@ -35,8 +35,19 @@
                 'cottage_booking',
                 'fixtures/availabilities',
                 'fixtures/enquiries',
-                'fixtures/bookings'
-            ], function( f1, f2 ) {});
+                'fixtures/bookings',
+                'fixtures/countries'
+            ], function( f1, f2 ) {
+
+                $('#cottage-booking').bookingPath('setOptions', {
+                    'stages': {
+                        details: {
+                            'test': 1
+                        }
+                    }
+                });
+
+            });
         </script>
     </body>
 </html>

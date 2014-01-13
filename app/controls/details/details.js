@@ -2,37 +2,40 @@ define([
     'can/util/string',
     './views',
     'resources/book',
+    'models/country',
     'can/control',
     'controls/form/form'
-], function(can, views, booking) {
+], function( can, views, booking, Country ) {
     'use strict';
 
     return can.Control({
         defaults: {
             booking: booking,
-            childAge: 17
+            childAge: 17,
+            titles: new can.List([
+                ['Mr', 'Mr.'],
+                ['Ms', 'Ms.']
+            ]),
+            countries: new Country.List()
         }
     },{
         init: function() {
-
-            var titles;
-
-            titles = new can.List([
-                ['Mr', 'Mr.'],
-                ['Ms', 'Ms.']
-            ]);
+            Country.findAll().done(can.proxy(function( list ) {
+                this.options.countries.attr( list.__get() );
+            }, this));
 
             this.element.html( views.init({
                 model: this.options.booking,
                 defaultLabel: true,
-                titles: titles,
+                titles: this.options.titles,
                 views: views,
                 ages: new can.List([
                     ['18-35'],
                     ['36-50'],
                     ['50+']
                 ]),
-                childAge: this.options.childAge
+                childAge: this.options.childAge,
+                countries: this.options.countries
             }) );
         },
 

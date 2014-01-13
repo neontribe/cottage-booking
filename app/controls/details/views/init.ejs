@@ -2,7 +2,8 @@
     model: model,
     optionsMap: {
         'customer.name.title': titles,
-        'price.extras': model.attr('webExtras')
+        'price.extras': model.attr('webExtras'),
+        'customer.address.country': countries
     },
     defaultLabel: defaultLabel
 }) %> >
@@ -18,7 +19,7 @@
         <input name="customer.address.town" />
         <input name="customer.address.county" />
         <input name="customer.address.postcode" />
-        <input name="customer.address.country" />
+        <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" />
     </fieldset>
     <input name="customer.daytimePhone" />
     <input name="customer.eveningPhone" />

@@ -1,12 +1,26 @@
 <div <%= assignAsContent( control ) %>>
 
     <ul>
-        <% control.options.stages.each(function( stage, name ) { %>
-            <li><a <%= link() %> href="#<%= name %>"><%= capitalize( name ) %></a></li>
+        <% control.options.stages.each(function( stage ) { %>
+            <li>
+            	<a
+            		<%# not sure if this is the correct place for it %>
+            		<%= link( checkerFn ) %>
+            		href="#<%= stage.attr('id') %>"
+            	>
+            		<%= capitalize( stage.attr('id') ) %>
+            	</a>
+            </li>
         <% }); %>
     </ul>
 
-    <% control.options.stages.each(function( stage, name ) { %>
-        <div id="<%= name %>" class="<%= name %>" <%= assignAsContent( stage ) %> <%= (el) -> stage.Control ? new stage.Control( el ) : '' %> ></div>
+    <% control.options.stages.each(function( stage ) { %>
+        <div
+        	id="<%= stage.attr('id') %>"
+        	class="<%= stage.attr('id') %>"
+        	<%= assignAsContent( stage ) %>
+        	<%#= (el) -> stage.Control ? new stage.Control( el ) : '' %>
+        >
+        </div>
     <% }); %>
 </div>

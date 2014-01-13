@@ -4,13 +4,15 @@ define([
     'resources/enquiry',
     'resources/book',
     'resources/stages',
+    'utils',
+    'underscore',
     // All the rest
     'controls/calculator/calculator',
     'can/control',
     'can/control/plugin',
     'can/control/route',
     'jqueryui/jquery.ui.tabs'
-], function(can, views,enquiry, book, stages ) {
+], function(can, views, enquiry, book, stages, utils, _ ) {
     'use strict';
 
     // TODO:Move this to a better place
@@ -39,7 +41,14 @@ define([
             this.element.addClass('booking-path');
 
             this.element.html( views.init({
-                control: this
+                control: this,
+                'checkerFn': function() {
+                    // This function is executed before each click reaches the url
+                    // If we are not disabled, allow the change to happen
+                    if( !this.parent().is('[aria-disabled="true"]') ) {
+                        return true;
+                    }
+                }
             }) );
 
             // We expect this.content to be set as part of the render, TODO: is this too fragile?
@@ -53,25 +62,38 @@ define([
                     'effect': 'blind',
                     'duration': 500
                 },
-                'beforeActivate': function() {
-                    // Do some stuff
-                }
+                'beforeActivate': utils.bindWithThis( this.beforeActivate, this ),
+                'disabled': _.range( this.options.stages.length ).slice(1),
+                // set the event to empty string, so that we don't change tab on click,
+                // So everything gets routed through the url bar
+                'event': ''
             });
 
+            /** init the route */
             can.route(':page');
             can.route(':page/:booking');
-
             can.route.ready();
         },
 
+        // Need to think about initial state, no tabs have been activated
+        // So this needs to happen once by itself
+        beforeActivate: function() {
+
+        },
+
         changeStage: function( newStage, oldPage ) {
-            var chosenStage = this.options.stages.attr( newStage ) || this.options.stages.attr('calendar');
+            var index = this.options.stages.indexOf( newStage ),
+                chosenStage = this.options.stages.attr( index ),
+                disabled = can.inArray(index, this.content.tabs('option', 'disabled')) > -1;
 
-            if( chosenStage.content && chosenStage.Control ) {
-            }
+            if( index > -1 && !disabled ) {
+                this.content.tabs('option', {
+                    active: index
+                });
 
-            if( oldPage ) {
-
+            } else {
+                // just navigate somewhere safe
+                can.route.attr( 'page', 'calendar' );
             }
         },
 
@@ -80,12 +102,14 @@ define([
             can.route.attr('page', 'calendar');
         },
 
-        // We only have a page on the hash-bang, _usually_ only happens when we don't have a booking
-        // ':page route': function( routeData ) {
-        //     this.changeStage( routeData.page );
-        // },
-
         '{route} page': function( route, evt, newPage, oldPage ) {
+            // Before we change route check if we need to disable stuff
+            if( !route.attr('booking') ) {
+                this.content.tabs('option', {
+                    'disabled': _.range( this.options.stages.length ).slice(1)
+                });
+            }
+
             this.changeStage( newPage, oldPage );
         },
 
@@ -106,12 +130,15 @@ define([
 
             } else {
                 this.options.book.reset();
-                can.route.removeAttr('booking');
             }
         },
 
         '{book} bookingId': function( obj, evt, newVal ) {
-            can.route.attr('booking', newVal);
+            if( newVal ) {
+                can.route.attr('booking', newVal);
+            } else {
+                can.route.removeAttr('booking');
+            }
         },
 
         /**
