@@ -60,12 +60,12 @@
     border: 1px solid red;
 }
 
-.party-list > .traveller > form {
+.party-list > .traveller > .bindForm {
     width:100%;
     font-size:0;
 }
 
-.party-list > .traveller > * {
+.party-list .bindForm > * {
     font-size: 1rem;
 }
 
@@ -78,7 +78,7 @@
     font-size: 1rem;
     width: 93%;
     padding: 0 1.5%;
-    margin: 1.5%;
+    margin: 0 1.5%;
 }
 
 .party-list > .child .form-item:first-child {

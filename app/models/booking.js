@@ -58,11 +58,28 @@ define([
             'infants',
             'pets',
             // these are required to complete a booking
-            'customer.address.addr1'
+            'customer.name.title',
+            'customer.name.firstName',
+            'customer.name.surname',
+            'customer.address.addr1',
+            'customer.address.addr2',
+            'customer.address.town',
+            'customer.address.county',
+            'customer.address.postcode',
+            'customer.address.country',
+            'customer.daytimePhone',
+            'customer.eveningPhone',
+            'customer.mobilePhone',
+            'customer.email',
+            'customer.emailOptIn',
+            'customer.source',
+            'customer.which'
         ],
 
         'init': function() {
-            this.validatePresenceOf( this.required );
+            this.validatePresenceOf( this.required,{
+                'message': 'The {label} field is required'
+            });
 
             this.validate(['adults', 'children', 'infants'], function() {
                 if( this.attr('partySize') > this.attr('propertyData.sleeps') ) {

@@ -20,7 +20,7 @@ define([
         }
     },{
         init: function() {
-            Country.findAll().done(can.proxy(function( list ) {
+            this.options.transit = Country.findAll().done(can.proxy(function( list ) {
                 this.options.countries.attr( list.__get() );
             }, this));
 
@@ -37,6 +37,11 @@ define([
                 childAge: this.options.childAge,
                 countries: this.options.countries
             }) );
+        },
+
+        destroy: function() {
+            this.options.transit.abort();
+            return can.Control.prototype.destroy.call( this );
         },
 
         '{booking.partyDetails} change': function( partyDetails, evt, attrName, type, newVal, oldVal ) {

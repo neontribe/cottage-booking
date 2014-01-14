@@ -8,10 +8,12 @@
     defaultLabel: defaultLabel
 }) %> >
 
-    <input name="customer.name.title" type="select" data-label="Title" />
-    <input name="customer.name.firstName" data-label="First Name" />
-    <input name="customer.name.surname" data-label="Surname" />
-
+    <fieldset>
+        <legend>Name</legend>
+        <input name="customer.name.title" type="select" data-label="Title" />
+        <input name="customer.name.firstName" data-label="First Name" />
+        <input name="customer.name.surname" data-label="Surname" />
+    </fieldset>
     <fieldset>
         <legend>Address</legend>
         <input name="customer.address.addr1" />
@@ -21,14 +23,16 @@
         <input name="customer.address.postcode" />
         <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" />
     </fieldset>
-    <input name="customer.daytimePhone" />
-    <input name="customer.eveningPhone" />
-    <input name="customer.mobilePhone" />
-    <input name="customer.email" />
-    <input name="customer.emailOptIn" type="checkbox"/>
-    <input name="customer.source" />
-    <input name="customer.which" />
-
+    <fieldset>
+        <legend>Contact Information</legend>
+        <input name="customer.daytimePhone" />
+        <input name="customer.eveningPhone" />
+        <input name="customer.mobilePhone" />
+        <input name="customer.email" />
+        <input name="customer.emailOptIn" type="checkbox"/>
+        <input name="customer.source" />
+        <input name="customer.which" />
+    </fieldset>
     <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" />
     <% if( model.attr('propertyData.pets') ) { %>
         <input name="pets" type="number" data-min="0" />
@@ -38,28 +42,32 @@
 </form>
 
 <div>
-    <h2>Party information</h2>
-    <form <%= (el) -> el.bindForm({ model: model, debounceDelay: 100 }) %> >
-        <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults:" data-min="0" />
-        <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
+    <form action"javascript:return false;">
+        <fieldset>
+            <legend>Party information</legend>
+            <div <%= (el) -> el.bindForm({ model: model, debounceDelay: 100 }) %> >
+                <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults:" data-min="0" />
+                <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
+            </div>
+            <div class="party-list">
+                <% if( model.attr('partyDetails') ) { %>
+                    <% list( model.attr('partyDetails'), function( traveller ) { %>
+                        <div
+                            <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
+                                'model': traveller,
+                                'optionsMap': {
+                                    'title': titles,
+                                    'age': ages,
+                                    'childAge': childAge
+                                }
+                            }) %>
+                            class="<%= traveller.type %> traveller"
+                        ></div>
+                <%  }); %>
+                <% } %>
+            </div>
+        </fieldset>
     </form>
-    <div class="party-list">
-        <% if( model.attr('partyDetails') ) { %>
-            <% list( model.attr('partyDetails'), function( traveller ) { %>
-                <div
-                    <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
-                        'model': traveller,
-                        'optionsMap': {
-                            'title': titles,
-                            'age': ages,
-                            'childAge': childAge
-                        }
-                    }) %>
-                    class="<%= traveller.type %> traveller"
-                ></div>
-        <%  }); %>
-        <% } %>
-    </div>
 </div>
 
 <div class="cf"></div>

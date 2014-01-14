@@ -110,15 +110,16 @@ define([
 
         'init': function() {
             var prox;
+            prox = can.proxy( this.resetOnDateChangeHandler, this );
+            this.on('fromDate', prox);
+            this.on('toDate', prox);
+
+            // We should bind our save after we've cleared errors from this model
             if( this.saveOnValid ) {
                 prox = can.proxy( this.validSaveHandler, this );
                 this.on('fromDate', prox);
                 this.on('toDate', prox);
             }
-
-            prox = can.proxy( this.resetOnDateChangeHandler, this );
-            this.on('fromDate', prox);
-            this.on('toDate', prox);
 
             // *welsh accent* Tidy
             this.removeAttr('saveOnValid');
