@@ -4,7 +4,8 @@ define([
     'resources/book',
     'models/country',
     'can/control',
-    'controls/form/form'
+    'controls/form/form',
+    'can/compute'
 ], function( can, views, booking, Country ) {
     'use strict';
 
@@ -20,6 +21,7 @@ define([
         }
     },{
         init: function() {
+            // Perhaps this should be cashed
             this.options.transit = Country.findAll().done(can.proxy(function( list ) {
                 this.options.countries.attr( list.__get() );
             }, this));
@@ -35,17 +37,22 @@ define([
                     ['50+']
                 ]),
                 childAge: this.options.childAge,
-                countries: this.options.countries
+                countries: this.options.countries,
+                display: {
+                    'pets': can.compute(function() {
+                        console.log('asd');
+                        return this.options.booking.attr('propertyData.pets') === true;
+                    }, this),
+                    'price.extras': can.compute(function() {
+                        return this.options.booking.attr('webExtras') && this.options.booking.attr('webExtras').attr('length') > 0;
+                    }, this)
+                }
             }) );
         },
 
         destroy: function() {
             this.options.transit.abort();
             return can.Control.prototype.destroy.call( this );
-        },
-
-        '{booking.partyDetails} change': function( partyDetails, evt, attrName, type, newVal, oldVal ) {
-            can.$.noop( partyDetails, evt, attrName, type, newVal, oldVal );
         },
 
         '{booking} submit': function() {

@@ -7,7 +7,8 @@ define([
     'can/control',
     'can/control/plugin',
     'jqueryui/jquery.ui.tooltip',
-    'jqueryui/jquery.ui.datepicker'
+    'jqueryui/jquery.ui.datepicker',
+    'plugins/map/getter'
 ], function(can, views, moment, _, utils) {
     'use strict';
 
@@ -65,7 +66,8 @@ define([
             // This can be set per input as well
             placeholder: true,
             // delay changes to the model's attribute by this amount of milliseconds
-            debounceDelay: 0
+            debounceDelay: 0,
+            display: {}
         }
     },{
         init: function() {
@@ -73,6 +75,8 @@ define([
             // Set up a new observable as our attributes, so we can magically bind to changes
             this.options.attributes = new can.List();
             this.options.optionsMap = new can.Map( this.options.optionsMap );
+            // We expect these to be computes, so that change events will get properly updated
+            this.options.display    = new can.Map( this.options.display );
 
             this.element.find('[name]').each( can.proxy( this.formElement, this ) );
             // Once we've replaced and sorted out inputs, set the title to empty string

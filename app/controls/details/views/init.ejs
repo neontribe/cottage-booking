@@ -5,7 +5,8 @@
         'price.extras': model.attr('webExtras'),
         'customer.address.country': countries
     },
-    defaultLabel: defaultLabel
+    defaultLabel: defaultLabel,
+    display: display
 }) %> >
 
     <fieldset>
@@ -33,24 +34,28 @@
         <input name="customer.source" />
         <input name="customer.which" />
     </fieldset>
-    <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" />
-    <% if( model.attr('propertyData.pets') ) { %>
+
+    <fieldset>
+        <legend>Extras</legend>
+        <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" />
         <input name="pets" type="number" data-min="0" />
-    <% } %>
+    </fieldset>
 
     <button type="submit">Submit</button>
 </form>
 
 <div>
-    <form action"javascript:return false;">
+    <form>
         <fieldset>
             <legend>Party information</legend>
             <div <%= (el) -> el.bindForm({ model: model, debounceDelay: 100 }) %> >
                 <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults:" data-min="0" />
                 <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
             </div>
-            <div class="party-list">
-                <% if( model.attr('partyDetails') ) { %>
+            <% if( model.attr('partyDetails') ) { %>
+                <fieldset class="party-list">
+                    <legend>Party member details</legend>
+
                     <% list( model.attr('partyDetails'), function( traveller ) { %>
                         <div
                             <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
@@ -63,9 +68,9 @@
                             }) %>
                             class="<%= traveller.type %> traveller"
                         ></div>
-                <%  }); %>
-                <% } %>
-            </div>
+                    <%  }); %>
+                </fieldset>
+            <% } %>
         </fieldset>
     </form>
 </div>

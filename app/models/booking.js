@@ -17,7 +17,6 @@ define([
         update  : 'POST property/booking/{bookingId}',
 
         attributes: {
-
             partyDetails: Traveller.List,
             fromDate: 'date',
             toDate: 'date'
@@ -137,7 +136,9 @@ define([
                     return this.constructor.findOne({
                         'bookingId': fetch
                     }).done(function( booking ) {
-                        self.attr( booking.__get() );
+                        //self.attr( booking.__get() ); Why did i do this
+                        // The following call does mean that we instantiate and throw away stuff ( like travellers )
+                        self.attr(booking.attr(), true);
                     });
 
                     //break;
