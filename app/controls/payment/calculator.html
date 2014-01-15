@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Calculator demo page!</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.out.css" />
+    <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
+  </head>
+  <body>
+    <div id="content"></div>
+    <div id="results">
+      <h2>Results and errors</h2>
+      <div></div>
+    </div>
+    <script type='text/javascript' src='../../bower_components/requirejs/require.js'></script>
+    <script type='text/javascript' src='../../requirejsconfig.js'></script>
+    <script type='text/javascript'>
+      requirejs.config({
+          baseUrl : '../../'
+      });
+      requirejs(['controls/calculator/calculator', 'fixtures/availabilities', 'fixtures/enquiries'], function(Calculator){
+        new Calculator('#content');
+        require('resources/enquiry').attr('propRef', 'A223_ZZ');
+        require('resources/enquiry').on('change', function() {
+          jQuery('#results > div').html(
+            '<textarea style="width:710px; height:400px;">'
+            + JSON.stringify(require('resources/enquiry').attr(), null, '\t')
+            + '</textarea>');
+        });
+      });
+    </script>
+  </body>
+</html>

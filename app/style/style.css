@@ -1,3 +1,5 @@
+/* TODO: tidy this styling up! */
+
 .cf {
     float:none !important;
     clear:both;
@@ -92,4 +94,15 @@
 .details > * {
     float: left;
     width: 50%;
+}
+
+input, select, textarea {
+    box-sizing: border-box;
+}
+
+.form-item label,
+.form-item input,
+.form-item select {
+    width: 50%;
+    float: left;
 }

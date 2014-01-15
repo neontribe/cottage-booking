@@ -17,28 +17,28 @@
     </fieldset>
     <fieldset>
         <legend>Address</legend>
-        <input name="customer.address.addr1" />
-        <input name="customer.address.addr2" />
-        <input name="customer.address.town" />
-        <input name="customer.address.county" />
-        <input name="customer.address.postcode" />
-        <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" />
+        <input name="customer.address.addr1" data-label="Address Line 1" />
+        <input name="customer.address.addr2" data-label="Label" />
+        <input name="customer.address.town" data-label="Label" />
+        <input name="customer.address.county" data-label="Label" />
+        <input name="customer.address.postcode" data-label="Label" />
+        <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" data-label="Label" />
     </fieldset>
     <fieldset>
         <legend>Contact Information</legend>
-        <input name="customer.daytimePhone" />
-        <input name="customer.eveningPhone" />
-        <input name="customer.mobilePhone" />
-        <input name="customer.email" />
-        <input name="customer.emailOptIn" type="checkbox"/>
-        <input name="customer.source" />
-        <input name="customer.which" />
+        <input name="customer.daytimePhone" data-label="Label" />
+        <input name="customer.eveningPhone" data-label="Label" />
+        <input name="customer.mobilePhone" data-label="Label" />
+        <input name="customer.email" data-label="Label" />
+        <input name="customer.emailOptIn" type="checkbox" data-label="Label" />
+        <input name="customer.source" data-label="Label" />
+        <input name="customer.which" data-label="Label" />
     </fieldset>
 
     <fieldset>
         <legend>Extras</legend>
-        <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" />
-        <input name="pets" type="number" data-min="0" />
+        <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" data-label="Label" />
+        <input name="pets" type="number" data-min="0" data-label="Label" />
     </fieldset>
 
     <button type="submit">Submit</button>

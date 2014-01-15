@@ -16,6 +16,10 @@ define([
         create  : 'POST property/booking/create',
         update  : 'POST property/booking/{bookingId}',
 
+        defaults: {
+            webExtras: []
+        },
+
         attributes: {
             partyDetails: Traveller.List,
             fromDate: 'date',
@@ -104,6 +108,7 @@ define([
 
             can.trigger( this, 'partyDetailsUpdating' );
 
+            // Why not set a default in the model?
             if( !this.attr('partyDetails') ) {
                 this.attr('partyDetails', []);
             }

@@ -22,6 +22,7 @@
         "requirejs": true,
         "grunt": true,
         "jQuery": true,
-        "define": true
+        "define": true,
+        "window": true
     }
 }

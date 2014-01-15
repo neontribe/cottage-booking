@@ -23,14 +23,14 @@ define(['can/util/string', 'can/map'], function( can ) {
         },
 
         '__get': function( attr ) {
-            var _attr = attr ? attr.slice(0, -2) : null,
-                val = __get.call( this, _attr || attr );
+            var _attr = (attr && attr.slice( -2 ) === '()') ? attr.slice(0, -2) : attr,
+                val = __get.call( this, _attr );
 
             if( _attr && attr.slice( -2 ) === '()' && can.isFunction( val ) ) {
                 return val();
             }
 
-            return __get.call( this, attr );
+            return val;
         }
     });
 

@@ -40,7 +40,6 @@ define([
                 countries: this.options.countries,
                 display: {
                     'pets': can.compute(function() {
-                        console.log('asd');
                         return this.options.booking.attr('propertyData.pets') === true;
                     }, this),
                     'price.extras': can.compute(function() {

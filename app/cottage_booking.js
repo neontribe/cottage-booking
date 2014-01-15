@@ -12,7 +12,7 @@ define([
     'can/control/plugin',
     'can/control/route',
     'jqueryui/jquery.ui.tabs'
-], function(can, views, enquiry, book, stages, utils, _ ) {
+], function( can, views, enquiry, book, stages, utils ) {
     'use strict';
 
     // TODO:Move this to a better place
@@ -31,12 +31,12 @@ define([
             enquiry: enquiry,
             book: book,
             stages: stages,
-            route: can.route,
-            content: null
+            route: can.route
         }
 
     }, {
         init: function() {
+            var index;
 
             can.route(':page');
             can.route(':page/:booking');
@@ -56,7 +56,7 @@ define([
                 }
             }) );
 
-            var index = this.options.stages.indexOf( can.route.attr('page') );
+            index = this.options.stages.indexOf( can.route.attr('page') );
 
             // TODO: implement an accordion equivalent
             // We expect this.content to be set as part of the render, TODO: is this too fragile?
@@ -76,7 +76,7 @@ define([
                 'beforeActivate': utils.bindWithThis( this.beforeActivate, this ),
                 'activate': utils.bindWithThis( this.activate, this ),
                 // Set the rest of the tabs to disabled by default
-                'disabled': _.range( this.options.stages.length ).slice(1),
+                'disabled': this.disabledArray(),
                 // set the event to empty string, so that we don't change tab on click,
                 // So everything gets routed through the url bar
                 'event': '',
@@ -85,6 +85,49 @@ define([
 
             /** init the route */
             can.route.ready();
+        },
+
+        // Whenever the booking object changes, check for errors and
+        // Enable/disable stages
+        '{book} change': (function() {
+            var lastBatchNum = null;
+            return function( model, evt ) {
+                // Check we haven't already done this
+                if( lastBatchNum !== evt.batchNum ) {
+
+                    this.content.tabs( 'option', 'disabled', this.disabledArray() );
+
+                    //Finally assign the batch num
+                    lastBatchNum = evt.batchNum;
+
+                }
+            };
+        })(),
+
+        /**
+         * Build array of stages to disable
+         * @return {Array} The Array of tabs to disable (e.g. [1, 2, 3])
+         */
+        'disabledArray': function() {
+            var disabled = [],
+                hash = window.location.hash ? window.location.hash.split('#!')[1] : '',
+                // Because the route could be unready at this point, we need to extract
+                // data from the url ourselves... TODO: investigate alternative
+                current = can.route.deparam( hash );
+
+            if( !current.booking && !this.options.book.attr('bookingId') ) {
+                disabled.push( 1 );
+            }
+
+            if( true ) {
+                disabled.push( 2 );
+            }
+
+            if( true ) {
+                disabled.push( 3 );
+            }
+
+            return disabled;
         },
 
         'getStageFor': function( $el ) {
@@ -177,7 +220,7 @@ define([
 
                 // if this is a newly created booking, auto advance
                 if( !oldId ) {
-                    can.route.attr('page', 'details');
+                    //can.route.attr('page', 'details');
                 }
 
             } else {
@@ -189,29 +232,20 @@ define([
 
         '{book} bookingId': function( obj, evt, newVal ) {
             if( newVal ) {
-                can.route.attr('booking', newVal);
+                if( newVal !== can.route.attr('bookg') ) {
+                    can.route.attr('booking', newVal);
+                }
             } else {
                 can.route.removeAttr('booking');
             }
         },
 
-        // Whenever the booking object changes, check for errors and
-        // Enable/disable stages
-        '{book} change': function() {
-
+        '{route} page': function( route, evt, newPage, oldPage ) {
+            this.changeStage( newPage, oldPage );
         },
 
-        '{route} page': function( route, evt, newPage, oldPage ) {
-            // Before we change route check if we need to disable stuff
-            if( !route.attr('booking') ) {
-                this.content.tabs('option', {
-                    'disabled': _.range( this.options.stages.length ).slice(1)
-                });
-            } else {
-                this.content.tabs('enable', 1);
-            }
-
-            this.changeStage( newPage, oldPage );
+        '{stages} change': function() {
+            //debugger;
         },
 
         /**
