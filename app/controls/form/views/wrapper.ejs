@@ -2,7 +2,12 @@
 <% if( display.attr( attrName + '()' ) !== false ) { %>
     <div class="form-item <%= type %>" <%= appendTemplate( view, this ) %>>
         <% if( label ) { %>
-            <label for="<%= id %>"><%= pretifyString( label, true ) %></label>
+            <label for="<%= id %>">
+            	<%= pretifyString( label, true ) %>
+            	<% if( required ) { %>
+            		<span class="required">*</span>
+        		<% } %>
+            </label>
         <% } %>
         <%# Template gets appended %>
     </div>

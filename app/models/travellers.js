@@ -1,4 +1,10 @@
-define(['can/util/string', 'models/traveller', 'underscore', 'utils'], function( can, Traveller, _, utils ) {
+define([
+    'can/util/string',
+    'models/traveller',
+    'underscore',
+    'utils',
+    //'plugins/list/validations'
+], function( can, Traveller, _, utils ) {
     'use strict';
 
     Traveller.List = Traveller.List.extend({

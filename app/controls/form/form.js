@@ -122,7 +122,8 @@ define([
                 'control'       : this,
                 'valueAttr'     : 0,
                 'textAttr'      : 1,
-                'id'            : _.uniqueId( 'attr_' + attr + '_' )
+                'id'            : _.uniqueId( 'attr_' + attr + '_' ),
+                'required'      : !!this.options.model.errors( attr, '' )
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for
@@ -301,11 +302,11 @@ define([
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );
             } else {
-                can.trigger( this.options.model, 'errors', [ hasErrors ] );
+                can.trigger( this.options.model, 'formErrors', [ hasErrors ] );
             }
         },
 
-        '{model} errors': function( model, evt, errors ) {
+        '{model} formErrors': function( model, evt, errors ) {
             if( _.intersection( _.keys( errors ) , this.options.attributes.attr() ).length ) {
                 this.addErrors();
             }

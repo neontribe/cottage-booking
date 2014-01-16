@@ -22,9 +22,9 @@ define([
         init: function() {
             this.validatePresenceOf(['firstName', 'surname', 'age']);
 
-            this.validate(['age'], function( age ) {
-                if( this.attr('type') === 'adult' && !age ) {
-
+            this.validate(['title'], function( title ) {
+                if( this.attr('type') === 'adult' && !title ) {
+                    return 'Title is required';
                 }
             });
         }

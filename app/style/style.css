@@ -54,6 +54,15 @@
     font-size: 1rem;
 }
 
+.party-list .traveller label {
+    visibility: hidden;
+    height: 0;
+}
+
+.party-list .traveller:first-child .form-item label {
+    visibility: visible;
+}
+
 .party-list > .traveller .form-item {
     width: 25%;
     display: inline-block;
