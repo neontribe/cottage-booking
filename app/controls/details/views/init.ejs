@@ -18,27 +18,18 @@
     <fieldset>
         <legend>Address</legend>
         <input name="customer.address.addr1" data-label="Address Line 1" />
-        <input name="customer.address.addr2" data-label="Label" />
-        <input name="customer.address.town" data-label="Label" />
-        <input name="customer.address.county" data-label="Label" />
-        <input name="customer.address.postcode" data-label="Label" />
-        <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" data-label="Label" />
+        <input name="customer.address.addr2" data-label="Address Line 2" />
+        <input name="customer.address.town" data-label="Town" />
+        <input name="customer.address.county" data-label="County" />
+        <input name="customer.address.postcode" data-label="Postcode" />
+        <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" data-label="Country" />
     </fieldset>
     <fieldset>
         <legend>Contact Information</legend>
-        <input name="customer.daytimePhone" data-label="Label" />
-        <input name="customer.eveningPhone" data-label="Label" />
-        <input name="customer.mobilePhone" data-label="Label" />
-        <input name="customer.email" data-label="Label" />
-        <input name="customer.emailOptIn" type="checkbox" data-label="Label" />
-        <input name="customer.source" data-label="Label" />
-        <input name="customer.which" data-label="Label" />
-    </fieldset>
-
-    <fieldset>
-        <legend>Extras</legend>
-        <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" data-label="Label" />
-        <input name="pets" type="number" data-min="0" data-label="Label" />
+        <input name="customer.daytimePhone" data-label="Daytime phone" />
+        <input name="customer.eveningPhone" data-label="Evening phone" />
+        <input name="customer.mobilePhone" data-label="Mobile phone" />
+        <input name="customer.email" data-label="Email" />
     </fieldset>
 
     <button type="submit">Submit</button>
@@ -55,7 +46,6 @@
             <% if( model.attr('partyDetails') ) { %>
                 <fieldset class="party-list">
                     <legend>Party member details</legend>
-
                     <% list( model.attr('partyDetails'), function( traveller ) { %>
                         <div
                             <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
@@ -64,7 +54,8 @@
                                     'title': titles,
                                     'age': ages,
                                     'childAge': childAge
-                                }
+                                },
+                                'defaultLabel': true
                             }) %>
                             class="<%= traveller.type %> traveller"
                         ></div>
@@ -73,6 +64,26 @@
             <% } %>
         </fieldset>
     </form>
-</div>
 
-<div class="cf"></div>
+    <form <%= bindForm({
+        model: model,
+        optionsMap: {
+            'price.extras': model.attr('webExtras')
+        },
+        display: display
+    }) %> >
+        <fieldset>
+            <legend>Extras</legend>
+            <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" data-label="Label" />
+            <input name="pets" type="number" data-min="0" data-label="Label" />
+        </fieldset>
+
+        <fieldset>
+            <legend></legend>
+            <input name="customer.emailOptIn" type="checkbox" data-label="Would you like to receieve our newsletter?" />
+            <input name="customer.source" data-label="Where did you hear about us?" />
+            <input name="customer.which" data-label="If other" />
+        </fieldset>
+    </form>
+
+</div>

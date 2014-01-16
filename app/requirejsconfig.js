@@ -7,6 +7,8 @@ requirejs.config({
         'moment'          : 'bower_components/momentjs/moment',
         'underscore'      : 'bower_components/underscore/underscore',
         'accounting'      : 'bower_components/accounting.js/accounting',
+        'spin'            : 'bower_components/spin.js/spin',
+        'spinner'         : 'bower_components/spin.js/jquery.spin',
         'utils'           : 'utilities/utils',
         'helpers'         : 'utilities/helpers'
     },

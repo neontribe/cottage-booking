@@ -114,16 +114,15 @@ define([
                 options;
 
             options = can.extend(true, {
-                'attrName': attr,
-                'type': type,
-                'classes': $el.attr('class') || '',
-                // Look for a template which matches the type
-                'view': views[type] || views.text,
-                'label': this.options.defaultLabel ? attr : '',
-                'control': this,
-                'valueAttr': 0,
-                'textAttr': 1,
-                'id': _.uniqueId( 'attr_' + attr + '_' )
+                'attrName'      : attr,
+                'type'          : type,
+                'classes'       : $el.attr('class') || '',
+                'view'          : views[type] || views.text, // Look for a template which matches the type
+                'label'         : this.options.defaultLabel ? attr : '',
+                'control'       : this,
+                'valueAttr'     : 0,
+                'textAttr'      : 1,
+                'id'            : _.uniqueId( 'attr_' + attr + '_' )
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for

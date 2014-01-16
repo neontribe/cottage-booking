@@ -1,8 +1,8 @@
 <%# If the value at the display is === true or undefined then display %>
 <% if( display.attr( attrName + '()' ) !== false ) { %>
-    <div class="form-item" <%= appendTemplate( view, this ) %>>
+    <div class="form-item <%= type %>" <%= appendTemplate( view, this ) %>>
         <% if( label ) { %>
-            <label for="<%= id %>"><%= label %></label>
+            <label for="<%= id %>"><%= pretifyString( label, true ) %></label>
         <% } %>
         <%# Template gets appended %>
     </div>

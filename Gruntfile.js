@@ -140,11 +140,12 @@ module.exports = function(grunt) {
                     livereload: true,
                 },
             },
-            css: {
-                files: 'app/style/style.css',
+            all: {
+                files: ['app/style/style.css', 'app/**/*.js', 'app/**/*.ejs', 'app/**/*.html', '!Gruntfile.js','!app/prod/production.js', '!app/bower_components/*'],
                 tasks: ['exec:myth'],
                 options: {
                     event: ['changed'],
+                    livereload: true
                 }
             }
         },

@@ -1,38 +1,21 @@
 /* TODO: tidy this styling up! */
-
 .cf {
     float:none !important;
     clear:both;
 }
 /* example styling */
+.bookingPath {
+    width: 1000px;
+}
 
-.booking-path > div {
+.bookingPath > *,
+.ui-tabs .ui-tabs-nav + div {
     width: 100%;
+    box-sizing: border-box;
 }
 
-#some-tabs ul li {
-    float:left;
-    padding:0 1em 0.2em;
-    list-style: none;
-}
-
-#some-tabs .active {
-    border-bottom: solid 1px black;
-}
-
-#some-tabs {
-    margin-bottom: 2em;
-}
-
-#some-tabs + div,
-#some-tabs + div + div {
-    display: inline-block;
-    vertical-align: top;
-}
-#some-tabs + div {
-    padding:1em;
-    margin: 1em;
-    border: 1px solid black;
+.bookingPath .ui-tabs .ui-tabs-panel {
+    box-sizing: border-box;
 }
 
 .ui-datepicker-today {
@@ -91,18 +74,61 @@
     cursor: wait;
 }
 
-.details > * {
-    float: left;
-    width: 50%;
-}
-
 input, select, textarea {
     box-sizing: border-box;
 }
 
-.form-item label,
-.form-item input,
-.form-item select {
+/* bindForm stuff */
+.bindForm .form-item > label,
+.bindForm .form-item > input {
+    display: inline-block;
+}
+
+.bindForm .form-item label {
+    min-width: 25%;
+    text-align: right;
+}
+
+.bindForm .modelMultiCheckbox {
+    font-size: 0;
+}
+
+.bindForm .modelMultiCheckbox > label:first-child {
+    width: 100%;
+}
+
+.bindForm .modelMultiCheckbox > label {
+    text-align: left;
+    min-width: 33.3%;
+    font-size: 1rem;
+}
+/**************/
+
+.ui-tabs,
+.ui-tabs .ui-tabs-panel {
+    width: 100%;
+}
+
+.ui-tabs .ui-tabs-panel > *:first-child {
+    margin: 0 auto;
+}
+
+.bookingPath .ui-tabs .details {
+    font-size: 0;
+    padding: 1rem;
+}
+
+.bookingPath .ui-tabs .details > * {
+    font-size: 1rem;
+    vertical-align: top;
+}
+
+.bookingPath .ui-tabs .details > *:first-child,
+.bookingPath .ui-tabs .details > * + * {
+    display: inline-block;
     width: 50%;
-    float: left;
+}
+
+.calendar .hasDatepicker > div {
+    margin: 0 auto;
 }

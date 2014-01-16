@@ -9,12 +9,12 @@
     <%
         var value, text;
         if( this.placeholder ) {
-            value = this.placeholder[0] || '';
-            text  = this.placeholder[1] || 'Please select';
+            value = this.placeholderVal || '',
+            text  = typeof placeholder === 'string' ? placeholder : 'Please select';
     %>
         <option
             value="<%= value %>"
-            <%= ( model.attr( attrName ) === value || !value ) ? 'selected="selected"' : '' %>
+            <%= ( model.attr( attrName ) === value || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
         >
             <%= text %>
         </option>

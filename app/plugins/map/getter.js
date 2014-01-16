@@ -6,11 +6,28 @@
 define(['can/util/string', 'can/map'], function( can ) {
     'use strict';
 
-    var slice = Array.prototype.slice,
-        __get = can.Map.prototype.__get,
-        bind = can.Map.prototype.bind;
+    var slice   = Array.prototype.slice,
+        _get    = can.Map.prototype._get,
+        __get   = can.Map.prototype.__get,
+        bind    = can.Map.prototype.bind;
 
     can.extend( can.Map.prototype, {
+
+        /** Fix patch the _get behaviour **/
+        '_get': function( attr ) {
+
+            var value;
+            if( typeof attr === 'string' && !!~attr.indexOf('.') ) {
+                value = this.__get(attr);
+                if( value !== undefined ) {
+                    return value;
+                }
+            }
+
+            return _get.call( this, attr );
+
+        },
+
         'bind': function() {
             var args = slice.call( arguments, 1 ),
                 eventName = arguments[0];

@@ -5,7 +5,30 @@
 
         <link rel="stylesheet" type="text/css" href="prod/production.css" />
         <link rel="stylesheet" type="text/css" href="prod/jqueryui.css" />
+        <style type="text/css">
+            #some-tabs ul li {
+                float:left;
+                padding:0 1em 0.2em;
+                list-style: none;
+            }
 
+            #some-tabs .active {
+                border-bottom: solid 1px black;
+            }
+
+            #some-tabs {
+                margin-bottom: 2em;
+            }
+
+            #some-tabs + div,
+            #some-tabs + div + div {
+                display: inline-block;
+                vertical-align: top;
+            }
+            #some-tabs + div {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>

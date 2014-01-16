@@ -5,7 +5,6 @@ define([
     'resources/book',
     'resources/stages',
     'utils',
-    'underscore',
     // All the rest
     'controls/calculator/calculator',
     'can/control',
@@ -153,7 +152,7 @@ define([
                 Control = stage ? stage.attr('Control') : null;
 
             if( Control && !stage.attr('activeControl') ) {
-                new Control( $newContent, stage.attr('options') );
+                stage.attr('control', new Control( $newContent, stage.attr('options') ));
             }
 
         },
@@ -204,8 +203,10 @@ define([
         },
 
         // Empty route
-        'route': function() {
-            can.route.attr('page', 'calendar');
+        'route': function( routeObj ) {
+            if( !routeObj.page ) {
+                this.changeStage( 'calendar' );
+            }
         },
 
         '{route} booking': function( route, evt, newId, oldId ) {
@@ -244,31 +245,45 @@ define([
             this.changeStage( newPage, oldPage );
         },
 
-        '{stages} change': function() {
-            //debugger;
+        '{stages} 1.options': function( stages, evt, attr, type ) {
+            console.log();
         },
 
         /**
          * This function exposes an api to modify the settings
          * attached to this top level controller, importantly it is possible
          * to make changes to the settings used to launch each of the components
-         * @param  {Object} settingsObj The object to change the settings
+         * @param  {Object} options The object to change the settings
          * @return {undefined}
          */
-        'setOptions': function( settingsObj ) {
-            can.each( settingsObj, function( value, key ) {
-                if( this.options[key] ) {
-                    if( this.options[key].attr ) {
-                        this.options[key].attr( value );
-                    } else {
-                        can.extend( true, this.options[key], value );
-                    }
-                } else {
-                    this.options[key] = value;
-                }
-            }, this);
-        }
+        'update': function( options ) {
+            can.each( options, function( value, key ) {
 
+                if( key === 'stages' ) {
+
+                    can.each( value, function( settings, id ) {
+                        var stage = this.options.stages.getById( id );
+                        if( stage ) {
+                            stage.attr( settings );
+                        }
+                    }, this );
+
+                } else {
+                    if( this.options[key] ) {
+                        if( this.options[key].attr ) {
+                            this.options[key].attr( value );
+                        } else {
+                            can.extend( true, this.options[key], value );
+                        }
+                    } else {
+                        this.options[key] = value;
+                    }
+                }
+
+            }, this);
+
+            this.on();
+        }
     });
 
     // Initialise app on the cottage-booking element

@@ -1,6 +1,8 @@
 define(['can/util/string', 'accounting', 'underscore', 'can/view/ejs'], function( can, accounting, _ ) {
     'use strict';
 
+    var deCamalizeRegex = /([a-z\d])([A-Z])/g;
+
     can.extend( can.EJS.Helpers.prototype, {
         money: function( value, format ) {
             return accounting.formatMoney( value, {
@@ -54,6 +56,20 @@ define(['can/util/string', 'accounting', 'underscore', 'can/view/ejs'], function
                     return false;
                 });
             };
+        },
+
+        pretifyString: function( str, cap ) {
+            var newStr;
+            if( str && typeof str === 'string') {
+
+                newStr = str
+                    .replace(deCamalizeRegex, '$1 $2')
+                    .replace(/([^.|^\ ])\.([^.|^\ ])/g, '$1 $2');
+                return cap ?
+                    (newStr.charAt(0).toUpperCase() + newStr.slice(1)) :
+                    newStr.toLowerCase();
+            }
+            return '';
         }
     });
 

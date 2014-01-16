@@ -5,18 +5,14 @@
  */
 define([
     'helpers',
-    'ejs!./views/calculator',
-    'ejs!./views/init',
-    'ejs!./views/summary'
+    'ejs!./views/init'
 ], function() {
     'use strict';
 
     var args = Array.prototype.slice.call( arguments, 1 );
 
     return {
-        'calculator': args[0],
-        'init': args[1],
-        'summary': args[2]
+        'init': args[0]
     };
 });
 /* End of file */
