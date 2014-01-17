@@ -97,7 +97,7 @@ define([
                     this.content.tabs( 'option', 'disabled', this.disabledArray() );
 
                     //Finally assign the batch num
-                    lastBatchNum = evt.batchNum;
+                    lastBatchNum = evt.batchNum || null;
 
                 }
             };
@@ -118,7 +118,7 @@ define([
                 disabled.push( 1 );
             }
 
-            if( true ) {
+            if( this.options.book.errors() ) {
                 disabled.push( 2 );
             }
 
@@ -245,8 +245,24 @@ define([
             this.changeStage( newPage, oldPage );
         },
 
-        '{stages} 1.options': function( stages, evt, attr, type ) {
-            console.log();
+        '{route.data} next': function( route, evt, routeObj ) {
+            var nextStg, ind;
+            // if we don't have a page we should have the next one
+            if( !routeObj.page ) {
+                ind = 1;
+            } else {
+                ind = this.options.stages.next( routeObj.page );
+
+                if( ind === -1 ) {
+                    return;
+                }
+            }
+
+            // I suppose we could just say > 0
+            if( can.inArray( ind, this.disabledArray() ) === -1 ) {
+                nextStg = this.options.stages.attr( ind );
+                can.route.attr( 'page', nextStg.attr('id') );
+            }
         },
 
         /**

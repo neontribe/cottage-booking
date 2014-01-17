@@ -3,12 +3,12 @@ define([
     'moment',
     'underscore',
     'models/travellers',
-    'utils',
+    'models/web_extra',
     'can/model',
     'can/map/validations',
     'can/map/attributes',
     'can/compute'
-], function(can, moment, _, Traveller ){
+], function(can, moment, _, Traveller, WebExtra ){
     'use strict';
 
     return can.Model({
@@ -16,14 +16,20 @@ define([
         create  : 'POST property/booking/create',
         update  : 'POST property/booking/{bookingId}',
 
+        /* We need empty objects for the magic ejs binding */
         defaults: {
-            webExtras: []
+            webExtras: [],
+            customer: {
+                address: {},
+                name: {}
+            }
         },
 
         attributes: {
-            partyDetails: Traveller.List,
+            partyDetails: Traveller,
             fromDate: 'date',
-            toDate: 'date'
+            toDate: 'date',
+            webExtras: 'WebExtra'
         },
 
         convert: {
@@ -34,6 +40,16 @@ define([
                     return moment( raw, 'YYYY-MM-DD' );
                 }
                 return raw;
+            },
+            'WebExtra': function( val, oldVal ) {
+                if( oldVal && oldVal.constructor === WebExtra.List ) {
+
+                    if( val && can.isArray( val ) ) {
+                        return oldVal.attr( val );
+                    }
+
+                }
+                return new WebExtra.List( val );
             }
         },
 
@@ -74,9 +90,7 @@ define([
             'customer.eveningPhone',
             'customer.mobilePhone',
             'customer.email',
-            'customer.emailOptIn',
-            'customer.source',
-            'customer.which'
+            'customer.source'
         ],
 
         'init': function() {
@@ -93,6 +107,12 @@ define([
             this.validate('status', function( status ) {
                 if( status && status !== 'ok' ) {
                     return this.attr('message') || 'An unknown error occurred';
+                }
+            });
+
+            this.validate('customer.which', function( which ) {
+                if( this.attr('customer.source') === 'other' && !which ) {
+                    return 'The {label} field is required';
                 }
             });
         }
@@ -168,6 +188,48 @@ define([
             // TODO: use the Traveller.types static object keys
             return this.attr('adults') + this.attr('children') + this.attr('infants');
         }),
+
+        'spaceLeft': can.compute(function() {
+            return this.attr('propertyData.sleeps') - this.attr('partySize');
+        }),
+
+        'partyDetailsTypes': can.compute(function() {
+            var lookup;
+            if( this.attr('partyDetails') && this.attr('partyDetails').attr('length') ) {
+                lookup = _.invert( Traveller.types );
+                return _.object( _.map( this.attr('partyDetails').type(), function(val, key) {
+                    return [lookup[key], val];
+                }) );
+            }
+            return [];
+        }),
+
+        /**
+         * This function manually compiles a list of _all_ errors because
+         * the error generation for lists of models and sub models isn't complete
+         * :-(
+         * See: https://github.com/bitovi/canjs/pull/434
+         * @return {Object}     The state of errors for this model
+         */
+        'errors': function() {
+            var errors = can.Model.prototype.errors.apply( this, arguments ) || {};
+
+            if( errors && !arguments.length && this.attr('partyDetails.length') ) {
+                this.attr('partyDetails').each(function( item, index ) {
+                    var errs = item.errors();
+                    if( errs ) {
+                        can.each( errs, function( err, errKey ) {
+                            errors[can.sub('partyDetails.{index}.{key}', {
+                                index: index,
+                                key: errKey
+                            })] = err;
+                        });
+                    }
+                });
+            }
+
+            return can.isEmptyObject( errors ) ? null : errors;
+        },
 
         // In most cases we need to clear this error before continuing
         // So we just remove it

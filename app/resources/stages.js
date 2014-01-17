@@ -18,6 +18,16 @@ define([
                 return can.Model.List.prototype.indexOf.call( this, this.getById( id ) );
             }
             return can.Model.List.prototype.indexOf.call( this, id );
+        },
+        'next': function( curr ) {
+            var next = this.indexOf( curr );
+
+            // We're at the end of the stages arr
+            if( next >= this.attr('length') - 1 ) {
+                return -1;
+            }
+
+            return ++next;
         }
     });
 

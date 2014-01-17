@@ -44,6 +44,13 @@ define([
                     }, this),
                     'price.extras': can.compute(function() {
                         return this.options.booking.attr('webExtras') && this.options.booking.attr('webExtras').attr('length') > 0;
+                    }, this),
+                    'customer.which': can.compute(function() {
+                        var source = this.options.booking.attr('customer.source');
+
+                        if( !source || source.toLowerCase() !== 'other' ) {
+                            return false;
+                        }
                     }, this)
                 }
             }) );
@@ -55,6 +62,7 @@ define([
         },
 
         '{booking} submit': function() {
+
             this.options.booking.save();
         }
     });

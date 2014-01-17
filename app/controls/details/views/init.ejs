@@ -19,7 +19,7 @@
         <legend>Address</legend>
         <input name="customer.address.addr1" data-label="Address Line 1" />
         <input name="customer.address.addr2" data-label="Address Line 2" />
-        <input name="customer.address.town" data-label="Town" />
+        <input name="customer.address.town" data-label="Town/City" />
         <input name="customer.address.county" data-label="County" />
         <input name="customer.address.postcode" data-label="Postcode" />
         <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" data-label="Country" />
@@ -32,7 +32,6 @@
         <input name="customer.email" data-label="Email" />
     </fieldset>
 
-    <button type="submit">Submit</button>
 </form>
 
 <div>
@@ -40,28 +39,34 @@
         <fieldset>
             <legend>Party information</legend>
             <div <%= (el) -> el.bindForm({ model: model, debounceDelay: 100 }) %> >
-                <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults:" data-min="0" />
-                <input name="children" type="number" data-placeholder="Children" data-label="Number of children:" data-min="0"  />
+                <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults" data-min="0" />
+                <input name="children" type="number" data-placeholder="Children" data-label="Number of children" data-min="0" />
+                <input name="infants" type="number" data-placeholder="Children" data-label="Number of infants" data-min="0" />
             </div>
-            <% if( model.attr('partyDetails') ) { %>
                 <fieldset class="party-list">
                     <legend>Party member details</legend>
-                    <% list( model.attr('partyDetails'), function( traveller ) { %>
-                        <div
-                            <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
-                                'model': traveller,
-                                'optionsMap': {
-                                    'title': titles,
-                                    'age': ages,
-                                    'childAge': childAge
-                                },
-                                'defaultLabel': true
-                            }) %>
-                            class="<%= traveller.type %> traveller"
-                        ></div>
-                    <%  }); %>
+
+                    <% list( model.attr('partyDetailsTypes'), function( types, title ) { %>
+                        <legend><%= pretifyString( title, true ) %></legend>
+
+                        <% list( types, function( traveller ) { %>
+                            <div
+                                <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
+                                    'model': traveller,
+                                    'optionsMap': {
+                                        'title': titles,
+                                        'age': ages,
+                                        'childAge': childAge
+                                    },
+                                    'defaultLabel': true
+                                }) %>
+                                class="<%= traveller.type %> traveller"
+                            ></div>
+                        <% }); %>
+
+                    <% }); %>
+
                 </fieldset>
-            <% } %>
         </fieldset>
     </form>
 
@@ -79,11 +84,15 @@
         </fieldset>
 
         <fieldset>
-            <legend></legend>
+            <legend>Other information</legend>
             <input name="customer.emailOptIn" type="checkbox" data-label="Would you like to receieve our newsletter?" />
-            <input name="customer.source" data-label="Where did you hear about us?" />
+            <p>Where did you hear about us?</p>
+            <input name="customer.source" data-label="" />
             <input name="customer.which" data-label="If other" />
         </fieldset>
+
+        <button type="submit" <%= next() %> >Submit</button>
     </form>
 
 </div>
+

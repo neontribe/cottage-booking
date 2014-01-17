@@ -1,13 +1,13 @@
-<%# If the value at the display is === true or undefined then display %>
+<%# If the value at the display is !== false then display %>
 <% if( display.attr( attrName + '()' ) !== false ) { %>
+<% if( attrName === 'price.extras') %>
     <div class="form-item <%= type %>" <%= appendTemplate( view, this ) %>>
         <% if( label ) { %>
             <label for="<%= id %>">
-            	<%= pretifyString( label, true ) %>
-            	<% if( required ) { %>
-            		<span class="required">*</span>
-        		<% } %>
+                <%= pretifyString( label, true ) %><% if( required ) { %><span class="required">*</span><% } %>
             </label>
+        <% } else if( required ) { %>
+                <span class="required">*</span>
         <% } %>
         <%# Template gets appended %>
     </div>

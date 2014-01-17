@@ -1,7 +1,8 @@
 define([
     'can/util/string',
-    'moment'
-], function( can, moment ) {
+    'moment',
+    'accounting'
+], function( can, moment, accounting ) {
     'use strict';
 
     var slice = Array.prototype.slice;
@@ -44,6 +45,12 @@ define([
         },
         now: function() {
             return moment( new Date() );
+        },
+        money: function( value, format ) {
+            return accounting.formatMoney( value, {
+                format: format,
+                symbol: '£'
+            });
         }
     };
 

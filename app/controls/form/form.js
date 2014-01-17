@@ -123,7 +123,7 @@ define([
                 'valueAttr'     : 0,
                 'textAttr'      : 1,
                 'id'            : _.uniqueId( 'attr_' + attr + '_' ),
-                'required'      : !!this.options.model.errors( attr, '' )
+                'required'      : this.options.model.errors( attr, '' )
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for
@@ -183,7 +183,7 @@ define([
                     this.setter( type, attr, val, $el );
                 }
 
-                this.addErrorsForAttr( attr );
+                //this.addErrorsForAttr( attr );
             }
 
         },
@@ -306,8 +306,34 @@ define([
             }
         },
 
+        // This is because errors don't appear to bubble correctly
+        // TODO: when the errors appear for sub models change this behaviour
+        // See: https://github.com/bitovi/canjs/pull/434
+        inseminateErrors: function( errObj ) {
+            if( errObj ) {
+                can.each(errObj, function( error, key ) {
+                    var modl;
+                    if( key.indexOf('.') > -1 ) {
+                        modl = key.split('.');
+                        // Pop off the attribute
+                        modl.pop();
+                        can.trigger( this.options.model.attr( modl.join('.') ), 'formErrors' );
+                    }
+                }, this);
+            }
+        },
+
         '{model} formErrors': function( model, evt, errors ) {
-            if( _.intersection( _.keys( errors ) , this.options.attributes.attr() ).length ) {
+            // If we hear about some errors happening elsewhere
+            // try and apply them correctly, if errors is falsey (undefined) presume we
+            // have been trigged manually
+            if( errors ) {
+                if( _.intersection( _.keys( errors ) , this.options.attributes.attr() ).length ) {
+                    this.addErrors();
+                }
+                // eurgh...
+                this.inseminateErrors( errors );
+            } else {
                 this.addErrors();
             }
         }

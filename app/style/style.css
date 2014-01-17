@@ -57,10 +57,12 @@
 .party-list .traveller label {
     visibility: hidden;
     height: 0;
+    width: 25%;
 }
 
-.party-list .traveller:first-child .form-item label {
+.party-list legend + .traveller .form-item label {
     visibility: visible;
+    height: auto;
 }
 
 .party-list > .traveller .form-item {
@@ -75,6 +77,7 @@
     margin: 0 1.5%;
 }
 
+.party-list > .infant .form-item:first-child,
 .party-list > .child .form-item:first-child {
     margin-left: 25%;
 }
@@ -94,7 +97,7 @@ input, select, textarea {
 }
 
 .bindForm .form-item label {
-    min-width: 25%;
+    min-width: 35%;
     text-align: right;
 }
 
@@ -140,4 +143,8 @@ input, select, textarea {
 
 .calendar .hasDatepicker > div {
     margin: 0 auto;
+}
+
+.form-item .required {
+    color: red;
 }

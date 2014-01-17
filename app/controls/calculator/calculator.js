@@ -91,9 +91,8 @@ define([
         },
 
         '{enquiry} submit': function() {
-            if( !this.options.enquiry.errors() ) {
-                this.options.enquiry.make();
-            }
+            // The from controller should pretect us from an invalid form state
+            this.options.enquiry.make();
         }
     });
 

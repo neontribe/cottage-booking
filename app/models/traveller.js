@@ -28,10 +28,6 @@ define([
                 }
             });
         }
-    }, {
-        'init': function() {
-            console.log('IM HERE');
-        }
-    });
+    }, {});
 
 });

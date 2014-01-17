@@ -1,16 +1,9 @@
-define(['can/util/string', 'accounting', 'underscore', 'can/view/ejs'], function( can, accounting, _ ) {
+define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs'], function( can, accounting, _, utils ) {
     'use strict';
 
     var deCamalizeRegex = /([a-z\d])([A-Z])/g;
 
     can.extend( can.EJS.Helpers.prototype, {
-        money: function( value, format ) {
-            return accounting.formatMoney( value, {
-                format: format,
-                symbol: '£'
-            });
-        },
-
         appendTemplate: function( templFn, data ) {
             return function( el ) {
                 can.$(el).append( templFn( data ) );
@@ -28,6 +21,7 @@ define(['can/util/string', 'accounting', 'underscore', 'can/view/ejs'], function
         sub: can.sub,
         capitalize: can.capitalize,
         uniqueId: _.uniqueId,
+        money: utils.money,
 
         assignAsContent: function( self ) {
             return function( el ) {
@@ -58,13 +52,27 @@ define(['can/util/string', 'accounting', 'underscore', 'can/view/ejs'], function
             };
         },
 
+        next: function() {
+            return function( el ) {
+                can.$( el ).addClass('next').on('click', function() {
+
+                    can.trigger( can.route.data, 'next', [ can.route.attr() ] );
+
+                    // Only behave like this if we don't have a href
+                    if( this.href || this.tagName.toLowerCase() === 'a' ) {
+                        return false;
+                    }
+                });
+            };
+        },
+
         pretifyString: function( str, cap ) {
             var newStr;
             if( str && typeof str === 'string') {
 
                 newStr = str
                     .replace(deCamalizeRegex, '$1 $2')
-                    .replace(/([^.|^\ ])\.([^.|^\ ])/g, '$1 $2');
+                    .replace(/([[a-z]^\ ])\.([[a-z]^\ ])/g, '$1 $2');
                 return cap ?
                     (newStr.charAt(0).toUpperCase() + newStr.slice(1)) :
                     newStr.toLowerCase();

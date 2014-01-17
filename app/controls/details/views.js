@@ -7,6 +7,7 @@ define([
     'helpers',
     'ejs!./views/adult',
     'ejs!./views/child',
+    'ejs!./views/infant',
     'ejs!./views/init'
 ], function() {
     'use strict';
@@ -16,7 +17,8 @@ define([
     return {
         'adult': args[0],
         'child': args[1],
-        'init': args[2]
+        'infant': args[2],
+        'init': args[3]
     };
 });
 /* End of file */
