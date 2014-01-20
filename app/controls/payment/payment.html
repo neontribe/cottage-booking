@@ -1,7 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
-    <title>Calculator demo page!</title>
+    <title>Payment demo page!</title>
+
+    <script src="//localhost:35729/livereload.js"></script>
     <link rel="stylesheet" type="text/css" href="../../style/style.out.css" />
     <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery-ui.css" />
@@ -19,12 +21,8 @@
       requirejs.config({
           baseUrl : '../../'
       });
-      requirejs(['controls/calculator/calculator', 'fixtures/availabilities', 'fixtures/enquiries'], function(Calculator){
-        new Calculator('#content');
-        require('resources/enquiry').attr('propRef', 'A223_ZZ');
-        require('resources/enquiry').on('change', function() {
-
-        });
+      requirejs(['controls/payment/payment', 'fixtures/availabilities', 'fixtures/enquiries'], function(Payment){
+        new Payment('#content');
       });
     </script>
   </body>

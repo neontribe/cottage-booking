@@ -4,11 +4,12 @@ define([
     'underscore',
     'models/travellers',
     'models/web_extra',
+    'models/price',
     'can/model',
     'can/map/validations',
     'can/map/attributes',
     'can/compute'
-], function(can, moment, _, Traveller, WebExtra ){
+], function(can, moment, _, Traveller, WebExtra, Price ){
     'use strict';
 
     return can.Model({
@@ -16,7 +17,9 @@ define([
         create  : 'POST property/booking/create',
         update  : 'POST property/booking/{bookingId}',
 
-        /* We need empty objects for the magic ejs binding */
+        // We need empty objects for the magic ejs binding
+        // It tries to bind to the model, if it's undefined it will
+        // never update
         defaults: {
             webExtras: [],
             customer: {
@@ -29,7 +32,9 @@ define([
             partyDetails: Traveller,
             fromDate: 'date',
             toDate: 'date',
-            webExtras: 'WebExtra'
+            webExtras: 'WebExtra',
+            // We need to change our model is read and added to the booking
+            price: Price
         },
 
         convert: {
@@ -49,7 +54,7 @@ define([
                     }
 
                 }
-                return new WebExtra.List( val );
+                return this.convert.default.apply( this, arguments );
             }
         },
 

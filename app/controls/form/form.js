@@ -8,7 +8,8 @@ define([
     'can/control/plugin',
     'jqueryui/jquery.ui.tooltip',
     'jqueryui/jquery.ui.datepicker',
-    'plugins/map/getter'
+    'plugins/map/getter',
+    'can/map/validations'
 ], function(can, views, moment, _, utils) {
     'use strict';
 
@@ -78,6 +79,8 @@ define([
             // We expect these to be computes, so that change events will get properly updated
             this.options.display    = new can.Map( this.options.display );
 
+            this.options.validations = !!this.options.model.constructor.validations;
+
             this.element.find('[name]').each( can.proxy( this.formElement, this ) );
             // Once we've replaced and sorted out inputs, set the title to empty string
             // so we can display tooltips
@@ -123,7 +126,7 @@ define([
                 'valueAttr'     : 0,
                 'textAttr'      : 1,
                 'id'            : _.uniqueId( 'attr_' + attr + '_' ),
-                'required'      : this.options.model.errors( attr, '' )
+                'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for

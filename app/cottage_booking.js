@@ -89,15 +89,25 @@ define([
         // Whenever the booking object changes, check for errors and
         // Enable/disable stages
         '{book} change': (function() {
-            var lastBatchNum = null;
+            var lastBatchNum = null,
+                lastDisabledArr = null;
             return function( model, evt ) {
                 // Check we haven't already done this
                 if( lastBatchNum !== evt.batchNum ) {
 
-                    this.content.tabs( 'option', 'disabled', this.disabledArray() );
+                    var newDisabledArr = this.disabledArray(),
+                        index = this.options.stages.indexOf( can.route.attr('page') );
+
+                    this.content.tabs( 'option', 'disabled', newDisabledArr );
+
+                    // If we can change to the page now, make the change
+                    if( index !== -1 && can.inArray( index, newDisabledArr ) === -1/* && can.inArray( index, lastDisabledArr ) !== -1*/ ) {
+                        this.changeStage( can.route.attr('page') );
+                    }
 
                     //Finally assign the batch num
                     lastBatchNum = evt.batchNum || null;
+                    lastDisabledArr = newDisabledArr;
 
                 }
             };
@@ -109,12 +119,12 @@ define([
          */
         'disabledArray': function() {
             var disabled = [],
-                hash = window.location.hash ? window.location.hash.split('#!')[1] : '',
+                hash = window.location.hash ? window.location.hash.split('#!')[1] : '';//,
                 // Because the route could be unready at this point, we need to extract
                 // data from the url ourselves... TODO: investigate alternative
-                current = can.route.deparam( hash );
+                //current = can.route.deparam( hash );
 
-            if( !current.booking && !this.options.book.attr('bookingId') ) {
+            if( !this.options.book.attr('bookingId') ) {
                 disabled.push( 1 );
             }
 

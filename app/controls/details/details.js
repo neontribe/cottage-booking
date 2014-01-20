@@ -43,7 +43,7 @@ define([
                         return this.options.booking.attr('propertyData.pets') === true;
                     }, this),
                     'price.extras': can.compute(function() {
-                        return this.options.booking.attr('webExtras') && this.options.booking.attr('webExtras').attr('length') > 0;
+                        return !!(this.options.booking.attr('webExtras') && this.options.booking.attr('webExtras').attr('length') > 0);
                     }, this),
                     'customer.which': can.compute(function() {
                         var source = this.options.booking.attr('customer.source');
