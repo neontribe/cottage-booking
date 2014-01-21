@@ -243,7 +243,7 @@ define([
 
         '{book} bookingId': function( obj, evt, newVal ) {
             if( newVal ) {
-                if( newVal !== can.route.attr('bookg') ) {
+                if( newVal !== can.route.attr('booking') ) {
                     can.route.attr('booking', newVal);
                 }
             } else {
