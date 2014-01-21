@@ -149,3 +149,7 @@ input, select, textarea {
 .form-item .required {
     color: red;
 }
+
+.payment iframe {
+    width: 100%;
+}
