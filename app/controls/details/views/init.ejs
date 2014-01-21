@@ -50,14 +50,16 @@
                     <% list( model.attr('partyDetailsTypes'), function( types, title ) { %>
                         <legend><%= pretifyString( title, true ) %></legend>
 
-                        <% list( types, function( traveller ) { %>
+                        <% 
+                            list( types, function( traveller ) {
+                                var agesForThisType = ages[ traveller.attr('type') + 'Ages' ];
+                        %>
                             <div
                                 <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
                                     'model': traveller,
                                     'optionsMap': {
                                         'title': titles,
-                                        'age': ages,
-                                        'childAge': childAge
+                                        'age': agesForThisType
                                     },
                                     'defaultLabel': true
                                 }) %>

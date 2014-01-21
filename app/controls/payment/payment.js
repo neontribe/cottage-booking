@@ -13,16 +13,13 @@ define([
     return can.Control({
         defaults: {
             booking: booking,
-            payLater: true,
             payment: null
         }
     }, {
         init: function() {
             this.options.payment = new Payment();
 
-            this.element.html( views.init({
-                'model': this.options.payment
-            }));
+            this.element.html( views.init( this.options ) );
         }
     });
 

@@ -152,4 +152,5 @@ input, select, textarea {
 
 .payment iframe {
     width: 100%;
+    height: 500px;
 }

@@ -1,3 +1,5 @@
-<iframe src="<%= '' %>"></iframe>
 
+<% if( !payment.attr('payLater') && payment.attr('NextURL') ) { %>
+	<iframe src="<%= payment.attr('NextURL') %>"></iframe>
+<% } %>
 <a <%= next() %>> Next </a>

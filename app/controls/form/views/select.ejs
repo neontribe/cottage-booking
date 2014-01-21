@@ -7,21 +7,21 @@
     <%= (el) -> el.tooltip( tooltipOptions ) %>
 >
     <%
-        var value, text;
+        var phValue, phText;
         if( this.placeholder ) {
-            value = this.placeholderVal || '',
-            text  = typeof placeholder === 'string' ? placeholder : 'Please select';
+            phValue = this.placeholderVal || '';
+            phText  = typeof placeholder === 'string' ? placeholder : 'Please select';
     %>
         <option
-            value="<%= value %>"
-            <%= ( model.attr( attrName ) === value || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
+            value="<%= phValue %>"
+            <%= ( model.attr( attrName ) === phValue || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
         >
-            <%= text %>
+            <%= phText %>
         </option>
     <% } %>
     <% list( optionsMap.attr( attrName ), function( element ) {
-        value = element.attr( valueAttr ) || element.attr( textAttr ),
-        text = element.attr( textAttr ) || element.attr( valueAttr );
+        var value = element.attr( valueAttr ) || element.attr( textAttr ),
+            text = element.attr( textAttr ) || element.attr( valueAttr );
     %>
         <option
             value="<%= value %>"

@@ -1,14 +1,8 @@
 {
-    "response": {
-        "VPSProtocol": "3.00",
-        "Status": "OK",
-        "StatusDetail": "2014 : The Transaction was Registered Successfully.",
-        "VPSTxId": "{FD3B0EB7-291E-A64D-3510-E10CAE99C188}",
-        "SecurityKey": "JEBWHXPYGA",
-        "NextURL": "https://test.sagepay.com/gateway/service/cardselection?vpstxid={FD3B0EB7-291E-A64D-3510-E10CAE99C188}"
-    },
-    "toPay": "300.00",
-    "type": "balance",
-    "vendorTxCode": "WEB-A223-20140121120115",
-    "notificationUrl": "http://public2.neontribe.co.uk/NeonTABS/demosite/property/booking/sagepay-callback/balance/f1246b7b857056aca5b705dd948620b2"
+    "VPSProtocol": "3.00",
+    "Status": "OK",
+    "StatusDetail": "2014 : The Transaction was Registered Successfully.",
+    "VPSTxId": "{FD3B0EB7-291E-A64D-3510-E10CAE99C188}",
+    "SecurityKey": "JEBWHXPYGA",
+    "NextURL": "https://test.sagepay.com/gateway/service/cardselection?vpstxid={FD3B0EB7-291E-A64D-3510-E10CAE99C188}"
 }

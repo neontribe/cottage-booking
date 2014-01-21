@@ -33,10 +33,15 @@
         'fixtures/payments'
       ], function(Payment, booking){
         booking.fetchBooking('f1246b7b857056aca5b705dd948620b2').done(function() {
-          var payment = new Payment('#content');
+          var payment = new Payment('#content'),
+            doDisplay = function() {
+              $('#results textarea').html(JSON.stringify( payment.options.payment.attr(), null, '\t' ) );
+            };
+
+          doDisplay();
           // the payment model in use by this controller
           payment.options.payment.on('change', function() {
-            $('#results textarea').html(JSON.stringify( payment.options.payment.attr(), null, '\t' ) );
+            doDisplay();
           });
         });
       });

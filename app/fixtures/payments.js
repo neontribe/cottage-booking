@@ -26,7 +26,7 @@ define([
                     'NextURL': require.toUrl('fixtures/payments/sagepay.html')
                 });
                 reply( data );
-            }).fail( reply );
+            }).fail(reply);
             can.fixture.on = true;
         };
 
