@@ -20,6 +20,14 @@ define([
             this.options.payment = new Payment();
 
             this.element.html( views.init( this.options ) );
+            this.on();
+        },
+
+        '{payment} NextURL': function() {
+
+            this.options.content.html( views.iframe({
+
+            }) );
         }
     });
 

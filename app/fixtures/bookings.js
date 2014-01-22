@@ -6,7 +6,7 @@ define(['fixtures/fixtures', 'underscore'], function(can){
     can.wrapFixture('GET property/booking/{bookingId}', 'fixtures/bookings/');
 
     can.wrapFixture('POST property/booking/{bookingId}', 'fixtures/bookings/', function( data, status, def, originalAjax ) {
-        return can.extend( data, originalAjax.data );
+        return can.useFixtures ? can.extend( data, originalAjax.data ) : data;
     });
 
     return can;
