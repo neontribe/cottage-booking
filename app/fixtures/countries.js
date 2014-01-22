@@ -1,12 +1,6 @@
-define(['can/util/string', 'can/util/string/deparam', 'can/util/fixture'], function(can){
+define(['fixtures/fixtures'], function(can){
     'use strict';
-    /* globals location */
-    var queryObj = can.deparam( location.search.slice(1) ),
-        fixture = !queryObj.noFixture ?
-            require.toUrl('fixtures/countries/countries.json') :
-            'http://localhost/NeonTABS/demosite/property/country';
-    can.fixture({
-        'GET property/country': fixture
-    });
+
+    can.wrapFixture('GET property/country', 'fixtures/countries/');
 
 });

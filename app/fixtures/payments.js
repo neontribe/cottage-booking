@@ -4,9 +4,12 @@ define([
     'use strict';
 
     can.wrapFixture('POST property/booking/{booking.bookingId}/pay', 'fixtures/payments/', function( data ) {
-        return can.extend( data, {
-            'NextURL': require.toUrl( 'fixtures/payments/sagepay.html' )
-        });
+        if( can.useFixtures ) {
+            return can.extend( data, {
+                'NextURL': require.toUrl( 'fixtures/payments/sagepay.html' )
+            });
+        }
+        return data;
     });
 
 });

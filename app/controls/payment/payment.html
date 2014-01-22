@@ -27,12 +27,13 @@
       requirejs([
         'controls/payment/payment',
         'resources/book',
+        'fixtures/fixtures',
         'fixtures/availabilities',
         'fixtures/enquiries',
         'fixtures/bookings',
         'fixtures/payments'
-      ], function(Payment, booking){
-        booking.fetchBooking('f1246b7b857056aca5b705dd948620b2').done(function() {
+      ], function(Payment, booking, wrappedCan) {
+        booking.fetchBooking(wrappedCan.queryObj.bookingId || 'd76c8badd8448cc9d1d888778966d140').done(function() {
           var payment = new Payment('#content'),
             doDisplay = function() {
               $('#results textarea').html(JSON.stringify( payment.options.payment.attr(), null, '\t' ) );

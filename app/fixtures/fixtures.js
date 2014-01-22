@@ -6,10 +6,12 @@ define([
 ], function( can, $ ) {
     'use strict';
 
-    var queryObj = can.deparam( window.location.search.slice(1) );
+    var slice = Array.prototype.slice,
+        queryObj = can.deparam( window.location.search.slice(1) );
 
     // TODO: if a we want to use fixtures && it 404's, fetch the fixture from the public location and save to disk!
     // EXCITING
+
 
     // Return our helpfully wrapped can, with extra fixture helpers
     return can.extend({
@@ -18,16 +20,17 @@ define([
         queryObj:      queryObj,
         useFixtures:   !queryObj.noFixture,
 
-        wrapFixture:   function( fixturePath, jsonPath, pipe ) {
+        wrapFixture:   function( fixturePath, jsonPath, pipe, fixtureOverride ) {
             var pathParts = fixturePath.split(' '),
                 type = this.useFixtures ? 'GET' : pathParts[0];
 
             this.fixture( fixturePath, can.proxy(function( options, reply, headers, fullOptions ) {
 
-                var url, ajaxObj;
+                var args = slice.call( arguments ),
+                    url, ajaxObj;
 
                 if( this.useFixtures ) {
-                    url = require.toUrl( jsonPath + fullOptions.url.replace(/\//g, '-') + '.json' );
+                    url = require.toUrl( jsonPath + ( fixtureOverride || fullOptions.url.replace(/\//g, '-') + '.json' ) );
                 } else {
                     url = this.publicApiRoot + fullOptions.url;
                 }
@@ -47,7 +50,10 @@ define([
                 can.fixture.on = false;
 
                 $.ajax( ajaxObj )
-                    .pipe( pipe )
+                    // I _fucking_ love javascript
+                    .pipe(can.isFunction( pipe ) && function() {
+                        return pipe.apply( this, slice.call( arguments ).concat( args ) );
+                    })
                     .always( reply );
                 
                 can.fixture.on = true;
