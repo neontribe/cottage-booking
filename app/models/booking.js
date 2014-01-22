@@ -120,6 +120,22 @@ define([
                     return 'The {label} field is required';
                 }
             });
+
+            this.validate('customer.emailConf', function( email ) {
+                if( this.attr('customer.email') && this.attr('customer.email') !== email ) {
+                    return 'The two emails don\'t match';
+                }
+            });
+
+            this.validate('canSave', function() {
+                // TODO
+                // Because we can easily save to the server with empty values
+                // But not with incorrect ones, proxy those checks here so that we can
+                // Save the current state to the server
+                // And simply do on('idle', function() {
+                //     !booking.errors('canSave') && booking.save()
+                // })
+            });
         }
 
     }, {
