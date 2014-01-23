@@ -11,6 +11,7 @@ define([
     'ejs!./views/errors_wrapper',
     'ejs!./views/model_multi_checkbox',
     'ejs!./views/number',
+    'ejs!./views/radio',
     'ejs!./views/select',
     'ejs!./views/text',
     'ejs!./views/wrapper'
@@ -26,9 +27,10 @@ define([
         'errorsWrapper': args[3],
         'modelMultiCheckbox': args[4],
         'number': args[5],
-        'select': args[6],
-        'text': args[7],
-        'wrapper': args[8]
+        'radio': args[6],
+        'select': args[7],
+        'text': args[8],
+        'wrapper': args[9]
     };
 });
 /* End of file */

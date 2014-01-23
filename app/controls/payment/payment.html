@@ -33,18 +33,22 @@
         'fixtures/bookings',
         'fixtures/payments'
       ], function(Payment, booking, wrappedCan) {
-        booking.fetchBooking(wrappedCan.queryObj.bookingId || 'd76c8badd8448cc9d1d888778966d140').done(function() {
-          var payment = new Payment('#content'),
-            doDisplay = function() {
-              $('#results textarea').html(JSON.stringify( payment.options.payment.attr(), null, '\t' ) );
-            };
+        function doReq() {
+          booking.fetchBooking(wrappedCan.queryObj.bookingId || 'd76c8badd8448cc9d1d888778966d140').done(function() {
+            var payment = new Payment('#content'),
+              doDisplay = function() {
+                $('#results textarea').html(JSON.stringify( payment.options.payment.attr(), null, '\t' ) );
+              };
 
-          doDisplay();
-          // the payment model in use by this controller
-          payment.options.payment.on('change', function() {
             doDisplay();
-          });
-        });
+            // the payment model in use by this controller
+            payment.options.payment.on('change', function() {
+              doDisplay();
+            });
+          }).fail( doReq );
+
+        }
+        doReq();
       });
     </script>
   </body>

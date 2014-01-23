@@ -134,6 +134,7 @@ define([
                 // Save the current state to the server
                 // And simply do on('idle', function() {
                 //     !booking.errors('canSave') && booking.save()
+                //      if errors then update the status box
                 // })
             });
         }
@@ -142,6 +143,31 @@ define([
 
         'init': function() {
             this.on( 'partySize', can.proxy( this.partyChangeHandler, this ) );
+        },
+
+        'serialize': function() {
+            var serialized = can.Model.prototype.serialize.call( this );
+            // Standard booking object, some of this we can omit
+            // "webExtras",
+            // "customer",
+            // "bookingId",
+            // "id",
+            // "propertyRef",
+            // "brandCode",
+            // "fromDate",
+            // "toDate",
+            // "adults",
+            // "children",
+            // "infants",
+            // "partyDetails",
+            // "pets",
+            // "confirmation",
+            // "payments",
+            // "notes",
+            // "price",
+            // "totalPrice",
+            // "propRef"
+            return _.omit( serialized, 'webExtras', 'payment' );
         },
 
         'partyChangeHandler': function() {

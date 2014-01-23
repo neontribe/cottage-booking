@@ -12,11 +12,10 @@ define([
     // TODO: if a we want to use fixtures && it 404's, fetch the fixture from the public location and save to disk!
     // EXCITING
 
-
     // Return our helpfully wrapped can, with extra fixture helpers
     return can.extend({
 
-        publicApiRoot: 'http://public2.neontribe.co.uk/NeonTABS/demosite/',
+        publicApiRoot: queryObj.local ? 'http://localhost/NeonTABS/demosite/' : 'http://public2.neontribe.co.uk/NeonTABS/demosite/',
         queryObj:      queryObj,
         useFixtures:   !queryObj.noFixture,
 
@@ -54,7 +53,8 @@ define([
                     .pipe(can.isFunction( pipe ) && function() {
                         return pipe.apply( this, slice.call( arguments ).concat( args ) );
                     })
-                    .always( reply );
+                    .done( reply )
+                    .fail( reply );
                 
                 can.fixture.on = true;
             }, this) );

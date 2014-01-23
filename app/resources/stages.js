@@ -5,8 +5,9 @@ define([
     'can/util/string',
     'controls/calendar/calendar',
     'controls/details/details',
+    'controls/payment/payment',
     'underscore'
-], function( can, Calendar, Details, _ ) {
+], function( can, Calendar, Details, Payment, _ ) {
     'use strict';
 
     var StageList = can.Model.List.extend({
@@ -45,7 +46,8 @@ define([
             'options'       : {}
         },
         {
-            'id'            : 'payment'
+            'id'            : 'payment',
+            'Control'       : Payment
         },
         {
             'id'            : 'confirmation'

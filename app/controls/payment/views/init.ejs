@@ -1,6 +1,22 @@
+<% if( options.canDeposit ) { %>
+    <form <%= bindForm({
+        model: payment,
+        optionsMap: {
+            'paymentType': choices
+        }
+    }) %>>
 
-<% if( !payment.attr('payLater') ) { %>
-    <div <%= assignAsContent( this ) %>>
-    </div>
+        <input name="paymentType" type="radio" />
+
+    </form>
 <% } %>
+<div class="iframe-holder">
+    <% if( payment.attr('payLater') && options.canPayLater ) { %>
+        Some guff about, you&#39;re all set! Continue to the confirmation page!
+        <br>
+        Pay later and stuff
+    <% } else if( !payment.attr('payLater') && payment.attr('NextURL') ) { %>
+        <iframe src="<%= payment.attr('NextURL') %>"></iframe>
+    <% } %>
+</div>
 <a <%= next() %>> Next </a>
