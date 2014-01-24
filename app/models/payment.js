@@ -4,7 +4,7 @@ define([
     'can/util/string',
     'resources/book',
     'can/model',
-    'can/compute'
+    'can/map/validations'
 ], function( can ){
     'use strict';
 
@@ -19,6 +19,13 @@ define([
         //     // deposit: just pay the deposit
         //     'paymentType': 'balance'
         // }
+        'init': function() {
+            this.validate('Status', function( status ) {
+                if( status && status.toLowerCase() !== 'ok' ) {
+                    return this.attr('StatusDetails');
+                }
+            });
+        }
     }, {
     });
 

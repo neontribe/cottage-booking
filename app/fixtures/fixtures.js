@@ -38,7 +38,8 @@ define([
                     type: type,
                     url: url,
                     // Yay for jsonp
-                    dataType: this.useFixtures ? 'json' : 'jsonp'
+                    //dataType: this.useFixtures ? 'json' : 'jsonp'
+                    dataType: 'json'
 
                 });
 

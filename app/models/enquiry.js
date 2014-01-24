@@ -221,7 +221,7 @@ define([
 
                     if( dayData ) {
                         // Get availability
-                        enableDay = dayData.attr('available');
+                        enableDay = dayData.attr('available') || dayData.attr('bookingStart');
 
                         if( enableDay && this.fallsBetween( date ) ) {
                             dayClasses.push('selected');
@@ -233,15 +233,14 @@ define([
                                 // Look to add errors
                                 if( errors.status ) {
                                     tooltip = errors.status[0];
-                                } else {
-                                    tooltip = 'Good to go!';
                                 }
+                            } else {
+                                tooltip = 'Good to go!';
                             }
                         }
 
                         // Add other misc classes
-                        dayClasses.push( 'code-' + dayData.attr('code') );
-                        dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
+                        dayClasses.push.apply( dayClasses, dayData.attr('class').attr() );
                     }
                 }
             }

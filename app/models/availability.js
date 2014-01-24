@@ -25,7 +25,7 @@ define([
             var newData = can.Model.model.call( this, {} );
 
             can.each( raw, function( availData, key ) {
-                newData.attr( key, new AvailabilityDay( availData ) );
+                newData.attr( key, AvailabilityDay.model( availData ) );
             });
 
             return newData;

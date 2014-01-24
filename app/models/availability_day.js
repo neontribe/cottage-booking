@@ -4,7 +4,7 @@
  * TODO: Investigate whether we can just instantiate a model on the fly, rather than this
  * @return {can.Model} availability the model
  */
-define(['can/util/string', 'moment', 'can/model'], function(can, moment){
+define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/compute'], function(can, moment, _){
     'use strict';
 
     return can.Model({
@@ -16,9 +16,15 @@ define(['can/util/string', 'moment', 'can/model'], function(can, moment){
 
             return can.Model.model.call( this, can.extend(raw, {
                 'id': id,
-                'date': date
+                'date': date,
+                // Compact removes falsey values
+                'class': raw.class ? _.compact( raw.class.split(' ') ) : []
             }));
         }
-    }, {});
+    }, {
+        'bookingStart': can.compute(function() {
+            return this.attr('class.length') && _.indexOf( this.attr('class'), 'bookingStart' ) !== -1;
+        })
+    });
 
 });

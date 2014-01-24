@@ -28,6 +28,8 @@ define([
             }
         },
 
+        id: 'bookingId',
+
         attributes: {
             partyDetails: Traveller,
             fromDate: 'date',
