@@ -12,13 +12,14 @@ define(['can/util/string', 'moment', 'underscore', 'can/model', 'can/compute'], 
         model: function( raw ) {
             // The date object comes through in seconds
             var date = moment( raw.date * 1000 ),
-                id = date.format('YYYY-MM-DD');
+                id = date.format('YYYY-MM-DD'),
+                classes = raw['class'] || '';
 
             return can.Model.model.call( this, can.extend(raw, {
                 'id': id,
                 'date': date,
                 // Compact removes falsey values
-                'class': raw.class ? _.compact( raw.class.split(' ') ) : []
+                'class': _.compact( classes.split(' ') )
             }));
         }
     }, {

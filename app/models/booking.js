@@ -2,6 +2,7 @@ define([
     'can/util/string',
     'moment',
     'underscore',
+    'utils',
     'models/travellers',
     'models/web_extra',
     'models/price',
@@ -9,13 +10,13 @@ define([
     'can/map/validations',
     'can/map/attributes',
     'can/compute'
-], function(can, moment, _, Traveller, WebExtra, Price ){
+], function(can, moment, _, utils, Traveller, WebExtra, Price ){
     'use strict';
 
     return can.Model({
-        findOne : 'GET property/booking/{bookingId}',
-        create  : 'POST property/booking/create',
-        update  : 'POST property/booking/{bookingId}',
+        findOne : utils.getResource('GET property/booking/{bookingId}'),
+        create  : utils.getResource('POST property/booking/create'),
+        update  : utils.getResource('POST property/booking/{bookingId}'),
 
         // We need empty objects for the magic ejs binding
         // It tries to bind to the model, if it's undefined it will
@@ -56,7 +57,8 @@ define([
                     }
 
                 }
-                return this.convert.default.apply( this, arguments );
+                /* default is a reserved word.. */
+                return this.convert['default'].apply( this, arguments );
             }
         },
 

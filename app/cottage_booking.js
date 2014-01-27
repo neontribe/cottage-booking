@@ -1,3 +1,13 @@
+/**!
+ * This is the main javascript file which controls the booking path
+ * @param  {Object}         can     The canJS object
+ * @param  {Object}         views   The views object which contains references to the render function for the views
+ * @param  {can.compute}    enquiry The compute containing the enquiry used by the app
+ * @param  {can.Model}      book    The booking model which is globally available
+ * @param  {can.List}       stages  The list of stages used by the app
+ * @param  {Object}         utils   The utils object with helper functions 
+ * @return {can.control}            The BookingPath constructor
+ */
 define([
     'can/util/string',
     './views',
@@ -192,13 +202,17 @@ define([
 
         },
 
-        changeStage: function( newStage/*, oldPage*/ ) {
+        changeStage: function( newStage, reRender ) {
             var index = this.options.stages.indexOf( newStage ),
                 disabled = can.inArray(index, this.content.tabs('option', 'disabled')) > -1;
 
             if( index > -1 ) {
 
                 if( !disabled ) {
+
+                    if( reRender && this.options.stages.indexOf( index ).attr('activeControl') ) {
+                        this.options.stages.indexOf( index ).attr('activeControl').destroy();
+                    }
 
                     this.content.tabs('option', {
                         active: index
@@ -321,6 +335,9 @@ define([
         init = $this[ plugin ];
 
         if( init ) {
+            if( $this.data('baseUrl') ) {
+                utils.baseUrl( $this.data('baseUrl') );
+            }
             init.call( $this, $this.data() );
         }
     });

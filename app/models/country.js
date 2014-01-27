@@ -4,14 +4,15 @@
  */
 define([
     'can/util/string',
+    'utils',
     'can/model',
     'can/map/list'
-], function( can ){
+], function( can, utils ){
     'use strict';
 
     return can.Model({
-        findOne: 'GET property/country/{code}',
-        findAll: 'GET property/country',
+        findOne: utils.getResource('GET property/country/{code}'),
+        findAll: utils.getResource('GET property/country'),
 
         // Mash the returned into a model
         models: function( raw ) {

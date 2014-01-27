@@ -14,7 +14,7 @@ define([
     'use strict';
 
     return can.Model({
-        findOne: 'GET property/availability/{propRef}',
+        findOne: utils.getResource('GET property/availability/{propRef}'),
         // myAvailabilityStore['25-01-2013'] => {'available': false...} etc
 
         defaults: {

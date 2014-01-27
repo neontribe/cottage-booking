@@ -2,16 +2,17 @@
  */
 define([
     'can/util/string',
+    'utils',
     'resources/book',
     'can/model',
     'can/map/validations'
-], function( can ){
+], function( can, utils ){
     'use strict';
 
     return can.Model({
 
-        create: 'POST property/booking/{id}/pay',
-        update: 'POST property/booking/{id}/pay',
+        create: utils.getResource('POST property/booking/{id}/pay'),
+        update: utils.getResource('POST property/booking/{id}/pay'),
 
         // defaults: {
         //     'payLater': false,

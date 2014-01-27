@@ -12,8 +12,8 @@ define([
     'use strict';
 
     return can.Model({
-        update  : 'POST property/booking/enquiry',
-        create  : 'POST property/booking/enquiry',
+        update  : utils.getResource('POST property/booking/enquiry'),
+        create  : utils.getResource('POST property/booking/enquiry'),
 
         defaults: {
             // The availability object so we can validate stays

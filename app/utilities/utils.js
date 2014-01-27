@@ -1,12 +1,14 @@
 define([
     'can/util/string',
     'moment',
-    'accounting'
-], function( can, moment, accounting ) {
+    'accounting',
+    'underscore',
+    'can/compute',
+    'can/model'
+], function( can, moment, accounting, _ ) {
     'use strict';
 
     var slice = Array.prototype.slice;
-
     return {
         fragmentToString: function( frag ) {
             // Slight overhead..
@@ -51,7 +53,25 @@ define([
                 format: format,
                 symbol: '£'
             });
-        }
+        },
+        getResource: function( url, type ) {
+            var utils = this;
+            return function() {
+                var generatedUrl = utils.getResourceUrl( url, type ),
+                    args = _.filter( arguments, can.isPlainObject );
+
+                return can.Model._ajax({}, generatedUrl ).apply(this, args);
+            };
+        },
+        getResourceUrl: function( url, type ) {
+            var splitted = url.split(' ');
+            return can.sub('{type} {base}{url}', {
+                type: type || (splitted.length > 1 ? splitted[0] : 'GET'),
+                base: this.baseUrl(),
+                url: splitted[1] || url
+            });
+        },
+        baseUrl: can.compute('')
     };
 
 });

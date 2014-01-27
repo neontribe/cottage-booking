@@ -49,8 +49,8 @@ var sheets = [
                 ' * This is a compilation of a stylesheets used to put things in there places.\n' +
                 ' * If you wish to roll your own theme from the jquery ui themeroller the jquery ui components,\n' +
                 ' * the following style sheets are required:\n' +
-                sheets.join('\n * - ') + '\n' +
-                ' * documentation for jqueryui theming' +
+                ' * - ' + sheets.join('\n * - ') + '\n' +
+                ' * documentation for jqueryui theming is available: http://jqueryui.com/themeroller/ \n' +
                 ' **/';
 
 /**

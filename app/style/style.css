@@ -3,9 +3,14 @@
     float:none !important;
     clear:both;
 }
+
 /* example styling */
 .bookingPath {
     width: 1000px;
+}
+
+.bookingPath * + * {
+    margin: inherit;
 }
 
 .bookingPath > *,
