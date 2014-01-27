@@ -126,7 +126,7 @@ define([
             });
 
             this.validate('customer.emailConf', function( email ) {
-                if( this.attr('customer.email') && this.attr('customer.email') !== email ) {
+                if( this.attr('customer.email') && this.attr('customer.email').toLowerCase() !== email.toLowerCase() ) {
                     return 'The two emails don\'t match';
                 }
             });

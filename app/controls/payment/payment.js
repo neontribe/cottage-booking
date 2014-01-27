@@ -53,7 +53,11 @@ define([
 
         '{payment} paymentType': function() {
             this.options.payment.save();
-        }
+        },
+
+        '{window} message': function( win, evt ) {
+            console.log.apply(console, arguments);
+        },
 
     });
 

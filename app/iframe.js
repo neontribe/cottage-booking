@@ -2,7 +2,7 @@
  *  This file needs to be included in the sagepay callback page, along with any relevant information.
  */
 (function( $, window ) {
-    'use strict';
+	'use strict';
 
-    $('h1').append('yay jquery');
+	window.top.postMessage('message', window.location.origin);
 })( jQuery, window );
