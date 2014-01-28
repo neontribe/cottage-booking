@@ -128,21 +128,25 @@ define([
          * @return {Array} The Array of tabs to disable (e.g. [1, 2, 3])
          */
         'disabledArray': function() {
-            var disabled = [],
-                hash = window.location.hash ? window.location.hash.split('#!')[1] : '';//,
+            var disabled = [];//,
+                //hash = window.location.hash ? window.location.hash.split('#!')[1] : '';//,
                 // Because the route could be unready at this point, we need to extract
                 // data from the url ourselves... TODO: investigate alternative
                 //current = can.route.deparam( hash );
 
-            if( !this.options.book.attr('bookingId') ) {
+            if( this.options.book.attr('confirmation') ) {
+                disabled.push( 0 );
+            }
+
+            if( !this.options.book.attr('bookingId') || this.options.book.attr('confirmation') ) {
                 disabled.push( 1 );
             }
 
-            if( this.options.book.errors() ) {
+            if( this.options.book.errors() || this.options.book.attr('confirmation') ) {
                 disabled.push( 2 );
             }
 
-            if( true ) {
+            if( !this.options.book.attr('confirmation') ) {
                 disabled.push( 3 );
             }
 

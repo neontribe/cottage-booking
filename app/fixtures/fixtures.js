@@ -12,6 +12,8 @@ define([
     // TODO: if a we want to use fixtures && it 404's, fetch the fixture from the public location and save to disk!
     // EXCITING
 
+    can.fixture.delay = queryObj.delay || can.fixture.delay;
+
     // Return our helpfully wrapped can, with extra fixture helpers
     return can.extend({
 

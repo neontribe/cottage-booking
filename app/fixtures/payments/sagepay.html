@@ -223,10 +223,33 @@
 
     <script type="text/javascript">
 
-        var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&');
+        var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&'),
+            booking = window.top.require('resources/book'),
+            prePopValue = [
+                'customer.name.firstName',
+                'customer.name.surname',
+                'customer.address.addr1',
+                'customer.address.addr2',
+                'customer.address.town',
+                'customer.address.postcode'
+            ],
+            prePopInput = [
+                'cardfirstnames',
+                'cardsurname',
+                'cardaddress',
+                'cardaddress2',
+                'cardcity',
+                'cardpostcode'
+            ];
         for( var i = 0; i < search.length ; i++ ) queryObj[search[i].split('=')[0]] = search[i].split('=')[1];
 
         $(':input').each(function() {
+            var index = $.inArray( $(this).attr('name'), prePopInput );
+
+            if( index > -1 ) {
+                $(this).val( booking.attr( prePopValue[ index ] ) );
+            }
+
             $(this).attr('disabled', 'disabled');
         });
 

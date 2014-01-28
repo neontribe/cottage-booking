@@ -126,7 +126,7 @@ define([
 
             this.validate('customer.emailConf', function( email ) {
                 var oEmail = this.attr('customer.email');
-                if( oEmail && email && oEmail.toLowerCase() !== email.toLowerCase() ) {
+                if( oEmail && ( !email || oEmail.toLowerCase() !== email.toLowerCase() ) ) {
                     return 'The two emails don\'t match';
                 }
             });
@@ -215,6 +215,8 @@ define([
                         //self.attr( booking.__get() ); Why did i do this
                         // The following call does mean that we instantiate and throw away stuff ( like travellers )
                         self.attr(booking.attr(), true);
+                        // If we are fetching form an ID we should set the emailConf
+                        self.attr('customer.emailConf', booking.attr('customer.email'));
                     });
 
                     //break;

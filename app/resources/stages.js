@@ -6,8 +6,9 @@ define([
     'controls/calendar/calendar',
     'controls/details/details',
     'controls/payment/payment',
+    'controls/confirmation/confirmation',
     'underscore'
-], function( can, Calendar, Details, Payment, _ ) {
+], function( can, Calendar, Details, Payment, Confirmation, _ ) {
     'use strict';
 
     var StageList = can.Model.List.extend({
@@ -50,7 +51,8 @@ define([
             'Control'       : Payment
         },
         {
-            'id'            : 'confirmation'
+            'id'            : 'confirmation',
+            'Control'       : Confirmation
         }
     ]);
 });

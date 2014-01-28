@@ -157,6 +157,7 @@ input, select, textarea {
 }
 
 .payment .iframe-holder {
+    position: relative;
     width: 100%;
     height: 522px;
 }
