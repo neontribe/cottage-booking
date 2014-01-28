@@ -15,13 +15,17 @@
       &lt;script&gt; type="text/javascript" src="iframe.js file" &lt;/script&gt;
     </textarea>
     <script type="text/javascript">
-      window.Drupal = {
-        settings: {
-          bookingData: {
-            status: 'ERROR'
-          }
-        }
-      };
+        var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&');
+        for( var i = 0; i < search.length ; i++ ) queryObj[search[i].split('=')[0]] = search[i].split('=')[1];
+
+        window.Drupal = {
+            settings: {
+                bookingData: {
+                    status: 'ABORT+2013',
+                    bookingId: queryObj.bookingId
+                }
+            }
+        };
     </script>
     <script type="text/javascript" src="../../iframe.js"></script>
   </body>

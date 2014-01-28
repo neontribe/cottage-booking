@@ -2,10 +2,6 @@
 <html lang="en">
   <head>
     <title>Loading...</title>
-
-    <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
-    <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
-    <script type="text/javascript" src="requirejsconfig.js"></script>
     <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
     <style>
       textarea {
@@ -18,7 +14,19 @@
     <textarea>
       &lt;script&gt; type="text/javascript" src="iframe.js file" &lt;/script&gt;
     </textarea>
+    <script type="text/javascript">
+      var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&');
+      for( var i = 0; i < search.length ; i++ ) queryObj[search[i].split('=')[0]] = search[i].split('=')[1];
 
+      window.Drupal = {
+        settings: {
+          bookingData: {
+            'bookingId':  queryObj.bookingId,
+            'status':     'ok'
+          }
+        }
+      }
+    </script>
     <script type="text/javascript" src="../../iframe.js"></script>
   </body>
 </html>

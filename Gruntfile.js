@@ -199,6 +199,12 @@ module.exports = function(grunt) {
                 dest: 'app/prod/images/',
                 cwd: 'app/bower_components/jquery-ui/themes/base/images/',
                 expand: true
+            },
+            iframejs: {
+                src: 'iframe.js',
+                dest: 'app/prod/',
+                cwd: 'app/',
+                expand: true
             }
         },
         compress: {

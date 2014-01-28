@@ -3,24 +3,238 @@
   <head>
     <title>Loading...</title>
     <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="sage.css">
     <style type="text/css">
-      h2 + a {
-        font-size: 4em;
-        padding: 1em;
-        background-color: #efefef;
-      }
+        #fixture-links {
+            width: 100%;
+        }
+
+        #fixture-links > * {
+            width: 33%;
+            font-size: 0;
+            display: inline-block;
+            background-color: #efefef;
+        }
+
+        #fixture-links > * > *{
+            font-size:18px;
+        }
+
+        .sectionheader {
+            padding-top: 0 !important;
+        }
     </style>
   </head>
   <body>
-    <h1>This is a fixtured version of the sagepay page. TODO: grab the html from the actual sagepay thingy so we have the size and layout correct</h1>
+    <h1 style="font-size:40px;">This is a fixtured version of the sagepay page</h1>
+    <div id="fixture-links">
+        <div>
+            <a href="error.html"> 
+                <h2>Simulate Error</h2>
+                <span> Like a bad card number or something </span>
+            </a>
+        </div>
+        <div>    
+            <a href="success.html">
+                <h2>Simulate Success</h2>
+                <span> Make like a confirmed booking </span>
+            </a>
+        </div>
+        <div>
+            <a href="abort.html">
+                <h2>Simulate Abort</h2>
+                <span> Simulate an abort by the user </span>
+            </a>
+        </div>
+    </div>
 
-    <h2>Error</h2>
-    <a href="error.html"> Simulate Error </a>
-    <p> Like a bad card number or something </p>
+    <div id="pageWrapperLow">
+        <div class="sectionheader">
+            Enter Card Details
+        </div>
 
-    <h2>Success</h2>
-    <a href="success.html"> Simulate Success </a>
-    <p> Make like a confirmed booking </p>
+        <div id="formCardDetails">
+            <div style="text-align: center; padding: 5px;"></div>
+
+            <form>
+                <table class="formTable">
+                    <tbody>
+                        <tr>
+                            <td class="label">Card Number <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data"><input autocomplete="off" name=
+                            "cardnumber" size="30"></td>
+
+                            <td class="info">(enter without spaces)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Firstname: <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data"><input autocomplete="off"
+                            maxlength="20" name="cardfirstnames" size="30"
+                            value="qwe"></td>
+
+                            <td class="info">(name as it appears on card)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Surname: <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data"><input autocomplete="off"
+                            maxlength="20" name="cardsurname" size="30" value=
+                            "qwe"></td>
+
+                            <td class="info" width="150">(name as it appears on
+                            card)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Valid From</td>
+
+                            <td class="data">Month: <select name="startmonth"
+                            size="1" style="width: 55px; margin-left: 2px;">
+                                <option value="12">
+                                    12
+                                </option>
+                            </select> <span style="padding-left: 10px;">Year:
+                            <select name="startyear" size="1" style=
+                            "width: 55px; margin-left: 2px;">
+                                <option value="12">
+                                    2012
+                                </option>
+                            </select></span></td>
+
+                            <td class="info">(if not present, leave blank)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Expiry date <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data" colspan="2">Month: <select name=
+                            "expirymonth" size="1" style=
+                            "width: 55px; margin-left: 2px;">
+                                <option value="05">
+                                    05
+                                </option>
+                            </select> <span style="padding-left: 10px;">Year:
+                            <select name="expiryyear" size="1" style=
+                            "width: 55px; margin-left: 2px;">
+                                <option value="23">
+                                    2023
+                                </option>
+                            </select></span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Issue Number</td>
+
+                            <td class="data"><input autocomplete="off"
+                            maxlength="2" name="cardissue" size="2" style=
+                            "width: 27px;"></td>
+
+                            <td class="info">(if not present leave blank)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Security Code <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data"><input autocomplete="off"
+                            maxlength="4" name="securitycode" size="5" style=
+                            "width:50px;"></td>
+
+                            <td class="info"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Billing Address Line 1
+                            <span class="errortext">*</span></td>
+
+                            <td class="data" colspan="2"><input autocomplete=
+                            "off" maxlength="100" name="cardaddress" size="30"
+                            value="qwe"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Billing Address Line 2</td>
+
+                            <td class="data" colspan="2"><input autocomplete=
+                            "off" maxlength="100" name="cardaddress2" size="30"
+                            value="qwe"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Billing City <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data" colspan="2"><input autocomplete=
+                            "off" maxlength="40" name="cardcity" size="30"
+                            value="qwe"></td>
+                        </tr>
+
+                        <tr id="stateRow" style="display: none;">
+                            <td class="label">Billing State <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data" colspan="2"><select name=
+                            "cardstate" size="1">
+                                <option value="Norwich">
+                                    Norwich
+                                </option>
+                            </select></td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Billing Country <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data" colspan="2"><select id=
+                            "cardcountry" name="cardcountry" size="1">
+                                <option selected="yes" value="GB">
+                                    United Kingdom
+                                </option>
+                            </select></td>
+                        </tr>
+
+                        <tr>
+                            <td class="label">Billing Post Code <span class=
+                            "errortext">*</span></td>
+
+                            <td class="data" colspan="2"><input maxlength="10"
+                            name="cardpostcode" size="5" style=
+                            "height: 22px; width: 70px;" value="qwe"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div><br>
+        <br>
+
+        <div class="surcharge">
+            2 % surcharge for Visa and MasterCard<br>
+            <br>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&');
+        for( var i = 0; i < search.length ; i++ ) queryObj[search[i].split('=')[0]] = search[i].split('=')[1];
+
+        $(':input').each(function() {
+            $(this).attr('disabled', 'disabled');
+        });
+
+        $('#fixture-links a').each(function() {
+            $(this).attr('href', $(this).attr('href') + '?&bookingId=' + queryObj.bookingId);
+        });
+
+    </script>
 
   </body>
 </html>

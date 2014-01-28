@@ -34,9 +34,10 @@ define([
             this.options.depositChoices = new can.List( this.options.depositChoices );
 
             this.element.html( views.init({
-                payment: this.options.payment,
-                options: this.options,
-                choices: this.options.depositChoices
+                payment:        this.options.payment,
+                options:        this.options,
+                choices:        this.options.depositChoices,
+                canPayLater:    this.options.canPayLater
             }) );
 
             this.options.payment.save();
@@ -56,7 +57,9 @@ define([
         },
 
         '{window} message': function( win, evt ) {
-            console.log.apply(console, arguments);
+            var message = JSON.parse( evt.originalEvent.data );
+
+
         },
 
     });

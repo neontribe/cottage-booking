@@ -1,0 +1,351 @@
+/*----- Sage Pay Payment Page Templates Style Sheet - 09-APR-2009 -------*/
+
+
+/* zero margins and padding */
+
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
+
+padding-bottom: 10px;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 12px;
+color : #65615e;
+}
+
+select {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+font-style: normal;
+font-weight: normal;
+color: #000000;
+text-align: left;
+width: 60px;
+}
+
+
+/* main document structure */
+
+#pageWrapper {
+width: 670px;
+margin: 0 auto;
+padding: 0;
+background: #FFFFFF;
+}
+
+#pageWrapperLow {
+width: auto;
+margin: 0 auto;
+padding: 0;
+background: #FFFFFF;
+}
+
+#headerTop {
+background-repeat: no-repeat;
+height: 25px;
+margin: 0 auto;
+top: 1.0em;
+font: bold 0.8em Verdana, Arial, Helvetica;
+color: #FFFFFF;
+text-align: center
+} 
+#header {
+background-repeat: no-repeat;
+background-position: 0px 15px;
+}   
+#sagePayLogo {
+margin: 30px 20px 10px 0px;
+}
+
+#protxLogo {
+margin-top: 28px;
+vertical-align: top;
+}
+
+#vendorLogo {
+margin-top: 5px;
+float: right;
+clear: right;
+}
+
+#padlockContainer {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+font-weight: normal;
+color: #999999;
+text-align: left;
+vertical-align: text-top;
+text-align:center;
+} 
+#padlockimage {
+border: 0px none;
+vertical-align: middle;
+}
+
+#templateNavigation {
+margin: 10px;
+height: 25px;
+clear: both;
+}
+#backButton {
+float: left;
+}
+#proceedButton {
+float: right;
+clear: right;
+}
+
+#templateCancel {
+margin-top: 10px;
+}
+#templateCancel img {
+margin: 10px;
+}
+
+#templatefooter {
+width: 670px;
+height: 38px;
+padding-top: 5px;
+color: #F2AF00;
+text-align: center;
+}
+
+.greyHzShadeBar
+{
+height: 20px;
+background-repeat: repeat-x;
+background-position: bottom left;
+}
+
+.sectionheader {
+padding: 25px 0px 12px 0px;
+font: 20px Verdana, Arial, Helvetica;
+color: #008469;
+text-align: left;
+background-repeat:no-repeat;
+}   
+.popheader {    
+color : #008469;
+font: bold 1.3em Veranda, Arial, Helvetica;
+} 
+
+.noTopMargin {
+margin-top: 0px;
+padding-top: 0px;
+}
+
+
+
+/* Tables */
+
+.formTable {
+margin-left: 10px;
+width: auto;
+border: 0px none;
+border-collapse: collapse;
+}
+
+.formTable td
+{
+border-top: 1px solid #d3d3d3;
+border-right: 0px none;
+border-left: 0px none;
+border-bottom: 1px solid #d3d3d3;
+padding: 3px 10px 6px 3px;
+vertical-align: top;
+}
+
+.formTable .label {
+text-align: left;
+width: 150px;
+font: 14px Arial, Helvetica, sans-serif;
+color:#575C53;
+white-space:nowrap;
+}
+.formTable .data {
+font: 14px Arial, Helvetica, sans-serif;
+color:#575C53;
+width: auto;
+}
+.readonly .data {
+font-weight: bold;
+}
+
+.formTable .data input {
+font: 14px Arial, Helvetica, sans-serif;
+color:#575C53;
+width: 210px;
+}
+
+.formTable .data select {
+font: 14px Arial, Helvetica, sans-serif;
+color:#575C53;
+width: 210px;
+}
+
+.formTable .data input[type='checkbox'] {
+width: 20px;
+}
+
+.formTable .info {
+padding-top: 5px;
+font: 10px Arial, Helvetica, sans-serif;
+color:#575C53;
+width: 480px;
+}
+
+#transactionDetails {
+font-size: 10px;
+font-weight: normal;
+color: #65615e;
+}
+
+#transactionDetails table {
+border: 0px none;
+border-collapse: collapse;
+margin: 0px 10px 10px 10px;
+background-color:#ffffff;
+}
+
+#transactionDetails td {
+border-top: 1px solid #d3d3d3;
+border-bottom: 1px solid #d3d3d3;
+border-right: 0px none;
+border-left: 0px none;
+padding: 3px 10px 6px 3px;
+vertical-align: top;
+}
+
+#transactionDetails .label {
+
+}
+
+#transactionDetails .data {
+font-weight: bold;
+}
+
+#transactionDetails .data .total {
+font-size: 12px;
+}
+
+#shoppingBasket {
+font-size: 11px;
+color:#575C53;
+}
+
+#shoppingBasket thead {
+font-size: 10px;
+font-weight:bold;
+color: #A8B400;
+}
+
+
+
+/* Text */
+
+p {
+font: 12px Verdana, Arial, Helvetica;
+color : #65615e;
+text-align:left;
+margin-bottom: 10px;
+}
+
+.indent {
+margin-left: 10px;
+}
+
+.errortext {
+color : #D80000;
+font-weight: bold;
+}
+
+.bodytextbold {
+color : #000000;
+font-weight: bold;
+} 
+
+.bodybold {
+font-weight: bold;
+}
+
+.bodysmalltext {
+color : #65615e;
+font: 0.8em Verdana, Arial, Helvetica;
+text-align:left;
+}
+
+.bodysmalltextBold {
+color : #65615e;
+font: 0.8em Verdana, Arial, Helvetica;
+text-align:left;
+font-weight:bold;
+padding-left:5px;
+} 
+
+.bodytextGreen {
+color : #69923A;
+text-align:left;
+}
+
+.bodytextOrange {
+color : #F2AF00;
+font: 0.8em Verdana, Arial, Helvetica;
+text-align:left;
+}
+
+.sagepayOrangeHeading {
+font-style:normal;
+font-weight:bold;
+font-variant:normal;
+color: #F2AF00;
+font-size: 16px;
+}
+
+.sagepaySmalltext {
+font-size: 10px;
+}
+
+.address {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 0.8em;
+font-weight: normal;
+color: #65615e;
+text-align:left
+}
+
+.copyright {
+font: 0.8em foco,Verdana, Arial, Helvetica;
+font-style:normal;
+font-weight:bold;
+font-variant:normal;
+color: #F2AF00;
+}
+
+.questiontext {
+font-weight: bold;
+}
+
+/* Hyperlinks */
+
+#templatefooter a {
+color: #F2AF00;
+text-decoration: none;
+}
+
+#templatefooter a:hover {
+color: #F2AF00;
+text-decoration: underline
+}
+
+
+.surcharge {
+
+font: 0.8em foco,Verdana, Arial, Helvetica;
+font-style:normal;
+font-weight:bold;
+font-variant:normal;
+color: #D80000;
+}

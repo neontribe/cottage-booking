@@ -19,4 +19,6 @@
         <iframe src="<%= payment.attr('NextURL') %>"></iframe>
     <% } %>
 </div>
-<a <%= next() %>> Next </a>
+<% if( canPayLater ) { %>
+    <a class="pay-later">Pay by phone later</a>
+<% } %>
