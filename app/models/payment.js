@@ -23,11 +23,16 @@ define([
         'init': function() {
             this.validate('Status', function( status ) {
                 if( status && status.toLowerCase() !== 'ok' ) {
-                    return this.attr('StatusDetails');
+                    return this.attr('StatusDetail');
                 }
             });
         }
     }, {
+        reset: function() {
+            this.removeAttr('NextURL');
+            this.removeAttr('Status');
+            return this;
+        }
     });
 
 });

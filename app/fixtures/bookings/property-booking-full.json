@@ -1,5 +1,5 @@
 {
-    "bookingId":"d76c8badd8448cc9d1d888778966d140",
+    "bookingId":"full",
     "id":"A223_ZZ",
     "propertyRef":"A223",
     "brandCode":"ZZ",
@@ -7,31 +7,37 @@
     "toDate":1400889600,
     "customer":{
         "name":{
-            "title":"",
-            "firstName":"",
-            "surname":""
+            "title":"mr",
+            "firstName":"Josh",
+            "surname":"Homme"
         },
         "address":{
-            "addr1":"",
+            "addr1":"Rancho De La Luna",
             "addr2":"",
-            "town":"",
-            "county":"",
-            "postcode":"",
-            "country":""
+            "town":"Joshua Tree",
+            "county":"California",
+            "postcode":"xxxxxx",
+            "country":"United States"
         },
-        "daytimePhone":"",
-        "eveningPhone":"",
-        "mobilePhone":"",
-        "email":"",
+        "daytimePhone":"111111111111",
+        "eveningPhone":"111111111111",
+        "mobilePhone":"111111111111",
+        "email":"fake@email.com",
         "emailOptIn":false,
-        "source":"",
+        "source":"google",
         "which":""
     },
     "adults":1,
     "children":0,
     "infants":0,
     "partyDetails":[
-
+        {
+            "type": "adult",
+            "title": "mr",
+            "firstName": "Josh",
+            "surname": "Homme",
+            "age": "18-29"
+        }
     ],
     "pets":0,
     "confirmation": false,

@@ -46,11 +46,12 @@ define([
             }
 
             can.each(['ages', 'childAges', 'infantAges', 'titles'], function( list ) {
-                // Get the var to turn into an oveserved list. If they aren't arrays then 
+                // Get the var to turn into an observed list. If they aren't arrays then 
                 // use the defaults
-                var oldVal = can.isArray( this.options[ list ] ) ? this.options[ list ] : this.constructor.defaults[ list ];
-
+                var oldVal = this.options[ list ];
                 if( oldVal.constructor !== can.List ) {
+                    oldVal = can.isArray( this.options[ list ] ) ? oldVal : this.constructor.defaults[ list ];
+
                     this.options[ list ] = new can.List( oldVal );
                 }
             }, this);

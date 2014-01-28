@@ -90,7 +90,6 @@ define([
             'customer.name.firstName',
             'customer.name.surname',
             'customer.address.addr1',
-            'customer.address.addr2',
             'customer.address.town',
             'customer.address.county',
             'customer.address.postcode',
@@ -126,7 +125,8 @@ define([
             });
 
             this.validate('customer.emailConf', function( email ) {
-                if( this.attr('customer.email') && this.attr('customer.email').toLowerCase() !== email.toLowerCase() ) {
+                var oEmail = this.attr('customer.email');
+                if( oEmail && email && oEmail.toLowerCase() !== email.toLowerCase() ) {
                     return 'The two emails don\'t match';
                 }
             });

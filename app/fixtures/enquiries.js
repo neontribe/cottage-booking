@@ -9,7 +9,6 @@ define(['fixtures/fixtures', 'moment'], function(can, moment){
 
             if( (fromDate.get('M') + 1) % 2 === 0 ) {
                 // This is a little clunky, TODO: investigate integrating this behaviour into the fixtures/fixtures file
-                can.fixture.on = false;
                 can.$.ajax({
                     url: require.toUrl('fixtures/enquiries/property-booking-enquiry_error.json'),
                     async: false,
@@ -17,7 +16,6 @@ define(['fixtures/fixtures', 'moment'], function(can, moment){
                         data = errorData;
                     }
                 });
-                can.fixture.on = true;
             }
 
         }

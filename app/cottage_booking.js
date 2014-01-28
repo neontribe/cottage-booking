@@ -83,7 +83,7 @@ define([
                 // Bind to these events so we do stuff on tab changes
                 'create': utils.bindWithThis( this.beforeActivate, this ),
                 'beforeActivate': utils.bindWithThis( this.beforeActivate, this ),
-                'activate': utils.bindWithThis( this.activate, this ),
+                //'activate': utils.bindWithThis( this.activate, this ),
                 // Set the rest of the tabs to disabled by default
                 'disabled': this.disabledArray(),
                 // set the event to empty string, so that we don't change tab on click,
@@ -168,51 +168,35 @@ define([
          */
         'beforeActivate': function( el, evt, tabState ) {
             var $newContent = tabState.newPanel || tabState.panel,
-                stage = this.getStageFor( $newContent ),
-                Control = stage ? stage.attr('Control') : null;
+                stage = this.getStageFor( $newContent );
 
-            if( Control && !stage.attr('activeControl') ) {
-                stage.attr('control', new Control( $newContent, stage.attr('options') ));
+            if( stage && $newContent && $newContent.length ) {
+                this.renderStage( stage, $newContent );
             }
 
         },
 
-        /**
-         * This function is executed when the tabs have finished changing to a tab
-         * so we should tidy up after ourselves
-         *
-         * This should happen when animation finishes
-         *
-         * @param  {HTMLElement} el  The tab element
-         * @param  {Event} evt       The jquery event
-         * @param  {Object} tabState The object containing the state of the tabs
-         * @return {undefined}
-         */
-        'activate': function( el, evt, tabState ) {
-            var $old = tabState.oldPanel,
-                oldStage = this.getStageFor( $old ),
-                oldControl = $old.control();
-                // oldControlls = $old.controls();
+        renderStage: function( stage, $el, reRender ) {
+            var Control = stage.attr('Control');
 
-            // for( var i = 0; i < oldControlls.length; i++ ) {
-            //     oldControlls[i].destroy();
-            // }
+            if( reRender && stage.attr('control') ) {
+                stage.attr('control').element.empty();
+                stage.attr('control').destroy();
+                stage.removeAttr('control');
+            }
 
-            oldStage.attr( 'activeControl', oldControl );
-
+            if( Control && !stage.attr('control') ) {
+                stage.attr('control', new Control( $el, stage.attr('options') ));
+            }
         },
 
-        changeStage: function( newStage, reRender ) {
+        changeStage: function( newStage/*, prevStage*/ ) {
             var index = this.options.stages.indexOf( newStage ),
                 disabled = can.inArray(index, this.content.tabs('option', 'disabled')) > -1;
 
             if( index > -1 ) {
 
                 if( !disabled ) {
-
-                    if( reRender && this.options.stages.indexOf( index ).attr('activeControl') ) {
-                        this.options.stages.indexOf( index ).attr('activeControl').destroy();
-                    }
 
                     this.content.tabs('option', {
                         active: index
@@ -305,6 +289,9 @@ define([
                         var stage = this.options.stages.getById( id );
                         if( stage ) {
                             stage.attr( settings );
+                            if( stage.attr('control') ) {
+                                this.renderStage( stage, stage.attr('control').element, true );
+                            }
                         }
                     }, this );
 

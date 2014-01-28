@@ -40,26 +40,48 @@ define([
                 canPayLater:    this.options.canPayLater
             }) );
 
-            this.options.payment.save();
+            this.updatePayment();
 
             this.on();
+        },
+
+        updatePayment: function() {
+            var $holder = this.element.find('.iframe-holder');
+
+            $holder
+                .spin()
+                .find('> iframe')
+                    .remove();
+
+            this.options.payment
+                .reset()
+                .save()
+                    .done(function() {
+                        $holder.spin(false);
+                    });
         },
 
         '{booking} bookingId': function( model, newVal ) {
             if( newVal !== this.options.payment.attr('id') ) {
                 this.options.payment.attr( 'id', newVal );
-                this.options.payment.save();
+                this.updatePayment();
             }
         },
 
+        '.pay-later click': function() {
+            // TODO
+        },
+
         '{payment} paymentType': function() {
-            this.options.payment.save();
+            this.updatePayment();
         },
 
         '{window} message': function( win, evt ) {
             var message = JSON.parse( evt.originalEvent.data );
 
-
+            if( message.status === 'ok' ) {
+                // Re fetch the booking, at which point the app should react
+            }
         },
 
     });
