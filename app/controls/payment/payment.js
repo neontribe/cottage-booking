@@ -53,12 +53,19 @@ define([
                 .find('> iframe')
                     .remove();
 
-            this.options.payment
-                .reset()
-                .save()
-                    .done(function() {
-                        $holder.spin(false);
-                    });
+            this.options.booking.save().done(can.proxy(function() {
+                this.options.payment
+                    .reset()
+                    .save()
+                        .done(function() {
+                            $holder.spin(false);
+                        });
+
+            }, this));
+        },
+
+        'iframe load': function() {
+            console.log('and again');
         },
 
         '{booking} bookingId': function( model, newVal ) {
@@ -70,6 +77,7 @@ define([
 
         '.pay-later click': function() {
             // TODO
+            alert('I haven\'t implemented this yet');
         },
 
         '{payment} paymentType': function() {
@@ -81,6 +89,7 @@ define([
 
             if( message.status === 'ok' ) {
                 // Re fetch the booking, at which point the app should react
+                this.options.booking.save();
             }
         },
 

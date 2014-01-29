@@ -5,7 +5,6 @@
  */
 define([
     'helpers',
-    'ejs!./views/iframe',
     'ejs!./views/init'
 ], function() {
     'use strict';
@@ -13,8 +12,7 @@ define([
     var args = Array.prototype.slice.call( arguments, 1 );
 
     return {
-        'iframe': args[0],
-        'init': args[1]
+        'init': args[0]
     };
 });
 /* End of file */

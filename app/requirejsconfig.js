@@ -9,6 +9,7 @@ requirejs.config({
         'accounting'      : 'bower_components/accounting.js/accounting',
         'spin'            : 'bower_components/spin.js/spin',
         'spinner'         : 'bower_components/spin.js/jquery.spin',
+        'idle'            : 'bower_components/jquery-idletimer/dist/idle-timer',
         'utils'           : 'utilities/utils',
         'helpers'         : 'utilities/helpers'
     },
@@ -28,6 +29,7 @@ requirejs.config({
                 return _.noConflict();
             }
         },
+        idle: ['jquery'],
         // Add these as I need them
         'jqueryui/jquery.ui.datepicker':    ['jqueryui/jquery.ui.core'],
         'jqueryui/jquery.ui.tooltip':       ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget', 'jqueryui/jquery.ui.position'],

@@ -38,7 +38,7 @@ define([
         }
     },{
         init: function() {
-            // Perhaps this should be cashed
+            // Perhaps this should be cached
             if( !this.options.countries.length ) {
                 this.options.transit = Country.findAll().done(can.proxy(function( list ) {
                     this.options.countries.attr( list.__get() );

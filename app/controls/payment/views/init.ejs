@@ -16,7 +16,8 @@
         <br>
         Pay later and stuff
     <% } else if( !payment.attr('payLater') && payment.attr('NextURL') ) { %>
-        <iframe src="<%= payment.attr('NextURL') %>"></iframe>
+        <%#                                                  The event isn't fired under usual circumstances %>
+        <iframe src="<%= payment.attr('NextURL') %>" onload="this.dispatchEvent( new Event( 'loaded' ) )"></iframe>
     <% } %>
 </div>
 <% if( canPayLater ) { %>

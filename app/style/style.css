@@ -1,16 +1,7 @@
 /* TODO: tidy this styling up! */
-.cf {
-    float:none !important;
-    clear:both;
-}
-
-/* example styling */
+/* resets */
 .bookingPath {
-    width: 1000px;
-}
-
-.bookingPath * + * {
-    margin: inherit;
+    width: 100%;
 }
 
 .bookingPath > *,
@@ -19,16 +10,22 @@
     box-sizing: border-box;
 }
 
+
+/* example styling */
+.bookingCalculator * + *,
+.bookingPath * + * {
+    margin-top: 0;
+}
+
+.cf {
+    float:none !important;
+    clear:both;
+}
+
 .bookingPath .ui-tabs .ui-tabs-panel {
     box-sizing: border-box;
 }
 
-.ui-datepicker-today {
-    background: orange;
-}
-.ui-datepicker-today > span {
-    background: blue !important;
-}
 .selected {
     background-color: #f3f3d1 !important;
     background-image: none !important;
@@ -39,6 +36,14 @@
 }
 .ui-datepicker-unselectable span {
     color: black !important;
+}
+
+.calendar .hasDatepicker > div {
+    margin: 0 auto;
+}
+
+.calendar .bookingStart {
+/* corners */
 }
 
 .selected.errors * {
@@ -79,6 +84,7 @@
 .party-list > .traveller .form-item > * {
     font-size: 1rem;
     width: 93%;
+    max-width: none;
     padding: 0 1.5%;
     margin: 0 1.5%;
 }
@@ -92,14 +98,28 @@
     cursor: wait;
 }
 
-input, select, textarea {
-    box-sizing: border-box;
-}
-
 /* bindForm stuff */
 .bindForm .form-item > label,
 .bindForm .form-item > input {
     display: inline-block;
+}
+
+.bindForm .form-item {
+    font-size: 0;
+}
+
+.bindForm .form-item > * {
+    font-size: 12px;
+    font-size: 1rem;
+}
+
+.bindForm input,
+.bindForm select,
+.bindForm textarea {
+    box-sizing: border-box;
+    display:inline-block;
+    max-width: 64%;
+    width: auto;
 }
 
 .bindForm .form-item label {
@@ -138,6 +158,7 @@ input, select, textarea {
 }
 
 .bookingPath .ui-tabs .details > * {
+    font-size: 12px;
     font-size: 1rem;
     vertical-align: top;
 }
@@ -148,10 +169,6 @@ input, select, textarea {
     width: 50%;
 }
 
-.calendar .hasDatepicker > div {
-    margin: 0 auto;
-}
-
 .form-item .required {
     color: red;
 }
@@ -159,10 +176,17 @@ input, select, textarea {
 .payment .iframe-holder {
     position: relative;
     width: 100%;
-    height: 522px;
+    height: 560px;
 }
 
 .payment iframe {
     width: 100%;
     height: 100%;
+    border: none;
+}
+
+/******/
+
+.ui-datepicker-inline {
+    width: 100% !important;
 }

@@ -45,7 +45,9 @@ define([
 
     }, {
         init: function() {
-            var index;
+            var index,
+                hash = window.location.hash ? window.location.hash.replace(/#|!/g, '') : '',
+                current;
 
             can.route(':page');
             can.route(':page/:booking');
@@ -65,7 +67,10 @@ define([
                 }
             }) );
 
-            index = this.options.stages.indexOf( can.route.attr('page') );
+            // Because the route could be unready at this point, we need to extract
+            // data from the url ourselves... TODO: investigate alternative
+            current = can.route.deparam( hash );
+            index = this.options.stages.indexOf( current.page );
 
             // TODO: implement an accordion equivalent
             // We expect this.content to be set as part of the render, TODO: is this too fragile?
@@ -83,70 +88,73 @@ define([
                 // Bind to these events so we do stuff on tab changes
                 'create': utils.bindWithThis( this.beforeActivate, this ),
                 'beforeActivate': utils.bindWithThis( this.beforeActivate, this ),
-                //'activate': utils.bindWithThis( this.activate, this ),
+                'activate': utils.bindWithThis( this.activate, this ),
                 // Set the rest of the tabs to disabled by default
                 'disabled': this.disabledArray(),
                 // set the event to empty string, so that we don't change tab on click,
                 // So everything gets routed through the url bar
                 'event': '',
-                'active': index
+                'active': 0//index > -1 ? index : 0
             });
 
             /** init the route */
             can.route.ready();
         },
 
+        '{book} confirmation': function( model, evt, newVal ) {
+            if( newVal ) {
+                can.route.attr('page', 'confirmation');
+            }
+        },
+
         // Whenever the booking object changes, check for errors and
         // Enable/disable stages
-        '{book} change': (function() {
-            var lastBatchNum = null,
-                lastDisabledArr = null;
-            return function( model, evt ) {
-                // Check we haven't already done this
-                if( lastBatchNum !== evt.batchNum ) {
+        lastBatchNum: null,
+        '{book} change': function( model, evt ) {
+            // Check we haven't already done this
+            if( this.lastBatchNum !== evt.batchNum ) {
 
-                    var newDisabledArr = this.disabledArray(),
-                        index = this.options.stages.indexOf( can.route.attr('page') );
+                var newDisabledArr = this.disabledArray(),
+                    index = this.options.stages.indexOf( can.route.attr('page') );
 
-                    this.content.tabs( 'option', 'disabled', newDisabledArr );
+                this.content.tabs( 'option', 'disabled', newDisabledArr );
 
-                    // If we can change to the page now, make the change
-                    if( index !== -1 && can.inArray( index, newDisabledArr ) === -1/* && can.inArray( index, lastDisabledArr ) !== -1*/ ) {
-                        this.changeStage( can.route.attr('page') );
-                    }
-
-                    //Finally assign the batch num
-                    lastBatchNum = evt.batchNum || null;
-                    lastDisabledArr = newDisabledArr;
-
+                // If we can change to the page now, make the change
+                if( index !== -1 && can.inArray( index, newDisabledArr ) === -1 ) {
+                    this.changeStage( can.route.attr('page') );
                 }
-            };
-        })(),
+
+                //Finally assign the batch num
+                this.lastBatchNum = evt.batchNum || null;
+
+            }
+        },
 
         /**
          * Build array of stages to disable
          * @return {Array} The Array of tabs to disable (e.g. [1, 2, 3])
          */
         'disabledArray': function() {
-            var disabled = [];//,
-                //hash = window.location.hash ? window.location.hash.split('#!')[1] : '';//,
-                // Because the route could be unready at this point, we need to extract
-                // data from the url ourselves... TODO: investigate alternative
-                //current = can.route.deparam( hash );
+            var disabled = [],
+                b = this.options.book;
 
-            if( this.options.book.attr('confirmation') ) {
+            // calendar
+            if( b.attr('confirmation') ) {
                 disabled.push( 0 );
             }
 
-            if( !this.options.book.attr('bookingId') || this.options.book.attr('confirmation') ) {
+            // details
+            if( !b.attr('bookingId') || b.attr('confirmation') ) {
                 disabled.push( 1 );
             }
 
-            if( this.options.book.errors() || this.options.book.attr('confirmation') ) {
+            // payment
+            if( b.errors() || b.attr('confirmation') ) {
                 disabled.push( 2 );
             }
 
-            if( !this.options.book.attr('confirmation') ) {
+            // confirmation
+            if( !b.attr('confirmation') ) {
                 disabled.push( 3 );
             }
 
@@ -172,21 +180,52 @@ define([
          */
         'beforeActivate': function( el, evt, tabState ) {
             var $newContent = tabState.newPanel || tabState.panel,
-                stage = this.getStageFor( $newContent );
+                stage = this.getStageFor( $newContent ),
+                index = this.options.stages.indexOf( stage );
 
             if( stage && $newContent && $newContent.length ) {
-                this.renderStage( stage, $newContent );
+                if( can.inArray( index, this.disabledArray() ) === -1 ) {
+                    this.renderStage( stage, $newContent );
+                } else {
+                    return false;
+                }
             }
 
+        },
+
+        /**
+         * This function is executed when the tabs have finished changing to a tab
+         * so we should tidy up after ourselves
+         *
+         * This should happen when animation finishes
+         *
+         * @param  {HTMLElement} el  The tab element
+         * @param  {Event} evt       The jquery event
+         * @param  {Object} tabState The object containing the state of the tabs
+         * @return {undefined}
+         */
+        'activate': function( el, evt, tabState ) {
+            var $old = tabState.oldPanel,
+                oldStage = this.getStageFor( $old ),
+                oldControl = oldStage && oldStage.attr('control');
+
+            if( oldStage && oldStage.attr('destroy') && oldControl ) {
+                this.destroyStage( oldStage );
+            }
+
+        },
+
+        destroyStage: function( stage ) {
+            stage.attr('control').element.empty();
+            stage.attr('control').destroy();
+            stage.removeAttr('control');
         },
 
         renderStage: function( stage, $el, reRender ) {
             var Control = stage.attr('Control');
 
             if( reRender && stage.attr('control') ) {
-                stage.attr('control').element.empty();
-                stage.attr('control').destroy();
-                stage.removeAttr('control');
+                this.destroyStage( stage );
             }
 
             if( Control && !stage.attr('control') ) {
@@ -202,15 +241,19 @@ define([
 
                 if( !disabled ) {
 
-                    this.content.tabs('option', {
-                        active: index
-                    });
+                    if( this.content.tabs('option', 'active') !== index ) {
+
+                        this.content.tabs('option', {
+                            active: index
+                        });
+
+                    }
 
                 }
 
             } else {
-                // just navigate somewhere safe
-                //can.route.attr( 'page', oldPage );
+                // Maybe it's an id?
+
             }
         },
 
@@ -221,7 +264,8 @@ define([
             }
         },
 
-        '{route} booking': function( route, evt, newId, oldId ) {
+        '{route} booking': function( route, evt, newId ) {
+            var stage;
             if( newId ) {
 
                 if( this.options.book.attr('bookingId') !== newId ) {
@@ -231,9 +275,12 @@ define([
                     });
                 }
 
-                // if this is a newly created booking, auto advance
-                if( !oldId ) {
-                    //can.route.attr('page', 'details');
+                if( !this.options.route.attr('page') ) {
+                    stage = this.options.stages.attr( this.content.tabs('option', 'active') );
+
+                    if( stage ) {
+                        this.options.route.attr( 'page', stage.attr('id') );
+                    }
                 }
 
             } else {
@@ -281,6 +328,27 @@ define([
          * This function exposes an api to modify the settings
          * attached to this top level controller, importantly it is possible
          * to make changes to the settings used to launch each of the components
+         * TODO: add a shorthand for this
+         * For example: 
+         * @codestart
+         *
+         *      $( element containing booking path ).bookingPath({
+         *      
+         *          'stages': {
+         *              'details': {
+         *                  'options': {
+         *                      'titles': [
+         *                          ['value', 'display string'],
+         *                          ['master', 'Head Master']
+         *                      ]
+         *                  }
+         *              }
+         *          }
+         * 
+         *      });
+         * 
+         * @codeend
+         * 
          * @param  {Object} options The object to change the settings
          * @return {undefined}
          */

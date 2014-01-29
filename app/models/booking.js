@@ -131,6 +131,14 @@ define([
                 }
             });
 
+            this.validate([ 'customer.daytimePhone', 'customer.eveningPhone', 'customer.mobilePhone' ], function( number ) {
+                if( number ) {
+                    if( number.length < 6 ) {
+                        return 'This field needs to be at least 6 characters';
+                    }
+                }
+            });
+
             this.validate('canSave', function() {
                 // TODO
                 // Because we can easily save to the server with empty values
@@ -140,6 +148,7 @@ define([
                 //     !booking.errors('canSave') && booking.save()
                 //      if errors then update the status box
                 // })
+                // BUT HOW
             });
         }
 
@@ -282,6 +291,25 @@ define([
             }
 
             return can.isEmptyObject( errors ) ? null : errors;
+        },
+
+        /**
+         * We overwrite the save function here so that we only ever make one a save request at a time.
+         * Otherwise we return the deferred in transit.
+         * @return {$.Deferred} The deferred object in transit
+         */
+        transit: null,
+        save: function( success, error ) {
+            var self = this;
+            if( !this.transit ) {
+                this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
+                    self.transit = null;
+                });
+            } else {
+                this.transit.done( success ).fail( error );
+            }
+
+            return this.transit;
         },
 
         // In most cases we need to clear this error before continuing

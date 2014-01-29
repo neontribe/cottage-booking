@@ -20,6 +20,7 @@ define([
         init: function() {
             this.element.html( views.init({
                 datepickerOptions: {
+                    // TODO: recalculate this when we resize
                     'numberOfMonths': [2,3],
                     //'showButtonPanel': true,
                     // Use apply to enhance the onSelect callback, providing the dom element

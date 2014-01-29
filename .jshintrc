@@ -24,5 +24,7 @@
         "jQuery": true,
         "define": true,
         "window": true
-    }
+    },
+    "es3": true,
+    "es5": false
 }

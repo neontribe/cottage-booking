@@ -25,6 +25,7 @@ define([
         defaults: {
             model: null,
             proxy: null,
+            allowAutofill: true,
             // When set to true this option will use the attr name as the default field name
             defaultLabel: false,
             tooltipOptions: {
@@ -79,6 +80,10 @@ define([
             // We expect these to be computes, so that change events will get properly updated
             this.options.display    = new can.Map( this.options.display );
 
+            if( this.options.allowAutofill && this.element.is('form') ) {
+                this.element.attr('method', 'POST');
+            }
+
             this.options.validations = !!this.options.model.constructor.validations;
 
             this.element.find('[name]').each( can.proxy( this.formElement, this ) );
@@ -86,7 +91,9 @@ define([
             // so we can display tooltips
             this.element.find(':input').attr('title', '');
 
-            this.setter = _.debounce( this.setter, this.options.debounceDelay );
+            if( this.options.debounceDelay > 0 ) {
+                this.setter = _.debounce( this.setter, this.options.debounceDelay );
+            }
 
         },
 
@@ -96,11 +103,6 @@ define([
 
             return setter.apply( this, args );
         },
-
-        // destroy: function() {
-        //     console.log('form being destroyed!');
-        //     return can.Control.prototype.destroy.call( this );
-        // },
 
         /**
          * This handles the bulk of the rendering logic

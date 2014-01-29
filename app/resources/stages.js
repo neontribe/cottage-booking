@@ -36,20 +36,34 @@ define([
     // This will get cached by the require stack, so next time we require this file we
     // should get the one that exists already in the current invocation of the app
     return new StageList([
+        /**
+         * The calendar stage
+         */
         {
             'id'            : 'calendar',
             'Control'       : Calendar,
             'options'       : {}
         },
+        /**
+         * The details stage
+         */
         {
             'id'            : 'details',
             'Control'       : Details,
             'options'       : {}
         },
+        /**
+         * The payment stage
+         * We set destroy: true so that we make sure that the payment screen is always up to date.
+         */
         {
             'id'            : 'payment',
-            'Control'       : Payment
+            'Control'       : Payment,
+            'destroy'       : true
         },
+        /**
+         * The confirmation stage
+         */
         {
             'id'            : 'confirmation',
             'Control'       : Confirmation
