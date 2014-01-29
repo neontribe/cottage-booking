@@ -6,6 +6,8 @@ env:
 branches:
   only:
   - develop
+before_install:
+- ulimit -n 1024
 install:
 - npm install
 - npm install -g grunt-cli
