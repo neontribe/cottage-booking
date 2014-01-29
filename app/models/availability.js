@@ -6,12 +6,15 @@ define([
     'can/util/string',
     'models/availability_day',
     'moment',
-    'underscore'
-], function(can, AvailabilityDay, moment, _){
+    'underscore',
+    'utils',
+    'can/model',
+    'can/compute'
+], function(can, AvailabilityDay, moment, _, utils){
     'use strict';
 
     return can.Model({
-        findOne: 'GET property/availability/{propRef}',
+        findOne: utils.getResource('GET property/availability/{propRef}'),
         // myAvailabilityStore['25-01-2013'] => {'available': false...} etc
 
         defaults: {
@@ -22,7 +25,7 @@ define([
             var newData = can.Model.model.call( this, {} );
 
             can.each( raw, function( availData, key ) {
-                newData.attr( key, new AvailabilityDay( availData ) );
+                newData.attr( key, AvailabilityDay.model( availData ) );
             });
 
             return newData;
@@ -35,6 +38,24 @@ define([
                 .isEmpty()
                 .value();
         },
+
+        firstAvailableDate: can.compute(function() {
+            var current = utils.now(),
+                availDate;
+
+            this.each(function() {
+                var date = this.attr( current.format('YYYY-MM-DD') );
+
+                if( date && date.attr && date.attr('available') ) {
+                    availDate = current;
+                    return false;
+                }
+
+                current.add('d', 1);
+            }, this);
+
+            return availDate;
+        }),
 
         /**
          * attr function overrides the default attr behavior

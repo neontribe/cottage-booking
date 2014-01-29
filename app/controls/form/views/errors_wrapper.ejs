@@ -2,10 +2,10 @@
     name="<%= attrName %>"
     data-type="<%= type %>"
     data-label="<%= label %>"
-    class="<% classes %>"
+    class="<%= classes %>"
 >
 <%
-    var errors = control.getUnHandledErrors( control.options.attributes.attr() );
+    var errors = this.errors ? model.errors( this.errors ) : control.getUnHandledErrors( control.options.attributes.attr() );
     if( errors ) {
 %>
     <div <%= appendTemplate( view, {

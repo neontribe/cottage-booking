@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Payment demo page!</title>
+
+    <script src="//localhost:35729/livereload.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../style/style.out.css" />
+    <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
+    <style type="text/css">
+      #content {
+        width: 1000px;
+        float:left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content" class="payment" ></div>
+    <div id="results" style="float:left; width:550px; height: 500px;"><textarea style="width:550px; height:100%;"></textarea></div>
+    <script type='text/javascript' src='../../bower_components/requirejs/require.js'></script>
+    <script type='text/javascript' src='../../requirejsconfig.js'></script>
+    <script type='text/javascript'>
+      requirejs.config({
+          baseUrl : '../../'
+      });
+      requirejs([
+        'controls/payment/payment',
+        'resources/book',
+        'fixtures/fixtures',
+        'fixtures/availabilities',
+        'fixtures/enquiries',
+        'fixtures/bookings',
+        'fixtures/payments'
+      ], function(Payment, booking, wrappedCan) {
+        function doReq() {
+          booking.fetchBooking(wrappedCan.queryObj.bookingId || 'd76c8badd8448cc9d1d888778966d140').done(function() {
+            var payment = new Payment('#content'),
+              doDisplay = function() {
+                $('#results textarea').html(JSON.stringify( payment.options.payment.attr(), null, '\t' ) );
+              };
+
+            doDisplay();
+            // the payment model in use by this controller
+            payment.options.payment.on('change', function() {
+              doDisplay();
+            });
+          }).fail( doReq );
+
+        }
+        doReq();
+      });
+    </script>
+  </body>
+</html>

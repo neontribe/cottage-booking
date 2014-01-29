@@ -11,12 +11,6 @@ define([
 ], function(can, moment, views, enquiry, utils) {
     'use strict';
 
-    // TODO:Move this to a better place resources/utulities?
-    /* globals jQuery */
-    jQuery.datepicker.setDefaults({
-        dateFormat: 'dd/mm/yy'
-    });
-
     return can.Control({
 
         defaults: {
@@ -28,7 +22,6 @@ define([
                 datepickerOptions: {
                     'numberOfMonths': [2,3],
                     //'showButtonPanel': true,
-                    'firstDay': 1,
                     // Use apply to enhance the onSelect callback, providing the dom element
                     // which contains the datepicker as an extra argument to the onSelect function
                     'onSelect': utils.bindWithThis( this.onSelect, this ),

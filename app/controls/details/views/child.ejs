@@ -1,7 +1,7 @@
-<form <%= bindForm( this ) %>>
+<div <%= bindForm( this ) %>>
 
     <input name="firstName" />
     <input name="surname" />
-    <input name="age" type="number" data-min="0" data-max="<%= this.childAge || '10' %>" />
+    <input name="age" type="select" />
 
-</form>
+</div>

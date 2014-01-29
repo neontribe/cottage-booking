@@ -6,6 +6,8 @@ env:
 branches:
   only:
   - develop
+before_install:
+- ulimit -n 4096
 install:
 - npm install
 - npm install -g grunt-cli
@@ -16,6 +18,10 @@ script:
 - echo "Running tests"
 - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
 - grunt build
+after_success:
+- rm -rf .git
+- rm -rf node_modules
+- npm install --production
 deploy:
   provider: heroku
   skip_cleanup: true

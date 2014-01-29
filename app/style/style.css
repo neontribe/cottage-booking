@@ -1,38 +1,26 @@
+/* TODO: tidy this styling up! */
 .cf {
-    float:none;
+    float:none !important;
     clear:both;
 }
 
-#cottage-booking > div {
-    height: 515px;
-    width: 907px;
+/* example styling */
+.bookingPath {
+    width: 1000px;
 }
 
-#some-tabs ul li {
-    float:left;
-    padding:0 1em 0.2em;
-    list-style: none;
+.bookingPath * + * {
+    margin: inherit;
 }
 
-#some-tabs .active {
-    border-bottom: solid 1px black;
+.bookingPath > *,
+.ui-tabs .ui-tabs-nav + div {
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#some-tabs {
-    margin-bottom: 2em;
-}
-
-#some-tabs + div,
-#some-tabs + div + div {
-    display: inline-block;
-    vertical-align: top;
-}
-#some-tabs + div {
-    /*width:1000px;
-    height: 800px;*/
-    padding:1em;
-    margin: 1em;
-    border: 1px solid black;
+.bookingPath .ui-tabs .ui-tabs-panel {
+    box-sizing: border-box;
 }
 
 .ui-datepicker-today {
@@ -62,21 +50,25 @@
     border: 1px solid red;
 }
 
-.name {
-    width:50%;
-}
-
-.name > * {
-    float:left;
-}
-
-.party-list > .traveller > form {
+.party-list > .traveller > .bindForm {
     width:100%;
     font-size:0;
 }
 
-.party-list > .traveller > * {
-    font-size: 14px;
+.party-list .bindForm > * {
+    font-size: 12px;
+    font-size: 1rem;
+}
+
+.party-list .traveller label {
+    visibility: hidden;
+    height: 0;
+    width: 25%;
+}
+
+.party-list legend + .traveller .form-item label {
+    visibility: visible;
+    height: auto;
 }
 
 .party-list > .traveller .form-item {
@@ -85,11 +77,92 @@
 }
 
 .party-list > .traveller .form-item > * {
+    font-size: 1rem;
     width: 93%;
     padding: 0 1.5%;
-    margin: 1.5%;
+    margin: 0 1.5%;
 }
 
+.party-list > .infant .form-item:first-child,
 .party-list > .child .form-item:first-child {
     margin-left: 25%;
+}
+
+.loading * {
+    cursor: wait;
+}
+
+input, select, textarea {
+    box-sizing: border-box;
+}
+
+/* bindForm stuff */
+.bindForm .form-item > label,
+.bindForm .form-item > input {
+    display: inline-block;
+}
+
+.bindForm .form-item label {
+    min-width: 35%;
+    text-align: right;
+}
+
+.bindForm .modelMultiCheckbox {
+    font-size: 0;
+}
+
+.bindForm .modelMultiCheckbox > label:first-child {
+    width: 100%;
+}
+
+.bindForm .modelMultiCheckbox > label {
+    text-align: left;
+    min-width: 33.3%;
+    font-size: 1rem;
+}
+/**************/
+
+.ui-tabs,
+.ui-tabs .ui-tabs-panel {
+    width: 100%;
+}
+
+.ui-tabs .ui-tabs-panel > *:first-child {
+    margin: 0 auto;
+}
+
+.bookingPath .ui-tabs .details {
+    font-size: 0;
+    padding: 12px;
+    padding: 1rem;
+}
+
+.bookingPath .ui-tabs .details > * {
+    font-size: 1rem;
+    vertical-align: top;
+}
+
+.bookingPath .ui-tabs .details > *:first-child,
+.bookingPath .ui-tabs .details > * + * {
+    display: inline-block;
+    width: 50%;
+}
+
+.calendar .hasDatepicker > div {
+    margin: 0 auto;
+}
+
+.form-item .required {
+    color: red;
+}
+
+.payment .iframe-holder {
+    position: relative;
+    width: 100%;
+    height: 522px;
+}
+
+.payment iframe {
+    width: 100%;
+    height: 100%;
 }

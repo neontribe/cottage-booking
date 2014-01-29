@@ -3,20 +3,47 @@ define([
     'resources/avail',
     'resources/book',
     'underscore',
+    'moment',
+    'utils',
     'can/model',
-    'can/map/validations'
-], function(can, avail, booking, _){
+    'can/map/validations',
+    'can/map/attributes'
+], function(can, avail, booking, _, moment, utils){
     'use strict';
 
     return can.Model({
-        update  : 'POST property/booking/enquiry',
-        create  : 'POST property/booking/enquiry',
+        update  : utils.getResource('POST property/booking/enquiry'),
+        create  : utils.getResource('POST property/booking/enquiry'),
 
         defaults: {
             // The availability object so we can validate stays
             'avail': avail,
             'saveOnValid': true,
-            'adults': 4
+            'adults': 1
+        },
+
+        attributes: {
+            fromDate: 'date',
+            toDate: 'date'
+        },
+
+        convert: {
+            'date': function( raw ) {
+                if( typeof raw === 'number' ) {
+                    return moment( raw * 1000 );
+                } else if( typeof raw === 'string' ) {
+                    return moment( raw, 'YYYY-MM-DD' );
+                } else if( typeof raw === 'object' && raw.isValid && !raw.isValid() ) {
+                    return null;
+                }
+                return raw;
+            }
+        },
+
+        serialize: {
+            'date': function( raw ) {
+                return typeof raw === 'object' ? raw.format('YYYY-MM-DD') : raw;
+            }
         },
 
         // We only need this attributes to make an enquiry
@@ -37,7 +64,11 @@ define([
                     return false;
                 }
 
-                if( fromDate < new Date() ) {
+                if( fromDate && !fromDate.isValid() ) {
+                    return 'Invalid date';
+                }
+
+                if( fromDate < utils.now() ) {
                     return 'Your stay should be in the future';
                 }
 
@@ -51,6 +82,10 @@ define([
             this.validate('toDate', function( toDate ) {
                 if( !this.attr('fromDate') ) {
                     return false;
+                }
+
+                if( toDate && !toDate.isValid() ) {
+                    return 'Invalid date';
                 }
 
                 if( toDate < this.attr('fromDate') ) {
@@ -75,15 +110,16 @@ define([
 
         'init': function() {
             var prox;
+            prox = can.proxy( this.resetOnDateChangeHandler, this );
+            this.on('fromDate', prox);
+            this.on('toDate', prox);
+
+            // We should bind our save after we've cleared errors from this model
             if( this.saveOnValid ) {
                 prox = can.proxy( this.validSaveHandler, this );
                 this.on('fromDate', prox);
                 this.on('toDate', prox);
             }
-
-            prox = can.proxy( this.resetOnDateChangeHandler, this );
-            this.on('fromDate', prox);
-            this.on('toDate', prox);
 
             // *welsh accent* Tidy
             this.removeAttr('saveOnValid');
@@ -113,22 +149,20 @@ define([
             return can.Model.prototype.destroy.call( this );
         },
 
-        'serialize': function() {
-            // only include the attributes above
-            var serialized = _.pick( can.Model.prototype.serialize.call( this ), this.constructor.required );
-
-            if( this.attr('fromDate') ) {
-                serialized.fromDate = this.attr('fromDate').format('YYYY-MM-DD');
-            }
-            if( this.attr('toDate') ) {
-                serialized.toDate = this.attr('toDate').format('YYYY-MM-DD');
-            }
-
-            return serialized;
-        },
-
         'make': function() {
-            return booking.fetchBooking( this.serialize() );
+            return booking.fetchBooking( this.serialize() ).fail(can.proxy(function( failedBooking ) {
+                // On error proxy the failed booking object back over here, just taking the interesting bits
+                var err;
+                if( failedBooking.responseText ) {
+                    err = JSON.parse( failedBooking.responseText );
+                    this.attr( err );
+                } else {
+                    this.attr({
+                        'status': 'error',
+                        'message': 'A fatal error has occurred, sorry for any inconveniences.'
+                    });
+                }
+            }, this));
         },
 
         // If we hear about a new propref re-fetch the availability data
@@ -143,7 +177,7 @@ define([
 
             if( from && to ) {
 
-                if( !this.errors( this.constructor.required ) ) {
+                if( !this.errors() ) {
                     this.save();
                 }
 
@@ -180,15 +214,14 @@ define([
                 dayClasses = [],
                 tooltip = '';
 
-            // TODO: Look to change new Date() to like require('utils').today() or something
-            // SO we could mox it in tests
-            if( date > new Date() ) {
+            // mox it in tests
+            if( date > utils.now() ) {
                 if( availability ) {
                     dayData = availability.attr( date );
 
                     if( dayData ) {
                         // Get availability
-                        enableDay = dayData.attr('available');
+                        enableDay = dayData.attr('available') || dayData.attr('bookingStart');
 
                         if( enableDay && this.fallsBetween( date ) ) {
                             dayClasses.push('selected');
@@ -200,15 +233,14 @@ define([
                                 // Look to add errors
                                 if( errors.status ) {
                                     tooltip = errors.status[0];
-                                } else {
-                                    tooltip = 'Good to go!';
                                 }
+                            } else {
+                                tooltip = 'Good to go!';
                             }
                         }
 
                         // Add other misc classes
-                        dayClasses.push( 'code-' + dayData.attr('code') );
-                        dayClasses.push( dayData.attr('changeover') ? 'changeover' : '' );
+                        dayClasses.push.apply( dayClasses, dayData.attr('class').attr() );
                     }
                 }
             }

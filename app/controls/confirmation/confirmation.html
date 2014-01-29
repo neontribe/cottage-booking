@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>confirmation demo page!</title>
+    <script type="text/javascript" src="../../bower_components/jquery/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../style/style.out.css" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
+  </head>
+  <body>
+    <h1>Welcome to confirmation demo page</h1>
+    <div id="cottage-booking"  style="float:left;">
+      <div id="content" style="float:left;" class="confirmation"></div>
+      <div class="cf"></div>
+    </div>
+    <div id="results" style="float:left; width:550px; height: 500px;"><textarea style="width:550px; height:100%;"></textarea></div>
+    <div class="cf"></div>
+    <script type="text/javascript" src="../../bower_components/requirejs/require.js"></script>
+    <script type="text/javascript" src="../../requirejsconfig.js"></script>
+    <script type="text/javascript">
+      requirejs.config({
+        baseUrl : '../../'
+      });
+      requirejs([
+        'controls/confirmation/confirmation',
+        'resources/book',
+        'fixtures/availabilities',
+        'fixtures/enquiries',
+        'fixtures/bookings',
+        'fixtures/countries'
+        /*'fixtures/fixtures!fixtures/availabilities'*/
+      ], function( Confirmation, booking ){
+        // This could be any string, but for completeness..
+        //booking.fetchBooking('d76c8badd8448cc9d1d888778966d140').done(function() {
+        booking.fetchBooking( 'confirmedbooking' ).done(function() {
+         new Confirmation('#content');
+        });
+      });
+    </script>
+  </body>
+</html>

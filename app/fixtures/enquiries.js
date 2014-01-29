@@ -1,36 +1,26 @@
-define(['can/util/string', 'jquery', 'moment', 'can/util/string/deparam', 'can/util/fixture'], function(can, $, moment){
+define(['fixtures/fixtures', 'moment'], function(can, moment){
     'use strict';
-    /* globals location */
-    var queryObj = can.deparam( location.search.slice(1) ),
-        fixture = !queryObj.noFixture ? function( options, reply ) {
 
-            var fromDate = moment( options.data.fromDate, 'YYYY-MM-DD' ),
-                url;
+    can.wrapFixture('POST property/booking/enquiry', 'fixtures/enquiries/', function( data, status, def, originalAjax ) {
+
+        if( can.useFixtures ) {
+        
+            var fromDate = moment( originalAjax.data.fromDate, 'YYYY-MM-DD' );
 
             if( (fromDate.get('M') + 1) % 2 === 0 ) {
-                url = require.toUrl('fixtures/enquiries/enquiry_A223_ZZ_error.json');
-            } else {
-                url = require.toUrl('fixtures/enquiries/enquiry_A223_ZZ.json');
+                // This is a little clunky, TODO: investigate integrating this behaviour into the fixtures/fixtures file
+                can.$.ajax({
+                    url: require.toUrl('fixtures/enquiries/property-booking-enquiry_error.json'),
+                    async: false,
+                    success: function( errorData ) {
+                        data = errorData;
+                    }
+                });
             }
 
-            $.get( url ).done( reply );
+        }
 
-        } : function( options, reply ) {
-            var url = 'http://localhost/NeonTABS/demosite/property/booking/enquiry'; // Grumble
-            can.fixture.on = false;
-            $.ajax(can.extend(options, {
-                url: url
-            })).done(function( resp ) {
-                reply( can.extend(resp, {
-                    'wesentthis': options.data,
-                    'wesentthisto': url
-                }) );
-            });
-            can.fixture.on = true;
-        };
-
-    can.fixture({
-        'POST property/booking/enquiry' : fixture
+        return data;
     });
 
     return can.fixture;

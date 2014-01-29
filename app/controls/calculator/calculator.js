@@ -20,7 +20,7 @@ define([
 
     return can.Control({
 
-        pluginName: 'booking_calculator',
+        pluginName: 'bookingCalculator',
 
         defaults: {
             enquiry: enquiry,
@@ -31,7 +31,6 @@ define([
             this.options.enquiry.attr('propRef', this.options.propRef);
 
             this.element.html( views.init({
-                'can': can,
                 'enquiry': this.options.enquiry,
                 'datepickerOptions': {
                     'beforeShowDay': utils.bindWithThis( this.beforeShowDay, this )
@@ -60,10 +59,40 @@ define([
             this.options.enquiry.attr('fromDate', moment( $el.datepicker( 'getDate' ) ) );
         },
 
-        '{enquiry} submit': function() {
-            if( !this.options.enquiry.errors() ) {
-                this.options.enquiry.make();
+        // Change the toDate default date to at least be relevant to what has been picked
+        '{enquiry} fromDate': function( model, evt, newVal ) {
+            var $form = this.element.find('.bindForm:eq(0)'),
+                form;
+
+            if( $form.length ) {
+                form = $form.controls('bindForm')[0];
+                newVal = newVal || this.options.enquiry.attr('avail')().attr('firstAvailableDate');
+                if( newVal && form ) {
+                    form.getElementsFor('toDate').datepicker( 'option', 'defaultDate', newVal.format('DD/MM/YYYY') );
+                }
+
             }
+        },
+
+        // We kinda rely on the fact that fixtures and the server will take longer than the app to load
+        // danger..
+        '{enquiry.avail} change': function() {
+            var $form = this.element.find('.bindForm:eq(0)'),
+                form, first;
+
+            if( $form.length ) {
+                first = this.options.enquiry.attr('avail')().attr('firstAvailableDate');
+                form = $form.controls('bindForm')[0];
+                if( first && form ) {
+                    form.getElementsFor('toDate').datepicker( 'option', 'defaultDate', first.format('DD/MM/YYYY') );
+                    form.getElementsFor('fromDate').datepicker( 'option', 'defaultDate', first.format('DD/MM/YYYY') );
+                }
+            }
+        },
+
+        '{enquiry} submit': function() {
+            // The from controller should pretect us from an invalid form state
+            this.options.enquiry.make();
         }
     });
 

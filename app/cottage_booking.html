@@ -3,9 +3,37 @@
     <head>
         <title>cottage-booking</title>
         <link rel="stylesheet" type="text/css" href="style/style.out.css" />
-
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
+        <script src="//localhost:35729/livereload.js"></script>
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.base.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tooltip.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.button.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tabs.css" />
+        <style type="text/css">
+            #some-tabs ul li {
+                float:left;
+                padding:0 1em 0.2em;
+                list-style: none;
+            }
+
+            #some-tabs .active {
+                border-bottom: solid 1px black;
+            }
+
+            #some-tabs {
+                margin-bottom: 2em;
+            }
+
+            #some-tabs + div,
+            #some-tabs + div + div {
+                display: inline-block;
+                vertical-align: top;
+            }
+            #some-tabs + div {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>
@@ -19,8 +47,8 @@
             <div class="cf"></div>
         </div>
 
-        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="booking_path"></div>
-        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="booking_calculator"></div>
+        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath" data-base-url=""></div>
+        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
 
         <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
         <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
@@ -31,8 +59,36 @@
                 'cottage_booking',
                 'fixtures/availabilities',
                 'fixtures/enquiries',
-                'fixtures/bookings'
-            ], function( f1, f2 ) {});
+                'fixtures/bookings',
+                'fixtures/countries',
+                'fixtures/payments'
+            ], function( f1, f2 ) {
+
+                $('#cottage-booking').bookingPath({
+                    'stages': {
+                        details: {
+                            'options': {
+                                ages: [
+                                    ['0-0', 'not a default'],
+                                    ['18-29', '18-29'],
+                                    ['30-44', '30-44'],
+                                    ['45-59', '45-59'],
+                                    ['60+', 'Over 60']
+                                ],
+                                childAges: [
+                                    ['2-8', '2-8'],
+                                    ['9-12', '9-12'],
+                                    ['13-17', '13-17']
+                                ],
+                                infantAges: [
+                                    '0-2'
+                                ]
+                            }
+                        }
+                    }
+                });
+
+            });
         </script>
     </body>
 </html>

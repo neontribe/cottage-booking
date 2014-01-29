@@ -11,7 +11,18 @@
         <!-- TODO: Include markup and scripts to bootstrap the app -->
 
         <img style="width:100px" src="https://travis-ci.org/RpprRoger/cottage-booking.png" title="Build Status Images">
-        <a href="app/cottage_booking.html"><h1>Demo Booking Path</h1></a>
+        <div style="border: 1px solid black;">
+            <h1>Demo Booking Path</h1>
+            <ul>
+                <li><a href="app/cottage_booking.html">Normal booking path against fixtures</a></li>
+                <li><a href="app/cottage_booking.html#!calendar/full">Booking path with details pre populated</a></li>
+            
+                <li style="list-style:none;"><br></li>
+
+                <li><a href="app/cottage_booking.html?noFixture=1">Normal booking path against dummy api</a></li>
+            </ul>
+            
+        </div>
         <a href="app/production.html"><h1>Demo Booking Path using built production file</h1></a>
         <br>
         <a href="test/index.html"><h2>Tests</h2></a>

@@ -3,10 +3,32 @@
     <head>
         <title>cottage-booking</title>
 
-        <link rel="stylesheet" type="text/css" href="style/style.out.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
+        <link rel="stylesheet" type="text/css" href="prod/production.css" />
+        <link rel="stylesheet" type="text/css" href="prod/jqueryui.css" />
+        <style type="text/css">
+            #some-tabs ul li {
+                float:left;
+                padding:0 1em 0.2em;
+                list-style: none;
+            }
 
+            #some-tabs .active {
+                border-bottom: solid 1px black;
+            }
+
+            #some-tabs {
+                margin-bottom: 2em;
+            }
+
+            #some-tabs + div,
+            #some-tabs + div + div {
+                display: inline-block;
+                vertical-align: top;
+            }
+            #some-tabs + div {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>
@@ -20,8 +42,8 @@
             <div class="cf"></div>
         </div>
 
-        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="booking_path"></div>
-        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="booking_calculator"></div>
+        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath"></div>
+        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
 
         <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
             <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
@@ -32,11 +54,14 @@
         <script type="text/javascript">
             requirejs([
                 'fixtures/availabilities',
-                'fixtures/enquiries'
+                'fixtures/enquiries',
+                'fixtures/bookings',
+                'fixtures/countries',
+                'fixtures/payments'
             ], function() {
 
                 // We do this here so the fixtures have had a chance to load
-                require(['production.js']);
+                require(['prod/production.js']);
 
             });
         </script>

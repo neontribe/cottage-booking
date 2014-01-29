@@ -3,25 +3,25 @@
     name="<%= attrName %>"
     data-type="<%= type %>"
     data-label="<%= label %>"
-    class="<% classes %>"
+    class="<%= classes %>"
     <%= (el) -> el.tooltip( tooltipOptions ) %>
 >
     <%
-        var value, text;
+        var phValue, phText;
         if( this.placeholder ) {
-            value = this.placeholder[0] || '';
-            text  = this.placeholder[1] || 'Please select';
+            phValue = this.placeholderVal || '';
+            phText  = typeof placeholder === 'string' ? placeholder : 'Please select';
     %>
         <option
-            value="<%= value %>"
-            <%= ( model.attr( attrName ) === value || !value ) ? 'selected="selected"' : '' %>
+            value="<%= phValue %>"
+            <%= ( model.attr( attrName ) === phValue || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
         >
-            <%= text %>
+            <%= phText %>
         </option>
     <% } %>
     <% list( optionsMap.attr( attrName ), function( element ) {
-        value = element.attr( valueAttr ) || element.attr( textAttr ),
-        text = element.attr( textAttr ) || element.attr( valueAttr );
+        var value = element.attr( valueAttr ) || element.attr( textAttr ),
+            text = element.attr( textAttr ) || element.attr( valueAttr );
     %>
         <option
             value="<%= value %>"

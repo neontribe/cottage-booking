@@ -27,7 +27,7 @@ define([
 
                 arr[0].should.be.equal(true);
 
-                arr[1].should.be.equal('code-_ changeover');
+                arr[1].should.be.equal('unavailable bookingStart changeover codeW saturday');
 
                 enq.attr('fromDate', moment( date ) );
                 enq.attr('toDate', moment( new Date( 2014, 4, 18) ));

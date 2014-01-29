@@ -7,7 +7,9 @@ define([
     'can/control',
     'can/control/plugin',
     'jqueryui/jquery.ui.tooltip',
-    'jqueryui/jquery.ui.datepicker'
+    'jqueryui/jquery.ui.datepicker',
+    'plugins/map/getter',
+    'can/map/validations'
 ], function(can, views, moment, _, utils) {
     'use strict';
 
@@ -20,21 +22,6 @@ define([
     return can.Control({
         'pluginName': 'bindForm',
 
-        'getterMap': {
-            'datepicker': function( $el ) {
-                return moment( $el.datepicker('getDate') );
-            },
-            'defaultGetter': function( $el ) {
-                return $el.val();
-            },
-            'checkbox': function( $el ) {
-                return !!$el.is(':checked');
-            },
-            'number': function( $el ) {
-                return Number( $el.val() );
-            }
-        },
-
         defaults: {
             model: null,
             proxy: null,
@@ -43,12 +30,45 @@ define([
             tooltipOptions: {
                 track: true
             },
-            getterMap: {},
+            'getterMap': {
+                'datepicker': function( $el ) {
+                    return moment( $el.datepicker('getDate') );
+                },
+                'defaultGetter': function( $el ) {
+                    return $el.val();
+                },
+                'checkbox': function( $el ) {
+                    return !!$el.is(':checked');
+                },
+                'number': function( $el ) {
+                    return Number( $el.val() );
+                },
+                'modelMultiCheckbox': function( $el ) {
+                    // if this val is set
+                    return this.options.getterMap.checkbox( $el ) ? $el.data('formModel') : null;
+                }
+            },
+            'setterMap': {
+                'defaultSetter': function( attr, val ) {
+                    return this.options.model.attr( attr, val );
+                },
+                'modelMultiCheckbox': function( attr, val, $element ) {
+                    var location = attr + '.' + $element.attr('value');
+                    if( val ) {
+                        return this.options.model.attr( location, val );
+                    } else {
+                        return this.options.model.removeAttr( location );
+                    }
+                }
+            },
             optionsMap: {},
             // Attributes for which this form bound controller is responsible
             attributes: null,
             // This can be set per input as well
-            placeholder: true
+            placeholder: true,
+            // delay changes to the model's attribute by this amount of milliseconds
+            debounceDelay: 0,
+            display: {}
         }
     },{
         init: function() {
@@ -56,14 +76,25 @@ define([
             // Set up a new observable as our attributes, so we can magically bind to changes
             this.options.attributes = new can.List();
             this.options.optionsMap = new can.Map( this.options.optionsMap );
+            // We expect these to be computes, so that change events will get properly updated
+            this.options.display    = new can.Map( this.options.display );
+
+            this.options.validations = !!this.options.model.constructor.validations;
 
             this.element.find('[name]').each( can.proxy( this.formElement, this ) );
             // Once we've replaced and sorted out inputs, set the title to empty string
             // so we can display tooltips
             this.element.find(':input').attr('title', '');
 
-            can.extend( this.options.getterMap, this.constructor.getterMap );
+            this.setter = _.debounce( this.setter, this.options.debounceDelay );
 
+        },
+
+        'setter': function( type ) {
+            var setter = this.options.setterMap[ type ] || this.options.setterMap.defaultSetter,
+                args = Array.prototype.slice.call( arguments, 1 );
+
+            return setter.apply( this, args );
         },
 
         // destroy: function() {
@@ -86,16 +117,16 @@ define([
                 options;
 
             options = can.extend(true, {
-                'attrName': attr,
-                'type': type,
-                'classes': $el.attr('class') || '',
-                // Look for a template which matches the type
-                'view': views[type] || views.text,
-                'label': this.options.defaultLabel ? attr : '',
-                'control': this,
-                'valueAttr': 0,
-                'textAttr': 1,
-                'id': _.uniqueId( 'attr_' + attr + '_' )
+                'attrName'      : attr,
+                'type'          : type,
+                'classes'       : $el.attr('class') || '',
+                'view'          : views[type] || views.text, // Look for a template which matches the type
+                'label'         : this.options.defaultLabel ? attr : '',
+                'control'       : this,
+                'valueAttr'     : 0,
+                'textAttr'      : 1,
+                'id'            : _.uniqueId( 'attr_' + attr + '_' ),
+                'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for
@@ -106,7 +137,7 @@ define([
 
         // These should be bound before we make changes to the model
         // so we can stop the change being made to it.
-        ':input[type="number"][data-min] change': function( $el ) {
+        ':input[data-type="number"][data-min] change': function( $el ) {
             var max = $el.data('max'),
                 min = $el.data('min');
 
@@ -120,11 +151,14 @@ define([
                 return false;
             }
         },
-        ':input[type="number"][data-max] change': function( $el ) {
+        ':input[data-type="number"][data-max] change': function( $el ) {
             var max = $el.data('max'),
                 min = $el.data('min');
 
             /* jshint -W018 */
+            // JSHint rightly complains about this use of '!', but we want this here
+            // because if one of them is falsey (undefined) then the equation is falsey
+            // so ( max > min ) would be falsey ( incorrectly )
             if( $el.val() > max && !(max < min) ) {
             /* jshint +W018 */
                 $el.val( $el.data('max') );
@@ -141,15 +175,18 @@ define([
             // Add errors when an input is changed
             var type = $el.attr('data-type'),
                 attr = $el.attr('name'),
-                getter;
+                getter, val;
 
             if( type && attr ) {
 
                 getter = this.options.getterMap[ type ] || this.options.getterMap.defaultGetter;
 
-                this.options.model.attr( attr, getter.call( this, $el, attr ) );
+                val = getter.call( this, $el, attr );
+                if( val !== this.options.model.attr( attr ) ) {
+                    this.setter( type, attr, val, $el );
+                }
 
-                this.addErrorsForAttr( attr );
+                //this.addErrorsForAttr( attr );
             }
 
         },
@@ -193,26 +230,34 @@ define([
             return this.getElementsFor( attr ).attr('data-label') || '';
         },
         'addErrors': function() {
-            var errors = this.options.model.errors( this.options.attributes.attr() );
+            var errors = this.options.model.errors();
 
             if( errors ) {
-                can.each( errors, function( value, key ) {
+                can.each( _.pick( errors, this.options.attributes.attr() ), function( value, key ) {
                     this.addTheseErrorsForAttr( key, value );
                 }, this);
-                return true;
+                return errors;
             }
         },
         'removeErrors': function() {
-            can.each( this.options.attributes.attr(), this.removeErrorsForAttr, this );
+            this.options.attributes.each( this.removeErrorsForAttr, this );
         },
         'removeErrorsForAttr': function( attr ) {
-            this.getElementsFor( attr )
-                .tooltip('option', 'content', '')
-                .removeClass('error');
+            this.getElementsFor( attr ).each(function() {
+                var $this = can.$( this );
+                if( $this.data('uiTooltip') ) {
+                    $this
+                        .tooltip('option', 'content', '')
+                        .removeClass('error');
+                }
+                //     .tooltip('option', 'content', '')
+                //
+            });
         },
         'getUnHandledErrors': function( omit ) {
             return _.omit( this.options.model.errors(), omit );
         },
+        //************ END API THINGS ***************
 
         /**
          * This function handles model change events, we need to do this last
@@ -224,7 +269,21 @@ define([
         '{model} change': function( model, batchEvt, attr ) {
             var errors;
             if( this.lastBatch !== batchEvt.batchNum ) {
-                errors = this.options.model.errors( attr );
+                // check for errors for which we are responsible
+                errors = this.options.model.errors( this.options.attributes.attr() );
+                if( errors ) {
+
+                    _.chain( this.options.attributes.attr() )
+                        .difference( _.keys( errors ) )
+                        .each(can.proxy(function( validAttr ) {
+                            // loop through the attributes which don't have any errors
+                            this.removeErrorsForAttr( validAttr );
+                        }, this));
+
+                } else {
+                    this.removeErrors();
+                }
+
                 if( !errors && can.inArray( attr, this.options.attributes.attr() ) !== -1 ) {
                     // If we don't have any errors, remove them
                     this.removeErrorsForAttr( attr );
@@ -246,7 +305,39 @@ define([
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );
             } else {
-                can.trigger( this.options.model, 'errors' );
+                can.trigger( this.options.model, 'formErrors', [ hasErrors ] );
+            }
+        },
+
+        // This is because errors don't appear to bubble correctly
+        // TODO: when the errors appear for sub models change this behaviour
+        // See: https://github.com/bitovi/canjs/pull/434
+        inseminateErrors: function( errObj ) {
+            if( errObj ) {
+                can.each(errObj, function( error, key ) {
+                    var modl;
+                    if( key.indexOf('.') > -1 ) {
+                        modl = key.split('.');
+                        // Pop off the attribute
+                        modl.pop();
+                        can.trigger( this.options.model.attr( modl.join('.') ), 'formErrors' );
+                    }
+                }, this);
+            }
+        },
+
+        '{model} formErrors': function( model, evt, errors ) {
+            // If we hear about some errors happening elsewhere
+            // try and apply them correctly, if errors is falsey (undefined) presume we
+            // have been trigged manually
+            if( errors ) {
+                if( _.intersection( _.keys( errors ) , this.options.attributes.attr() ).length ) {
+                    this.addErrors();
+                }
+                // eurgh...
+                this.inseminateErrors( errors );
+            } else {
+                this.addErrors();
             }
         }
     });

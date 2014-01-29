@@ -1,0 +1,28 @@
+<div
+    id="<%= id %>"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<%= classes %>"
+>
+    <%
+        list( optionsMap.attr( attrName ), function( option ) {
+            var value = option.attr( valueAttr ) || option.attr( textAttr ),
+                text = option.attr( textAttr ) || option.attr( valueAttr ),
+                radioId = uniqueId( id + '_' );
+    %>
+        <label for="<%= radioId %>">
+            <input
+                id="<%= radioId %>"
+                name="<%= attrName %>"
+                type="radio"
+                data-type="<%= type %>"
+                data-label="<%= label %>"
+                value="<%= value %>"
+                <%= (el) -> el.data( 'formModel', option ) %>
+                <%= model.attr( attrName ) === value ? 'checked="checked"' : '' %>
+                <%= (el) -> el.tooltip( tooltipOptions ) %>
+            />
+            <%= text %>
+        </label>
+    <% }); %>
+</div>
