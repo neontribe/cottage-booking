@@ -7,6 +7,7 @@ define([
     'helpers',
     'ejs!./views/booking-404',
     'ejs!./views/booking-409',
+    'ejs!./views/error',
     'ejs!./views/init'
 ], function() {
     'use strict';
@@ -16,7 +17,8 @@ define([
     return {
         'booking404': args[0],
         'booking409': args[1],
-        'init': args[2]
+        'error': args[2],
+        'init': args[3]
     };
 });
 /* End of file */

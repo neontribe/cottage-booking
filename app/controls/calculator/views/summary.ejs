@@ -10,7 +10,8 @@
 <span>Depart: <%= booking.attr('toDate') ? booking.attr('toDate').format('DD-MM-YYYY') : '' %></span>
 <br>
 <% if( booking.attr('price') ) { %>
-    <span>Price: <%= money( booking.attr('price.totalPrice') ) %></span>
+
+    <span>You will be paying: <%= money( booking.attr('price.displayPrice') ) %></span>
 
     <br>
 <% } %>

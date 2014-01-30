@@ -12,7 +12,9 @@ define([
         }
     }, {
         init: function() {
-            this.element.html( views.init() );
+            this.element.html( views.init({
+                booking: booking
+            }) );
         }
     });
 

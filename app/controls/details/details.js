@@ -31,7 +31,8 @@ define([
                 ['13-17', '13-17']
             ],
             infantAges: [
-                '0-2'
+                ['0-1' ,'0-1'],
+                ['0-2', '0-2']
             ],
             // This means we will share the same country List ( note the capitol L )
             countries: new Country.List()

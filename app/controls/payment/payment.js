@@ -15,7 +15,7 @@ define([
         defaults: {
             booking: booking,
             payment: null,
-            canPayLater: true,
+            canPayLater: false,
             canDeposit: true,
             depositChoices: [
                 ['balance', 'Pay the full amount'],
@@ -58,8 +58,13 @@ define([
                 this.options.payment
                     .reset()
                     .save()
-                    .done(function() {
+                    .done(function( payment ) {
                         $holder.spin(false);
+                        if( payment.errors('Status') ) {
+                            $root.html( views.error({
+                                'errors': payment.errors('Status').Status
+                            }) );
+                        }
                     })
                     .fail(function( reply ) {
 
@@ -70,10 +75,6 @@ define([
                     });
 
             }, this));
-        },
-
-        'iframe loaded': function() {
-            console.log('and again');
         },
 
         '{booking} bookingId': function( model, newVal ) {
@@ -88,7 +89,8 @@ define([
             alert('I haven\'t implemented this yet');
         },
 
-        '{payment} paymentType': function() {
+        '{payment} paymentType': function( model, evt, newVal ) {
+            this.options.booking.attr('price.paymentType', newVal);
             this.updatePayment();
         },
 

@@ -3,7 +3,6 @@
 define([
     'can/util/string',
     'utils',
-    'resources/book',
     'can/model',
     'can/map/validations'
 ], function( can, utils ){

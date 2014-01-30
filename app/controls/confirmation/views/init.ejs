@@ -1,1 +1,11 @@
-<div> CONFIRMATIOASJKDLN:ASDL </div>
+<div>
+
+	<h1>Confirmation page stub</h1>
+
+	<% list( booking.attr('payments'), function( payment ) { %>
+
+		<p><span>Type</span>: <%= payment.attr('cardType') %></p>
+		<p><span>Last 4 digits</span>: <%= payment.attr('last4Digits') %></p>
+	<% }); %>
+
+</div>

@@ -1,6 +1,6 @@
 /**
  */
-define(['can/util/string', 'can/model'], function( can ){
+define(['can/util/string', 'can/model', 'can/compute'], function( can ){
     'use strict';
 
     return can.Model({
@@ -12,6 +12,17 @@ define(['can/util/string', 'can/model'], function( can ){
             return can.Model.model.call( this, priceObj );
         }
     }, {
+
+        displayPrice: can.compute(function() {
+            if( this.attr('paymentType') === 'deposit' ) {
+
+                return this.attr('depositAmount');
+
+            }
+
+            return this.attr('totalPrice');
+        }),
+
         serialize: function() {
             var serialized = can.Model.prototype.serialize.call( this );
             // If we have no extras set, make sure the server knows about it
