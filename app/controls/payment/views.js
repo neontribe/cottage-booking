@@ -5,6 +5,8 @@
  */
 define([
     'helpers',
+    'ejs!./views/booking-404',
+    'ejs!./views/booking-409',
     'ejs!./views/init'
 ], function() {
     'use strict';
@@ -12,7 +14,9 @@ define([
     var args = Array.prototype.slice.call( arguments, 1 );
 
     return {
-        'init': args[0]
+        'booking404': args[0],
+        'booking409': args[1],
+        'init': args[2]
     };
 });
 /* End of file */

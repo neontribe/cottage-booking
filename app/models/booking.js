@@ -133,6 +133,7 @@ define([
 
             this.validate([ 'customer.daytimePhone', 'customer.eveningPhone', 'customer.mobilePhone' ], function( number ) {
                 if( number ) {
+                    // strip white space before testing
                     if( number.length < 6 ) {
                         return 'This field needs to be at least 6 characters';
                     }

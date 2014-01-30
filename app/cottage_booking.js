@@ -149,7 +149,7 @@ define([
             }
 
             // payment
-            if( b.errors() || b.attr('confirmation') ) {
+            if( !b.attr('bookingId') || b.errors() || b.attr('confirmation') ) {
                 disabled.push( 2 );
             }
 
@@ -322,6 +322,13 @@ define([
                 nextStg = this.options.stages.attr( ind );
                 can.route.attr( 'page', nextStg.attr('id') );
             }
+        },
+
+        '{route.data} restart': function( /*route, evt, routeObj*/ ) {
+            this.options.route.attr({
+                'page': 'calendar',
+                'booking': ''
+            });
         },
 
         /**

@@ -46,7 +46,8 @@ define([
         },
 
         updatePayment: function() {
-            var $holder = this.element.find('.iframe-holder');
+            var $holder = this.element.find('.iframe-holder'),
+                $root = this.element;
 
             $holder
                 .spin()
@@ -57,14 +58,21 @@ define([
                 this.options.payment
                     .reset()
                     .save()
-                        .done(function() {
-                            $holder.spin(false);
-                        });
+                    .done(function() {
+                        $holder.spin(false);
+                    })
+                    .fail(function( reply ) {
+
+                        var view = views['booking' + reply.status] || views.booking404;
+
+                        $holder.spin( false );
+                        $root.html( view() );
+                    });
 
             }, this));
         },
 
-        'iframe load': function() {
+        'iframe loaded': function() {
             console.log('and again');
         },
 
@@ -91,7 +99,7 @@ define([
                 // Re fetch the booking, at which point the app should react
                 this.options.booking.save();
             }
-        },
+        }
 
     });
 

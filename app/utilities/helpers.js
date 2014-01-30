@@ -1,4 +1,4 @@
-define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs'], function( can, accounting, _, utils ) {
+define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 'can/route'], function( can, accounting, _, utils ) {
     'use strict';
 
     var deCamalizeRegex = /([a-z\d])([A-Z])/g;
@@ -18,6 +18,7 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs'],
             };
         },
 
+        url: can.route.url,
         sub: can.sub,
         capitalize: can.capitalize,
         uniqueId: _.uniqueId,
@@ -57,6 +58,20 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs'],
                 can.$( el ).addClass('next').on('click', function() {
 
                     can.trigger( can.route.data, 'next', [ can.route.attr() ] );
+
+                    // Only behave like this if we don't have a href
+                    if( this.href || this.tagName.toLowerCase() === 'a' ) {
+                        return false;
+                    }
+                });
+            };
+        },
+
+        restart: function() {
+            return function( el ) {
+                can.$( el ).addClass('restart').on('click', function() {
+
+                    can.trigger( can.route.data, 'restart', [ can.route.attr() ] );
 
                     // Only behave like this if we don't have a href
                     if( this.href || this.tagName.toLowerCase() === 'a' ) {

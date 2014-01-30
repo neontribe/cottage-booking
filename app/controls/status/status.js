@@ -12,6 +12,9 @@ define([
 
         defaults: {
             booking: booking
+            // Some sort of model to represent that state of this
+            // so saving: true has some effect etc
+            // Yay for spinners
         }
     },{
 
@@ -22,6 +25,7 @@ define([
         },
 
         '{window} idle.idleTimer':function() {
+
             this.options.booking.save();
         },
 
