@@ -20,13 +20,13 @@ define([
         },
 
         init: function() {
-            this.validatePresenceOf(['firstName', 'surname', 'age']);
+            //this.validatePresenceOf(['firstName', 'surname', 'age']);
 
-            this.validate(['title'], function( title ) {
-                if( this.attr('type') === 'adult' && !title ) {
-                    return 'Title is required';
-                }
-            });
+            // this.validate(['title'], function( title ) {
+            //     if( this.attr('type') === 'adult' && !title ) {
+            //         return 'Title is required';
+            //     }
+            // });
         }
     }, {});
 
