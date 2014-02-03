@@ -60,9 +60,27 @@
                 'fixtures/payments'
             ], function() {
 
+                $('#cottage-booking').data('stages', {
+                    details: {
+                        'options': {
+                            ages: [
+                                ['18-29', '18-29'],
+                                ['30-44', '30-44'],
+                                ['45-59', '45-59'],
+                                ['60+', 'Over 60'],
+                                ['test', 'test']
+                            ],
+                            childAges: [
+                                ['2-8', '2-8'],
+                                ['9-12', '9-12'],
+                                ['13-17', '13-17']
+                            ]
+                        }
+                    }
+                });
+
                 // We do this here so the fixtures have had a chance to load
                 require(['prod/production.js']);
-
             });
         </script>
     </body>

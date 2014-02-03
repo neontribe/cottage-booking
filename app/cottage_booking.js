@@ -44,6 +44,11 @@ define([
         }
 
     }, {
+        setup: function( el, options ) {
+            can.Control.prototype.setup.call( this, el );
+            this.update( options );
+        },
+
         init: function() {
             var index,
                 hash = window.location.hash ? window.location.hash.replace(/#|!/g, '') : '',

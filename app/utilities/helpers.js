@@ -1,4 +1,4 @@
-define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 'can/route'], function( can, accounting, _, utils ) {
+define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 'can/route', 'can/observe'], function( can, accounting, _, utils ) {
     'use strict';
 
     var deCamalizeRegex = /([a-z\d])([A-Z])/g;
