@@ -19,7 +19,12 @@
       requirejs.config({
           baseUrl : '../../'
       });
-      requirejs(['controls/calculator/calculator', 'fixtures/availabilities', 'fixtures/enquiries'], function(Calculator){
+      requirejs([
+        'controls/calculator/calculator',
+        'fixtures/availabilities',
+        'fixtures/enquiries',
+        'fixtures/bookings'
+      ], function(Calculator){
         new Calculator('#content');
         require('resources/enquiry').attr('propRef', 'A223_ZZ');
         require('resources/enquiry').on('change', function() {

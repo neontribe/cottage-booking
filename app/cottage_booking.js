@@ -52,6 +52,10 @@ define([
             can.route(':page');
             can.route(':page/:booking');
 
+            if( this.element.data('baseUrl') ) {
+                utils.baseUrl( this.element.data('baseUrl') );
+            }
+
             this.options.enquiry.attr( 'propRef', this.options.propRef );
 
             this.element.addClass('booking-path');
@@ -401,14 +405,14 @@ define([
         init = $this[ plugin ];
 
         if( init ) {
-            if( $this.data('baseUrl') ) {
-                utils.baseUrl( $this.data('baseUrl') );
+            if( !$this.control( plugin ) ) {
+                init.call( $this, $this.data() );
             }
-            init.call( $this, $this.data() );
         }
     });
-
-    if( !init ) {
+    
+    // 
+    if( !init  ) {
         // TODO: investigate a different approach
         // So the user can execute the plugins manually if they want
         // Or maybe just show a warning ( if ( !init && console.warn ) ...)

@@ -30,6 +30,10 @@ define([
         'init' : function() {
             this.options.enquiry.attr('propRef', this.options.propRef);
 
+            if( this.element.data('baseUrl') ) {
+                utils.baseUrl( this.element.data('baseUrl') );
+            }
+            
             this.element.html( views.init({
                 'enquiry': this.options.enquiry,
                 'datepickerOptions': {
