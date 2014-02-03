@@ -13,7 +13,7 @@ define(['fixtures/availabilities', 'resources/avail', 'underscore'], function( f
             it('completes successfully and has expected data', function () {
                 var availability = avail();
 
-                _.size( availability.attr() ).should.be.equal(700);
+                _.size( availability.attr() ).should.be.equal(335);
 
                 availability.attr('2014-02-01').should.have.property('available').be.equal( false );
 
