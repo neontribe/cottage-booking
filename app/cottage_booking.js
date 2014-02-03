@@ -335,6 +335,26 @@ define([
             });
         },
 
+        '{route.data} back': function( route, evt, routeObj ) {
+            var prevStg, ind;
+            // if we don't have a page we should choose the first one
+            if( !routeObj.page ) {
+                ind = 0;
+            } else {
+                ind = this.options.stages.prev( routeObj.page );
+
+                if( ind === -1 ) {
+                    return;
+                }
+            }
+
+            // I suppose we could just say > 0
+            if( can.inArray( ind, this.disabledArray() ) === -1 ) {
+                prevStg = this.options.stages.attr( ind );
+                can.route.attr( 'page', prevStg.attr('id') );
+            }
+        },
+
         /**
          * This function exposes an api to modify the settings
          * attached to this top level controller, importantly it is possible
@@ -405,18 +425,17 @@ define([
         init = $this[ plugin ];
 
         if( init ) {
-            if( !$this.control( plugin ) ) {
-                init.call( $this, $this.data() );
-            }
+            init.call( $this, $this.data() );
         }
     });
     
     // 
-    if( !init  ) {
+    if( !init && console && console.warn ) {
         // TODO: investigate a different approach
         // So the user can execute the plugins manually if they want
         // Or maybe just show a warning ( if ( !init && console.warn ) ...)
-        throw new Error('This App expected markup that wasn\'t found!');
+        // throw new Error('This App expected markup that wasn\'t found!');
+        console.warn('In order to initialize the app run the bookingPath and bookingCalculator plugin functions');
     }
 
     // Return the booking path to match amd format

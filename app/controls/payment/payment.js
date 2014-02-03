@@ -97,9 +97,21 @@ define([
         '{window} message': function( win, evt ) {
             var message = JSON.parse( evt.originalEvent.data );
 
-            if( message.status === 'ok' ) {
-                // Re fetch the booking, at which point the app should react
+            switch( message.action ) {
+            case 'autoadvance':
                 this.options.booking.save();
+                break;
+            case 'back':
+                can.trigger( can.route.data, 'back', [ can.route.attr() ] );
+                break;
+            case 'retry':
+                this.updatePayment();
+                break;
+            default:
+                this.element.html( views.error({
+                    errors: [message.message]
+                }));
+                break;
             }
         }
 

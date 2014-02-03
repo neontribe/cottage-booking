@@ -124,6 +124,14 @@ define([
                 }
             });
 
+            this.validate('customer.email', function( email ) {
+                if( email ) {
+                    if( email.length < 6 ) {
+                        return '';
+                    }
+                }
+            });
+
             this.validate('customer.emailConf', function( email ) {
                 var oEmail = this.attr('customer.email');
                 if( oEmail && ( !email || oEmail.toLowerCase() !== email.toLowerCase() ) ) {
@@ -149,7 +157,14 @@ define([
                 //     !booking.errors('canSave') && booking.save()
                 //      if errors then update the status box
                 // })
-                // BUT HOW
+
+                // customer
+                var err;
+                can.each(['daytimePhone', 'eveningPhone', 'mobilePhone', 'email'], function() {
+
+                });
+
+                return err;
             });
         }
 

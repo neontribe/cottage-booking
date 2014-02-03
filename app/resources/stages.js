@@ -30,6 +30,11 @@ define([
             }
 
             return ++next;
+        },
+        'prev': function( curr ) {
+            var prev = this.indexOf( curr );
+
+            return (--prev > -1) ? prev : -1;
         }
     });
 

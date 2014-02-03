@@ -11,18 +11,47 @@
   </head>
   <body>
     <h1>This will be a drupal page, with data in, all we need is our script tag</h1>
-    <textarea>
-      &lt;script&gt; type="text/javascript" src="iframe.js file" &lt;/script&gt;
+    <button data-action="retry" >Retry</button>
+    <button data-action="back" >Go back</button>
+    <button data-action="error" >Error</button>
+    <label for="message">Message:</label><input type="text" id="message">
+    <textarea style="height: 250px;">
+&lt;script type="text/javascript" src="iframe.js file"&gt; &lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+  var data = window.Drupal.settings.bookingData;
+
+  $('[data-action]').click(function() {
+    var action = $(this).data('action');
+
+    registerMessage( data.status, data.message, action );
+  });
+&lt;/script&gt;
     </textarea>
-    <script type="text/javascript">
-      window.Drupal = {
-        settings: {
-          bookingData: {
-            status: 'ERROR'
-          }
-        }
-      };
-    </script>
     <script type="text/javascript" src="../../iframe.js"></script>
+    <script type="text/javascript">
+        var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&');
+        for( var i = 0; i < search.length ; i++ ) queryObj[search[i].split('=')[0]] = search[i].split('=')[1];
+
+        window.Drupal = {
+            settings: {
+                bookingData: {
+                    status: '2008',
+                    bookingId: queryObj.bookingId,
+                    message: 'The transaction timed out',
+                    action: 'error'
+                }
+            }
+        };
+
+        var data = window.Drupal.settings.bookingData;
+
+        $('#message').val(data.message);
+
+        $('[data-action]').click(function() {
+          var action = $(this).data('action');
+
+          registerMessage( data.status, $('#message').val() || data.message, action );
+        });
+    </script>
   </body>
 </html>

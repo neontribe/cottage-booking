@@ -10,10 +10,13 @@
     </style>
   </head>
   <body>
-    <h1>This will be a drupal page, with data in, all we need is our script tag</h1>
+    <h1>Loading...</h1>
+    <h2>Redirecting in <span></span></h2>
     <textarea>
       &lt;script&gt; type="text/javascript" src="iframe.js file" &lt;/script&gt;
     </textarea>
+    <button onclick="window.top.require('resources/book').attr('confirmation', true);">Confirm now</button>
+    <script type="text/javascript" src="../../iframe.js"></script>
     <script type="text/javascript">
       var queryObj = {}, search = decodeURI( window.location.search.slice(1) ).split('&');
       for( var i = 0; i < search.length ; i++ ) queryObj[search[i].split('=')[0]] = search[i].split('=')[1];
@@ -22,14 +25,27 @@
         settings: {
           bookingData: {
             'bookingId':  queryObj.bookingId,
-            'status':     'ok'
+            'status':     'ok',
+            action:     'autoadvance'
           }
         }
       }
 
-      // Update the parent so that the we know to complete the booking in the fixtures
-      window.top.require('resources/book').attr('confirmation', true);
+      var cur = 5;
+      function comp() {
+        $('h2:first span').text( cur );
+        this.time = setTimeout(function() {
+          if( --cur > 0 ) {
+            comp();
+          } else {
+            // Update the parent so that the we know to complete the booking in the fixtures
+            window.top.require('resources/book').attr('confirmation', true);
+            registerMessage( Drupal.settings.bookingData );
+          }
+        }, 1000);
+      }
+
+      comp();
     </script>
-    <script type="text/javascript" src="../../iframe.js"></script>
   </body>
 </html>
