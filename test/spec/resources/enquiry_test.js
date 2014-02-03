@@ -13,7 +13,7 @@ define([
 
     enq.attr('propRef', 'A223_ZZ');
 
-    describe('the state of the enquiry resource', function () {
+    describe('resource: the state of the enquiry resource', function () {
         describe('enquire produces correct render array', function () {
             it('completes successfully', function () {
                 var date = new Date( 2014, 4, 17),
