@@ -13,6 +13,10 @@ define([
 ], function(can, moment, _, utils, Traveller, WebExtra, Price ){
     'use strict';
 
+    // Simple email regex
+    // Shamelessly stolen from the AllegiantJSUI email validation..
+    var emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,6}$/;
+
     return can.Model({
         findOne : utils.getResource('GET property/booking/{bookingId}'),
         create  : utils.getResource('POST property/booking/create'),
@@ -125,9 +129,10 @@ define([
             });
 
             this.validate('customer.email', function( email ) {
+                email = can.$.trim( email );
                 if( email ) {
-                    if( email.length < 6 ) {
-                        return '';
+                    if( !emailRegex.test( email ) ) {
+                        return 'Please enter a valid email address';
                     }
                 }
             });
@@ -140,6 +145,7 @@ define([
             });
 
             this.validate([ 'customer.daytimePhone', 'customer.eveningPhone', 'customer.mobilePhone' ], function( number ) {
+                number = can.$.trim( number );
                 if( number ) {
                     // strip white space before testing
                     if( number.length < 6 ) {
@@ -147,31 +153,33 @@ define([
                     }
                 }
             });
-
-            this.validate('canSave', function() {
-                // TODO
-                // Because we can easily save to the server with empty values
-                // But not with incorrect ones, proxy those checks here so that we can
-                // Save the current state to the server
-                // And simply do on('idle', function() {
-                //     !booking.errors('canSave') && booking.save()
-                //      if errors then update the status box
-                // })
-
-                // customer
-                var err;
-                can.each(['daytimePhone', 'eveningPhone', 'mobilePhone', 'email'], function() {
-
-                });
-
-                return err;
-            });
         }
 
     }, {
 
         'init': function() {
             this.on( 'partySize', can.proxy( this.partyChangeHandler, this ) );
+        },
+
+        // Because we can easily save to the server with empty values
+        // But not with incorrect ones, proxy those checks here so that we can
+        // Save the current state to the server
+        // And simply do on('idle', function() {
+        //     !booking.canSave() && booking.save()
+        //      if errors then update the status box
+        // })
+        'canSave': function() {
+            var err = {};
+            can.each(['daytimePhone', 'eveningPhone', 'mobilePhone', 'email'], can.proxy(function( valid ) {
+                var toTest =  'customer.' + valid,
+                    val = this.attr( toTest );
+                // if we have a value and we have an error it means we need to report on it
+                if( val && this.errors(toTest) ) {
+                    can.extend( err, this.errors(toTest) );
+                }
+            }, this));
+
+            return can.$.isEmptyObject( err ) ? null : err;
         },
 
         'serialize': function() {
