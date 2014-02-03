@@ -31,7 +31,7 @@ define([
     });
 
     var init = false,
-        BookingPath;
+        baseUrl, BookingPath;
     /* -==== router and main controller ====- */
     BookingPath = can.Control({
         pluginName: 'bookingPath',
@@ -56,10 +56,6 @@ define([
 
             can.route(':page');
             can.route(':page/:booking');
-
-            if( this.element.data('baseUrl') ) {
-                utils.baseUrl( this.element.data('baseUrl') );
-            }
 
             this.options.enquiry.attr( 'propRef', this.options.propRef );
 
@@ -433,14 +429,25 @@ define([
             init.call( $this, $this.data() );
         }
     });
+
+    can.$('[data-base-url]').each(function() {
+        baseUrl = can.$(this).data('baseUrl');
+
+        utils.baseUrl( baseUrl );
+    });
     
-    // 
-    if( !init && console && console.warn ) {
-        // TODO: investigate a different approach
-        // So the user can execute the plugins manually if they want
-        // Or maybe just show a warning ( if ( !init && console.warn ) ...)
-        // throw new Error('This App expected markup that wasn\'t found!');
-        console.warn('In order to initialize the app run the bookingPath and bookingCalculator plugin functions');
+    if( console && console.warn ) {
+        if( !init ) {
+            // TODO: investigate a different approach
+            // So the user can execute the plugins manually if they want
+            // Or maybe just show a warning ( if ( !init && console.warn ) ...)
+            // throw new Error('This App expected markup that wasn\'t found!');
+            console.warn('In order to initialize the app run the bookingPath and bookingCalculator plugin functions');
+        }
+
+        if( !baseUrl && baseUrl !== '' ) {
+            console.warn('Base url not set (data-base-url="/some/path")');
+        }
     }
 
     // Return the booking path to match amd format
