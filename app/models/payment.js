@@ -31,6 +31,25 @@ define([
             this.removeAttr('NextURL');
             this.removeAttr('Status');
             return this;
+        },
+
+        /**
+         * We overwrite the save function here so that we only ever make one a save request at a time.
+         * Otherwise we return the deferred in transit.
+         * @return {$.Deferred} The deferred object in transit
+         */
+        transit: null,
+        save: function( success, error ) {
+            var self = this;
+            if( !this.transit ) {
+                this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
+                    self.transit = null;
+                });
+            } else {
+                this.transit.done( success ).fail( error );
+            }
+
+            return this.transit;
         }
     });
 
