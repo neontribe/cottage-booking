@@ -1,7 +1,7 @@
 define(['fixtures/fixtures', 'moment'], function(can, moment){
     'use strict';
 
-    can.wrapFixture('POST property/booking/enquiry', 'fixtures/enquiries/', function( data, status, def, originalAjax ) {
+    can.wrapFixture('POST property/enquiry', 'fixtures/enquiries/', function( data, status, def, originalAjax ) {
 
         if( can.useFixtures ) {
         
