@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/RpprRoger/cottage-booking.png)](https://travis-ci.org/RpprRoger/cottage-booking)
 
+## Version
+
+Version 0.0.1
+I attempt to follow the [Semver](http://semver.org/) version ethos
 
 ## Download dependencies
 ```bash
