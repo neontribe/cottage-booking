@@ -417,6 +417,12 @@ define([
         }
     });
 
+    can.$('[data-base-url]').each(function() {
+        baseUrl = can.$(this).data('baseUrl');
+
+        utils.baseUrl( baseUrl );
+    });
+
     // Initialise app on the cottage-booking element
     // Plugin initialization
     can.$('[data-bplugin]').each(function() {
@@ -428,12 +434,6 @@ define([
         if( init ) {
             init.call( $this, $this.data() );
         }
-    });
-
-    can.$('[data-base-url]').each(function() {
-        baseUrl = can.$(this).data('baseUrl');
-
-        utils.baseUrl( baseUrl );
     });
     
     if( console && console.warn ) {

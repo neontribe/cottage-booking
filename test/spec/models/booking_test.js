@@ -72,9 +72,36 @@ define([
                     booking.canSave().should.have.property('customer.' + item);
 
                     booking.attr('customer.' + item, 1111111111111);
+
+                    assert( booking.canSave() === null, 'after setting customer.' + item + ' to a valid number we no longer have errors');
                 });
 
             });
         });
+
+        ////// TODO:
+        // describe('sub models', function () {
+
+        //     var booking = new Booking({
+        //         bookingId: 'full',
+        //         price: {}
+        //     });
+
+        //     it('price maintains paymentType between submissions', function ( done ) {
+
+        //         booking.attr('price').should.be.an.instanceof( require('models/price') );
+
+        //         booking.attr('price.paymentType', 'deposit');
+
+        //         booking.attr('price.paymentType').should.be.not.equal( undefined );
+
+        //         booking.save().done(function() {
+        //             assert.isDefined( booking.attr('price.paymentType'), 'we should have a value here' );
+        //             assert.isEqual( booking.attr('price.paymentType'), 'deposit', 'should be deposit' );
+        //             done();
+        //         });
+
+        //     });
+        // });
     });
 });
