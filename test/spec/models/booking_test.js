@@ -80,28 +80,28 @@ define([
         });
 
         ////// TODO:
-        // describe('sub models', function () {
+        describe('sub models', function () {
 
-        //     var booking = new Booking({
-        //         bookingId: 'full',
-        //         price: {}
-        //     });
+            var booking = new Booking({
+                bookingId: 'full',
+                price: {}
+            });
 
-        //     it('price maintains paymentType between submissions', function ( done ) {
+            it('price maintains paymentType between submissions', function ( done ) {
 
-        //         booking.attr('price').should.be.an.instanceof( require('models/price') );
+                booking.attr('price').should.be.an.instanceof( require('models/price') );
 
-        //         booking.attr('price.paymentType', 'deposit');
+                booking.attr('price.paymentType', 'deposit');
 
-        //         booking.attr('price.paymentType').should.be.not.equal( undefined );
+                booking.attr('price.paymentType').should.be.not.equal( undefined );
 
-        //         booking.save().done(function() {
-        //             assert.isDefined( booking.attr('price.paymentType'), 'we should have a value here' );
-        //             assert.isEqual( booking.attr('price.paymentType'), 'deposit', 'should be deposit' );
-        //             done();
-        //         });
+                booking.save().done(function() {
+                    assert.isDefined( booking.attr('price.paymentType'), 'we should have a value here' );
+                    assert.strictEqual( booking.attr('price.paymentType'), 'deposit', 'should be deposit' );
+                    done();
+                });
 
-        //     });
-        // });
+            });
+        });
     });
 });

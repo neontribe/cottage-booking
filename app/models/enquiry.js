@@ -54,11 +54,18 @@ define([
             // 'nights',
             'adults'
             // 'children',
-            // 'infants',
+            // 'infants'
             // 'pets'
         ],
 
         'init': function() {
+
+            this.validate('adults', function( adults ) {
+                if( adults < 1 ) {
+                    return 'At least one adult is required to make a booking';
+                }
+            });
+
             this.validate('fromDate', function( fromDate ) {
                 if( !this.attr('toDate') ) {
                     return false;
@@ -117,8 +124,9 @@ define([
             // We should bind our save after we've cleared errors from this model
             if( this.saveOnValid ) {
                 prox = can.proxy( this.validSaveHandler, this );
-                this.on('fromDate', prox);
-                this.on('toDate', prox);
+                can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( evtName ) {
+                    this.on( evtName, prox );
+                }, this);
             }
 
             // *welsh accent* Tidy
@@ -142,10 +150,9 @@ define([
         },
 
         'destroy': function() {
-            this.off('fromDate');
-            this.off('toDate');
-            this.off('propRef');
-
+            can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( evtName ) {
+                this.off( evtName );
+            }, this);
             return can.Model.prototype.destroy.call( this );
         },
 

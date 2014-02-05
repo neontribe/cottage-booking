@@ -166,6 +166,16 @@ define([
             return disabled;
         },
 
+        stageIsDisabled: function( stage ) {
+            if( !isNaN( stage ) && stage.constructor === can.Map ) {
+                stage = this.options.indexOf( stage );
+            }
+
+            return can.inArray( stage, this.disabledArray() ) !== -1;
+        },
+
+        // We expect that the elements are in the order and the only children of the parent
+        // This is slightly brittle
         'getStageFor': function( $el ) {
             var index = $el.index(), // Get the index in the dom of this element
                 stage = this.options.stages.attr( index );
@@ -214,7 +224,7 @@ define([
                 oldStage = this.getStageFor( $old ),
                 oldControl = oldStage && oldStage.attr('control');
 
-            if( oldStage && oldStage.attr('destroy') && oldControl ) {
+            if( oldStage && oldControl && ( oldStage.attr('destroy') || this.stageIsDisabled( oldStage ) ) ) {
                 this.destroyStage( oldStage );
             }
 

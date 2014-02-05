@@ -208,6 +208,11 @@ define([
         },
 
         'partyChangeHandler': function() {
+            this.matchTravCountToPartyDetails();
+        },
+
+        // Naming things is hard dude
+        matchTravCountToPartyDetails: function() {
             var mutate = {};
 
             can.trigger( this, 'partyDetailsUpdating' );
@@ -247,7 +252,8 @@ define([
                     }).done(function( booking ) {
                         //self.attr( booking.__get() ); Why did i do this
                         // The following call does mean that we instantiate and throw away stuff ( like travellers )
-                        self.attr(booking.attr(), true);
+                        // and also, we throw away anything that doesn't back in the resp
+                        self.attr( booking.attr(), true );
                         // If we are fetching form an ID we should set the emailConf
                         self.attr('customer.emailConf', booking.attr('customer.email'));
                     });
@@ -325,9 +331,14 @@ define([
         transit: null,
         save: function( success, error ) {
             var self = this;
+
+            can.trigger( this, 'saving' );
             if( !this.transit ) {
                 this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
                     self.transit = null;
+                    // Make sure that we update the party details to the number of travs
+                    self.matchTravCountToPartyDetails();
+                    can.trigger( self, 'saved' );
                 });
             } else {
                 this.transit.done( success ).fail( error );
