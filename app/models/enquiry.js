@@ -46,6 +46,7 @@ define([
             }
         },
 
+        id: 'propRef',
         // We only need this attributes to make an enquiry
         required: [
             'propRef',
@@ -116,18 +117,14 @@ define([
     }, {
 
         'init': function() {
-            var prox;
-            prox = can.proxy( this.resetOnDateChangeHandler, this );
-            this.on('fromDate', prox);
-            this.on('toDate', prox);
+            can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( evtName ) {
+                this.on( evtName, can.proxy( this.resetOnChangeHandler, this ) );
 
-            // We should bind our save after we've cleared errors from this model
-            if( this.saveOnValid ) {
-                prox = can.proxy( this.validSaveHandler, this );
-                can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( evtName ) {
-                    this.on( evtName, prox );
-                }, this);
-            }
+                // We should bind our save after we've cleared errors from this model
+                if( this.saveOnValid ) {
+                    this.on( evtName, can.proxy( this.validSaveHandler, this ) );
+                }
+            }, this);
 
             // *welsh accent* Tidy
             this.removeAttr('saveOnValid');
@@ -135,18 +132,12 @@ define([
             this.on( 'propRef', can.proxy( this.propRefChangeHandler, this ) );
         },
 
-        'resetOnDateChangeHandler': function() {
-            var keep;
-
+        'resetOnChangeHandler': function() {
             if( this.attr('status') || this.errors() ) {
-                keep = _.keys( this.constructor.defaults ).concat( this.constructor.required );
-                this.each(function( val, attr ) {
-                    if( can.inArray( attr, keep ) === -1 ) {
-                        this.removeAttr( attr );
-                    }
+                can.each(['status', 'message', 'price'], function( val ) {
+                    this.removeAttr( val );
                 }, this);
             }
-
         },
 
         'destroy': function() {
@@ -202,6 +193,12 @@ define([
             }
 
             return ( date >= from && date <= to );
+        },
+
+        updated: function( attrs ) {
+            var cur = _.pick( this.attr(), _.keys( this.constructor.defaults ) );
+
+            return can.Model.prototype.updated.call( this, can.extend(attrs.attr(), cur) );
         },
 
         /**
