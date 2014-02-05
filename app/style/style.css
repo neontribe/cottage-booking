@@ -190,3 +190,11 @@
 .ui-datepicker-inline {
     width: 100% !important;
 }
+
+.key ul > li:first-child {
+    margin-bottom: 1em;
+}
+
+.key ul > li + li {
+    display: inline-block;
+}
