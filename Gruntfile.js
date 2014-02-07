@@ -302,14 +302,12 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', ['exec:test']);
 
-    grunt.registerTask('release', ['prompt:git', 'doRelease']);
+    grunt.registerTask('release', ['prompt:git', 'doRelease', 'createRelease']);
 
     grunt.registerTask('doRelease', function( type ) {
 
-        var version, grel,
-            args = [].slice.call( arguments, 1 ),
-            Grel = require('grel'),
-            done = this.async();
+        var version,
+            args = [].slice.call( arguments, 1 );
 
         type = type || 'patch';
         args.unshift( type );
@@ -323,6 +321,15 @@ module.exports = function(grunt) {
         version = grunt.file.readJSON('package.json').version;
 
         grunt.task.run('exec:commitRelease:'+ version);
+
+    });
+
+    grunt.registerTask('createRelease', function() {
+
+        var grel,
+            done = this.async(),
+            Grel = require('grel'),
+            version = grunt.file.readJSON('package.json').version;
 
         grel = new Grel({
             user: grunt.config('release.git.username'),
@@ -339,7 +346,6 @@ module.exports = function(grunt) {
             }
             done();
         });
-
     });
 
     grunt.registerTask('buildViewFiles', function() {
