@@ -2,42 +2,8 @@
 <html lang="en">
     <head>
         <title>cottage-booking</title>
-        <link rel="stylesheet" type="text/css" href="style/style.out.css" />
         <script src="//localhost:35729/livereload.js"></script>
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.base.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tooltip.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.button.css" />
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tabs.css" />
-        <style type="text/css">
-            #some-tabs ul li {
-                float:left;
-                padding:0 1em 0.2em;
-                list-style: none;
-            }
-
-            #some-tabs .active {
-                border-bottom: solid 1px black;
-            }
-
-            #some-tabs {
-                margin-bottom: 2em;
-            }
-
-            #some-tabs + div,
-            #some-tabs + div + div {
-                display: inline-block;
-                vertical-align: top;
-            }
-            #some-tabs + div {
-                border: 1px solid black;
-            }
-
-            #cottage-booking {
-                width:1000px;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="/styleguide/css/master.css" />
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>
@@ -50,9 +16,11 @@
             </ul>
             <div class="cf"></div>
         </div>
-
-        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath" data-base-url=""></div>
-        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
+        <div role="form" id="booking-wrap">
+            <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath" data-base-url=""></div>
+            <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
+            <div style="clear:both"></div>
+        </div>
 
         <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
         <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
