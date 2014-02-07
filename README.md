@@ -35,7 +35,6 @@ grunt release:minor:1458 # Minor release with buildtype suffix
 Take the prod.zip file and add it to the booking module
 
 ```bash
-$ wget https://github.com/RpprRoger/cottage-booking/releases/download/<version>/prod.zip -o prod/prod.zip
 $ tree .
 ├── prod
 │   └── prod.zip
@@ -56,6 +55,7 @@ $ tree .
 └── TabsBookingUtils.class.php
 
 $ cd prod
+$ wget https://github.com/RpprRoger/cottage-booking/releases/download/<version>/prod.zip
 $ unzip prod.zip
 $ git commit -am 'Include javascript version <version>'
 $ drush cc all
