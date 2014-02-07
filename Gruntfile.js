@@ -101,6 +101,11 @@ module.exports = function(grunt) {
                                 'git push origin master';
                     }
                 }
+            },
+            checkoutOldBranch: {
+                cmd: function( oldBranch ) {
+                    return 'git checkout ' + oldBranch || '`git rev-parse --abbrev-ref HEAD`';
+                }
             }
         },
         cancompile: {
@@ -344,6 +349,8 @@ module.exports = function(grunt) {
             } else {
                 console.log('Release', release.tag_name, 'created');
             }
+
+            grunt.task.run('exec:checkoutOldBranch:' + process.env.CURBRANCH);
             done();
         });
     });
