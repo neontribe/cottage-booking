@@ -218,6 +218,9 @@ module.exports = function(grunt) {
                 src: '**',
                 cwd: 'app/prod'
             }
+        },
+        bumpup: {
+            files: ['package.json', 'bower.json']
         }
     });
 
