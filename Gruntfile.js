@@ -95,7 +95,7 @@ module.exports = function(grunt) {
                 cmd: function( version ) {
                     if( version ) {
                         return  'git commit -am "Release version: ' + version + '" && '  +
-                                'CURBRANCH=`git rev-parse --abbrev-ref HEAD` && ' +
+                                'export CURBRANCH=`git rev-parse --abbrev-ref HEAD` && ' +
                                 'git checkout master && ' +
                                 'git merge $CURBRANCH && ' +
                                 'git push origin master';
@@ -256,7 +256,7 @@ module.exports = function(grunt) {
                             type: 'password',
                             message: 'Please enter your git password',
                             validate: function( pass ) {
-                                return pass ? true : 'Username is required';
+                                return pass ? true : 'Password is required';
                             }
                         }
                     ]
@@ -307,15 +307,15 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', ['exec:test']);
 
-    grunt.registerTask('release', ['prompt:git', 'doRelease', 'createRelease']);
+    grunt.registerTask('release', function( type ) {
 
-    grunt.registerTask('doRelease', function( type ) {
-
-        var version,
-            args = [].slice.call( arguments, 1 );
+        var args = [].slice.call( arguments, 1 ),
+            version;
 
         type = type || 'patch';
         args.unshift( type );
+
+        grunt.task.run('prompt:git');
 
         grunt.task.run('test');
 
@@ -327,6 +327,7 @@ module.exports = function(grunt) {
 
         grunt.task.run('exec:commitRelease:'+ version);
 
+        grunt.task.run('createRelease');
     });
 
     grunt.registerTask('createRelease', function() {
