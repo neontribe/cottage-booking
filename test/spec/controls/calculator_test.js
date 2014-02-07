@@ -1,14 +1,16 @@
 /* jshint unused: false */
 /* global describe, it, expect */
 define([
-    'test',
     'underscore',
     'controls/calculator/calculator',
-    'fixtures/enquiries'
-], function( chai, _, Calculator ) {
+    'fixtures/enquiries',
+], function( _, Calculator ) {
     'use strict';
 
-    var should = chai.should();
+    var chai = requirejs('chai'),
+        should = chai.should();
+
+
 
 
 });

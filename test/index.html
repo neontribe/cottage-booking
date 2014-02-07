@@ -18,8 +18,13 @@
         ], function() {
             // List test files here
             requirejs([
+                // models
+                'spec/models/availability_day_test',
+                'spec/models/availability_test',
+                'spec/models/booking_test',
+                // resources
                 'spec/resources/avail_test.js',
-                'spec/resources/enquiry_test.js'
+                'spec/resources/enquiry_test.js',
             ], function() {
                 if (window.mochaPhantomJS) {
                     mochaPhantomJS.run();

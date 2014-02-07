@@ -77,7 +77,7 @@ define([
             }, this));
         },
 
-        '{booking} bookingId': function( model, newVal ) {
+        '{booking} bookingId': function( model, evt, newVal ) {
             if( newVal !== this.options.payment.attr('id') ) {
                 this.options.payment.attr( 'id', newVal );
                 this.updatePayment();

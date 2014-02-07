@@ -8,7 +8,7 @@ define(['fixtures/availabilities', 'resources/avail', 'underscore'], function( f
 
     avail( 'A223_ZZ' );
 
-    describe('the state of the avail resource', function () {
+    describe('resource: the state of the avail resource', function () {
         describe('require works', function () {
             it('completes successfully and has expected data', function () {
                 var availability = avail();

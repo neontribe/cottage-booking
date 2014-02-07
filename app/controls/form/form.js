@@ -127,7 +127,7 @@ define([
                 'control'       : this,
                 'valueAttr'     : 0,
                 'textAttr'      : 1,
-                'id'            : _.uniqueId( 'attr_' + attr + '_' ),
+                'id'            : _.uniqueId( 'attr_' + this.idify( attr ) + '_' ),
                 'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false
             }, this.options, $el.data());
 
@@ -135,6 +135,13 @@ define([
             this.options.attributes.push( attr );
 
             $el.replaceWith( wrapper( options ) );
+        },
+
+        'idify': function( attr ) {
+            if( attr && typeof attr === 'string' ) {
+                return attr.replace(/\./g, '-' );
+            }
+            return '';
         },
 
         // These should be bound before we make changes to the model

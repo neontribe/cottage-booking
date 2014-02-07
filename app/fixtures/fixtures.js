@@ -35,7 +35,7 @@ define([
                 } else {
                     url = this.publicApiRoot + fullOptions.url;
                 }
-                ajaxObj = can.extend({}, options, {
+                ajaxObj = can.extend({}, fullOptions, {
 
                     type: type,
                     url: url,

@@ -12,8 +12,8 @@ define([
     'use strict';
 
     return can.Model({
-        update  : utils.getResource('POST property/enquiry'),
-        create  : utils.getResource('POST property/enquiry'),
+        update  : utils.getResource('POST property/booking/enquiry'),
+        create  : utils.getResource('POST property/booking/enquiry'),
 
         defaults: {
             // The availability object so we can validate stays
@@ -46,7 +46,6 @@ define([
             }
         },
 
-        id: 'propRef',
         // We only need this attributes to make an enquiry
         required: [
             'propRef',
@@ -55,18 +54,11 @@ define([
             // 'nights',
             'adults'
             // 'children',
-            // 'infants'
+            // 'infants',
             // 'pets'
         ],
 
         'init': function() {
-
-            this.validate('adults', function( adults ) {
-                if( adults < 1 ) {
-                    return 'At least one adult is required to make a booking';
-                }
-            });
-
             this.validate('fromDate', function( fromDate ) {
                 if( !this.attr('toDate') ) {
                     return false;
@@ -117,14 +109,17 @@ define([
     }, {
 
         'init': function() {
-            can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( evtName ) {
-                this.on( evtName, can.proxy( this.resetOnChangeHandler, this ) );
+            var prox;
+            prox = can.proxy( this.resetOnDateChangeHandler, this );
+            this.on('fromDate', prox);
+            this.on('toDate', prox);
 
-                // We should bind our save after we've cleared errors from this model
-                if( this.saveOnValid ) {
-                    this.on( evtName, can.proxy( this.validSaveHandler, this ) );
-                }
-            }, this);
+            // We should bind our save after we've cleared errors from this model
+            if( this.saveOnValid ) {
+                prox = can.proxy( this.validSaveHandler, this );
+                this.on('fromDate', prox);
+                this.on('toDate', prox);
+            }
 
             // *welsh accent* Tidy
             this.removeAttr('saveOnValid');
@@ -132,18 +127,25 @@ define([
             this.on( 'propRef', can.proxy( this.propRefChangeHandler, this ) );
         },
 
-        'resetOnChangeHandler': function() {
+        'resetOnDateChangeHandler': function() {
+            var keep;
+
             if( this.attr('status') || this.errors() ) {
-                can.each(['status', 'message', 'price'], function( val ) {
-                    this.removeAttr( val );
+                keep = _.keys( this.constructor.defaults ).concat( this.constructor.required );
+                this.each(function( val, attr ) {
+                    if( can.inArray( attr, keep ) === -1 ) {
+                        this.removeAttr( attr );
+                    }
                 }, this);
             }
+
         },
 
         'destroy': function() {
-            can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( evtName ) {
-                this.off( evtName );
-            }, this);
+            this.off('fromDate');
+            this.off('toDate');
+            this.off('propRef');
+
             return can.Model.prototype.destroy.call( this );
         },
 
@@ -193,12 +195,6 @@ define([
             }
 
             return ( date >= from && date <= to );
-        },
-
-        updated: function( attrs ) {
-            var cur = _.pick( this.attr(), _.keys( this.constructor.defaults ) );
-
-            return can.Model.prototype.updated.call( this, can.extend(attrs.attr(), cur) );
         },
 
         /**

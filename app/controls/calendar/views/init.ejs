@@ -1,7 +1,36 @@
-<dl>
-key information
-</dl>
+<div id="calendar-key" class="key">
+    <ul>
+        <li><p>Key</p></li>
+        <li>
+            <table class="ui-datepicker-calendar">
+                <tbody>
+                    <tr class="ui-datepicker-unselectable ui-state-disabled unavailable" >
+                        <td><span class="ui-state-default">Un-available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <table class="ui-datepicker-calendar">
+                <tbody>
+                    <tr class="available" >
+                        <td><span class="ui-state-default">Available</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <table class="ui-datepicker-calendar">
+                <tbody>
+                    <tr class="selected available" >
+                        <td><span class="ui-state-default">Selected</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
 
 <div <%= (el) -> el.datepicker( datepickerOptions ) %>></div>
 
-<a <%= next() %>>Next</a>
+<a <%= next() %> <% %> >Next</a>

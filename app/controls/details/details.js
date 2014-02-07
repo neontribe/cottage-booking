@@ -35,7 +35,8 @@ define([
                 ['0-2', '0-2']
             ],
             // This means we will share the same country List ( note the capitol L )
-            countries: new Country.List()
+            countries: new Country.List(),
+            sources: []
         }
     },{
         init: function() {
@@ -46,7 +47,7 @@ define([
                 }, this));
             }
 
-            can.each(['ages', 'childAges', 'infantAges', 'titles'], function( list ) {
+            can.each(['ages', 'childAges', 'infantAges', 'titles', 'sources'], function( list ) {
                 // Get the var to turn into an observed list. If they aren't arrays then 
                 // use the defaults
                 var oldVal = this.options[ list ];
@@ -56,6 +57,12 @@ define([
                     this.options[ list ] = new can.List( oldVal );
                 }
             }, this);
+
+            // Put an other choice in the list
+            this.options.sources.unshift({
+                'code': 'other',
+                'description': 'Other'
+            });
 
             this.element.html( views.init({
                 model: this.options.booking,
@@ -67,6 +74,7 @@ define([
                     childAges: this.options.childAges,
                     infantAges: this.options.infantAges
                 },
+                sources: this.options.sources,
                 titles: this.options.titles,
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,

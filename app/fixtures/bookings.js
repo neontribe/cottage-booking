@@ -5,8 +5,36 @@ define(['fixtures/fixtures', 'underscore'], function(can){
 
     can.wrapFixture('GET property/booking/{bookingId}', 'fixtures/bookings/');
 
+    function change() {
+
+        var target = arguments[0] || {},
+            args = [].slice.call(arguments, 1),
+            looper = function( value, key ) {
+                if( typeof args[i][key] === 'object' ) {
+                    change( target[key], args[i][key] );
+                } else if(args[i][key] !== undefined) {
+                    target[key] = args[i][key];
+                }
+            };
+
+        for (var i = 0; i < args.length; i++) {
+            can.each( target, looper );
+        }
+
+        return target;
+
+    }
+
     can.wrapFixture('POST property/booking/{bookingId}', 'fixtures/bookings/', function( data, status, def, originalAjax ) {
-        return can.useFixtures ? can.extend( data, originalAjax.data ) : data;
+        var newObject = data;
+
+        if( can.useFixtures ) {
+            // Everything in the fixture is what could be returned
+            // So things are thrown away if they aren't there
+            change( newObject, originalAjax.data );
+        }
+
+        return newObject;
     });
 
     return can;
