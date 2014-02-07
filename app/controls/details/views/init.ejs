@@ -76,7 +76,8 @@
     <form <%= bindForm({
         model: model,
         optionsMap: {
-            'price.extras': model.attr('webExtras')
+            'price.extras': model.attr('webExtras'),
+            'customer.source': sources
         },
         display: display
     }) %> >
@@ -90,7 +91,7 @@
             <legend>Other information</legend>
             <input name="customer.emailOptIn" type="checkbox" data-label="Would you like to receieve our newsletter?" />
             <p>Where did you hear about us?</p>
-            <input name="customer.source" data-label="" />
+            <input name="customer.source" data-label="" type="select" data-value-attr="code" data-text-attr="description" />
             <input name="customer.which" data-label="If other" />
         </fieldset>
 
