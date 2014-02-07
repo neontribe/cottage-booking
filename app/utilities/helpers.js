@@ -55,7 +55,7 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
 
         next: function() {
             return function( el ) {
-                can.$( el ).addClass('next').on('click', function() {
+                can.$( el ).attr('href', '#next').addClass('next').on('click', function() {
 
                     can.trigger( can.route.data, 'next', [ can.route.attr() ] );
 

@@ -3,19 +3,19 @@
 <h2>Price Calculator</h2>
 
 <form <%= (el) -> el.bindForm({ model: enquiry, datepickerOptions: datepickerOptions }) %>>
-    <%# This uses the form controller to populate the markup make that more clear %>
     <input name="fromDate" data-label="Arrive" type="datepicker" />
 
-    <%# This uses the form controller to populate the markup make that more clear %>
     <input name="toDate" data-label="Depart" type="datepicker" />
+
+    <input name="adults" data-label="Number of adults" type="number" data-min="1" />
+    <input name="children" data-label="Number of children" type="number" data-min="0" />
+    <input name="infants" data-label="Number of infants" type="number" data-min="0" />
 
     <% if( enquiry.attr('basicPrice') ) { %>
         <h3>
             <%= money( enquiry.attr('basicPrice') + enquiry.attr('bookingFee') ) %>
-            <sub>This price is subject to change</sub>
         </h3>
     <% } %>
-
     <div name="errors" type="errors"></div>
 
     <br>

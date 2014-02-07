@@ -120,6 +120,7 @@ module.exports = function(grunt) {
                                 "}());"
                     },
                     out : 'app/prod/production.js',
+                    // optimize: 'none'
                     optimize: 'uglify2'
                 }
             }

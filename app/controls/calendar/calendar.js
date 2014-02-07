@@ -48,7 +48,7 @@ define([
             //
             this.ignoreRedraw = true;
 
-            // TODO: neatify
+            // TODO: neatify, this was the first take of this behaviour, I think it could be done better
             if( !fromDate || ( fromDate && toDate ) ) {
                 enq.attr('toDate', null);
                 enq.attr('fromDate', date);
@@ -84,7 +84,7 @@ define([
             this.element.find('.hasDatepicker').first().datepicker('refresh');
         },
         // TODO: find out how to distinguish between date selection on here and external changes, which we care about
-        // like this.ignoreRedraw?
+        // like this.ignoreRedraw? in the onSelect callback
         '{enquiry} change': function( model, evt, what ) {
             if( !this.ignoreRedraw && ( what === 'toDate' || what === 'fromDate' || what === 'message' ) ) {
                 this.element.find('.hasDatepicker').first().datepicker('refresh');
