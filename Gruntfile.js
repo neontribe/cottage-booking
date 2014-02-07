@@ -351,7 +351,6 @@ module.exports = function(grunt) {
                 console.log('Release', release.tag_name, 'created');
             }
 
-            grunt.task.run('exec:checkoutOldBranch:' + process.env.CURBRANCH);
             done();
         });
     });
