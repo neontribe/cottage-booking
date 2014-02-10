@@ -1,6 +1,6 @@
 # Cottage Booking Path using canJS
 
-[![Build Status](https://travis-ci.org/RpprRoger/cottage-booking.png)](https://travis-ci.org/RpprRoger/cottage-booking)
+[![Build Status](https://travis-ci.org/neontribe/cottage-booking.png)](https://travis-ci.org/RpprRoger/cottage-booking)
 
 ## Versioning
 I attempt to follow the [Semver](http://semver.org/) version ethos
