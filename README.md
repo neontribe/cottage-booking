@@ -12,7 +12,7 @@ npm install && bower install
 ```
 
 ## Grunt tasks
-# Note: The release uses the same syntax as [bumpup](https://github.com/darsain/grunt-bumpup)
+### Note: The release uses the same syntax as [bumpup](https://github.com/darsain/grunt-bumpup)
 ```bash
 # default grunt task is to build and create the prod.zip file
 grunt
