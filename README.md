@@ -12,6 +12,7 @@ npm install && bower install
 ```
 
 ## Grunt tasks
+# Note: The release uses the same syntax as [bumpup](https://github.com/darsain/grunt-bumpup)
 ```bash
 # default grunt task is to build and create the prod.zip file
 grunt
@@ -23,7 +24,6 @@ grunt buildViewFiles
 
 # this will release and add a release to the releases 
 # The release should include a zip of build production files
-# The release uses the same syntax as [bumpup](https://github.com/darsain/grunt-bumpup)
 # TODO: add changelog
 grunt release            # Default patch release
 grunt release:minor      # Minor release
@@ -55,7 +55,7 @@ $ tree .
 └── TabsBookingUtils.class.php
 
 $ cd prod
-$ wget https://github.com/RpprRoger/cottage-booking/releases/download/<version>/prod.zip
+$ wget https://github.com/neontribe/cottage-booking/releases/download/<version>/prod.zip
 $ unzip prod.zip
 $ git commit -am 'Include javascript version <version>'
 $ drush cc all
