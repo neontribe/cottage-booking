@@ -198,3 +198,16 @@
 .key ul > li + li {
     display: inline-block;
 }
+
+/******/
+.status-display [role="status"] {
+
+}
+
+.status-display [role="status"] p {
+    margin: 2em;
+}
+
+.status-display [role="status"] .in-transit {
+
+}

@@ -1,7 +1,17 @@
-define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 'can/route', 'can/observe'], function( can, accounting, _, utils ) {
+define([
+    'can/util/string',
+    'accounting',
+    'underscore',
+    'utils',
+    'can/view/ejs',
+    'can/route',
+    'can/observe'
+], function( can, accounting, _, utils ) {
     'use strict';
 
-    var deCamalizeRegex = /([a-z\d])([A-Z])/g;
+    var slice = Array.prototype.slice,
+        deCamalizeRegex = /([a-z\d])([A-Z])/g,
+        dotPretifierRegex = /([[a-z]^\ ])\.([[a-z]^\ ])/g;
 
     can.extend( can.EJS.Helpers.prototype, {
         appendTemplate: function( templFn, data ) {
@@ -17,12 +27,6 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
                 //can.$(templFn( data )).insertAfter( el );
             };
         },
-
-        url: can.route.url,
-        sub: can.sub,
-        capitalize: can.capitalize,
-        uniqueId: _.uniqueId,
-        money: utils.money,
 
         assignAsContent: function( self ) {
             return function( el ) {
@@ -87,13 +91,35 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
 
                 newStr = str
                     .replace(deCamalizeRegex, '$1 $2')
-                    .replace(/([[a-z]^\ ])\.([[a-z]^\ ])/g, '$1 $2');
+                    .replace(dotPretifierRegex, '$1 $2');
                 return cap ?
                     (newStr.charAt(0).toUpperCase() + newStr.slice(1)) :
                     newStr.toLowerCase();
             }
             return '';
-        }
+        },
+
+        jQueryPlugin: function( name ) {
+            var args = slice.call( arguments, 1 ),
+                plugin = can.$.fn[ name ];
+
+            if( can.isFunction( plugin ) ) {
+                return function( el ) {
+
+                    return plugin.apply( can.$( el ), args );
+
+                };
+            }
+            return 'Helper error: Could not find plugin: ' + name;
+        },
+
+        /* ------------- */
+        // functions taken from can, utils and uderscore
+        url: can.route.url,
+        sub: can.sub,
+        capitalize: can.capitalize,
+        uniqueId: _.uniqueId,
+        money: utils.money
     });
 
     return can;

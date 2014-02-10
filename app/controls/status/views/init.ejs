@@ -1,3 +1,15 @@
-<div role="status" >
+<div
+	role="status"
+	class="<%= status.attr('inTransit') ? 'in-transit' : 'finished' %>"
+	<%= jQueryPlugin('spin', status.attr('inTransit') ? spinOptions : false	) %>
+>
+	<h1><%= status.attr('openRequests') %></h1>
+	<p>
+		<% if( status.attr('inTransit') ) { %>
+			<span>Saving...</span>
+		<% } else { %>
+			<span>Done!</span>
+		<% } %>
+	</p>
 
 </div>
