@@ -340,7 +340,7 @@ module.exports = function(grunt) {
         grel = new Grel({
             user: grunt.config('release.git.username'),
             password: grunt.config('release.git.password'),
-            owner: 'rpprroger',
+            owner: 'neontribe',
             repo: 'cottage-booking'
         });
 
