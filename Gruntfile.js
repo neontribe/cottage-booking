@@ -74,6 +74,7 @@ var sheets = [
 module.exports = function(grunt) {
     'use strict';
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         exec : {
             mkbuilddir : {
                 cmd : 'mkdir .build'
@@ -86,6 +87,25 @@ module.exports = function(grunt) {
             },
             myth: {
                 cmd: 'myth app/style/style.css app/style/style.out.css'
+            },
+            test: {
+                cmd: 'mocha-phantomjs test/index.html'
+            },
+            commitRelease: {
+                cmd: function( version ) {
+                    if( version ) {
+                        return  'git commit -am "Release version: ' + version + '" && '  +
+                                'export CURBRANCH=`git rev-parse --abbrev-ref HEAD` && ' +
+                                'git checkout master && ' +
+                                'git merge $CURBRANCH && ' +
+                                'git push origin master';
+                    }
+                }
+            },
+            checkoutOldBranch: {
+                cmd: function( oldBranch ) {
+                    return 'git checkout ' + oldBranch || '`git rev-parse --abbrev-ref HEAD`';
+                }
             }
         },
         cancompile: {
@@ -138,8 +158,8 @@ module.exports = function(grunt) {
             js: {
                 files: ['app/**/*.js', '!app/prod/production.js', '!app/bower_components/*'],
                 options: {
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             all: {
                 files: ['app/style/style.css', 'app/**/*.js', 'app/**/*.ejs', 'app/**/*.html', '!Gruntfile.js','!app/prod/production.js', '!app/bower_components/*'],
@@ -218,6 +238,33 @@ module.exports = function(grunt) {
                 src: '**',
                 cwd: 'app/prod'
             }
+        },
+        prompt: {
+            git: {
+                options: {
+                    questions:[
+                        {
+                            config: 'release.git.username',
+                            type: 'input',
+                            message: 'Please enter your git username',
+                            validate: function( user ) {
+                                return user ? true : 'Username is required';
+                            }
+                        },
+                        {
+                            config: 'release.git.password',
+                            type: 'password',
+                            message: 'Please enter your git password',
+                            validate: function( pass ) {
+                                return pass ? true : 'Password is required';
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        bumpup: {
+            files: ['package.json', 'bower.json']
         }
     });
 
@@ -228,7 +275,7 @@ module.exports = function(grunt) {
             generatedViews = {};
 
         views.forEach(function(view){
-            var filename = view.expression.arguments[0].value;
+            var filename = view.expression['arguments'][0].value;
             generatedViews[filename] = escodegen.generate(view);
 
         });
@@ -256,6 +303,56 @@ module.exports = function(grunt) {
             'copy',
             'compress'
         );
+    });
+
+    grunt.registerTask('test', ['exec:test']);
+
+    grunt.registerTask('release', function( type ) {
+
+        var args = [].slice.call( arguments, 1 ),
+            version;
+
+        type = type || 'patch';
+        args.unshift( type );
+
+        grunt.task.run('prompt:git');
+
+        grunt.task.run('test');
+
+        grunt.task.run('build');
+
+        grunt.task.run('bumpup:' + args.join(':') );
+
+        version = grunt.file.readJSON('package.json').version;
+
+        grunt.task.run('exec:commitRelease:'+ version);
+
+        grunt.task.run('createRelease');
+    });
+
+    grunt.registerTask('createRelease', function() {
+
+        var grel,
+            done = this.async(),
+            Grel = require('grel'),
+            version = grunt.file.readJSON('package.json').version;
+
+        grel = new Grel({
+            user: grunt.config('release.git.username'),
+            password: grunt.config('release.git.password'),
+            owner: 'rpprroger',
+            repo: 'cottage-booking'
+        });
+
+        grel.create( version, 'Release ' + version, ['app/prod.zip'], function(error, release) {
+            if (error) {
+                console.log('Something went wrong', error);
+            } else {
+                console.log('Release', release.tag_name, 'created');
+            }
+
+            done();
+        });
     });
 
     grunt.registerTask('buildViewFiles', function() {

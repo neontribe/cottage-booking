@@ -55,7 +55,25 @@
         ],
         "totalPrice":300,
         "securityDeposit":"0.00",
-        "depositAmount":"100.00"
+        "depositAmount":"100.00",
+        "paymentType": "balance"
     },
-    "totalPrice":300
+    "totalPrice":300,
+    "webExtras":[
+        {
+            "code":"HEAT",
+            "description":"Heating Charge",
+            "type":"optional",
+            "quantity":1,
+            "price":"0.00",
+            "total":0
+        },{
+            "code":"TOW",
+            "description":"Towels",
+            "type":"optional",
+            "quantity":1,
+            "price":"0.00",
+            "total":0
+        }
+    ]
 }

@@ -5,6 +5,7 @@
  */
 define([
     'helpers',
+    'ejs!./views/autocomplete',
     'ejs!./views/checkbox',
     'ejs!./views/datepicker',
     'ejs!./views/errors',
@@ -21,16 +22,17 @@ define([
     var args = Array.prototype.slice.call( arguments, 1 );
 
     return {
-        'checkbox': args[0],
-        'datepicker': args[1],
-        'errors': args[2],
-        'errorsWrapper': args[3],
-        'modelMultiCheckbox': args[4],
-        'number': args[5],
-        'radio': args[6],
-        'select': args[7],
-        'text': args[8],
-        'wrapper': args[9]
+        'autocomplete': args[0],
+        'checkbox': args[1],
+        'datepicker': args[2],
+        'errors': args[3],
+        'errorsWrapper': args[4],
+        'modelMultiCheckbox': args[5],
+        'number': args[6],
+        'radio': args[7],
+        'select': args[8],
+        'text': args[9],
+        'wrapper': args[10]
     };
 });
 /* End of file */

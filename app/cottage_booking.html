@@ -31,12 +31,13 @@
         <script type="text/javascript">
             requirejs([
                 'cottage_booking',
+                'fixtures/sources',
                 'fixtures/availabilities',
                 'fixtures/enquiries',
                 'fixtures/bookings',
                 'fixtures/countries',
                 'fixtures/payments'
-            ], function( f1, f2 ) {
+            ], function( cb, sourcesArr ) {
 
                 $('#cottage-booking').bookingPath({
                     'stages': {
@@ -52,7 +53,8 @@
                                     ['2-8', '2-8'],
                                     ['9-12', '9-12'],
                                     ['13-17', '13-17']
-                                ]
+                                ],
+                                'sources': sourcesArr
                             }
                         }
                     }
