@@ -5,6 +5,7 @@
     data-type="<%= type %>"
     data-label="<%= label %>"
     class="<%= classes %>"
-    <%= model.attr( attrName ) ? 'checked="checked"' : '' %>
+    <%== required ? 'aria-required="true"': '' %>
+    <%== model.attr( attrName ) ? 'checked="checked"' : '' %>
     <%= (el) -> el.tooltip( tooltipOptions ) %>
 />

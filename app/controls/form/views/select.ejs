@@ -4,6 +4,7 @@
     data-type="<%= type %>"
     data-label="<%= label %>"
     class="<%= classes %>"
+    <%== required ? 'aria-required="true"': '' %>
     <%= (el) -> el.tooltip( tooltipOptions ) %>
 >
     <%
@@ -14,7 +15,7 @@
     %>
         <option
             value="<%= phValue %>"
-            <%= ( model.attr( attrName ) === phValue || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
+            <%== ( model.attr( attrName ) === phValue || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
         >
             <%= phText %>
         </option>
@@ -25,7 +26,7 @@
     %>
         <option
             value="<%= value %>"
-            <%= ( value === model.attr( attrName ) ) ? 'selected="selected"' : '' %>
+            <%== ( value === model.attr( attrName ) ) ? 'selected="selected"' : '' %>
         >
             <%= sub( text,  this ) %>
         </option>

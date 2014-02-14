@@ -5,6 +5,7 @@
     data-type="<%= type %>"
     data-label="<%= label %>"
     class="<%= classes %>"
+    <%== required ? 'aria-required="true"': '' %>
     value="<%= model.attr( attrName ) ? model.attr( attrName ).format('DD/MM/YYYY') : '' %>"
     <%# if datepickerOptions is undefined, perfect! %>
     <%= (el) -> el.datepicker( this.datepickerOptions ) %>

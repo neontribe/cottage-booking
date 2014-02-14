@@ -220,7 +220,8 @@ define([
 
                 $el
                     .tooltip('option', 'content', html)
-                    .addClass('error');
+                    .addClass('error')
+                    .attr('aria-invalid', 'true');
             }
 
         },
@@ -250,7 +251,8 @@ define([
                 if( $this.data('uiTooltip') ) {
                     $this
                         .tooltip('option', 'content', '')
-                        .removeClass('error');
+                        .removeClass('error')
+                        .attr('aria-invalid', null);
                 }
                 //     .tooltip('option', 'content', '')
                 //
