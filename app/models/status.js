@@ -1,4 +1,4 @@
-define(['can/util/string', 'can/model', 'can/compute', 'can/map/setter'], function(can){
+define(['can/util/string', 'underscore', 'can/model', 'can/compute', 'can/map/setter'], function(can){
     'use strict';
 
     return can.Model({
@@ -9,11 +9,14 @@ define(['can/util/string', 'can/model', 'can/compute', 'can/map/setter'], functi
 
         inTransit: can.compute(function() {
             //return this.attr('openRequests') !== 0;
-            return !this.attr('openRequests');
+            return !!this.attr('openRequests');
         }),
 
         'setOpenRequests': function( val ) {
-            return this.attr('openRequests') + val;
+            if( this.attr('openRequests') ) {
+                return this.attr('openRequests') + val;
+            }
+            return val;
         }
 
     });

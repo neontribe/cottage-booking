@@ -1,18 +1,20 @@
 define([
     'can/util/string',
     './views',
-    'resources/book',
     'models/status',
     'spinner',
     'idle',
-    'can/control'
-], function( can, views, booking, Status ) {
+    'can/control',
+    'can/control/plugin'
+], function( can, views, Status ) {
     'use strict';
 
     return can.Control({
 
+        pluginName: 'bookingStatus',
+
         defaults: {
-            booking: booking,
+            booking: null,
             idleTime: 1000
             // Some sort of model to represent that state of this
             // so saving: true has some effect etc
@@ -35,11 +37,23 @@ define([
         },
 
         '{window.document} ajaxSend': function() {
-            this.options.status.attr('incrementRequests', 1);
+            this.options.status.attr({
+                'openRequests': 1,
+                'complete': false
+            });
         },
 
         '{window.document} ajaxComplete': function() {
-            this.options.status.attr('incrementRequests', -1);
+            if( this.options.status.attr('openRequests') > 0 ) {
+                this.options.status.attr('openRequests', -1);
+            }
+        },
+
+        '{window.document} ajaxStop': function() {
+            this.options.status.attr({
+                'openRequests': 0,
+                'complete': true
+            });
         },
 
         transport: null,

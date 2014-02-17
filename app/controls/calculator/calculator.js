@@ -6,6 +6,7 @@ define([
     'moment',
     'utils',
     // extras
+    'controls/status/status',
     'can/control',
     'can/control/plugin',
     'controls/form/form'
