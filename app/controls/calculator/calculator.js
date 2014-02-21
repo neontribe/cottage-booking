@@ -92,12 +92,12 @@ define([
 
         '{enquiry} updated': function() {
             // Allow the form to be submitted
-            $('[type="submit"]', this.element).attr('disabled', null);
+            can.$('[type="submit"]', this.element).attr('disabled', null);
         },
 
         '{enquiry} error': function() {
             // Disable the submit button whilst we still have errors
-            $('[type="submit"]', this.element).attr('disabled', 'disabled');
+            can.$('[type="submit"]', this.element).attr('disabled', 'disabled');
         },
 
         '{enquiry} submit': function() {
