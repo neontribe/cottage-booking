@@ -279,7 +279,7 @@ define([
             }
         },
 
-        '{route} booking': function( route, evt, newId ) {
+        '{route} booking': function( route, evt, newId, prevId ) {
             var stage;
             if( newId ) {
 
@@ -288,6 +288,10 @@ define([
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
                     });
+                }
+
+                if( !prevId ) {
+                    this.options.route.attr( 'page', 'details' );
                 }
 
                 if( !this.options.route.attr('page') ) {

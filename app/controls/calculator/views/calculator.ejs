@@ -1,6 +1,6 @@
 <%# Fragment %>
 <!-- Fragment -->
-<h2>Price Calculator</h2>
+<h2>Check Price</h2>
 
 <form <%= (el) -> el.bindForm({ model: enquiry, datepickerOptions: datepickerOptions }) %>>
     <input name="fromDate" data-label="Arrive" type="datepicker" />
@@ -20,5 +20,5 @@
 
     <br>
 
-    <button type="submit">Book now</button>
+    <button type="submit" disabled="disabled">Book Now</button>
 </form>
