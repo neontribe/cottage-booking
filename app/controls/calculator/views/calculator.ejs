@@ -20,5 +20,5 @@
 
     <br>
 
-    <button type="submit" disabled="disabled">Book Now</button>
+    <button type="submit" <%= enquiry.errors() ? 'disabled="disabled"' : '' %>>Book Now</button>
 </form>

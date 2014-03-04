@@ -132,9 +132,19 @@ define([
             this.on( 'propRef', can.proxy( this.propRefChangeHandler, this ) );
         },
 
+        'reset': function() {
+            can.each(['fromDate', 'toDate', 'adults', 'children', 'infants'], function( val ) {
+                if( this.constructor.defaults[ val ] ) {
+                    this.attr(val, this.constructor.defaults[ val ] );
+                } else {
+                    this.removeAttr( val );    
+                }
+            }, this);
+        },
+
         'resetOnChangeHandler': function() {
             if( this.attr('status') || this.errors() ) {
-                can.each(['status', 'message', 'price'], function( val ) {
+                can.each(['status', 'message', 'basicPrice'], function( val ) {
                     this.removeAttr( val );
                 }, this);
             }
