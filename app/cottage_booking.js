@@ -305,7 +305,8 @@ define([
             } else {
                 // Just clear booking id, so details don't need to be re-entered
                 this.options.book.removeAttr('bookingId');
-                //this.options.book.reset();
+                this.options.book.reset();
+                this.options.enquiry.reset();
             }
         },
 
