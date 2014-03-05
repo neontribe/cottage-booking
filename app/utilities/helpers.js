@@ -1,7 +1,8 @@
 define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 'can/route', 'can/observe'], function( can, accounting, _, utils ) {
     'use strict';
 
-    var deCamalizeRegex = /([a-z\d])([A-Z])/g;
+    var deCamalizeRegex = /([a-z\d])([A-Z])/g,
+        slice = Array.prototype.slice;
 
     can.extend( can.EJS.Helpers.prototype, {
         appendTemplate: function( templFn, data ) {

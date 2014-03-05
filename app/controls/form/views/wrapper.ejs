@@ -1,6 +1,5 @@
 <%# If the value at the display is !== false then display %>
 <% if( display.attr( attrName + '()' ) !== false ) { %>
-<% if( attrName === 'price.extras') %>
     <div class="form-item <%= type %>" <%= appendTemplate( view, this ) %>>
         <% if( label ) { %>
             <label for="<%= id %>">

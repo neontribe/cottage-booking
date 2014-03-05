@@ -74,7 +74,7 @@ define([
         }
     },{
         init: function() {
-
+            var $selects;
             // Set up a new observable as our attributes, so we can magically bind to changes
             this.options.attributes = new can.List();
             this.options.optionsMap = new can.Map( this.options.optionsMap );
@@ -91,6 +91,12 @@ define([
             // Once we've replaced and sorted out inputs, set the title to empty string
             // so we can display tooltips
             this.element.find(':input').attr('title', '');
+
+            $selects = self.element.find( 'select');
+
+            if( $selects.length ) {
+                _.defer(function() { $selects.customSelect(); });
+            }
 
             if( this.options.debounceDelay > 0 ) {
                 this.setter = _.debounce( this.setter, this.options.debounceDelay );
