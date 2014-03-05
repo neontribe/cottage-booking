@@ -92,7 +92,7 @@ define([
             // so we can display tooltips
             this.element.find(':input').attr('title', '');
 
-            $selects = self.element.find( 'select');
+            $selects = this.element.find( 'select');
 
             if( $selects.length ) {
                 _.defer(function() { $selects.customSelect(); });
