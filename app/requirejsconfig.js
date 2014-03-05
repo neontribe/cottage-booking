@@ -11,7 +11,8 @@ requirejs.config({
         'spinner'         : 'bower_components/spin.js/jquery.spin',
         'idle'            : 'bower_components/jquery-idletimer/dist/idle-timer',
         'utils'           : 'utilities/utils',
-        'helpers'         : 'utilities/helpers'
+        'helpers'         : 'utilities/helpers',
+        'customselect'    : 'bower_components/jquery.customSelect'
     },
     shim: {
         jquery: {
@@ -30,6 +31,7 @@ requirejs.config({
             }
         },
         idle: ['jquery'],
+        customselect: ['jquery'],
         // Add these as I need them
         'jqueryui/jquery.ui.datepicker':    ['jqueryui/jquery.ui.core'],
         'jqueryui/jquery.ui.tooltip':       ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget', 'jqueryui/jquery.ui.position'],

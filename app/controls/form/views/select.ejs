@@ -6,6 +6,7 @@
     class="<%= classes %>"
     <%== required ? 'aria-required="true"': '' %>
     <%= (el) -> el.tooltip( tooltipOptions ) %>
+    <%= (el) -> el.customSelect() %>
 >
     <%
         var phValue, phText;

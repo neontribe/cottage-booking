@@ -9,7 +9,8 @@ define([
     'jqueryui/jquery.ui.tooltip',
     'jqueryui/jquery.ui.datepicker',
     'plugins/map/getter',
-    'can/map/validations'
+    'can/map/validations',
+    'customselect'
 ], function(can, views, moment, _, utils) {
     'use strict';
 
