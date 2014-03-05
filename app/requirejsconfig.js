@@ -12,7 +12,7 @@ requirejs.config({
         'idle'            : 'bower_components/jquery-idletimer/dist/idle-timer',
         'utils'           : 'utilities/utils',
         'helpers'         : 'utilities/helpers',
-        'customselect'    : 'bower_components/jquery.customSelect'
+        'customselect'    : 'bower_components/jquery.customSelect/jquery.customSelect.min'
     },
     shim: {
         jquery: {
