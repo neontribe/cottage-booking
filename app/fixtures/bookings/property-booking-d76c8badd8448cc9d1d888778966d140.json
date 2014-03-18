@@ -69,5 +69,10 @@
             "price":"0.00",
             "total":0
         }
-    ]
+    ],
+    "propertyData": {
+        "name": "test cottage name",
+        "pets": true,
+        "sleeps": 4
+    }
 }

@@ -41,7 +41,7 @@
     ],
     "pets":0,
     "confirmation":true,
-    "payments":{
+    "payments":[{
         "amount": "306.00",
         "type": "",
         "txType": "DEFERRED",
@@ -62,7 +62,7 @@
         "cardType": "VISA",
         "last4Digits": "0006",
         "vpsSignature": "E178A31612FCF25175A3C47544EFEE0A"
-    },
+    }],
     "notes":[
 
     ],
@@ -70,7 +70,21 @@
         "outstandingBalance":"300.00",
         "basicPrice":"300.00",
         "extras":[
-
+            {
+                "code":"HEAT",
+                "description":"Heating Charge",
+                "type":"optional",
+                "quantity":1,
+                "price":"0.00",
+                "total":0
+            },{
+                "code":"TOW",
+                "description":"Towels",
+                "type":"optional",
+                "quantity":1,
+                "price":"0.00",
+                "total":0
+            }
         ],
         "totalPrice":300,
         "securityDeposit":"0.00",
@@ -93,5 +107,10 @@
             "price":"0.00",
             "total":0
         }
-    ]
+    ],
+    "propertyData": {
+        "name": "test cottage name",
+        "pets": true,
+        "sleeps": 4
+    }
 }

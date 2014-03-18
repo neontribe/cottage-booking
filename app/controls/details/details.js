@@ -36,7 +36,8 @@ define([
             ],
             // This means we will share the same country List ( note the capitol L )
             countries: new Country.List(),
-            sources: []
+            sources: [],
+            customSelect: true
         }
     },{
         init: function() {
@@ -78,6 +79,7 @@ define([
                 titles: this.options.titles,
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
+                customSelect: this.options.customSelect,
                 display: {
                     'pets': can.compute(function() {
                         return this.options.booking.attr('propertyData.pets') === true;

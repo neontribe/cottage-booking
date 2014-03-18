@@ -70,7 +70,8 @@ define([
             placeholder: true,
             // delay changes to the model's attribute by this amount of milliseconds
             debounceDelay: 0,
-            display: {}
+            display: {},
+            customSelect: true
         }
     },{
         init: function() {
@@ -94,15 +95,21 @@ define([
 
             $selects = this.element.find( 'select');
 
-            if( $selects.length ) {
-                _.defer(function() { $selects.customSelect(); });
+            if( $selects.length && this.options.customSelect ) {
+                this.postRender.done(function() {
+                    $selects.customSelect();
+                });
             }
 
             if( this.options.debounceDelay > 0 ) {
                 this.setter = _.debounce( this.setter, this.options.debounceDelay );
             }
 
+            _.defer( _.bind( this.postRender.resolve, this.postRender, this ) );
+
         },
+
+        'postRender': can.$.Deferred(),
 
         'setter': function( type ) {
             var setter = this.options.setterMap[ type ] || this.options.setterMap.defaultSetter,
@@ -134,7 +141,7 @@ define([
                 'control'       : this,
                 'valueAttr'     : 0,
                 'textAttr'      : 1,
-                'id'            : _.uniqueId( 'attr_' + this.idify( attr ) + '_' ),
+                'id'            : this.idify( attr ),
                 'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false
             }, this.options, $el.data());
 
@@ -146,9 +153,9 @@ define([
 
         'idify': function( attr ) {
             if( attr && typeof attr === 'string' ) {
-                return attr.replace(/\./g, '-' );
+                return _.uniqueId( 'attr_' + attr.replace(/\./g, '-' ) + '_' );
             }
-            return '';
+            return _.uniqueId();
         },
 
         // These should be bound before we make changes to the model

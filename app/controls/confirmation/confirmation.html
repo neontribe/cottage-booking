@@ -13,7 +13,6 @@
       <div id="content" style="float:left;" class="confirmation"></div>
       <div class="cf"></div>
     </div>
-    <div id="results" style="float:left; width:550px; height: 500px;"><textarea style="width:550px; height:100%;"></textarea></div>
     <div class="cf"></div>
     <script type="text/javascript" src="../../bower_components/requirejs/require.js"></script>
     <script type="text/javascript" src="../../requirejsconfig.js"></script>
@@ -32,7 +31,7 @@
       ], function( Confirmation, booking ){
         // This could be any string, but for completeness..
         //booking.fetchBooking('d76c8badd8448cc9d1d888778966d140').done(function() {
-        booking.fetchBooking( 'confirmedbooking' ).done(function() {
+        booking.fetchBooking( 'full_complete' ).done(function() {
          new Confirmation('#content');
         });
       });

@@ -11,3 +11,5 @@ style.out.css
 node_modules
 bower_components
 components
+
+docs/*

@@ -71,6 +71,10 @@ define([
                 url: splitted[1] || url
             });
         },
+        getNightsBetween: function( start, end ) {
+            if( !start || !end ) {return '';}
+            return ( end.unix() - start.unix() ) / (60 * 60 * 24);
+        },
         baseUrl: can.compute('')
     };
 

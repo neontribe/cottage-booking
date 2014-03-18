@@ -1,21 +1,26 @@
 <%# Fragment %>
 <!-- Fragment -->
-<h2>Stay Summary</h2>
+<h2>Booking details</h2>
 <div>
-	<dl>
-		<dt>Booking ID:</dt>
-		<dd><%= booking.attr('bookingId') %></dd>
-		<dt>Property reference:</dt>
-		<dd><%= booking.attr('fromDate') ? booking.attr('fromDate').format('DD-MM-YYYY') : '' %></dd>
-		<dt>Depart:</dt>
-		<dd><%= booking.attr('toDate') ? booking.attr('toDate').format('DD-MM-YYYY') : '' %></dd>
-	</dl>
+    <dl>
+        <dt>Booking ID:</dt>
+        <dd><%= booking.attr('bookingId') %></dd>
+        <dt>Property name:</dt>
+        <dd><%= booking.attr('propertyData') ? booking.attr('propertyData').attr('name') : '' %></dd>
+        <dt>Arrive:</dt>
+        <dd><%= booking.attr('fromDate') ? booking.attr('fromDate').format('DD-MM-YYYY') : '' %></dd>
+        <dt>Depart:</dt>
+        <dd><%= booking.attr('toDate') ? booking.attr('toDate').format('DD-MM-YYYY') : '' %></dd>
+        <dt>Nights:</dt>
+        <dd><%= nights( booking.attr('fromDate'), booking.attr('toDate') ) %></dd>
+    </dl>
 
-	<% if( booking.attr('price') ) { %>
-	    <p>You will be paying: <%= money( booking.attr('price.displayPrice') ) %></p>
-	<% } %>
+    <% if( booking.attr('price') ) { %>
+        <p>You will be paying: <%= money( booking.attr('price.displayPrice') ) %></p>
+        <p class="extra-charge">Includes security deposit: <%= money( booking.attr('price.securityDeposit') ) %></p>
+    <% } %>
 
-	<a class="button" href="<%= url({'page': 'calendar'}) %>" class="restart">Start again</a>
+    <a class="button" href="<%= url({'page': 'calendar'}) %>" class="restart">Start again</a>
 
-	<div role="status"></div>
+    <div role="status"></div>
 </div>

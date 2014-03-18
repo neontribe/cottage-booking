@@ -6,7 +6,8 @@
         'customer.address.country': countries
     },
     defaultLabel: defaultLabel,
-    display: display
+    display: display,
+    customSelect: customSelect
 }) %> >
 
     <fieldset>
@@ -61,7 +62,8 @@
                                         'title': titles,
                                         'age': agesForThisType
                                     },
-                                    'defaultLabel': true
+                                    'defaultLabel': true,
+                                    'customSelect': false
                                 }) %>
                                 class="<%= traveller.type %> traveller"
                             ></div>
@@ -79,7 +81,8 @@
             'price.extras': model.attr('webExtras'),
             'customer.source': sources
         },
-        display: display
+        display: display,
+        customSelect: customSelect
     }) %> >
         <fieldset>
             <legend>Extras</legend>

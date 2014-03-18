@@ -28,7 +28,9 @@ define([
         defaults: {
             webExtras: [],
             customer: {
-                address: {},
+                address: {
+                    country: 'GB'
+                },
                 name: {}
             }
         },
@@ -95,12 +97,12 @@ define([
             'customer.name.surname',
             'customer.address.addr1',
             'customer.address.town',
-            'customer.address.county',
+            //'customer.address.county',
             'customer.address.postcode',
             'customer.address.country',
             'customer.daytimePhone',
-            'customer.eveningPhone',
-            'customer.mobilePhone',
+            //'customer.eveningPhone',
+            //'customer.mobilePhone',
             'customer.email',
             'customer.source'
         ],

@@ -1,8 +1,7 @@
 define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 'can/route', 'can/observe'], function( can, accounting, _, utils ) {
     'use strict';
 
-    var deCamalizeRegex = /([a-z\d])([A-Z])/g,
-        slice = Array.prototype.slice;
+    var deCamalizeRegex = /([a-z\d])([A-Z])/g;
 
     can.extend( can.EJS.Helpers.prototype, {
         appendTemplate: function( templFn, data ) {
@@ -24,6 +23,7 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
         capitalize: can.capitalize,
         uniqueId: _.uniqueId,
         money: utils.money,
+        nights: utils.getNightsBetween,
 
         assignAsContent: function( self ) {
             return function( el ) {

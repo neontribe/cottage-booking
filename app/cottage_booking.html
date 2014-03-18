@@ -3,9 +3,45 @@
     <head>
         <title>cottage-booking</title>
         <script src="//localhost:35729/livereload.js"></script>
-        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.core.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.base.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.theme.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.datepicker.css" />
-        <link rel="stylesheet" type="text/css" href="/styleguide/css/master.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tooltip.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.button.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tabs.css" />
+        <link rel="stylesheet" type="text/css" href="style/style.out.css" />
+        <style type="text/css">
+            #some-tabs ul li {
+                float:left;
+                padding:0 1em 0.2em;
+                list-style: none;
+            }
+
+            #some-tabs .active {
+                border-bottom: solid 1px black;
+            }
+
+            #some-tabs {
+                margin-bottom: 2em;
+            }
+
+            #some-tabs + div,
+            #some-tabs + div + div {
+                display: inline-block;
+                vertical-align: top;
+            }
+            #some-tabs + div {
+                border: 1px solid black;
+            }
+
+            #cottage-booking {
+                width:1000px;
+            }
+
+            #cottage-booking > * {
+                display: inline-block;
+            }
+        </style>
     </head>
     <body>
         <h1>Welcome to cottage booking!</h1>
@@ -54,7 +90,8 @@
                                     ['9-12', '9-12'],
                                     ['13-17', '13-17']
                                 ],
-                                'sources': sourcesArr
+                                'sources': sourcesArr,
+                                customSelect: false
                             }
                         }
                     }
