@@ -309,8 +309,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('release', function( type ) {
 
-        var args = [].slice.call( arguments, 1 ),
-            version;
+        var args = [].slice.call( arguments, 1 );
 
         type = type || 'patch';
         args.unshift( type );
@@ -323,11 +322,15 @@ module.exports = function(grunt) {
 
         grunt.task.run('bumpup:' + args.join(':') );
 
-        version = grunt.file.readJSON('package.json').version;
-
-        grunt.task.run('exec:commitRelease:'+ version);
+        grunt.task.run('commitRelease');
 
         grunt.task.run('createRelease');
+    });
+
+    grunt.registerTask('commitRelease', function() {
+        var version = grunt.file.readJSON('package.json').version;
+
+        grunt.task.run('exec:commitRelease:'+ version);
     });
 
     grunt.registerTask('createRelease', function() {
