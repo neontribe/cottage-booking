@@ -1,14 +1,21 @@
 <div>
 
 	<h2>Booking confirmed</h2>
-
-	<% list( booking.attr('payments'), function( payment ) { %>
-
-	<% }); %>
-
 	<dl>
-		<dt><%= name %>:</dt>
-		<dd><%= value %></dd>
+		<% if( booking.attr('price') ) { %>
+			<dt>Total price</dt>
+			<dd><%= money( booking.attr('price').attr('totalPrice') ) %></dd>
+			<dt>Outstanding balance</dt>
+			<dd><%= money( booking.attr('price').attr('outstandingBalance') ) %></dd>
+		<% } %>
 	</dl>
+	
+	<h3>Payments:</h3>
+	
+	<% list( booking.attr('payments'), function( payment ) { %>
+		<p>Payment type: <%= payment.attr('cardType') %></p>
+		<p>XXXX-XXXX-XXXX-<%= payment.attr('last4Digits') %></p>
+		<p>Amount payed: <%= money( payment.attr('amount') ) %></p>
+	<% }); %>
 
 </div>
