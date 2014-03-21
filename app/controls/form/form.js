@@ -93,23 +93,16 @@ define([
             // so we can display tooltips
             this.element.find(':input').attr('title', '');
 
-            $selects = this.element.find( 'select');
+            $selects = this.element.find('select');
 
             if( $selects.length && this.options.customSelect ) {
-                this.postRender.done(function() {
-                    $selects.customSelect();
-                });
+                _.defer(function() { $selects.customSelect(); });
             }
 
             if( this.options.debounceDelay > 0 ) {
                 this.setter = _.debounce( this.setter, this.options.debounceDelay );
             }
-
-            _.defer( _.bind( this.postRender.resolve, this.postRender, this ) );
-
         },
-
-        'postRender': can.$.Deferred(),
 
         'setter': function( type ) {
             var setter = this.options.setterMap[ type ] || this.options.setterMap.defaultSetter,
