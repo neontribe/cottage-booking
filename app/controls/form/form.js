@@ -96,7 +96,7 @@ define([
             $selects = this.element.find('select');
 
             if( $selects.length && this.options.customSelect ) {
-                _.defer(function() { $selects.wrap('<div class="customSelectContainer" />').customSelect(); });
+                _.defer(function() { $selects.customSelect(); });
             }
 
             if( this.options.debounceDelay > 0 ) {

@@ -1,34 +1,36 @@
-<select
-    id="<%= id %>"
-    name="<%= attrName %>"
-    data-type="<%= type %>"
-    data-label="<%= label %>"
-    class="<%= classes %>"
-    <%== required ? 'aria-required="true"': '' %>
-    <%= (el) -> el.tooltip( tooltipOptions ) %>
->
-    <%
-        var phValue, phText;
-        if( this.placeholder ) {
-            phValue = this.placeholderVal || '';
-            phText  = typeof placeholder === 'string' ? placeholder : 'Please select';
-    %>
-        <option
-            value="<%= phValue %>"
-            <%== ( model.attr( attrName ) === phValue || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
-        >
-            <%= phText %>
-        </option>
-    <% } %>
-    <% list( optionsMap.attr( attrName ), function( element ) {
-        var value = element.attr( valueAttr ) || element.attr( textAttr ),
-            text = element.attr( textAttr ) || element.attr( valueAttr );
-    %>
-        <option
-            value="<%= value %>"
-            <%== ( value === model.attr( attrName ) ) ? 'selected="selected"' : '' %>
-        >
-            <%= sub( text,  this ) %>
-        </option>
-    <% }) %>
-</select>
+<div class="customSelectContainer">
+    <select
+        id="<%= id %>"
+        name="<%= attrName %>"
+        data-type="<%= type %>"
+        data-label="<%= label %>"
+        class="<%= classes %>"
+        <%== required ? 'aria-required="true"': '' %>
+        <%= (el) -> el.tooltip( tooltipOptions ) %>
+    >
+        <%
+            var phValue, phText;
+            if( this.placeholder ) {
+                phValue = this.placeholderVal || '';
+                phText  = typeof placeholder === 'string' ? placeholder : 'Please select';
+        %>
+            <option
+                value="<%= phValue %>"
+                <%== ( model.attr( attrName ) === phValue || !model.attr( attrName ) ) ? 'selected="selected"' : '' %>
+            >
+                <%= phText %>
+            </option>
+        <% } %>
+        <% list( optionsMap.attr( attrName ), function( element ) {
+            var value = element.attr( valueAttr ) || element.attr( textAttr ),
+                text = element.attr( textAttr ) || element.attr( valueAttr );
+        %>
+            <option
+                value="<%= value %>"
+                <%== ( value === model.attr( attrName ) ) ? 'selected="selected"' : '' %>
+            >
+                <%= sub( text,  this ) %>
+            </option>
+        <% }) %>
+    </select>
+</div>
