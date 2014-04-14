@@ -34,6 +34,10 @@ define(['fixtures/fixtures', 'underscore'], function(can){
             change( newObject, originalAjax.data );
         }
 
+        if( can.fixture.confirmed ) {
+            newObject.confirmation = true;
+        }
+
         return newObject;
     });
 

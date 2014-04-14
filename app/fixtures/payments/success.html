@@ -39,8 +39,8 @@
             comp();
           } else {
             // Update the parent so that the we know to complete the booking in the fixtures
-            window.top.require('resources/book').attr('confirmation', true);
             registerMessage( Drupal.settings.bookingData );
+            window.top.can.fixture.confirmed = true;
           }
         }, 1000);
       }

@@ -24,6 +24,11 @@ define([
                 return fn.apply( context, [this].concat( slice.call( arguments ) ) );
             };
         },
+        bindAndCallAfter: function( fn, context, time ) {
+            return function() {
+                return setTimeout(_.bind.apply( _, [fn, context || this].concat( slice.call( arguments ) ) ), context, time || 1);
+            };
+        },
         constructWith: function( Constructor, args ) {
             // Instantiate a new Class style function, which will create the Constructor with the given args
             function C() {

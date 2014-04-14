@@ -3,12 +3,13 @@ define([
     './views',
     'resources/book',
     'models/payment',
+    'utils',
     // extras
     'spinner',
     'can/control',
     'can/control/plugin',
     'controls/form/form'
-], function( can, views, booking, Payment ) {
+], function( can, views, booking, Payment, utils ) {
     'use strict';
     
     return can.Control({
@@ -45,7 +46,15 @@ define([
             this.on();
         },
 
-        updatePayment: function() {
+        /**
+         * This function is used to reset the control to contain 
+         *
+         * use bindAndCallAfter to call the function after
+         * the rest of the page has rendered
+         * 
+         * @return {Number} The number returned by the setTimeout
+         */
+        updatePayment: utils.bindAndCallAfter(function() {
             var $holder = this.element.find('.iframe-holder'),
                 $root = this.element;
 
@@ -75,7 +84,7 @@ define([
                     });
 
             }, this));
-        },
+        }),
 
         '{booking} bookingId': function( model, evt, newVal ) {
             if( newVal !== this.options.payment.attr('id') ) {
