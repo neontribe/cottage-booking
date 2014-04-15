@@ -1,6 +1,7 @@
 <div>
 
 	<h2>Booking confirmed</h2>
+
 	<dl>
 		<% if( booking.attr('price') ) { %>
 			<dt>Total price</dt>
@@ -10,6 +11,8 @@
 		<% } %>
 	</dl>
 	
+	<p><%= booking.attr('confirmationMessage') || '' %></p>
+
 	<h3>Payments:</h3>
 	
 	<% list( booking.attr('payments'), function( payment ) { %>

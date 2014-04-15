@@ -17,14 +17,14 @@
             "town":"Joshua Tree",
             "county":"California",
             "postcode":"xxxxxx",
-            "country":"United States"
+            "country":"US"
         },
         "daytimePhone":"111111111111",
         "eveningPhone":"111111111111",
         "mobilePhone":"111111111111",
         "email":"fake@email.com",
         "emailOptIn":false,
-        "source":"google",
+        "source":"BIT",
         "which":""
     },
     "adults":1,

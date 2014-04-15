@@ -10,6 +10,9 @@
     box-sizing: border-box;
 }
 
+.bookingCalculator {
+    width: 225px;
+}
 
 /* example styling */
 .bookingCalculator * + *,
@@ -113,9 +116,7 @@
     font-size: 1rem;
 }
 
-.bindForm input,
-.bindForm select,
-.bindForm textarea {
+.bindForm label + * {
     box-sizing: border-box;
     display:inline-block;
     max-width: 64%;
@@ -197,4 +198,15 @@
 
 .key ul > li + li {
     display: inline-block;
+}
+
+.bookingCalculator table tr td {
+    padding: 1% 0;
+    width: 50%;
+    margin: 0;
+    text-align: left;
+}
+
+.bookingCalculator table td + td {
+    text-align: right;
 }

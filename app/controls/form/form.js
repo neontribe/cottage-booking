@@ -305,6 +305,8 @@ define([
                 if( !errors && can.inArray( attr, this.options.attributes.attr() ) !== -1 ) {
                     // If we don't have any errors, remove them
                     this.removeErrorsForAttr( attr );
+                } else {
+                    this.addErrorsForAttr( attr );
                 }
             }
             if( batchEvt.batchNum ) {

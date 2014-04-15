@@ -1,0 +1,24 @@
+<table width="100%">
+    <tbody>
+        <thead></thead>
+        <% list( ['basicPrice', 'securityDeposit'], function( item ) { %>
+            <tr>
+                <td><%= pretifyString( item, true ) %></td>
+                <td><%= money( price.attr( item ) ) %></td>
+            </tr>
+        <% }); %>
+        <% if( size( price.attr('extras') ) ) { %>
+            <tr class="extra-title"><td width="100">Extras: </td></tr>
+            <% list( price.attr('extras'), function( extra ) { %>
+                <tr class="extra">
+                    <td><%= extra.attr('description') %></td>
+                    <td><%= extra.attr('total') > 0 ? money( extra.attr('total') ) : 'free' %></td>
+                </tr>
+            <% }); %>
+        <% } %>
+        <tr class="total">
+            <td>You will be paying</td>
+            <td><%= money( price.attr('displayPrice') ) %></td>
+        </tr>
+    </tbody>
+</table>

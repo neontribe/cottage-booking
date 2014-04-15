@@ -104,12 +104,17 @@ define([
             //'customer.eveningPhone',
             //'customer.mobilePhone',
             'customer.email',
+            // this needs to be last
             'customer.source'
         ],
 
         'init': function() {
-            this.validatePresenceOf( this.required,{
+            this.validatePresenceOf( this.required.slice(0, -1), {
                 'message': 'The {label} field is required'
+            });
+
+            this.validatePresenceOf( this.required.slice(-1), {
+                message: 'Please let us know where you heard about us'
             });
 
             this.validate(['adults', 'children', 'infants'], function() {

@@ -14,8 +14,10 @@
     </dl>
 
     <% if( booking.attr('price') ) { %>
-        <p>You will be paying: <%= money( booking.attr('price.displayPrice') ) %></p>
-        <p class="extra-charge">Includes security deposit: <%= money( booking.attr('price.securityDeposit') ) %></p>
+        <div <%== appendTemplate(views.pricedTable, {
+            price: booking.attr('price'),
+            views: views
+        }) %>></div>
     <% } %>
 
     <a class="button" href="<%= url({'page': 'calendar'}) %>" class="restart">Start again</a>
