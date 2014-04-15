@@ -11,8 +11,6 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
             };
         },
 
-        fragmentToString: utils.fragmentToString,
-
         replaceWithTemplate: function( templFn, data ) {
             return function( el ) {
                 can.$(el).replaceWith( templFn( data ) );
@@ -26,7 +24,10 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
         uniqueId: _.uniqueId,
         money: utils.money,
         nights: utils.getNightsBetween,
-        size: _.size,
+
+        modelSize: function( model ) {
+            return can.Map.keys( model ).length;
+        },
 
         assignAsContent: function( self ) {
             return function( el ) {

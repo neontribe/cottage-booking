@@ -7,7 +7,7 @@
                 <td><%= money( price.attr( item ) ) %></td>
             </tr>
         <% }); %>
-        <% if( size( price.attr('extras') ) ) { %>
+        <% if( modelSize( price.attr('extras') ) ) { %>
             <tr class="extra-title"><td width="100">Extras: </td></tr>
             <% list( price.attr('extras'), function( extra ) { %>
                 <tr class="extra">

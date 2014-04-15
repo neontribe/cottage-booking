@@ -1,24 +1,35 @@
 <div>
 
 	<h2>Booking confirmed</h2>
-
-	<dl>
-		<% if( booking.attr('price') ) { %>
-			<dt>Total price</dt>
-			<dd><%= money( booking.attr('price').attr('totalPrice') ) %></dd>
-			<dt>Outstanding balance</dt>
-			<dd><%= money( booking.attr('price').attr('outstandingBalance') ) %></dd>
-		<% } %>
-	</dl>
 	
 	<p><%= booking.attr('confirmationMessage') || '' %></p>
 
-	<h3>Payments:</h3>
-	
-	<% list( booking.attr('payments'), function( payment ) { %>
-		<p>Payment type: <%= payment.attr('cardType') %></p>
-		<p>XXXX-XXXX-XXXX-<%= payment.attr('last4Digits') %></p>
-		<p>Amount payed: <%= money( payment.attr('amount') ) %></p>
-	<% }); %>
+	<div class="payment-details">
+		<dl>
+			<% if( booking.attr('price') ) { %>
+				<dt>Total price</dt>
+					<dd><%= money( booking.attr('price').attr('totalPrice') ) %></dd>
+				<dt>
+					Outstanding balance
+					<% if( booking.attr('price').attr('paymentType') === 'deposit' ) { %>
+						( due on <%= booking.attr('totalDueOn').format('DD/MM/YYYY') %> )
+					<% } %>
+				</dt>
+					<dd><%= money( booking.attr('price').attr('outstandingBalance') ) %></dd>
+			<% } %>
+		</dl>
+
+		<h3>Card details:</h3>
+		<dl>
+			<% list( booking.attr('payments'), function( payment ) { %>
+				<dt>Payment type</dt>
+					<dd><%= payment.attr('cardType') %></dd>
+				<dt>Card number</dt>
+					<dd>XXXX-XXXX-XXXX-<%= payment.attr('last4Digits') %></dd>
+				<dt>Amount payed</dt>
+					<dd><%= money( payment.attr('amount') ) %></dd>
+			<% }); %>
+		</dl>
+	</div>
 
 </div>

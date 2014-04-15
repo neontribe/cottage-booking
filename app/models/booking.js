@@ -43,7 +43,8 @@ define([
             toDate: 'date',
             webExtras: 'WebExtra',
             // We need to change our model is read and added to the booking
-            price: Price
+            price: Price,
+            totalDueOn: 'date'
         },
 
         convert: {
