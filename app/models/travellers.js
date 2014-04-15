@@ -18,7 +18,7 @@ define([
         'removeType': function( type ) {
             for (var i = this.length - 1; i >= 0; i--) {
                 if( this[i].type === type ) {
-                    return this.removeAttr( i );
+                    return this.removeAttr( ''+i );
                 }
             }
             return false;

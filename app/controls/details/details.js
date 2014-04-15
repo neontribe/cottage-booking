@@ -103,6 +103,16 @@ define([
             return can.Control.prototype.destroy.call( this );
         },
 
+        '{booking} pets': function( model ) {
+            model.justSaveIt();
+        },
+
+        '{booking} change': function( model, evt, attr ) {
+            if( 'price.extras' === attr.slice(0, 12) ) {
+                model.justSaveIt();
+            }
+        },
+
         '{booking} submit': function() {
 
             this.options.booking.save();

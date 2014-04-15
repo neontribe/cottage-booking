@@ -123,6 +123,23 @@
     width: auto;
 }
 
+
+[data-bplugin="bookingCalculator"] {
+  position: relative;
+}
+
+[data-bplugin="bookingCalculator"].loading:after {
+  content: '';
+  background: white;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  display:block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .bindForm .form-item label {
     min-width: 35%;
     text-align: right;

@@ -80,6 +80,23 @@ define([
             if( !start || !end ) {return '';}
             return ( end.unix() - start.unix() ) / (60 * 60 * 24);
         },
+        modelPick: function( model, keys ) {
+            var res = {},
+                i;
+
+            if( keys.length ) {
+                for (i = 0; i < keys.length; i++) {
+                    can.getObject( keys[i], res, true );
+                }
+                res = new can.Map( res );
+                for (i = 0; i < keys.length; i++) {
+                    res.attr( keys[i], model.attr( keys[i] ) );
+                }
+                return res.serialize();
+            }
+
+            return res;
+        },
         baseUrl: can.compute('')
     };
 

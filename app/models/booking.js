@@ -190,6 +190,33 @@ define([
             return can.$.isEmptyObject( err ) ? null : err;
         },
 
+        'justSaveIt': function() {
+            var errors = this.canSave(),
+                self = this,
+                badValues;
+
+            if( errors ) {
+
+                errors =  _.keys( errors );
+                badValues = utils.modelPick( this, errors );
+                // This is awesome
+                can.batch.start();
+
+                for (var i = 0; i < errors.length; i++) {
+                    this.removeAttr( errors[i] );
+                }
+
+                return this.save().done(function() {
+                    self.attr( badValues );
+                    // always stop the batch
+                }).always( can.proxy(can.batch.stop, this ) );
+
+            } else {
+                return this.save();
+            }
+
+        },
+
         'serialize': function() {
             var serialized = can.Model.prototype.serialize.call( this );
             // Standard booking object, some of this we can omit

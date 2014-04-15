@@ -287,6 +287,7 @@ define([
                     this.options.book.fetchBooking( newId ).fail(function() {
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
+                        this.options.route.attr( 'page', 'calendar' );
                     });
                 }
 

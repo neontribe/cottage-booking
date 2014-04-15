@@ -5,6 +5,7 @@ define([
     'resources/book',
     'moment',
     'utils',
+    'spinner',
     // extras
     'can/control',
     'can/control/plugin',
@@ -93,6 +94,14 @@ define([
         '{enquiry} submit': function() {
             // The from controller should pretect us from an invalid form state
             this.options.enquiry.make();
+        },
+
+        '{booking} saving': function() {
+            this.element.addClass('loading').spin();
+        },
+
+        '{booking} saved': function() {
+            this.element.removeClass('loading').spin( false );
         }
     });
 
