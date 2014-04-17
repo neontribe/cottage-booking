@@ -7,7 +7,6 @@ define([
     'helpers',
     'ejs!./views/calculator',
     'ejs!./views/init',
-    'ejs!./views/priced_item',
     'ejs!./views/priced_table',
     'ejs!./views/summary'
 ], function() {
@@ -18,9 +17,8 @@ define([
     return {
         'calculator': args[0],
         'init': args[1],
-        'pricedItem': args[2],
-        'pricedTable': args[3],
-        'summary': args[4]
+        'pricedTable': args[2],
+        'summary': args[3]
     };
 });
 /* End of file */
