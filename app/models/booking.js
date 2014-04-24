@@ -242,6 +242,11 @@ define([
             return _.omit( serialized, 'webExtras', 'payment' );
         },
 
+        'canPayDeposit': can.compute(function() {
+            var date = this.attr('totalDueOn');
+            return date > utils.now();
+        }),
+
         'partyChangeHandler': function() {
             this.matchTravCountToPartyDetails();
         },

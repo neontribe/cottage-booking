@@ -1,14 +1,17 @@
 <% if( options.canDeposit ) { %>
-    <form <%= bindForm({
-        model: payment,
-        optionsMap: {
-            'paymentType': choices
-        }
-    }) %>>
+    <% if( options.booking.attr('canPayDeposit') ) { %>
+        <form <%= bindForm({
+              model: payment,
+              optionsMap: {
+                  'paymentType': choices
+              }
+          }) %>>
 
-        <input name="paymentType" type="radio" />
+              <input name="paymentType" type="radio" />
 
-    </form>
+          </form>
+     <% } else { %>
+     <% } %>
 <% } %>
 <div class="iframe-holder">
     <% if( payment.attr('payLater') && options.canPayLater ) { %>

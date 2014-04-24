@@ -74,7 +74,6 @@
                 </fieldset>
         </fieldset>
     </form>
-
     <form <%= bindForm({
         model: model,
         optionsMap: {
@@ -84,7 +83,8 @@
         display: display,
         customSelect: customSelect
     }) %> >
-        <fieldset>
+        <% var extras = model.attr('webExtras'); %>
+        <fieldset <%= extras.attr('length') ? '' : 'style="display:none;"' %>>
             <legend>Extras</legend>
             <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" data-label="Extras" />
             <input name="pets" type="number" data-min="0" data-label="Pets" />
