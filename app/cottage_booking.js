@@ -182,6 +182,14 @@ define([
             return stage;
         },
 
+        'destroyStages': function() {
+            this.options.stages.each(function( val, key ) {
+                if( key ) {
+                    this.destroyStage( val );
+                }
+            }, this);
+        },
+
         /**
          * This function is executed before we start changing to a tab
          * so lets initialize the new tab
@@ -231,9 +239,11 @@ define([
         },
 
         destroyStage: function( stage ) {
-            stage.attr('control').element.empty();
-            stage.attr('control').destroy();
-            stage.removeAttr('control');
+            if( stage.attr('control') ) {
+                stage.attr('control').element.empty();
+                stage.attr('control').destroy();
+                stage.removeAttr('control');
+            }
         },
 
         renderStage: function( stage, $el, reRender ) {
@@ -307,7 +317,8 @@ define([
                 // Just clear booking id, so details don't need to be re-entered
                 this.options.book.removeAttr('bookingId');
                 this.options.book.reset();
-                this.options.enquiry.reset();
+                this.destroyStages();
+                //this.options.enquiry.reset();
             }
         },
 

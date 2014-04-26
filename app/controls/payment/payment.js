@@ -20,7 +20,7 @@ define([
             canDeposit: true,
             depositChoices: [
                 ['balance', 'Pay the full amount'],
-                ['deposit', 'Pay by deposit']
+                ['deposit', 'Pay the deposit']
             ]
         }
     }, {

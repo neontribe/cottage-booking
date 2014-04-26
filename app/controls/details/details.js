@@ -99,7 +99,9 @@ define([
         },
 
         destroy: function() {
-            this.options.transit.abort();
+            if( this.options.transit ) {
+                this.options.transit.abort();
+            }
             return can.Control.prototype.destroy.call( this );
         },
 

@@ -10,8 +10,8 @@ define([
             /*
             'Count key' : 'type'
              */
-            'children'  : 'child',
             'adults'    : 'adult',
+            'children'  : 'child',
             'infants'   : 'infant'
         },
 

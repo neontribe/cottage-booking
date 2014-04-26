@@ -7,8 +7,10 @@
 	<div class="payment-details">
 		<dl>
 			<% if( booking.attr('price') ) { %>
-				<dt>Total price</dt>
+				<dt>Total Price</dt>
 					<dd><%= money( booking.attr('price').attr('totalPrice') ) %></dd>
+        <dt>Security Deposit</dt>
+          <dd><%= money( booking.attr('price').attr('securityDeposit') ) %></dd>
 				<dt>
 					Outstanding balance
 					<% if( booking.attr('price').attr('paymentType') === 'deposit' ) { %>

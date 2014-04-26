@@ -67,7 +67,7 @@
 
     ],
     "price":{
-        "outstandingBalance":"300.00",
+        "outstandingBalance":"0.00",
         "basicPrice":"300.00",
         "extras":[
             {
@@ -87,7 +87,7 @@
             }
         ],
         "totalPrice":300,
-        "securityDeposit":"0.00",
+        "securityDeposit":"100.00",
         "depositAmount":"100.00"
     },
     "totalPrice":300,
