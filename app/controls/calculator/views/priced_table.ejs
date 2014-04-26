@@ -1,7 +1,7 @@
 <table width="100%">
     <tbody>
         <thead></thead>
-        <% list( ['basicPrice', 'securityDeposit'], function( item ) { %>
+        <% list( ['basicPrice'], function( item ) { %>
             <tr>
                 <td><%= pretifyString( item, true ) %></td>
                 <td><%= money( price.attr( item ) ) %></td>
@@ -16,9 +16,23 @@
                 </tr>
             <% }); %>
         <% } %>
+<<<<<<< HEAD
+				<tr class='subtotal'>
+				  <td>Holiday cost</td>
+					<td><%= money( price.attr('totalPrice') ) %></td>
+				</tr>
+				<tr>
+					<td>Refundable security deposit required</td>
+					<td><%= money( price.attr('securityDeposit') ) %></td>
+				</tr>
+        <tr class="total">
+            <td>Payment due now</td>
+            <td><%= money( price.attr('paymentDue') ) %></td>
+=======
         <tr>
             <td>Holiday Cost</td>
             <td><%= money( price.attr('displayPrice') ) %></td>
+>>>>>>> 802578fd3b67644ad0d0094df2c6ddc9c747211b
         </tr>
         <tr class="total">
             <td>Total Due</td>
