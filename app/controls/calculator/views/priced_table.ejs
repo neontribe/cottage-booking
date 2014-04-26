@@ -16,9 +16,13 @@
                 </tr>
             <% }); %>
         <% } %>
-        <tr class="total">
-            <td>Holiday cost</td>
+        <tr>
+            <td>Holiday Cost</td>
             <td><%= money( price.attr('displayPrice') ) %></td>
+        </tr>
+        <tr class="total">
+            <td>Total Due</td>
+            <td><%= money( price.attr('paymentDue') ) %></td>
         </tr>
     </tbody>
 </table>
