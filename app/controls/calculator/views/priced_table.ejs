@@ -10,10 +10,12 @@
         <% if( modelSize( price.attr('extras') ) ) { %>
             <tr class="extra-title"><td width="100">Extras: </td></tr>
             <% list( price.attr('extras'), function( extra ) { %>
-                <tr class="extra">
-                    <td><%= extra.attr('description') %> <%= extra.attr('quantity') > 1 ? '(x' + extra.attr('quantity') + ')' : '' %></td>
-                    <td><%= extra.attr('total') > 0 ? money( extra.attr('total') ) : 'free' %></td>
-                </tr>
+                <% if( extra.attr('code') !== 'CCC' ) { %>
+                    <tr class="extra">
+                        <td><%= extra.attr('description') %> <%= extra.attr('quantity') > 1 ? '(x' + extra.attr('quantity') + ')' : '' %></td>
+                        <td><%= extra.attr('total') > 0 ? money( extra.attr('total') ) : 'free' %></td>
+                    </tr>
+                <% } %>
             <% }); %>
         <% } %>
 				<tr class='subtotal'>
