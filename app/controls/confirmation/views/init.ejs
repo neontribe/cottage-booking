@@ -28,8 +28,9 @@
 					<dd><%= payment.attr('cardType') %></dd>
 				<dt>Card number</dt>
 					<dd>XXXX-XXXX-XXXX-<%= payment.attr('last4Digits') %></dd>
-				<dt>Amount payed</dt>
+				<dt>Amount paid</dt>
 					<dd><%= money( payment.attr('amount') ) %></dd>
+          <dd>(Includes credit card charge where applicable)</dd>
 			<% }); %>
 		</dl>
 	</div>
