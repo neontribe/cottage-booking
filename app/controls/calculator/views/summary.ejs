@@ -12,7 +12,7 @@
         <dt>Nights:</dt>
         <dd><%= nights( booking.attr('fromDate'), booking.attr('toDate') ) %></dd>
     </dl>
-    <% if( !booking.attr('confirmed') ) { %>
+    <% if( !booking.attr('confirmation') ) { %>
       <% if( booking.attr('price') ) { %>
           <div <%== appendTemplate(views.pricedTable, {
               price: booking.attr('price'),
