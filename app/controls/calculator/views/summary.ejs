@@ -12,13 +12,14 @@
         <dt>Nights:</dt>
         <dd><%= nights( booking.attr('fromDate'), booking.attr('toDate') ) %></dd>
     </dl>
-
-    <% if( booking.attr('price') ) { %>
-        <div <%== appendTemplate(views.pricedTable, {
-            price: booking.attr('price'),
-            views: views
-        }) %>></div>
-    <% } %>
+    <% if( !booking.attr('confirmed') ) { %>
+      <% if( booking.attr('price') ) { %>
+          <div <%== appendTemplate(views.pricedTable, {
+              price: booking.attr('price'),
+              views: views
+          }) %>></div>
+      <% } %>
+    <% }  %>
 
     <a class="button" href="<%= url({'page': 'calendar'}) %>" class="restart">Start again</a>
 

@@ -8,7 +8,7 @@
             </tr>
         <% }); %>
         <% if( modelSize( price.attr('extras') ) ) { %>
-            <tr class="extra-title"><td width="100">Extras: </td></tr>
+            <tr class="extra-title"><td width="80%">Extras: </td></tr>
             <% list( price.attr('extras'), function( extra ) { %>
                 <% if( extra.attr('code') !== 'CCC' ) { %>
                     <tr class="extra">
