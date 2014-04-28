@@ -82,7 +82,10 @@ define([
                 customSelect: this.options.customSelect,
                 display: {
                     'pets': can.compute(function() {
-                        return this.options.booking.attr('propertyData.pets') === true;
+                        if( this.options.booking.attr('propertyData') ) {
+                            return this.options.booking.attr('propertyData').attr('pets') === true;
+                        }
+                        return false;
                     }, this),
                     'price.extras': can.compute(function() {
                         return !!(this.options.booking.attr('webExtras') && this.options.booking.attr('webExtras').attr('length') > 0);

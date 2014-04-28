@@ -338,6 +338,12 @@ define([
             return [];
         }),
 
+        'canBookExtras': can.compute(function() {
+            var extras = this.attr('webExtras') && this.attr('webExtras').attr('length'),
+                pets = this.attr('propertyData') && this.attr('propertyData').attr('pets');
+            return extras || pets;
+        }),
+
         /**
          * This function manually compiles a list of _all_ errors because
          * the error generation for lists of models and sub models isn't complete
