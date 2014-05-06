@@ -15,7 +15,7 @@
     <% if( !booking.attr('confirmation') ) { %>
       <% if( booking.attr('price') ) { %>
           <div <%== appendTemplate(views.pricedTable, {
-              totalDueOn: booking.attr('totalDueOn'),
+              totalDueOn: booking.attr('totalDueOn').format('DD-MM-YYYY'),
               canPayDeposit: booking.attr('canPayDeposit'),
               price: booking.attr('price'),
               views: views

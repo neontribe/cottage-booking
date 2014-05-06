@@ -27,13 +27,12 @@
 					<td><%= money( price.attr('securityDeposit') ) %></td>
 				</tr>
         <tr class="total">
-            <% console.log(totalDueOn) %>
-            <td>Total Payment - due by <% totalDueOn.format('ddd MMMM YYYY') %> </td>
+            <td>Total Payment - due by <%= totalDueOn %> </td>
             <td><%= money( price.attr('paymentDue') ) %></td>
         </tr>
         <% if( canPayDeposit ) { %>
         <tr>
-          <td>Deposit 30&#37; - due now</td>
+          <td>30&#37; Deposit - due now</td>
           <td><%= money( price.attr('depositAmount') ) %></td>
         </tr>
         <% } %>
