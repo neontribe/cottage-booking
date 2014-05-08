@@ -15,7 +15,9 @@
     <% if( !booking.attr('confirmation') ) { %>
       <% if( booking.attr('price') ) { %>
           <% var totalDueOnText = 'now';
-             if( booking.attr('totalDueOn').format('DD-MM-YYYY') > moment().format('DD-MM-YYYY') ) {
+             var totalDueOn = booking.attr('totalDueOn');
+             var today = moment();
+             if( totalDueOn > today ) {
                totalDueOnText = 'by ' + booking.attr('totalDueOn').format('DD-MM-YYYY'); 
              }
           %>
