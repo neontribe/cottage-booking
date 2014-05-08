@@ -27,7 +27,7 @@
 					<td><%= money( price.attr('securityDeposit') ) %></td>
 				</tr>
         <tr class="total">
-            <td>Total Payment - due by <%= totalDueOn %> </td>
+            <td>Total Payment - due <%= totalDueOnText %> </td>
             <td><%= money( price.attr('paymentDue') ) %></td>
         </tr>
         <% if( canPayDeposit ) { %>
