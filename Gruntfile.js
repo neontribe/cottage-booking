@@ -101,12 +101,16 @@ module.exports = function(grunt) {
                                 'git checkout master && ' +
                                 'git pull origin master && ' +
                                 'git merge $CURBRANCH && ' +
-                                'git push origin master && ' +
-                                'git checkout develop && ' +
+                                'git push origin master';
+                    }
+                }
+            },
+            finishRelease: {
+                cmd: function() {
+                    return  'git checkout develop && ' +
                                 'git pull origin develop && ' +
                                 'git merge master && ' +
                                 'git push origin develop';
-                    }
                 }
             },
             checkoutOldBranch: {
@@ -346,6 +350,8 @@ module.exports = function(grunt) {
         grunt.task.run('commitRelease');
 
         grunt.task.run('createRelease');
+
+        grunt.task.run('exec:finishRelease');
     });
 
     grunt.registerTask('commitRelease', function() {
@@ -361,7 +367,7 @@ module.exports = function(grunt) {
             done = this.async(),
             Grel = require('grel'),
             version = grunt.file.readJSON('package.json').version,
-            message = fs.readFileSync('app/prod/changelog.txt');
+            message = fs.readFileSync('app/prod/changelog.txt').toString();
 
         grel = new Grel({
             user: grunt.config('release.git.username'),
@@ -369,6 +375,9 @@ module.exports = function(grunt) {
             owner: 'neontribe',
             repo: 'cottage-booking'
         });
+
+        grunt.log( 'releasing ' + version );
+        grunt.log( message );
 
         grel.create( version, message, ['app/prod.zip'], function(error, release) {
             if (error) {
