@@ -8,10 +8,10 @@ I attempt to follow the [Semver](http://semver.org/) version ethos
 ## Download dependencies
 ### This doesn't work on windows, the nested node_modules exceeded max filename size
 ```bash
-sudo npm install -g bower
-sudo npm install -g myth
-sudo npm install -g grunt
-npm install && bower install
+npm install
+./node_modules/.bin/grunt develop
+# optionally you could, so you could just do grunt develop
+sudo npm install grunt-cli -g
 ```
 
 ## Grunt tasks

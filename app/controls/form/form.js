@@ -6,8 +6,8 @@ define([
     'utils',
     'can/control',
     'can/control/plugin',
-    'jqueryui/jquery.ui.tooltip',
-    'jqueryui/jquery.ui.datepicker',
+    'jqueryui/tooltip',
+    'jqueryui/datepicker',
     'plugins/map/getter',
     'can/map/validations',
     'customselect'

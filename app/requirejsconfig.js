@@ -1,9 +1,9 @@
 requirejs.config({
     paths: {
         'can'             : 'bower_components/canjs/amd/can',
-        'jquery'          : 'resources/jquery',
+        'jquery'          : 'bower_components/jquery/jquery',
         'ejs'             : 'bower_components/require-can-renderers/lib/ejs',
-        'jqueryui'        : 'bower_components/jquery-ui/ui',
+        'jqueryui'        : 'bower_components/jquery-ui/jqueryui',
         'moment'          : 'bower_components/momentjs/moment',
         'underscore'      : 'bower_components/underscore/underscore',
         'accounting'      : 'bower_components/accounting.js/accounting',
@@ -12,12 +12,17 @@ requirejs.config({
         'idle'            : 'bower_components/jquery-idletimer/dist/idle-timer',
         'utils'           : 'utilities/utils',
         'helpers'         : 'utilities/helpers',
-        'customselect'    : 'bower_components/jquery.customSelect/jquery.customSelect.min'
+        'customselect'    : 'bower_components/jquery.customSelect/jquery.customSelect.amd'
+    },
+    map: {
+        '*': {
+            'jquery': 'resources/jquery'
+        },
+        'resources/jquery': {
+            'jquery': 'jquery'
+        }
     },
     shim: {
-        jquery: {
-            exports: 'jQuery'
-        },
         underscore: {
             exports: '_',
             /**
@@ -31,13 +36,7 @@ requirejs.config({
             }
         },
         idle: ['jquery'],
-        customselect: ['jquery'],
-        // Add these as I need them
-        'jqueryui/jquery.ui.datepicker':    ['jqueryui/jquery.ui.core'],
-        'jqueryui/jquery.ui.tooltip':       ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget', 'jqueryui/jquery.ui.position'],
-        'jqueryui/jquery.ui.tabs':          ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget', 'jqueryui/jquery.ui.effect-blind'],
-        'jqueryui/jquery.ui.effect-blind':  ['jqueryui/jquery.ui.effect'],
-        'jqueryui/jquery.ui.autocomplete':  ['jqueryui/jquery.ui.core', 'jqueryui/jquery.ui.widget', 'jqueryui/jquery.ui.position', 'jqueryui/jquery.ui.menu']
+        customselect: ['jquery']
     },
     noGlobal: true
 });

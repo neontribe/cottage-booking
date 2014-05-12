@@ -6,8 +6,8 @@ define([
     'utils',
     // extras
     'can/control',
-    'jqueryui/jquery.ui.datepicker',
-    'jqueryui/jquery.ui.tooltip'
+    'jqueryui/datepicker',
+    'jqueryui/tooltip'
 ], function(can, moment, views, enquiry, utils) {
     'use strict';
 

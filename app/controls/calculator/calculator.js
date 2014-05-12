@@ -14,8 +14,7 @@ define([
     'use strict';
 
     // TODO:Move this to a better place
-    /* globals jQuery */
-    jQuery.datepicker.setDefaults({
+    can.$.datepicker.setDefaults({
         dateFormat: 'dd/mm/yy'
     });
 

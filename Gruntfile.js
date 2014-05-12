@@ -2,6 +2,7 @@ var esprima   = require('esprima'),
     fs        = require('fs'),
     escodegen = require('escodegen'),
     _         = require('underscore');
+
 /* jshint quotmark: false, strict: false */
 var getRenderer = function(ext, cwd){
     return "define(function() {\n"+
@@ -86,17 +87,19 @@ module.exports = function(grunt) {
                 cmd: 'rm -rf app/prod'
             },
             myth: {
-                cmd: 'myth app/style/style.css app/style/style.out.css'
+                cmd: './node_modules/.bin/myth app/style/style.css app/style/style.out.css'
             },
             test: {
-                cmd: 'mocha-phantomjs test/index.html'
+                cmd: './node_modules/.bin/mocha-phantomjs test/index.html'
             },
             commitRelease: {
                 cmd: function( version ) {
                     if( version ) {
-                        return  'git commit -am "Release version: ' + version + '" && '  +
-                                'export CURBRANCH=`git rev-parse --abbrev-ref HEAD` && ' +
+                        return  'export CURBRANCH=`git rev-parse --abbrev-ref HEAD` && ' +
+                                'git pull origin $CURBRANCH && ' +
+                                'git commit -am "Release version: ' + version + '" && '  +
                                 'git checkout master && ' +
+                                'git pull origin master && ' +
                                 'git merge $CURBRANCH && ' +
                                 'git push origin master';
                     }
@@ -106,6 +109,12 @@ module.exports = function(grunt) {
                 cmd: function( oldBranch ) {
                     return 'git checkout ' + oldBranch || '`git rev-parse --abbrev-ref HEAD`';
                 }
+            },
+            bower: {
+                cmd: './node_modules/.bin/bower install'
+            },
+            jqueryuiInstall: {
+                cmd: './node_modules/.bin/jqueryui-amd app/bower_components/jquery-ui'
             }
         },
         cancompile: {
@@ -392,7 +401,18 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', 'build');
+    grunt.registerTask('develop', ['exec:bower', 'exec:myth', 'exec:jqueryuiInstall', 'shimCustomSelect']);
+
+    grunt.registerTask('shimCustomSelect', function() {
+        var code = fs.readFileSync('app/bower_components/jquery.customSelect/jquery.customSelect.js');
+
+        // shim the customSelect plugin to use the hidden jquery global, not global
+        code = 'define([\'jquery\'], function(jQuery) {' + code + '});';
+
+        fs.writeFileSync('app/bower_components/jquery.customSelect/jquery.customSelect.amd.js', code );
+    });
+
+    grunt.registerTask('default', 'develop');
 
     // Load all grunt tasks
     require('load-grunt-tasks')(grunt);
