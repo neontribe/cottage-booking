@@ -105,6 +105,7 @@ define([
             //'customer.eveningPhone',
             //'customer.mobilePhone',
             'customer.email',
+            'customer.emailConf',
             // this needs to be last
             'customer.source'
         ],
@@ -295,9 +296,13 @@ define([
                         //self.attr( booking.__get() ); Why did i do this
                         // The following call does mean that we instantiate and throw away stuff ( like travellers )
                         // and also, we throw away anything that doesn't back in the resp
-                        self.attr( booking.attr(), true );
-                        // If we are fetching form an ID we should set the emailConf
-                        self.attr('customer.emailConf', booking.attr('customer.email'));
+                        var bookingData = can.$.extend( true, booking.attr(), {
+                            'customer': {
+                                'emailConf': booking.attr('customer.emailConf')
+                            }
+                        });
+
+                        self.attr( bookingData, true );
                     });
 
                     //break;
