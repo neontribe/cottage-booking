@@ -3,9 +3,10 @@
     <head>
         <title>cottage-booking</title>
 
-        <link rel="stylesheet" type="text/css" href="/styleguide/css/master.css" />
+        <link rel="stylesheet" type="text/css" href="prod/production.css" />
+        <link rel="stylesheet" type="text/css" href="prod/jqueryui.css" />
         <style type="text/css">
-            /*#some-tabs ul li {
+            #some-tabs ul li {
                 float:left;
                 padding:0 1em 0.2em;
                 list-style: none;
@@ -19,14 +20,21 @@
                 margin-bottom: 2em;
             }
 
-            #some-tabs + div,
-            #some-tabs + div + div {
+            #booking-wrap > * {
                 display: inline-block;
                 vertical-align: top;
             }
             #some-tabs + div {
                 border: 1px solid black;
-            }*/
+            }
+
+            #cottage-booking {
+                width:1000px;
+            }
+
+            #cottage-booking > * {
+                display: inline-block;
+            }
         </style>
     </head>
     <body>
@@ -41,43 +49,32 @@
             <div class="cf"></div>
         </div>
 
-        <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath"></div>
-        <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
+        <div role="form" id="booking-wrap">
+            <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath" data-base-url=""></div>
+            <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
+            <div style="clear:both"></div>
+        </div>
 
-        <!-- need to fetch the jquery and load the jQuery global, so make pretend like it's in drupal -->
-            <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
         <!-- Load these files _just_ for fixtures -->
             <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
             <script type="text/javascript" src="requirejsconfig.js"></script>
         <!-- Fixture files -->
+
+        <!-- THIS IS BROKEN
+            BECUASE JQUERY IS NO LONGER SHARED FROM THE GLOBAL
+            FIXTURES CAN'T HOOK INTO IT
+        -->
+
         <script type="text/javascript">
             requirejs([
+                'jquery',
+                'fixtures/sources',
                 'fixtures/availabilities',
                 'fixtures/enquiries',
                 'fixtures/bookings',
                 'fixtures/countries',
                 'fixtures/payments'
-            ], function() {
-
-                $('#cottage-booking').data('stages', {
-                    details: {
-                        'options': {
-                            ages: [
-                                ['18-29', '18-29'],
-                                ['30-44', '30-44'],
-                                ['45-59', '45-59'],
-                                ['60+', 'Over 60'],
-                                ['test', 'test']
-                            ],
-                            childAges: [
-                                ['2-8', '2-8'],
-                                ['9-12', '9-12'],
-                                ['13-17', '13-17']
-                            ],
-                            customSelect: false
-                        }
-                    }
-                });
+            ], function( $ ) {
 
                 // We do this here so the fixtures have had a chance to load
                 require(['prod/production.js']);

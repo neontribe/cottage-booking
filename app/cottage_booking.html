@@ -59,10 +59,15 @@
             <div style="clear:both"></div>
         </div>
 
+        <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+
         <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
         <script type="text/javascript" src="requirejsconfig.js"></script>
         <!-- Fixture files -->
         <script type="text/javascript">
+
+            jQuery('#cottage-booking').attr('data-stages', JSON.stringify({stuffs: true}) );
+            
             requirejs([
                 'jquery',
                 'cottage_booking',

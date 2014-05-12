@@ -26,7 +26,6 @@ define([
                 type = this.useFixtures ? 'GET' : pathParts[0];
 
             this.fixture( fixturePath, can.proxy(function( options, reply, headers, fullOptions ) {
-
                 var args = slice.call( arguments ),
                     url, ajaxObj;
 

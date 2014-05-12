@@ -20,5 +20,8 @@
     "jquery-idletimer": "~0.9.3",
     "chai-as-promised": "~4.1.0",
     "jquery.customSelect": "https://github.com/adamcoulombe/jquery.customSelect.git"
+  },
+  "resolutions": {
+    "canjs": "~2.0.0"
   }
 }
