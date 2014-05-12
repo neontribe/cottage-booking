@@ -18,18 +18,20 @@
                 <% } %>
             <% }); %>
         <% } %>
-				<tr class='subtotal'>
-				  <td>Holiday cost</td>
-					<td><%= money( price.attr('totalPrice') ) %></td>
-				</tr>
-        <% if ( price.attr('securityDeposit') != 0 ) { %>
-				<tr>
-					<td>Refundable security deposit</td>
-					<td><%= money( price.attr('securityDeposit') ) %></td>
-				</tr>
+
+        <tr class='subtotal'>
+            <td>Holiday cost</td>
+            <td><%= money( price.attr('totalPrice') ) %></td>
+        </tr>
+
+        <% if( price.attr('securityDeposit') !== 0 ) { %>
+            <tr>
+                <td>Refundable security deposit</td>
+                <td><%= money( price.attr('securityDeposit') ) %></td>
+            </tr>
         <% } %>
         <tr class="total">
-            <td>Total Payment - due <%= totalDueOnText %> </td>
+            <td>Total Payment - due <%= canPayDeposit ? totalDueDate.format('DD-MM-YYYY') : 'now' %> </td>
             <td><%= money( price.attr('paymentDue') ) %></td>
         </tr>
         <% if( canPayDeposit ) { %>

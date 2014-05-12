@@ -14,16 +14,9 @@
     </dl>
     <% if( !booking.attr('confirmation') ) { %>
       <% if( booking.attr('price') ) { %>
-          <% var totalDueOnText = 'now';
-             var totalDueOn = booking.attr('totalDueOn');
-             var today = moment();
-             if( totalDueOn > today ) {
-               totalDueOnText = 'by ' + booking.attr('totalDueOn').format('DD-MM-YYYY'); 
-             }
-          %>
           <div <%== appendTemplate(views.pricedTable, {
-              totalDueOnText: totalDueOnText,
               canPayDeposit: booking.attr('canPayDeposit'),
+              totalDueDate: booking.attr('totalDueOn'),
               price: booking.attr('price'),
               views: views
           }) %>></div>
