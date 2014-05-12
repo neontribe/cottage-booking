@@ -101,7 +101,11 @@ module.exports = function(grunt) {
                                 'git checkout master && ' +
                                 'git pull origin master && ' +
                                 'git merge $CURBRANCH && ' +
-                                'git push origin master';
+                                'git push origin master && ' +
+                                'git checkout develop && ' +
+                                'git pull origin develop && ' +
+                                'git merge master && ' +
+                                'git push origin develop';
                     }
                 }
             },
@@ -115,6 +119,14 @@ module.exports = function(grunt) {
             },
             jqueryuiInstall: {
                 cmd: './node_modules/.bin/jqueryui-amd app/bower_components/jquery-ui'
+            },
+            writeChangelog: {
+                cmd: function( lastRelease ) {
+                    return  'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
+                                'git log --pretty="tformat:+ **%an**: %s" --date=short --grep=# --grep=LOG --no-merges ' +
+                                lastRelease +
+                                '..HEAD >> app/prod/changelog.txt';
+                }
             }
         },
         cancompile: {
@@ -339,6 +351,7 @@ module.exports = function(grunt) {
     grunt.registerTask('commitRelease', function() {
         var version = grunt.file.readJSON('package.json').version;
 
+        grunt.task.run('exec:writeChangelog:' + grunt.config('pkg').version );
         grunt.task.run('exec:commitRelease:'+ version);
     });
 
@@ -347,7 +360,8 @@ module.exports = function(grunt) {
         var grel,
             done = this.async(),
             Grel = require('grel'),
-            version = grunt.file.readJSON('package.json').version;
+            version = grunt.file.readJSON('package.json').version,
+            message = fs.readFileSync('app/prod/changelog.txt');
 
         grel = new Grel({
             user: grunt.config('release.git.username'),
@@ -356,7 +370,7 @@ module.exports = function(grunt) {
             repo: 'cottage-booking'
         });
 
-        grel.create( version, 'Release ' + version, ['app/prod.zip'], function(error, release) {
+        grel.create( version, message, ['app/prod.zip'], function(error, release) {
             if (error) {
                 console.log('Something went wrong', error);
             } else {
