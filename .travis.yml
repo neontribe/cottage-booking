@@ -10,10 +10,7 @@ before_install:
 - ulimit -n 4096
 install:
 - npm install
-- npm install -g grunt-cli
-# TODO: move this into a grunt task properly like
-- npm install -g myth
-- bower install
+- ./node_modules/.bin/grunt develop
 script:
 - echo "Running tests"
 - ./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/index.html
