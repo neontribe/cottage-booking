@@ -126,10 +126,11 @@ module.exports = function(grunt) {
             },
             writeChangelog: {
                 cmd: function( lastRelease ) {
-                    return  'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
-                                'git log --pretty="tformat:+ **%an**: %s" --date=short --grep=# --grep=LOG --no-merges ' +
-                                lastRelease +
-                                '..HEAD >> app/prod/changelog.txt';
+                    return  'git fetch --tags && ' +
+                            'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
+                            'git log --pretty="tformat:+ **%an**: %s" --date=short --grep=# --grep=LOG --no-merges ' +
+                            lastRelease +
+                            '..HEAD >> app/prod/changelog.txt';
                 }
             }
         },
@@ -376,8 +377,8 @@ module.exports = function(grunt) {
             repo: 'cottage-booking'
         });
 
-        grunt.log( 'releasing ' + version );
-        grunt.log( message );
+        console.log( 'releasing ' + version );
+        console.log( message );
 
         grel.create( version, message, ['app/prod.zip'], function(error, release) {
             if (error) {
