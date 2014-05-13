@@ -118,6 +118,12 @@ define([
             }
         },
 
+        '{booking} formErrors': function() {
+            can.$('html, body').animate({
+                scrollTop: this.element.offset().top
+            }, 350);
+        },
+
         '{booking} submit': function() {
 
             this.options.booking.save();
