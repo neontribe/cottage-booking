@@ -61,9 +61,10 @@
             }
         },
         "totalPrice":300,
-        "securityDeposit":"0.00",
+        "securityDeposit":"250.00",
         "depositAmount":"100.00",
-        "paymentType": "balance"
+        "paymentType": "balance",
+        "paymentDue": "550.00"
     },
     "totalPrice":300,
     "webExtras":[
@@ -84,8 +85,9 @@
         }
     ],
     "propertyData": {
-        "name": "test cottage name",
         "pets": true,
-        "sleeps": 4
+        "sleeps": 10,
+        "name": "The Beach House",
+        "numberOfPets": 10
     }
 }

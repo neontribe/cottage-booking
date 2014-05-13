@@ -125,6 +125,12 @@ define([
                 }
             });
 
+            this.validate(['pets'], function( val ) {
+                if( val > this.attr('propertyData.numerOfPets') ) {
+                    return 'Sorry, the property does not allow that many pets';
+                }
+            });
+
             this.validate('status', function( status ) {
                 if( status && status !== 'ok' ) {
                     return this.attr('message') || 'An unknown error occurred';
@@ -298,7 +304,7 @@ define([
                         // and also, we throw away anything that doesn't back in the resp
                         var bookingData = can.$.extend( true, booking.attr(), {
                             'customer': {
-                                'emailConf': booking.attr('customer.emailConf')
+                                'emailConf': booking.attr('customer.email')
                             }
                         });
 

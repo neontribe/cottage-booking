@@ -83,10 +83,11 @@
         display: display,
         customSelect: customSelect
     }) %> >
+        <% var propData = model.attr('propertyData'); %>
         <fieldset <%== model.attr('canBookExtras') ? '' : 'style="display:none;"' %>>
             <legend>Extras</legend>
             <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" data-label="Extras" />
-            <input name="pets" type="number" data-min="0" data-max="3" data-label="Pets" />
+            <input name="pets" type="number" data-min="0" data-max="<%= (model.attr('propertyData.numberOfPets')) || 0 %>" data-label="Pets" />
         </fieldset>
 
         <fieldset>

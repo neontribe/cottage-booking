@@ -67,28 +67,23 @@
 
     ],
     "price":{
-        "outstandingBalance":"0.00",
+        "outstandingBalance":"300.00",
         "basicPrice":"300.00",
-        "extras":[
-            {
-                "code":"HEAT",
-                "description":"Heating Charge",
-                "type":"optional",
-                "quantity":1,
-                "price":"0.00",
-                "total":0
-            },{
-                "code":"TOW",
-                "description":"Towels",
-                "type":"optional",
-                "quantity":1,
-                "price":"0.00",
-                "total":0
+        "extras": {
+            "HEAT": {
+                "code": "HEAT",
+                "description": "Heating Charge",
+                "type": "optional",
+                "quantity": 1,
+                "price": "20.00",
+                "total": 0
             }
-        ],
+        },
         "totalPrice":300,
-        "securityDeposit":"100.00",
-        "depositAmount":"100.00"
+        "securityDeposit":"250.00",
+        "depositAmount":"100.00",
+        "paymentType": "balance",
+        "paymentDue": "550.00"
     },
     "totalPrice":300,
     "webExtras":[
@@ -97,7 +92,7 @@
             "description":"Heating Charge",
             "type":"optional",
             "quantity":1,
-            "price":"0.00",
+            "price":"20.00",
             "total":0
         },{
             "code":"TOW",
@@ -109,8 +104,9 @@
         }
     ],
     "propertyData": {
-        "name": "test cottage name",
-        "pets": true,
-        "sleeps": 4
+        "pets": false,
+        "sleeps": 10,
+        "name": "The Beach House",
+        "numberOfPets": 0
     }
 }
