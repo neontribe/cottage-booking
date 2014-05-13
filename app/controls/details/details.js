@@ -41,6 +41,7 @@ define([
         }
     },{
         init: function() {
+            var sourcesHasOther = false;
             // Perhaps this should be cached
             if( !this.options.countries.length ) {
                 this.options.transit = Country.findAll().done(can.proxy(function( list ) {
@@ -59,11 +60,17 @@ define([
                 }
             }, this);
 
-            // Put an other choice in the list
-            this.options.sources.unshift({
-                'code': 'other',
-                'description': 'Other'
+            // look for a "other" option in the list
+            this.options.sources.each(function( src ) {
+                return !(sourcesHasOther = ( src.attr('code') === 'other' ));
             });
+            if( !sourcesHasOther ) {
+                // Put an other choice in the list
+                this.options.sources.unshift({
+                    'code': 'other',
+                    'description': 'Other'
+                });
+            }
 
             this.element.html( views.init({
                 model: this.options.booking,
