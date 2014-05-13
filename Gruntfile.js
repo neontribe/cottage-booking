@@ -97,7 +97,7 @@ module.exports = function(grunt) {
                     if( version ) {
                         return  'export CURBRANCH=`git rev-parse --abbrev-ref HEAD` && ' +
                                 'git pull origin $CURBRANCH && ' +
-                                'git commit -am "Release version: ' + version + '" && '  +
+                                'git commit --allow-empty -am "Release version: ' + version + '" && '  +
                                 'git checkout master && ' +
                                 'git pull origin master && ' +
                                 'git merge $CURBRANCH && ' +
@@ -326,6 +326,7 @@ module.exports = function(grunt) {
             'exec:myth',
             'cssmin',
             'copy',
+            'exec:writeChangelog:' + grunt.config('pkg').version,
             'compress'
         );
     });
@@ -343,9 +344,9 @@ module.exports = function(grunt) {
 
         grunt.task.run('test');
 
-        grunt.task.run('build');
-
         grunt.task.run('bumpup:' + args.join(':') );
+
+        grunt.task.run('build');
 
         grunt.task.run('commitRelease');
 
@@ -357,7 +358,6 @@ module.exports = function(grunt) {
     grunt.registerTask('commitRelease', function() {
         var version = grunt.file.readJSON('package.json').version;
 
-        grunt.task.run('exec:writeChangelog:' + grunt.config('pkg').version );
         grunt.task.run('exec:commitRelease:'+ version);
     });
 
