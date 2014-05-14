@@ -74,6 +74,7 @@
                 </fieldset>
         </fieldset>
     </form>
+
     <form <%= bindForm({
         model: model,
         optionsMap: {
@@ -81,13 +82,14 @@
             'customer.source': sources
         },
         display: display,
-        customSelect: customSelect
+        customSelect: customSelect,
+        validations: false,
+        debounceDelay: 300
     }) %> >
-        <% var propData = model.attr('propertyData'); %>
         <fieldset <%== model.attr('canBookExtras') ? '' : 'style="display:none;"' %>>
             <legend>Extras</legend>
             <input name="price.extras" type="modelMultiCheckbox" data-value-attr="code" data-text-attr="description" data-label="Extras" />
-            <input name="pets" type="number" data-min="0" data-max="<%= (model.attr('propertyData.numberOfPets')) || 0 %>" data-label="Pets" />
+            <input name="pets" type="number" data-min="0" data-label="Pets" />
         </fieldset>
 
         <fieldset>

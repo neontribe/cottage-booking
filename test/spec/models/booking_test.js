@@ -36,7 +36,7 @@ define([
 
                 booking.should.have.property('errors');
 
-                _.toArray( booking.errors() ).should.have.length( 17 );
+                _.toArray( booking.errors() ).should.have.length( 16 );
 
                 booking.errors('customer.name.firstName').should.have.property('customer.name.firstName').to.be.an.instanceof( Array );
 

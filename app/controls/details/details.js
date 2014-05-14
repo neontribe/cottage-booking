@@ -116,7 +116,9 @@ define([
         },
 
         '{booking} pets': function( model ) {
-            model.justSaveIt();
+            if( !model.errors('pets') ) {
+                model.justSaveIt();
+            }
         },
 
         '{booking} change': function( model, evt, attr ) {

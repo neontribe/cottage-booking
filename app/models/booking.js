@@ -91,7 +91,6 @@ define([
             'adults',
             'children',
             'infants',
-            'pets',
             // these are required to complete a booking
             'customer.name.title',
             'customer.name.firstName',
@@ -126,7 +125,7 @@ define([
             });
 
             this.validate(['pets'], function( val ) {
-                if( val > this.attr('propertyData.numerOfPets') ) {
+                if( val > this.attr('propertyData.numberOfPets') ) {
                     return 'Sorry, the property does not allow that many pets';
                 }
             });

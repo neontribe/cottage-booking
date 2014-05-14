@@ -1,6 +1,6 @@
 <%# If the value at the display is !== false then display %>
-<% if( display.attr( attrName + '()' ) !== false ) { %>
-    <div class="form-item <%= type %>" <%= appendTemplate( view, this ) %>>
+<%# if( display.attr( attrName + '()' ) !== false ) { %>
+    <div style="<%= display.attr( attrName + '()' ) !== false ? '' : 'display: none;' %>" class="form-item <%= type %>" <%= appendTemplate( view, this ) %>>
         <% if( label ) { %>
             <label for="<%= id %>">
                 <%= pretifyString( label, true ) %><% if( required ) { %><span class="required">*</span><% } %>
@@ -10,4 +10,4 @@
         <% } %>
         <%# Template gets appended %>
     </div>
-<% } %>
+<%# } %>

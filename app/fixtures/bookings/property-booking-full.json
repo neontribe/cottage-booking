@@ -86,8 +86,8 @@
     ],
     "propertyData": {
         "pets": true,
-        "sleeps": 10,
+        "sleeps": 4,
         "name": "The Beach House",
-        "numberOfPets": 10
+        "numberOfPets": 3
     }
 }
