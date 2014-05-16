@@ -44,7 +44,8 @@ define([
             webExtras: 'WebExtra',
             // We need to change our model is read and added to the booking
             price: Price,
-            totalDueOn: 'date'
+            totalDueOn: 'date',
+            secDepDueOn: 'date'
         },
 
         convert: {
@@ -253,6 +254,10 @@ define([
         'canPayDeposit': can.compute(function() {
             var date = this.attr('totalDueOn');
             return date > utils.now();
+        }),
+
+        'securityDepositDueNow': can.compute(function() {
+            return this.attr('secDepDueOn') < utils.now();
         }),
 
         'partyChangeHandler': function() {

@@ -11,13 +11,17 @@
 }
 
 .bookingCalculator {
-    width: 225px;
+    width: 365px;
 }
 
 /* example styling */
 .bookingCalculator * + *,
 .bookingPath * + * {
     margin-top: 0;
+}
+
+.bookingCalculator .sd-small-print td {
+    width: 100%;
 }
 
 .cf {

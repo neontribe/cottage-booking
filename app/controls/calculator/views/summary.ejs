@@ -17,6 +17,8 @@
           <div <%== appendTemplate(views.pricedTable, {
               canPayDeposit: booking.attr('canPayDeposit'),
               totalDueDate: booking.attr('totalDueOn'),
+              securityDepositDueNow: booking.attr('securityDepositDueNow'),
+              securityDepositDueOn: booking.attr('secDepDueOn'),
               price: booking.attr('price'),
               views: views
           }) %>></div>

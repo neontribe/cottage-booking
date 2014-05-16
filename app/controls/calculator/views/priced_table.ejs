@@ -24,21 +24,34 @@
             <td><%= money( price.attr('totalPrice') ) %></td>
         </tr>
 
-        <% if( price.attr('securityDeposit') !== 0 ) { %>
+        <% if( price.attr('securityDeposit') > 0 ) { %>
             <tr>
                 <td>Refundable security deposit</td>
                 <td><%= money( price.attr('securityDeposit') ) %></td>
             </tr>
+            <% if( !securityDepositDueNow ) { %>
+                <tr class="sd-small-print">
+                    <td>We will collect the security deposit by <%= securityDepositDueOn.format('DD-MM-YYYY') %></td>
+                </tr>
+            <% } %>
         <% } %>
         <tr class="total">
             <td>Total Payment - due <%= canPayDeposit ? totalDueDate.format('DD-MM-YYYY') : 'now' %> </td>
             <td><%= money( price.attr('paymentDue') ) %></td>
         </tr>
+        <% if( price.attr('securityDeposit') > 0 && securityDepositDueNow ) { %>
+            <tr class="sd-small-print">
+                <td>Amount includes refundable security deposit</td>
+            </tr>
+        <% } %>
         <% if( canPayDeposit ) { %>
-        <tr>
-          <td>30&#37; Deposit - due now</td>
-          <td><%= money( price.attr('depositAmount') ) %></td>
-        </tr>
+            <tr class="or">
+                <td><h3>OR</h3></td>
+            </tr>
+            <tr>
+              <td>30&#37; Deposit - due now</td>
+              <td><%= money( price.attr('depositAmount') ) %></td>
+            </tr>
         <% } %>
     </tbody>
 </table>

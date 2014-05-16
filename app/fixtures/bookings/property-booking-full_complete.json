@@ -5,6 +5,7 @@
     "brandCode":"ZZ",
     "fromDate":1400284800,
     "toDate":1400889600,
+    "secDepDueOn": 1399075200,
     "customer":{
         "name":{
             "title":"mr",
