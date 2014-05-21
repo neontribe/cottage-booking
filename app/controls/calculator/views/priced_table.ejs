@@ -35,22 +35,21 @@
                 </tr>
             <% } %>
         <% } %>
+        <% if( canPayDeposit ) { %>
+            <tr class="deposit">
+              <td>A 30&#37; Deposit of <%= money( price.attr('depositAmount') ) %> will confirm your booking now.</td>
+            </tr>
+						<tr class="sd-small-print">
+						  <td>The balance is due on <%= totalDueDate.format('DD-MM-YYYY') %>.</td>
+						</tr>
+        <% } %>
         <tr class="total">
-            <td>Total Payment - due <%= canPayDeposit ? totalDueDate.format('DD-MM-YYYY') : 'now' %> </td>
+            <td>Total Payment</td>
             <td><%= money( price.attr('paymentDue') ) %></td>
         </tr>
         <% if( price.attr('securityDeposit') > 0 && securityDepositDueNow ) { %>
             <tr class="sd-small-print">
                 <td>Amount includes refundable security deposit</td>
-            </tr>
-        <% } %>
-        <% if( canPayDeposit ) { %>
-            <tr class="or">
-                <td><h3>OR</h3></td>
-            </tr>
-            <tr>
-              <td>30&#37; Deposit - due now</td>
-              <td><%= money( price.attr('depositAmount') ) %></td>
             </tr>
         <% } %>
     </tbody>
