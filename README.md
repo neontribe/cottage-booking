@@ -1,3 +1,4 @@
+# NOTE: Issue tracking has been moved to jira.neontribe.co.uk
 # Cottage Booking Path using canJS
 
 [![Build Status](https://travis-ci.org/neontribe/cottage-booking.png)](https://travis-ci.org/RpprRoger/cottage-booking)
