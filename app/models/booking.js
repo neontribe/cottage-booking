@@ -401,6 +401,7 @@ define([
             // and return the new one
             if( this.transit ) {
                 this.transit.abort();
+                this.transit = null;
                 return this.save.apply( this, arguments );
             }
 
