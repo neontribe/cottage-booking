@@ -30,7 +30,7 @@
                 <td><%= money( price.attr('securityDeposit') ) %></td>
             </tr>
             <% if( !securityDepositDueNow ) { %>
-                <tr class="sd-small-print">
+                <tr class="sd-small-print" colspan="2">
                     <td>We will collect the security deposit by <%= securityDepositDueOn.format('DD-MM-YYYY') %></td>
                 </tr>
             <% } %>
@@ -38,10 +38,10 @@
         <% if( canPayDeposit ) { %>
             <tr class="deposit">
                 <% var dp = t('depositPercentage'); %>
-                <td>A <% if( dp ) { %><%= dp %><% } %> deposit of <%= money( price.attr('depositAmount') ) %> will confirm your booking now.</td>
+                <td colspan="2">A <% if( dp ) { %><%= dp %><% } %> deposit of <%= money( price.attr('depositAmount') ) %> will confirm your booking now.</td>
             </tr>
             <tr class="sd-small-print">
-                <td>The balance is due on <%= totalDueDate.format('DD-MM-YYYY') %>.</td>
+                <td colspan="2">The balance is due on <%= totalDueDate.format('DD-MM-YYYY') %>.</td>
             </tr>
         <% } %>
         <tr class="total">
@@ -50,7 +50,7 @@
         </tr>
         <% if( price.attr('securityDeposit') > 0 && securityDepositDueNow ) { %>
             <tr class="sd-small-print">
-                <td>Amount includes refundable security deposit</td>
+                <td colspan="2">Amount includes refundable security deposit</td>
             </tr>
         <% } %>
     </tbody>
