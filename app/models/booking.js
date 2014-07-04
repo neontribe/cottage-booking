@@ -217,7 +217,7 @@ define([
                     return this.save().done(function() {
                         self.attr( badValues );
                         // always stop the batch
-                    }).always( can.proxy(can.batch.stop, this ) );
+                    }).always( can.proxy( can.batch.stop, this ) );
 
                 } else {
                     return this.save();
@@ -248,7 +248,7 @@ define([
             // "price",
             // "totalPrice",
             // "propRef"
-            return _.omit( serialized, 'webExtras', 'payment' );
+            return _.omit( serialized, 'webExtras', 'payment', 'transit' );
         },
 
         'canPayDeposit': can.compute(function() {
