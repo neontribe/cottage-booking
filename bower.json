@@ -1,6 +1,6 @@
 {
   "name": "cottage-booking",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "dependencies": {},
   "devDependencies": {
     "jquery": "~1.8.2",
@@ -9,7 +9,7 @@
     "chai": "~1.8.1",
     "chai-jquery": "~1.1.2",
     "underscore": "~1.5.2",
-    "require-can-renderers": "git://github.com/retro/require-can-renderers.git",
+    "require-can-renderers": "git://github.com/retro/require-can-renderers.git#278893f43ba4ed37e6c3354b2e619c49eb123260",
     "requirejs": "~2.1.6",
     "canjs": "~2.0.0",
     "jquery-ui": "~1.10.3",
@@ -20,5 +20,9 @@
     "jquery-idletimer": "~0.9.3",
     "chai-as-promised": "~4.1.0",
     "jquery.customSelect": "https://github.com/adamcoulombe/jquery.customSelect.git"
+  },
+  "resolutions": {
+    "canjs": "~2.0.0",
+    "jquery": "~1.8.2"
   }
 }

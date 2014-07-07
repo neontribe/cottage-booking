@@ -128,9 +128,9 @@ module.exports = function(grunt) {
                 cmd: function( lastRelease ) {
                     return  'git fetch --tags && ' +
                             'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
-                            'git log --pretty="tformat:+ **%an**: %s" --date=short --grep=# --grep=LOG --no-merges ' +
-                            lastRelease +
-                            '..HEAD >> app/prod/changelog.txt';
+                            'git log --pretty="tformat:+ **%an**: %s" --date=short --grep=# --grep=LOG --grep=CB- --no-merges ' +
+                            lastRelease + '..HEAD >> app/prod/changelog.txt && ' +
+                            'cat app/prod/changelog.txt';
                 }
             }
         },
