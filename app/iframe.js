@@ -57,8 +57,8 @@
             },
             // options
             generatedObj);
-
-        window.top.postMessage( JSON.stringify( messageObj ), window.location.origin);
+        // set it to * so that IE accepts the accept origin of this postMessage
+        window.top.postMessage( JSON.stringify( messageObj ), '*');
 
     };
     
