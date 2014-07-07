@@ -217,7 +217,7 @@ define([
                     return this.save().done(function() {
                         self.attr( badValues );
                         // always stop the batch
-                    }).always( can.proxy(can.batch.stop, this ) );
+                    }).always( can.proxy( can.batch.stop, this ) );
 
                 } else {
                     return this.save();
@@ -248,7 +248,7 @@ define([
             // "price",
             // "totalPrice",
             // "propRef"
-            return _.omit( serialized, 'webExtras', 'payment' );
+            return _.omit( serialized, 'webExtras', 'payment', 'transit' );
         },
 
         'canPayDeposit': can.compute(function() {
@@ -392,20 +392,25 @@ define([
          * @return {$.Deferred} The deferred object in transit
          */
         transit: null,
-        save: function( success, error ) {
+        save: function() {
             var self = this;
 
             can.trigger( this, 'saving' );
-            if( !this.transit ) {
-                this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
-                    self.transit = null;
-                    // Make sure that we update the party details to the number of travs
-                    self.matchTravCountToPartyDetails();
-                    can.trigger( self, 'saved' );
-                });
-            } else {
-                this.transit.done( success ).fail( error );
+
+            // if we are already in transit make sure to abort the request 
+            // and return the new one
+            if( this.transit ) {
+                this.transit.abort();
+                this.transit = null;
+                return this.save.apply( this, arguments );
             }
+
+            this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
+                self.transit = null;
+                // Make sure that we update the party details to the number of travs
+                self.matchTravCountToPartyDetails();
+                can.trigger( self, 'saved' );
+            });
 
             return this.transit;
         },

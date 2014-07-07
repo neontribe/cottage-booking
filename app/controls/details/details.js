@@ -134,7 +134,6 @@ define([
         },
 
         '{booking} submit': function() {
-
             this.options.booking.save();
         }
     });
