@@ -37,7 +37,8 @@ define([
                 },
                 'route': can.route,
                 'views': views,
-                'booking': this.options.booking
+                'booking': this.options.booking,
+                'translations': this.options.translations
             }));
         },
 
