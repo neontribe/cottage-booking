@@ -98,6 +98,10 @@ define(['can/util/string', 'accounting', 'underscore', 'utils', 'can/view/ejs', 
                     newStr.toLowerCase();
             }
             return '';
+        },
+
+        t: function( key, repl ) {
+            return can.sub( repl || ('{' + key + '}'), can.getObject( '_data.translations', this ));
         }
     });
 
