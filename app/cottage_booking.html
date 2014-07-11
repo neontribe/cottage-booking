@@ -70,6 +70,8 @@
 
             jQuery('#calculator').attr('data-translations', JSON.stringify({
                 depositPercentage: '30%',
+                calendar_help_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel tempus est, a viverra dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac viverra tellus.',
+                details_help_text: 'Fusce tellus lacus, gravida a leo sit amet, euismod tempus mi. Aliquam erat volutpat. Suspendisse mi nibh, sollicitudin ut placerat eget, fermentum a urna.'
             }));
             
             requirejs([
@@ -99,7 +101,8 @@
                                     ['13-17', '13-17']
                                 ],
                                 'sources': sourcesArr,
-                                customSelect: false
+                                customSelect: false,
+                                tncUrl: '/foo'
                             }
                         }
                     }

@@ -106,6 +106,7 @@ define([
             //'customer.mobilePhone',
             'customer.email',
             'customer.emailConf',
+            'customer.tnc',
             // this needs to be last
             'customer.source'
         ],

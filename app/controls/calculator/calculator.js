@@ -9,7 +9,8 @@ define([
     // extras
     'can/control',
     'can/control/plugin',
-    'controls/form/form'
+    'controls/form/form',
+    'can/route'
 ], function( can, views, enquiry, booking, moment, utils ) {
     'use strict';
 
