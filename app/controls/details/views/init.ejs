@@ -99,6 +99,12 @@
             <input name="customer.which" data-label="If other" />
         </fieldset>
 
+        <fieldset>
+            <legend>Terms and conditions</legend>
+            <input name="customer.tnc" type="checkbox" data-label="" />
+            Please tick the box to agree to our Terms and Conditions <a href='<%= tncUrl %>'>Terms and Conditions</a>.
+        </fieldset>
+
         <button type="submit" <%= next() %> >Proceed to payment</button>
     </form>
 

@@ -10,4 +10,12 @@
 
 <% } %>
 
+<div class="help">
+    <% if( route.attr('page') === undefined ) { %>
+        <%= t( 'calendar_help_text') || '' %>
+    <% } else { %>
+        <%= t( route.attr('page') + '_help_text') || '' %>
+    <% } %>
+</div>
+
 </div>

@@ -37,7 +37,8 @@ define([
             // This means we will share the same country List ( note the capitol L )
             countries: new Country.List(),
             sources: [],
-            customSelect: true
+            customSelect: true,
+            tncUrl: 'bar'
         }
     },{
         init: function() {
@@ -104,7 +105,8 @@ define([
                             return false;
                         }
                     }, this)
-                }
+                },
+                tncUrl: this.options.tncUrl
             }) );
         },
 
