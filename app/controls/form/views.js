@@ -9,6 +9,7 @@ define([
     'ejs!./views/datepicker',
     'ejs!./views/errors',
     'ejs!./views/errors_wrapper',
+    'ejs!./views/mixed_checkbox_select',
     'ejs!./views/model_multi_checkbox',
     'ejs!./views/number',
     'ejs!./views/radio',
@@ -25,12 +26,13 @@ define([
         'datepicker': args[1],
         'errors': args[2],
         'errorsWrapper': args[3],
-        'modelMultiCheckbox': args[4],
-        'number': args[5],
-        'radio': args[6],
-        'select': args[7],
-        'text': args[8],
-        'wrapper': args[9]
+        'mixedCheckboxSelect': args[4],
+        'modelMultiCheckbox': args[5],
+        'number': args[6],
+        'radio': args[7],
+        'select': args[8],
+        'text': args[9],
+        'wrapper': args[10]
     };
 });
 /* End of file */

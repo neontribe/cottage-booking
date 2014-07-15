@@ -48,6 +48,22 @@ define([
                 'modelMultiCheckbox': function( $el ) {
                     // if this val is set
                     return this.options.getterMap.checkbox( $el ) ? $el.data('formModel') : null;
+                },
+                'mixedCheckboxSelect': function( $el ) {
+                    var val = $el.val();
+                    var model = $el.data('formModel');
+                    
+                    if( $el.is('input') ) {
+                      val = this.options.getterMap.checkbox( $el ) ? 1 : 0;
+                    }
+
+                    if( val > 0 && model ) {
+                        return model.constructor( can.$.extend( {}, model.attr(), {
+                            quantity: val
+                        }));
+                    } else {
+                        return null;
+                    }
                 }
             },
             'setterMap': {
@@ -56,6 +72,14 @@ define([
                 },
                 'modelMultiCheckbox': function( attr, val, $element ) {
                     var location = attr + '.' + $element.attr('value');
+                    if( val ) {
+                        return this.options.model.attr( location, val );
+                    } else {
+                        return this.options.model.removeAttr( location );
+                    }
+                },
+                'mixedCheckboxSelect': function( attr, val, $element ) {
+                    var location = attr + '.' + $element.data('value');
                     if( val ) {
                         return this.options.model.attr( location, val );
                     } else {

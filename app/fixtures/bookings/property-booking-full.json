@@ -75,14 +75,16 @@
             "type":"optional",
             "quantity":1,
             "price":"20.00",
-            "total":0
+            "total":0,
+            "maxLimit": 1
         },{
             "code":"TOW",
             "description":"Towels",
             "type":"optional",
             "quantity":1,
             "price":"0.00",
-            "total":0
+            "total":0,
+            "maxLimit": 5
         }
     ],
     "propertyData": {

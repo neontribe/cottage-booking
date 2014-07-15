@@ -17,7 +17,7 @@ define([
     // Return our helpfully wrapped can, with extra fixture helpers
     return can.extend({
 
-        publicApiRoot: queryObj.local ? 'http://localhost/vanillafudge/' : 'http://public3.neontribe.co.uk/demosite/',
+        publicApiRoot: queryObj.local ? 'http://localhost/lymebayholidays/' : 'http://public3.neontribe.co.uk/demosite/',
         queryObj:      queryObj,
         useFixtures:   !queryObj.noFixture,
 
