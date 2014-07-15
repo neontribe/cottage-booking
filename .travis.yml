@@ -36,5 +36,6 @@ notifications:
     - karl@neontribe.co.uk
     - rob@neontribe.co.uk
     - matt@neontribe.co.uk
+    - toby@neontribe.co.uk
     on_success: always
     on_failure: always
