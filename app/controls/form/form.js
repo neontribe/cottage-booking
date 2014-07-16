@@ -212,6 +212,17 @@ define([
          * @return {undefined}
          */
         ':input change': function ( $el ) {
+            this.updateModel($el);
+        },
+
+        /**
+         * This is a little bit filthy
+         */
+        ':input keyup': _.debounce(function( $el ) {
+            this.updateModel($el);
+        }, 250),
+
+        updateModel: function ( $el ) {
             // Add errors when an input is changed
             var type = $el.attr('data-type'),
                 attr = $el.attr('name'),
@@ -230,6 +241,7 @@ define([
             }
 
         },
+
         // TODO: DOCUMENT THESE MOFO
         // expose these as a sort of api to the form machinery
         'getElementsFor': function( attr ) {
@@ -340,11 +352,10 @@ define([
         lastBatch: null,
 
         ' submit': function( $el, evt ) {
-
-            var hasErrors = this.addErrors();
-
             evt.stopPropagation();
             evt.preventDefault();
+
+            var hasErrors = this.addErrors();
 
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );

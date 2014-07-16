@@ -97,7 +97,14 @@ define([
 
             return res;
         },
-        baseUrl: can.compute('')
+        baseUrl: can.compute(''),
+        delay: function( fn, wait ) {
+            return function() {
+                var context = this;
+                var args = slice.call( arguments );
+                setTimeout(function() { fn.apply( context, args ); }, wait||0);
+            };
+        }
     };
 
 });
