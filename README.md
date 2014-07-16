@@ -60,7 +60,7 @@ $ tree .
 
 $ cd prod
 $ wget -O prod.zip https://github.com/neontribe/cottage-booking/releases/download/<version>/prod.zip
-$ unzip prod.zip
+$ unzip -o prod.zip
 $ git commit -am 'Include javascript version <version>'
 $ drush cc all
 ```
