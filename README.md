@@ -59,7 +59,7 @@ $ tree .
 └── TabsBookingUtils.class.php
 
 $ cd prod
-$ wget https://github.com/neontribe/cottage-booking/releases/download/<version>/prod.zip
+$ wget -O prod.zip https://github.com/neontribe/cottage-booking/releases/download/<version>/prod.zip
 $ unzip prod.zip
 $ git commit -am 'Include javascript version <version>'
 $ drush cc all
