@@ -7,7 +7,7 @@
 %>
     <% if( maxLimit === 1 ) { %>
         <label for="<%= checkboxId %>">
-            <span><%= text %></span>
+            <span class="field-checkbox"><%= text %></span>
             <input
                 id="<%= checkboxId %>"
                 name="<%= attrName %>"
@@ -24,7 +24,7 @@
         </label>
     <% } else if( maxLimit > 1 ) { %>
         <label for="<%= checkboxId %>">
-          <span><%= text %></span>
+          <span class="field-checkbox"><%= text %></span>
           <select
               id="<%= checkboxId %>"
               name="<%= attrName %>"
