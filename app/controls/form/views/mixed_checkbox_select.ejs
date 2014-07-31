@@ -23,20 +23,22 @@
             <span><%= text %></span>
         </label>
     <% } else if( maxLimit > 1 ) { %>
-        <label for="<%= checkboxId %>"><%= text %></label>
-        <select
-            id="<%= checkboxId %>"
-            name="<%= attrName %>"
-            data-type="<%= type %>"
-            data-label="<%= label %>"
-            class="<%= classes %>"
-            data-value="<%= value %>"
-            <%= (el) -> el.data( 'formModel', option ) %>
-            <%= (el) -> el.tooltip( tooltipOptions ) %>
-        >
-            <% list( new Array(maxLimit + 1), function (undef, i){ %>
-                <option <%= i ===  model.attr(attrName + '.' + value + '.quantity') ? 'selected=""' : '' %> value="<%= i %>"><%= i %></option>
-            <% }) %>
-        </select>
+        <label for="<%= checkboxId %>">
+          <select
+              id="<%= checkboxId %>"
+              name="<%= attrName %>"
+              data-type="<%= type %>"
+              data-label="<%= label %>"
+              class="<%= classes %>"
+              data-value="<%= value %>"
+              <%= (el) -> el.data( 'formModel', option ) %>
+              <%= (el) -> el.tooltip( tooltipOptions ) %>
+          >
+              <% list( new Array(maxLimit + 1), function (undef, i){ %>
+                  <option <%= i ===  model.attr(attrName + '.' + value + '.quantity') ? 'selected=""' : '' %> value="<%= i %>"><%= i %></option>
+              <% }) %>
+          </select>
+          <span><%= text %></span>
+        </label>
     <% } %>
 <% }) %>
