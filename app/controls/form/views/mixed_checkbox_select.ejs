@@ -7,6 +7,7 @@
 %>
     <% if( maxLimit === 1 ) { %>
         <label for="<%= checkboxId %>">
+            <span><%= text %></span>
             <input
                 id="<%= checkboxId %>"
                 name="<%= attrName %>"
@@ -20,10 +21,10 @@
                 <%== model.attr(attrName + '.' + value + '.quantity') ? 'checked="checked"' : '' %>
                 <%= (el) -> el.tooltip( tooltipOptions ) %>
             />
-            <span><%= text %></span>
         </label>
     <% } else if( maxLimit > 1 ) { %>
         <label for="<%= checkboxId %>">
+          <span><%= text %></span>
           <select
               id="<%= checkboxId %>"
               name="<%= attrName %>"
@@ -38,7 +39,6 @@
                   <option <%= i ===  model.attr(attrName + '.' + value + '.quantity') ? 'selected=""' : '' %> value="<%= i %>"><%= i %></option>
               <% }) %>
           </select>
-          <span><%= text %></span>
         </label>
     <% } %>
 <% }) %>
