@@ -169,6 +169,12 @@ define([
                     }
                 }
             });
+            
+            this.validate('customer.tnc', function( ticked ) {
+                if( !ticked ) {
+                    return 'You must accept the Terms and Conditions to proceed.';
+                }
+            });
         }
 
     }, {
