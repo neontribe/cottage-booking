@@ -1,6 +1,6 @@
 {
   "name": "cottage-booking",
-  "version": "0.8.11",
+  "version": "0.8.12",
   "dependencies": {},
   "devDependencies": {
     "jquery": "~1.8.2",
