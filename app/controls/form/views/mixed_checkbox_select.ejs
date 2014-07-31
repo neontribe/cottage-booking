@@ -6,8 +6,8 @@
             maxLimit = option.attr('maxLimit');
 %>
     <% if( maxLimit === 1 ) { %>
-        <label for="<%= checkboxId %>">
-            <span class="field-checkbox"><%= text %></span>
+        <label for="<%= checkboxId %>" class="field-checkbox">
+            <span><%= text %></span>
             <input
                 id="<%= checkboxId %>"
                 name="<%= attrName %>"
@@ -23,8 +23,8 @@
             />
         </label>
     <% } else if( maxLimit > 1 ) { %>
-        <label for="<%= checkboxId %>">
-          <span class="field-checkbox"><%= text %></span>
+        <label for="<%= checkboxId %>" class="field-select">
+          <span><%= text %></span>
           <select
               id="<%= checkboxId %>"
               name="<%= attrName %>"
