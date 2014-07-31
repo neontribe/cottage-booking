@@ -20,7 +20,7 @@
                 <%== model.attr(attrName + '.' + value + '.quantity') ? 'checked="checked"' : '' %>
                 <%= (el) -> el.tooltip( tooltipOptions ) %>
             />
-            <%= text %>
+            <span><%= text %></span>
         </label>
     <% } else if( maxLimit > 1 ) { %>
         <label for="<%= checkboxId %>"><%= text %></label>
