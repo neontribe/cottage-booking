@@ -61,5 +61,4 @@
         window.top.postMessage( JSON.stringify( messageObj ), '*');
 
     };
-    
 })( jQuery, window );

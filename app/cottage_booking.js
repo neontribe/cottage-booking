@@ -15,13 +15,14 @@ define([
     'resources/book',
     'resources/stages',
     'utils',
+    'dd',
     // All the rest
     'controls/calculator/calculator',
     'can/control',
     'can/control/plugin',
     'can/control/route',
     'jqueryui/tabs'
-], function( can, views, enquiry, book, stages, utils ) {
+], function( can, views, enquiry, book, stages, utils, debug ) {
     'use strict';
 
     // TODO:Move this to a better place
@@ -72,6 +73,12 @@ define([
                 }
             }) );
 
+            if( this.options.debug ) {
+                debug( debug, {
+                    debugging: true
+                });
+            }
+
             // Because the route could be unready at this point, we need to extract
             // data from the url ourselves... TODO: investigate alternative
             current = can.route.deparam( hash );
@@ -110,6 +117,10 @@ define([
             if( newVal ) {
                 can.route.attr('page', 'confirmation');
             }
+        },
+
+        '{book} saving': function() {
+            debug('saving booking');
         },
 
         // Whenever the booking object changes, check for errors and
