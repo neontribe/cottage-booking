@@ -95,6 +95,7 @@ define([
             // delay changes to the model's attribute by this amount of milliseconds
             debounceDelay: 0,
             display: {},
+            disabled: {},
             customSelect: true
         }
     },{
@@ -105,6 +106,7 @@ define([
             this.options.optionsMap = new can.Map( this.options.optionsMap );
             // We expect these to be computes, so that change events will get properly updated
             this.options.display    = new can.Map( this.options.display );
+            this.options.disabled   = new can.Map( this.options.disabled );
 
             if( this.options.allowAutofill && this.element.is('form') ) {
                 this.element.attr('method', 'POST');
@@ -159,7 +161,8 @@ define([
                 'valueAttr'     : 0,
                 'textAttr'      : 1,
                 'id'            : this.idify( attr ),
-                'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false
+                'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false,
+                'disabledView'  : views.disabledAttr
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for

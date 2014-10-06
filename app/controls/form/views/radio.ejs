@@ -21,6 +21,9 @@
                 <%= (el) -> el.data( 'formModel', option ) %>
                 <%= model.attr( attrName ) === value ? 'checked="checked"' : '' %>
                 <%= (el) -> el.tooltip( tooltipOptions ) %>
+                <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
+                    %>disabled="disabled"<%
+                } %>
             />
             <%= text %>
         </label>

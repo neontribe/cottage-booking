@@ -3,10 +3,11 @@ define([
     './views',
     'resources/book',
     'models/country',
+    'underscore',
     'can/control',
     'controls/form/form',
     'can/compute'
-], function( can, views, booking, Country ) {
+], function( can, views, booking, Country, _ ) {
     'use strict';
 
     return can.Control({
@@ -38,7 +39,8 @@ define([
             countries: new Country.List(),
             sources: [],
             customSelect: true,
-            tncUrl: 'bar'
+            tncUrl: 'bar',
+            primaryTravellerCheckboxLocation: 'customerName;partyDetails'
         }
     },{
         init: function() {
@@ -88,6 +90,7 @@ define([
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
                 customSelect: this.options.customSelect,
+                displayTravellerCheckboxLocation: can.proxy( this.displayTravellerCheckboxLocation, this ),
                 display: {
                     'pets': can.compute(function() {
                         if( this.options.booking.attr('propertyData') ) {
@@ -106,8 +109,20 @@ define([
                         }
                     }, this)
                 },
+                disablePrimaryTrav: {
+                    '**': can.compute(function() {
+                        return !this.options.booking.attr('customerIsPrimaryTraveller');
+                    }, this),
+                    age: can.compute(function() {
+                        return true;
+                    }, this),
+                },
                 tncUrl: this.options.tncUrl
             }) );
+        },
+
+        displayTravellerCheckboxLocation: function( forLocation ) {
+            return this.options.primaryTravellerCheckboxLocation.indexOf( forLocation ) > -1;
         },
 
         destroy: function() {
@@ -137,6 +152,23 @@ define([
 
         '{booking} submit': function() {
             this.options.booking.save();
+        },
+
+        '{booking} customerIsPrimaryTraveller': function( booking, evt, newVal ) {
+            if( newVal ) {
+                var prim = booking.attr('primaryTraveller');
+                if( prim ) {
+                    _.each(['firstName', 'surname', 'title'], function( attr ) {
+                        prim.attr( attr, booking.attr('customer.name.' + attr ));
+                    });
+                }
+            }
+        },
+
+        '{booking.customer.name} change': function( name, evt, attr, type, newVal ) {
+            if( this.options.booking.attr('customerIsPrimaryTraveller') ) {
+                this.options.booking.attr('primaryTraveller').attr( attr, newVal );
+            }
         }
     });
 

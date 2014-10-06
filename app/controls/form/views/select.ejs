@@ -7,6 +7,9 @@
         class="<%= classes %>"
         <%== required ? 'aria-required="true"': '' %>
         <%= (el) -> el.tooltip( tooltipOptions ) %>
+        <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
+            %>disabled="disabled"<%
+        } %>
     >
         <%
             var phValue, phText;

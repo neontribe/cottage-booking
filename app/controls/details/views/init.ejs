@@ -12,6 +12,9 @@
 
     <fieldset>
         <legend>Lead Name</legend>
+        <% if( displayTravellerCheckboxLocation('customerName') ) { %>
+            <input name="customerIsPrimaryTraveller" type="checkbox" data-label="I am the primary traveller" />
+        <% } %>
         <input name="customer.name.title" type="select" data-label="Title" data-placeholder="Title" />
         <input name="customer.name.firstName" data-label="First Name" />
         <input name="customer.name.surname" data-label="Surname" />
@@ -37,43 +40,57 @@
 </form>
 
 <div>
-    <form>
+    <form <%= bindForm({
+        model: model,
+        debounceDelay: 100
+    }) %>>
         <fieldset>
             <legend>Party information</legend>
-            <div <%= (el) -> el.bindForm({ model: model, debounceDelay: 100 }) %> >
-                <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults" data-min="0" />
-                <input name="children" type="number" data-placeholder="Children" data-label="Number of children" data-min="0" />
-                <input name="infants" type="number" data-placeholder="Infants" data-label="Number of infants" data-min="0" />
-            </div>
-                <fieldset class="party-list">
-                    <legend>Party member details</legend>
-
-                    <% list( model.attr('partyDetailsTypes'), function( types, title ) { %>
-                        <legend><%= pretifyString( title, true ) %></legend>
-
-                        <% 
-                            list( types, function( traveller ) {
-                                var agesForThisType = ages[ traveller.attr('type') + 'Ages' ];
-                        %>
-                            <div
-                                <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
-                                    'model': traveller,
-                                    'optionsMap': {
-                                        'title': titles,
-                                        'age': agesForThisType
-                                    },
-                                    'defaultLabel': true,
-                                    'customSelect': customSelect
-                                }) %>
-                                class="<%= traveller.type %> traveller"
-                            ></div>
-                        <% }); %>
-
-                    <% }); %>
-
-                </fieldset>
+            <input name="adults" type="number" data-placeholder="Adults" data-label="Number of adults" data-min="1" />
+            <input name="children" type="number" data-placeholder="Children" data-label="Number of children" data-min="0" />
+            <input name="infants" type="number" data-placeholder="Infants" data-label="Number of infants" data-min="0" />
         </fieldset>
     </form>
+
+    <fieldset class="party-list">
+        <legend>Party member details</legend>
+
+        <% if( displayTravellerCheckboxLocation('partyDetails') ) { %>
+            <form <%= bindForm({
+                model: model
+            }) %>>
+                <input name="customerIsPrimaryTraveller" type="checkbox" data-label="I am the primary traveller" />
+            </form>
+        <% } %>
+
+        <% list( model.attr('partyDetailsTypes'), function( types, title ) { %>
+            <legend><%= pretifyString( title, true ) %></legend>
+            <% 
+                list( types, function( traveller, i ) {
+                    var agesForThisType = ages[ traveller.attr('type') + 'Ages' ];
+                    var disabled = {};
+                    var pt = traveller === model.attr('primaryTraveller');
+                    if( pt ) {
+                        disabled = disablePrimaryTrav;
+                    }
+            %>
+                <div
+                    <%= appendTemplate( views[ traveller.attr('type') ] || views.adult , {
+                        'model': traveller,
+                        'optionsMap': {
+                            'title': titles,
+                            'age': agesForThisType
+                        },
+                        'defaultLabel': true,
+                        'customSelect': customSelect,
+                        disabled: disabled
+                    }) %>
+                    class="<%= traveller.type %> traveller <%== pt ? 'primary' : '' %> <%== model.attr( 'customerIsPrimaryTraveller' ) ? 'is-customer' : '' %>"
+                ></div>
+            <% }); %>
+        <% }); %>
+
+    </fieldset>
 
     <form <%= bindForm({
         model: model,

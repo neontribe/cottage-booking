@@ -360,6 +360,11 @@ define([
             return [];
         }),
 
+        'primaryTraveller': can.compute(function() {
+            var party = this.attr('partyDetailsTypes');
+            return party.adults ? party.adults[0] : null;
+        }),
+
         'canBookExtras': can.compute(function() {
             var extras = this.attr('webExtras') && this.attr('webExtras').attr('length'),
                 pets = this.attr('propertyData') && this.attr('propertyData').attr('pets');
