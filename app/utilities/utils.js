@@ -97,7 +97,7 @@ define([
 
             return res;
         },
-        baseUrl: can.compute(''),
+        baseUrl: can.compute('/'),
         delay: function( fn, wait ) {
             return function() {
                 var context = this;

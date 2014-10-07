@@ -17,9 +17,10 @@ define([
     // Return our helpfully wrapped can, with extra fixture helpers
     return can.extend({
 
-        publicApiRoot: queryObj.local ? queryObj.local : 'http://public3.neontribe.co.uk/demosite/',
+        publicApiRoot: queryObj.apiRoot ? queryObj.apiRoot : 'http://public3.neontribe.co.uk/demosite/',
         queryObj:      queryObj,
         useFixtures:   !queryObj.noFixture,
+        useLocal:      !!queryObj.local,
 
         wrapFixture:   function( fixturePath, jsonPath, pipe, fixtureOverride ) {
             var pathParts = fixturePath.split(' '),
@@ -31,6 +32,8 @@ define([
 
                 if( this.useFixtures ) {
                     url = require.toUrl( jsonPath + ( fixtureOverride || fullOptions.url.replace(/\//g, '-') + '.json' ) );
+                } else if( this.useLocal ) {
+                    url = fullOptions.url;
                 } else {
                     url = this.publicApiRoot + fullOptions.url;
                 }
