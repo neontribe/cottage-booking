@@ -31,7 +31,7 @@ define([
                     url, ajaxObj;
 
                 if( this.useFixtures ) {
-                    url = require.toUrl( jsonPath + ( fixtureOverride || fullOptions.url.replace(/\//g, '-') + '.json' ) );
+                    url = require.toUrl( jsonPath + ( fixtureOverride || fullOptions.url.replace(/^\//, '').replace(/\//g, '-') + '.json' ) );
                 } else if( this.useLocal ) {
                     url = fullOptions.url;
                 } else {
