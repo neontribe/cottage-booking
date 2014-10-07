@@ -41,7 +41,8 @@ define([
             enquiry: enquiry,
             book: book,
             stages: stages,
-            route: can.route
+            route: can.route,
+            baseUrl: utils.baseUrl
         }
 
     }, {
@@ -74,9 +75,7 @@ define([
             }) );
 
             if( this.options.debug ) {
-                debug( debug, {
-                    debugging: true
-                });
+                debug( debug, true );
             }
 
             // Because the route could be unready at this point, we need to extract
