@@ -372,10 +372,6 @@ module.exports = function(grunt) {
         }).join('\n');
     }
 
-    grunt.registerTask('md', function() {
-        console.log( markdownChangelog( fs.readFileSync('app/prod/changelog.txt').toString() ) );
-    });
-
     grunt.registerTask('createRelease', function() {
 
         var grel,
@@ -394,7 +390,7 @@ module.exports = function(grunt) {
         console.log( 'releasing ' + version );
         console.log( message );
 
-        grel.create( version, message, ['app/prod.zip'], function(error, release) {
+        grel.create( version, markdownChangelog( message ), ['app/prod.zip'], function(error, release) {
             if (error) {
                 console.log('Something went wrong', error);
             } else {
