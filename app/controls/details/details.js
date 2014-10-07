@@ -146,7 +146,7 @@ define([
 
         '{booking} formErrors': function() {
             can.$('html, body').animate({
-                scrollTop: this.element.offset().top
+                scrollTop: this.element.find('.error:first').offset().top
             }, 350);
         },
 
