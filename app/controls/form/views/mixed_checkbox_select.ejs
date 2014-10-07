@@ -1,44 +1,50 @@
 <%
-    list( optionsMap.attr( attrName ), function( option ) {
-        var value = option.attr( valueAttr ) || option.attr( textAttr ),
-            text = option.attr( textAttr ) || option.attr( valueAttr ),
-            checkboxId = uniqueId( id + '_' ),
-            maxLimit = option.attr('maxLimit');
+        list( optionsMap.attr( attrName ), function( option ) {
+                var value = option.attr( valueAttr ) || option.attr( textAttr ),
+                        text = option.attr( textAttr ) || option.attr( valueAttr ),
+                        checkboxId = uniqueId( id + '_' ),
+                        maxLimit = option.attr('maxLimit');
 %>
-    <% if( maxLimit === 1 ) { %>
-        <label for="<%= checkboxId %>" class="field-checkbox">
-            <span><%= text %></span>
-            <input
-                id="<%= checkboxId %>"
-                name="<%= attrName %>"
-                type="checkbox"
-                data-type="<%= type %>"
-                data-label="<%= label %>"
-                class="<%= classes %>"
-                value="<%= value %>"
-                data-value="<%= value %>"
-                <%= (el) -> el.data( 'formModel', option ) %>
-                <%== model.attr(attrName + '.' + value + '.quantity') ? 'checked="checked"' : '' %>
-                <%= (el) -> el.tooltip( tooltipOptions ) %>
-            />
-        </label>
-    <% } else if( maxLimit > 1 ) { %>
-        <label for="<%= checkboxId %>" class="field-select">
-          <span><%= text %></span>
-          <select
-              id="<%= checkboxId %>"
-              name="<%= attrName %>"
-              data-type="<%= type %>"
-              data-label="<%= label %>"
-              class="<%= classes %>"
-              data-value="<%= value %>"
-              <%= (el) -> el.data( 'formModel', option ) %>
-              <%= (el) -> el.tooltip( tooltipOptions ) %>
-          >
-              <% list( new Array(maxLimit + 1), function (undef, i){ %>
-                  <option <%= i ===  model.attr(attrName + '.' + value + '.quantity') ? 'selected=""' : '' %> value="<%= i %>"><%= i %></option>
-              <% }) %>
-          </select>
-        </label>
-    <% } %>
+        <% if( maxLimit === 1 ) { %>
+                <label for="<%= checkboxId %>" class="field-checkbox">
+                        <span><%= text %></span>
+                        <input
+                                id="<%= checkboxId %>"
+                                name="<%= attrName %>"
+                                type="checkbox"
+                                data-type="<%= type %>"
+                                data-label="<%= label %>"
+                                class="<%= classes %>"
+                                value="<%= value %>"
+                                data-value="<%= value %>"
+                                <%= (el) -> el.data( 'formModel', option ) %>
+                                <%== model.attr(attrName + '.' + value + '.quantity') ? 'checked="checked"' : '' %>
+                                <%= (el) -> el.tooltip( tooltipOptions ) %>
+                                <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
+                                    %>disabled="disabled"<%
+                                } %>
+                        />
+                </label>
+        <% } else if( maxLimit > 1 ) { %>
+                <label for="<%= checkboxId %>" class="field-select">
+                    <span><%= text %></span>
+                    <select
+                            id="<%= checkboxId %>"
+                            name="<%= attrName %>"
+                            data-type="<%= type %>"
+                            data-label="<%= label %>"
+                            class="<%= classes %>"
+                            data-value="<%= value %>"
+                            <%= (el) -> el.data( 'formModel', option ) %>
+                            <%= (el) -> el.tooltip( tooltipOptions ) %>
+                            <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
+                                %>disabled="disabled"<%
+                            } %>
+                    >
+                            <% list( new Array(maxLimit + 1), function (undef, i){ %>
+                                    <option <%= i ===  model.attr(attrName + '.' + value + '.quantity') ? 'selected=""' : '' %> value="<%= i %>"><%= i %></option>
+                            <% }) %>
+                    </select>
+                </label>
+        <% } %>
 <% }) %>

@@ -9,4 +9,7 @@
     value="<%= model.attr( attrName ) ? model.attr( attrName ) : '' %>"
     placeholder="<%= this.placeholder && typeof this.placeholder === 'string' ? this.placeholder : '' %>"
     <%= (el) -> el.tooltip( tooltipOptions ) %>
+    <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
+        %>disabled="disabled"<%
+    } %>
 />
