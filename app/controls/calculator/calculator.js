@@ -97,12 +97,28 @@ define([
             this.options.enquiry.make();
         },
 
-        '{booking} saving': function() {
+        loading: function() {
             this.element.addClass('loading').spin();
         },
 
-        '{booking} saved': function() {
+        stopLoading: function() {
             this.element.removeClass('loading').spin( false );
+        },
+
+        '{enquiry} updating': function() {
+            this.loading();
+        },
+
+        '{enquiry} updated': function() {
+            this.stopLoading();
+        },
+
+        '{booking} saving': function() {
+            this.loading();
+        },
+
+        '{booking} saved': function() {
+            this.stopLoading();
         }
     });
 
