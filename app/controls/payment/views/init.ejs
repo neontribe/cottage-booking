@@ -1,16 +1,13 @@
 <% if( options.canDeposit ) { %>
     <% if( options.booking.attr('canPayDeposit') ) { %>
-        <form <%= bindForm({
-              model: payment,
-              optionsMap: {
-                  'paymentType': choices
-              }
-          }) %>>
-
-              <input name="paymentType" type="radio" />
-
-          </form>
-     <% } else { %>
+            <form <%= bindForm({
+                model: payment,
+                optionsMap: {
+                    'paymentType': choices
+                }
+            }) %>>
+                <input name="paymentType" type="radio" />
+            </form>
      <% } %>
 <% } %>
 <div class="iframe-holder">
@@ -19,10 +16,12 @@
         <br>
         Pay later and stuff
     <% } else if( !payment.attr('payLater') && payment.attr('NextURL') ) { %>
-        <%#                                                  The event isn't fired under usual circumstances %>
         <iframe src="<%= payment.attr('NextURL') %>"></iframe>
     <% } %>
 </div>
+<div class="payment-blurb">
+    <p><strong>No surcharge for debit cards</strong></p>
+</div>
 <% if( canPayLater ) { %>
-    <a class="pay-later">Pay by phone later</a>
+        <a class="pay-later">Pay by phone later</a>
 <% } %>
