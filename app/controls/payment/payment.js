@@ -30,7 +30,7 @@ define([
                 'payLater': false,
                 // balance: pay the full amount
                 // deposit: just pay the deposit
-                'paymentType': 'balance'
+                'paymentType': this.options.booking.attr('price.paymentType')
             });
             this.options.depositChoices = new can.List( this.options.depositChoices );
 
