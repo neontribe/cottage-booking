@@ -192,6 +192,11 @@ define([
             }
         },
 
+        save: function() {
+            can.trigger( this, 'updating' );
+            return can.Model.prototype.save.apply( this, arguments );
+        },
+
         // TODO: move this sort of functionality into getClassesFor or something
         'fallsBetween': function( date ) {
 
