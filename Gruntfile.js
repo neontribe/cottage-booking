@@ -128,7 +128,7 @@ module.exports = function(grunt) {
                 cmd: function( lastRelease ) {
                     return  'git fetch --tags && ' +
                             'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
-                            'git log --pretty="tformat:+ **%an**: %s" --date=short --grep=# --grep=LOG --grep=CB- --no-merges ' +
+                            'git log --pretty="tformat:+ **%an**: %s" --date=short -E --grep=# --grep=LOG --grep="\\(([A-Z]{2,}-[0-9]{2,})\\)" --no-merges ' +
                             lastRelease + '..HEAD >> app/prod/changelog.txt && ' +
                             'cat app/prod/changelog.txt';
                 }
@@ -327,9 +327,13 @@ module.exports = function(grunt) {
             'exec:myth',
             'cssmin',
             'copy',
-            'exec:writeChangelog:' + grunt.config('pkg').version,
+            'changelog',
             'compress'
         );
+    });
+
+    grunt.registerTask('changelog', function( v ) {
+        grunt.task.run('exec:writeChangelog:' + ( v || grunt.config('pkg').version) );
     });
 
     grunt.registerTask('test', ['exec:test']);
@@ -360,6 +364,16 @@ module.exports = function(grunt) {
         var version = grunt.file.readJSON('package.json').version;
 
         grunt.task.run('exec:commitRelease:'+ version);
+    });
+
+    function markdownChangelog( changelog ) {
+        return changelog.split('\n').map(function( line ) {
+            return line.replace(/\(([A-Z]{2,}-[0-9]{2,})\)/g, '[($1)](https://jira.neontribe.org/browse/$1)');
+        }).join('\n');
+    }
+
+    grunt.registerTask('md', function() {
+        console.log( markdownChangelog( fs.readFileSync('app/prod/changelog.txt').toString() ) );
     });
 
     grunt.registerTask('createRelease', function() {
