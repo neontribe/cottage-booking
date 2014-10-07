@@ -8,10 +8,15 @@ define([
 ], function( can, avail, booking, enquiry ) {
 
     var debugging = can.deparam().__debug || false;
+    var requestType = {
+        url: '/zz/property/booking_debug/{type}',
+        dataType: 'json',
+        type: 'POST'
+    };
 
     var Debug = can.Model({
-        create: 'post /zz/property/booking_debug/{type}',
-        update: 'post /zz/property/booking_debug/{type}',
+        create: requestType,
+        update: requestType,
         defaults: {
             booking: booking,
             availability: avail,
@@ -31,8 +36,11 @@ define([
     return function debug( message, data ) {
         // treat this call as a setup call
         if( message === debug ) {
-            debugging = typeof data === 'object' ? data.debugging : !!data;
+            debugging = !!data;
 
+            if( data && typeof data === 'object' ) {
+                can.$.extend( requestType, data );
+            }
             return;
         }
         return can.$.when( debugging && send( message, data ) );
