@@ -21,7 +21,8 @@ define([
             depositChoices: [
                 ['balance', 'Pay the full amount'],
                 ['deposit', 'Pay the deposit']
-            ]
+            ],
+            translations: {}
         }
     }, {
         init: function() {
@@ -38,8 +39,10 @@ define([
                 payment:        this.options.payment,
                 options:        this.options,
                 choices:        this.options.depositChoices,
-                canPayLater:    this.options.canPayLater
+                canPayLater:    this.options.canPayLater,
+                translations:   this.options.translations
             }) );
+            debugger;
 
             this.updatePayment();
 
