@@ -64,3 +64,17 @@ $ unzip -o prod.zip
 $ git commit -am 'Include javascript version <version>'
 $ drush cc all
 ```
+# Tip n tricks
+
+## Connect the dev project to an existing drupal
+
+/cottage-booking/app/cottage_booking.html?noFixture=1&apiRoot=http://localhost/zz/
+
+## Symlink the project into a drupal
+
+tobias@tobias tabs_booking $ pwd
+/var/www/html/zz/sites/all/modules/custom/nt_tabs/tabs_booking
+tobias@tobias tabs_booking $ ll prod
+lrwxrwxrwx 1 tobias tobias 57 Oct 23 10:21 prod -> /home/tobias/workspace/Cottaging/cottage-booking/app/prod/
+tobias@tobias tabs_booking $ 
+
