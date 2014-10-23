@@ -42,7 +42,6 @@ define([
                 canPayLater:    this.options.canPayLater,
                 translations:   this.options.translations
             }) );
-            debugger;
 
             this.updatePayment();
 
