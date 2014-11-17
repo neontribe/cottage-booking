@@ -72,9 +72,9 @@ $ drush cc all
 
 ## Symlink the project into a drupal
 
-tobias@tobias tabs_booking $ pwd
-/var/www/html/zz/sites/all/modules/custom/nt_tabs/tabs_booking
-tobias@tobias tabs_booking $ ll prod
-lrwxrwxrwx 1 tobias tobias 57 Oct 23 10:21 prod -> /home/tobias/workspace/Cottaging/cottage-booking/app/prod/
-tobias@tobias tabs_booking $ 
+    tobias@tobias tabs_booking $ pwd
+    /var/www/html/zz/sites/all/modules/custom/nt_tabs/tabs_booking
+    tobias@tobias tabs_booking $ ll prod
+    lrwxrwxrwx 1 tobias tobias 57 Oct 23 10:21 prod -> /home/tobias/workspace/Cottaging/cottage-booking/app/prod/
+    tobias@tobias tabs_booking $ 
 
