@@ -16,7 +16,7 @@ define([
         defaults: {
             booking: booking,
             payment: null,
-            canPayLater: false,
+            canPayLater: true,
             canDeposit: true,
             depositChoices: [
                 ['balance', 'Pay the full amount'],

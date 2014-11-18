@@ -32,7 +32,8 @@ define([
                     country: 'GB'
                 },
                 name: {}
-            }
+            },
+            notes: {}
         },
 
         id: 'bookingId',

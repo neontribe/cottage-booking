@@ -27,6 +27,16 @@ define([
             //         return 'Title is required';
             //     }
             // });
+            
+//            this.validate('age', function( age ) {
+//              debugger;
+              // if custom validation on ages is supported
+              // if this is a child
+              // if the age is > min age
+//                if( status && status !== 'ok' ) {
+//                    return this.attr('message') || 'An unknown error occurred';
+//                }
+//            });
         }
     }, {});
 

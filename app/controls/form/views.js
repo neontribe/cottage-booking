@@ -15,7 +15,8 @@ define([
     'ejs!./views/radio',
     'ejs!./views/select',
     'ejs!./views/text',
-    'ejs!./views/wrapper'
+    'ejs!./views/wrapper',
+    'ejs!./views/textarea'
 ], function() {
     'use strict';
 
@@ -32,7 +33,8 @@ define([
         'radio': args[7],
         'select': args[8],
         'text': args[9],
-        'wrapper': args[10]
+        'wrapper': args[10],
+        'textarea': args[11]
     };
 });
 /* End of file */

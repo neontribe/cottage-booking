@@ -96,7 +96,8 @@
         model: model,
         optionsMap: {
             'price.extras': model.attr('webExtras'),
-            'customer.source': sources
+            'customer.source': sources,
+            'notes': notes
         },
         display: display,
         customSelect: customSelect,
@@ -120,6 +121,11 @@
             <legend>Terms and conditions</legend>
             <input name="customer.tnc" type="checkbox" data-label="" />
             Please tick the box to agree to our <a href="<%= tncUrl %>" target="_blank">Terms and Conditions</a>.
+        </fieldset>
+
+        <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
+            <legend><%= notes.title %></legend>
+            <input name="notes.value" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
         </fieldset>
 
         <button type="submit" <%= next() %> >Proceed to payment</button>

@@ -1,0 +1,16 @@
+<textarea
+    id="<%= id %>"
+    name="<%= attrName %>"
+    type="<%= type %>"
+    data-type="<%= type %>"
+    data-label="<%= label %>"
+    class="<%= classes %>"
+    <% if( placeholder && typeof placeholder === 'string') { %>
+      placeholder="<%= placeholder %>"
+    <% } %>
+    <%== required ? 'aria-required="true"' : '' %>
+    <%= (el) -> el.tooltip( tooltipOptions ) %>
+    <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
+        %>disabled="disabled"<%
+    } %>
+><%= model.attr( attrName ) ? model.attr( attrName ) : '' %></textarea>

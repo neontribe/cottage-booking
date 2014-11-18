@@ -198,6 +198,7 @@
 .payment .iframe-holder {
     position: relative;
     width: 100%;
+    overflow: scroll;
     height: 560px;
 }
 

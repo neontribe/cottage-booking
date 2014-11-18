@@ -38,6 +38,11 @@ define([
             // This means we will share the same country List ( note the capitol L )
             countries: new Country.List(),
             sources: [],
+            notes: {
+              show: true,
+              title: 'Notes lipsum title',
+              placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            },
             customSelect: true,
             tncUrl: 'bar',
             primaryTravellerCheckboxLocation: 'customerName;partyDetails'
@@ -86,6 +91,7 @@ define([
                     infantAges: this.options.infantAges
                 },
                 sources: this.options.sources,
+                notes: this.options.notes,
                 titles: this.options.titles,
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
