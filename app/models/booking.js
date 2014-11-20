@@ -33,7 +33,8 @@ define([
                 },
                 name: {}
             },
-            notes: {}
+            notes: {},
+            payLater: {}
         },
 
         id: 'bookingId',

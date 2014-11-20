@@ -97,6 +97,7 @@
         optionsMap: {
             'price.extras': model.attr('webExtras'),
             'customer.source': sources,
+            'note': model.attr('notes'),
             'notes': notes
         },
         display: display,
@@ -125,10 +126,11 @@
 
         <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
             <legend><%= notes.title %></legend>
-            <input name="notes.value" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
+            <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
         </fieldset>
 
         <button type="submit" <%= next() %> >Proceed to payment</button>
+        <button type="submit" <%= next() %> <%== payLater.show ? '' : 'style="display:none;"' %>>Pay Later</button>
     </form>
 
 </div>

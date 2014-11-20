@@ -42,6 +42,11 @@ define([
               show: true,
               title: 'Notes lipsum title',
               placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              values: []
+            },
+            payLater: {
+              show: false,
+              buttonText: 'Pay Later'
             },
             customSelect: true,
             tncUrl: 'bar',
@@ -91,10 +96,11 @@ define([
                     infantAges: this.options.infantAges
                 },
                 sources: this.options.sources,
-                notes: this.options.notes,
                 titles: this.options.titles,
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
+                notes: this.options.notes,
+                payLater: this.options.payLater,
                 customSelect: this.options.customSelect,
                 displayTravellerCheckboxLocation: can.proxy( this.displayTravellerCheckboxLocation, this ),
                 display: {
