@@ -34,7 +34,7 @@ define([
                 name: {}
             },
             notes: {},
-            payLater: {}
+            payLater: 'false'
         },
 
         id: 'bookingId',

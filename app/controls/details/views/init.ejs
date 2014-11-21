@@ -98,7 +98,12 @@
             'price.extras': model.attr('webExtras'),
             'customer.source': sources,
             'note': model.attr('notes'),
-            'notes': notes
+            'notes': notes,
+            'payLater': {
+              'paynow': [ 'false', deferPayment.labels.paynow ],
+              'paylater': [ 'true', deferPayment.labels.paylater ]
+            },
+            'showPayLater': deferPayment.show
         },
         display: display,
         customSelect: customSelect,
@@ -129,8 +134,11 @@
             <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
         </fieldset>
 
-        <button type="submit" <%= next() %> >Proceed to payment</button>
-        <button type="submit" <%= next() %> <%== payLater.show ? '' : 'style="display:none;"' %>>Pay Later</button>
+        <fieldset <%== deferPayment.show ? '' : 'style="display:none;"' %>>
+          <input name="payLater" type="radio" />
+        </fieldset>
+        
+        <button type="submit" <%= next() %>>Proceed</button>
     </form>
 
 </div>

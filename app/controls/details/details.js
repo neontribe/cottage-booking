@@ -44,9 +44,13 @@ define([
               placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               values: []
             },
-            payLater: {
-              show: false,
-              buttonText: 'Pay Later'
+            deferPayment: { 
+              show: true,
+              labels: {
+                paylater: 'On tick',
+                paynow: 'Up front'
+              },
+              default: 'paylater'
             },
             customSelect: true,
             tncUrl: 'bar',
@@ -100,7 +104,7 @@ define([
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
                 notes: this.options.notes,
-                payLater: this.options.payLater,
+                deferPayment: this.options.deferPayment,
                 customSelect: this.options.customSelect,
                 displayTravellerCheckboxLocation: can.proxy( this.displayTravellerCheckboxLocation, this ),
                 display: {
