@@ -4,8 +4,10 @@
                         text = option.attr( textAttr ) || option.attr( valueAttr ),
                         checkboxId = uniqueId( id + '_' ),
                         maxLimit = option.attr('maxLimit');
+                        /* This is for LB and it allows us to force a select list.  Remove when we have per-site templates */
+                var forceSelect = option.attr('forceSelect');
 %>
-        <% if( maxLimit === 1 ) { %>
+        <% if( maxLimit === 1 && !forceSelect) { %>
                 <label for="<%= checkboxId %>" class="field-checkbox">
                         <span><%= text %></span>
                         <input
@@ -25,7 +27,7 @@
                                 } %>
                         />
                 </label>
-        <% } else if( maxLimit > 1 ) { %>
+        <% } else if( maxLimit > 1 || forceSelect) { %>
                 <label for="<%= checkboxId %>" class="field-select">
                     <span><%= text %></span>
                     <select
