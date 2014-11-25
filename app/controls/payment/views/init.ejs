@@ -1,4 +1,6 @@
-<% if( options.canDeposit ) { %>
+<%
+  var payingLater = payment.attr('payLater') && options.deferPayment.show;
+  if( !payingLater && options.canDeposit ) { %>
     <% if( options.booking.attr('canPayDeposit') ) { %>
             <form <%= bindForm({
                 model: payment,
@@ -12,16 +14,11 @@
 <% } %>
 <div class="iframe-holder">
     <% if( payment.attr('payLater') && options.deferPayment.show ) { %>
-        Some guff about, you&#39;re all set! Continue to the confirmation page!
-        <br>
-        Pay later and stuff
-    <% } else if( !payment.attr('payLater') && payment.attr('NextURL') ) { %>
+        You&#39;re all set! Continue to the confirmation page!
+    <% } else if( payment.attr('NextURL') ) { %>
         <iframe src="<%= payment.attr('NextURL') %>"></iframe>
     <% } %>
 </div>
 <div class="payment-blurb">
     <p><strong><%= t('cardInfo') %></strong></p>
 </div>
-<% if( canPayLater ) { %>
-        <a class="pay-later">Pay by phone later</a>
-<% } %>

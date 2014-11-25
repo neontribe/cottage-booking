@@ -359,7 +359,6 @@ define([
             evt.preventDefault();
 
             var hasErrors = this.addErrors();
-            hasErrors = true;
 
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );

@@ -22,13 +22,21 @@ define([
                 ['balance', 'Pay the full amount'],
                 ['deposit', 'Pay the deposit']
             ],
+            deferPayment: { 
+              show: true,
+              labels: {
+                paylater: 'On tick',
+                paynow: 'Up front'
+              },
+              default: 'paylater'
+            },
             translations: {}
         }
     }, {
         init: function() {
             this.options.payment = new Payment({
                 id: this.options.booking.attr('bookingId'),
-                'payLater': false,
+                'payLater': booking.attr('payLater'),
                 // balance: pay the full amount
                 // deposit: just pay the deposit
                 'paymentType': this.options.booking.attr('price.paymentType')
@@ -95,14 +103,15 @@ define([
             }
         },
 
-        '.pay-later click': function() {
-            // TODO
-            alert('I haven\'t implemented this yet');
-        },
-
         '{payment} paymentType': function( model, evt, newVal ) {
             this.options.booking.attr('price.paymentType', newVal);
             this.updatePayment();
+        },
+        
+        '{payment} updated': function( model, evt, somedata ) {
+            if( model.attr('canProceed') ) {
+                this.options.booking.save();
+            }
         },
 
         '{window} message': function( win, evt ) {

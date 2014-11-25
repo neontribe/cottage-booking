@@ -161,8 +161,12 @@ define([
         },
 
         '{booking} formErrors': function() {
+            var $scrollTop = this.element.find('.error:first');
+            if( !$scrollTop.length ) {
+                $scrollTop = this.element;
+            }
             can.$('html, body').animate({
-                scrollTop: this.element.find('.error:first').offset().top
+                scrollTop: $scrollTop.offset().top
             }, 350);
         },
 
