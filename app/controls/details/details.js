@@ -44,6 +44,11 @@ define([
               placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               values: []
             },
+            vouchers: {
+              show: true,
+              title: 'Voucher discounts',
+              placeholder: 'Enter your voucher code'
+            },
             deferPayment: { 
               show: true,
               labels: {
@@ -105,6 +110,7 @@ define([
                 countries: this.options.countries,
                 notes: this.options.notes,
                 deferPayment: this.options.deferPayment,
+                vouchers: this.options.vouchers,
                 customSelect: this.options.customSelect,
                 displayTravellerCheckboxLocation: can.proxy( this.displayTravellerCheckboxLocation, this ),
                 display: {

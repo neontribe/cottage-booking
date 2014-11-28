@@ -191,6 +191,10 @@
     width: 50%;
 }
 
+.bookingPath .ui-tabs .details input[name="vouchers"] {
+  width: 100%;
+}
+
 .form-item .required {
     color: red;
 }

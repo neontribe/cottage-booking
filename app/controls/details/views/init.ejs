@@ -103,7 +103,8 @@
               'paynow': [ 'false', deferPayment.labels.paynow ],
               'paylater': [ 'true', deferPayment.labels.paylater ]
             },
-            'showPayLater': deferPayment.show
+            'showPayLater': deferPayment.show,
+            'vouchers': vouchers
         },
         display: display,
         customSelect: customSelect,
@@ -131,7 +132,14 @@
 
         <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
             <legend><%= notes.title %></legend>
+            <div><%== notes.attr('helptext') %></div>
             <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
+        </fieldset>
+
+        <fieldset <%== vouchers.show ? '' : 'style="display:none;"' %>>
+            <legend><%= vouchers.title %></legend>
+            <div><%== vouchers.helptext %></div>
+            <input name="vouchers" data-label="" placeholder="<%= vouchers.placeholder %>" type="textfield" />
         </fieldset>
 
         <fieldset <%== deferPayment.show ? '' : 'style="display:none;"' %>>
