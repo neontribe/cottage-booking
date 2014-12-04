@@ -218,13 +218,6 @@ define([
             this.updateModel($el);
         },
 
-        /**
-         * This is a little bit filthy
-         */
-        ':input keyup': _.debounce(function( $el ) {
-            this.updateModel($el);
-        }, 250),
-
         updateModel: function ( $el ) {
             // Add errors when an input is changed
             var type = $el.attr('data-type'),

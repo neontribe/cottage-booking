@@ -33,8 +33,8 @@ define([
                 },
                 name: {}
             },
-            notes: {},
-            payLater: 'false'
+            payLater: 'false',
+            voucher: ''
         },
 
         id: 'bookingId',
@@ -47,7 +47,8 @@ define([
             // We need to change our model is read and added to the booking
             price: Price,
             totalDueOn: 'date',
-            secDepDueOn: 'date'
+            secDepDueOn: 'date',
+            payLater: 'string'
         },
 
         convert: {
@@ -69,8 +70,13 @@ define([
                 }
                 /* default is a reserved word.. */
                 return this.convert['default'].apply( this, arguments );
+            },
+            'string': function( raw ) {
+                return '' + raw;
             }
         },
+
+        vouchers: [],
 
         'serialize': {
             date: function( val ) {
@@ -114,6 +120,8 @@ define([
         ],
 
         'init': function() {
+            var self = this;
+
             this.validatePresenceOf( this.required.slice(0, -1), {
                 'message': 'The {label} field is required'
             });
@@ -175,6 +183,15 @@ define([
             this.validate('customer.tnc', function( ticked ) {
                 if( !ticked ) {
                     return 'You must accept the Terms and Conditions to proceed.';
+                }
+            });
+            
+            this.validate('voucher', function( code ) {
+                if( code && self.vouchers.show ) {
+                    var codes = self.vouchers.validcodes;
+                    if( codes && codes.length && can.$.inArray( code, codes ) === -1 ) {
+                        return 'Invalid voucher code.';
+                    }
                 }
             });
         }

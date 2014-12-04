@@ -4,10 +4,11 @@ define([
     'resources/book',
     'models/country',
     'underscore',
+    'models/booking',
     'can/control',
     'controls/form/form',
     'can/compute'
-], function( can, views, booking, Country, _ ) {
+], function( can, views, booking, Country, _, Booking ) {
     'use strict';
 
     return can.Control({
@@ -55,7 +56,7 @@ define([
                 paylater: 'On tick',
                 paynow: 'Up front'
               },
-              default: 'paylater'
+              'default': 'paylater'
             },
             customSelect: true,
             tncUrl: 'bar',
@@ -94,6 +95,8 @@ define([
                 });
             }
 
+            Booking.vouchers = this.options.vouchers || [];
+
             this.element.html( views.init({
                 model: this.options.booking,
                 defaultLabel: true,
@@ -110,7 +113,7 @@ define([
                 countries: this.options.countries,
                 notes: this.options.notes,
                 deferPayment: this.options.deferPayment,
-                vouchers: this.options.vouchers,
+                voucher: this.options.vouchers,
                 customSelect: this.options.customSelect,
                 displayTravellerCheckboxLocation: can.proxy( this.displayTravellerCheckboxLocation, this ),
                 display: {
@@ -161,7 +164,7 @@ define([
         },
 
         '{booking} change': function( model, evt, attr ) {
-            if( 'price.extras' === attr.slice(0, 12) ) {
+            if( 'price.extras' === attr.slice(0, 12) || attr === 'voucher' ) {
                 model.justSaveIt();
             }
         },

@@ -97,14 +97,11 @@
         optionsMap: {
             'price.extras': model.attr('webExtras'),
             'customer.source': sources,
-            'note': model.attr('notes'),
-            'notes': notes,
             'payLater': {
               'paynow': [ 'false', deferPayment.labels.paynow ],
               'paylater': [ 'true', deferPayment.labels.paylater ]
             },
-            'showPayLater': deferPayment.show,
-            'vouchers': vouchers
+            'showPayLater': deferPayment.show
         },
         display: display,
         customSelect: customSelect,
@@ -117,11 +114,25 @@
             <input name="pets" type="number" data-min="0" data-label="Pets" />
         </fieldset>
 
+        <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
+            <legend><%= notes.title %></legend>
+            <div><%== notes.helptext %></div>
+            <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
+        </fieldset>
+
         <fieldset>
             <legend>Other information</legend>
             <input name="customer.emailOptIn" type="checkbox" data-label="Would you like to receive our newsletter?" />
             <input name="customer.source" data-label="Where did you hear about us?" type="select" data-value-attr="code" data-text-attr="description" />
             <input name="customer.which" data-label="If other" />
+
+            <div <%== voucher.show ? '' : 'style="display:none;"' %>>
+                <input name="voucher" data-label="<%== voucher.helptext %>" placeholder="<%= voucher.placeholder %>" />
+            </div>
+
+            <div <%== deferPayment.show ? '' : 'style="display:none;"' %>>
+              <input name="payLater" type="radio" />
+            </div>
         </fieldset>
 
         <fieldset>
@@ -130,22 +141,6 @@
             Please tick the box to agree to our <a href="<%= tncUrl %>" target="_blank">Terms and Conditions</a>.
         </fieldset>
 
-        <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
-            <legend><%= notes.title %></legend>
-            <div><%== notes.attr('helptext') %></div>
-            <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
-        </fieldset>
-
-        <fieldset <%== vouchers.show ? '' : 'style="display:none;"' %>>
-            <legend><%= vouchers.title %></legend>
-            <div><%== vouchers.helptext %></div>
-            <input name="vouchers" data-label="" placeholder="<%= vouchers.placeholder %>" type="textfield" />
-        </fieldset>
-
-        <fieldset <%== deferPayment.show ? '' : 'style="display:none;"' %>>
-          <input name="payLater" type="radio" />
-        </fieldset>
-        
         <button type="submit" <%= next() %>>Proceed</button>
     </form>
 
