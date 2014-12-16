@@ -21,7 +21,7 @@
       <% } %>
     </dl>
 
-    <% if ( booking.attr('payLater') ) { %>
+    <% if ( booking.attr('payingLater') && deferPayment.show ) { %>
       <h3><%= deferPayment.labels.confirmationMessage %></h3>
     <% } else { %>
       <h3>Card details:</h3>

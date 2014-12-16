@@ -10,13 +10,13 @@ define([
         defaults: {
             booking: booking,
             deferPayment: { 
-              show: true,
+              show: false,
               labels: {
-                paylater: 'On tick',
-                paynow: 'Up front',
-                confirmationMessage: 'Free cottages! We\'ll call you soon'
+                paylater: 'Pay Later',
+                paynow: 'Pay Now',
+                confirmationMessage: 'Thank you for your booking'
               },
-              default: 'paylater'
+              'default': 'paylater'
             }
         }
     }, {

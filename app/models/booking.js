@@ -252,6 +252,10 @@ define([
 
         },
 
+        'getPayingLater': can.compute(function() {
+            return this.attr('payLater') === 'true';
+        }),
+
         'serialize': function() {
             var serialized = can.Model.prototype.serialize.call( this );
             // Standard booking object, some of this we can omit
