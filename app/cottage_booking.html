@@ -66,6 +66,8 @@
         <!-- Fixture files -->
         <script type="text/javascript">
 
+            jQuery('body').on('cottage_booking.confirmation', console.log.bind(console));
+
             jQuery('#cottage-booking').attr('data-stages', JSON.stringify({stuffs: true}) );
 
             jQuery('#calculator').attr('data-translations', JSON.stringify({

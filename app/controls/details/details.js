@@ -144,6 +144,9 @@ define([
                 },
                 tncUrl: this.options.tncUrl
             }) );
+            
+            // jQuery('body').on('booking.booking.ok', function(el, evt, args){ console.log(arguments); });
+            this.element.trigger('cottage_booking.details');
         },
 
         displayTravellerCheckboxLocation: function( forLocation ) {

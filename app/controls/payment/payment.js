@@ -53,6 +53,9 @@ define([
 
             this.updatePayment();
 
+            // jQuery('body').on('booking.booking.ok', function(el, evt, args){ console.log(arguments); });
+            this.element.trigger('cottage_booking.payment');
+    
             this.on();
         },
 
