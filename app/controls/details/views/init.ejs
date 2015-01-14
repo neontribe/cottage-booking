@@ -138,7 +138,7 @@
               <input name="payLater" type="radio" />
             </div>
 
-            <div <%== autoPayment.show ? '' : 'style="display:none;"' %>>
+            <div class="autopayment" <%== autoPayment.show ? '' : 'style="display:none;"' %>>
               <input name="autopayment" type="radio" data-label="<%= autoPayment.label %>" />
               <span class='explanation'>An email will be sent to you shortly before payment is taken as a reminder)</span>
             </div>
