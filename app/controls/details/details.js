@@ -40,23 +40,32 @@ define([
             countries: new Country.List(),
             sources: [],
             notes: {
-              show: true,
+              show: false,
               title: 'Notes lipsum title',
               placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               values: []
             },
             vouchers: {
-              show: true,
+              show: false,
               title: 'Voucher discounts',
               placeholder: 'Enter your voucher code'
             },
             deferPayment: { 
-              show: true,
+              show: false,
               labels: {
                 paylater: 'On tick',
                 paynow: 'Up front'
               },
               'default': 'paylater'
+            },
+            autoPayment: {
+              show: false,
+              label: 'Automatically take payment',
+              labels: {
+                Yes: 'Yes',
+                No: 'No'
+              },
+              'default': 'No'
             },
             customSelect: true,
             tncUrl: 'bar',
@@ -113,6 +122,7 @@ define([
                 countries: this.options.countries,
                 notes: this.options.notes,
                 deferPayment: this.options.deferPayment,
+                autoPayment: this.options.autoPayment,
                 voucher: this.options.vouchers,
                 customSelect: this.options.customSelect,
                 displayTravellerCheckboxLocation: can.proxy( this.displayTravellerCheckboxLocation, this ),

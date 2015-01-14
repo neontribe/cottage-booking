@@ -54,8 +54,8 @@
             <div class="cf"></div>
         </div>
         <div role="form" id="booking-wrap">
-            <div id="cottage-booking" data-prop-ref="A223_ZZ" data-bplugin="bookingPath" data-base-url="" data-debug="true"></div>
-            <div id="calculator" data-prop-ref="A223_ZZ" data-bplugin="bookingCalculator"></div>
+            <div id="cottage-booking" data-prop-ref="J222A_FB" data-bplugin="bookingPath" data-base-url="" data-debug="true"></div>
+            <div id="calculator" data-prop-ref="J222A_FB" data-bplugin="bookingCalculator"></div>
             <div style="clear:both"></div>
         </div>
 
@@ -113,6 +113,30 @@
                                   show: true,
                                   title: 'Discount code',
                                   placeholder: 'Enter your code here',
+                                },
+                                voucher: {
+                                  show: true
+                                },
+                                deferPayment: {
+                                  show: true,
+                                  labels: {
+                                    paynow: 'Pay now',
+                                    paylater: 'Pay later'
+                                  }
+                                },
+                                notes: {
+                                  show: true,
+                                  title: 'Notes',
+                                  helptext: 'Enter notes'
+                                },
+                                autoPayment: {
+                                  show: true,
+                                  label: 'Take balance',
+                                  labels: {
+                                    Yes: 'Yep',
+                                    No: 'No way'
+                                  },
+                                  'default': 'No'
                                 }
                             }
                         },

@@ -101,7 +101,11 @@
               'paynow': [ 'false', deferPayment.labels.paynow ],
               'paylater': [ 'true', deferPayment.labels.paylater ]
             },
-            'showPayLater': deferPayment.show
+            'showPayLater': deferPayment.show,
+            'autopayment': {
+              'Yes': [ 'true', autoPayment.labels.Yes ],
+              'No': [ 'false', autoPayment.labels.No ]
+            }
         },
         display: display,
         customSelect: customSelect,
@@ -132,6 +136,11 @@
 
             <div <%== deferPayment.show ? '' : 'style="display:none;"' %>>
               <input name="payLater" type="radio" />
+            </div>
+
+            <div <%== autoPayment.show ? '' : 'style="display:none;"' %>>
+              <input name="autopayment" type="radio" data-label="<%= autoPayment.label %>" />
+              <span class='explanation'>An email will be sent to you shortly before payment is taken as a reminder)</span>
             </div>
         </fieldset>
 
