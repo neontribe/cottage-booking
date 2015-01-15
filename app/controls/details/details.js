@@ -60,7 +60,7 @@ define([
             },
             autoPayment: {
               show: false,
-              label: 'Automatically take payment',
+              label: 'Would you like us to automatically take your balance, when it\'s due',
               labels: {
                 Yes: 'Yes',
                 No: 'No'
