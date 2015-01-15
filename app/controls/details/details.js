@@ -65,7 +65,7 @@ define([
                 Yes: 'Yes',
                 No: 'No'
               },
-              'default': 'No'
+              'default': 'Yes'
             },
             customSelect: true,
             tncUrl: 'bar',
