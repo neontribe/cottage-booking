@@ -59,7 +59,7 @@ define([
               'default': 'paylater'
             },
             autoPayment: {
-              show: true,
+              show: false,
               label: 'Would you like us to automatically take your balance, when it\'s due',
               labels: {
                 autotakebalance: 'Oui',
