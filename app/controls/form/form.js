@@ -322,7 +322,6 @@ define([
                 // check for errors for which we are responsible
                 errors = this.options.model.errors( this.options.attributes.attr() );
                 if( errors ) {
-
                     _.chain( this.options.attributes.attr() )
                         .difference( _.keys( errors ) )
                         .each(can.proxy(function( validAttr ) {
@@ -356,6 +355,7 @@ define([
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );
             } else {
+                this.element.trigger('error', [ this.options.model, hasErrors ] );
                 can.trigger( this.options.model, 'formErrors', [ hasErrors ] );
             }
         },

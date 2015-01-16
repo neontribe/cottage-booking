@@ -131,7 +131,11 @@
             <input name="customer.which" data-label="If other" />
 
             <div <%== voucher.show ? '' : 'style="display:none;"' %>>
-                <input name="voucher" data-label="<%== voucher.helptext %>" placeholder="<%= voucher.placeholder %>" />
+                <input
+                  name="voucher"
+                  data-label="<%= voucher.helptext %>"
+                  placeholder="<%= voucher.placeholder %>"
+                />
             </div>
 
             <div <%== deferPayment.show ? '' : 'style="display:none;"' %>>

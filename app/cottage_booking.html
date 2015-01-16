@@ -11,10 +11,18 @@
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tabs.css" />
         <link rel="stylesheet" type="text/css" href="style/style.out.css" />
         <style type="text/css">
+            body {
+              font-size: 60%;
+            }
+            
             #some-tabs ul li {
                 float:left;
                 padding:0 1em 0.2em;
                 list-style: none;
+            }
+            
+            .ui-datepicker-calendar .changeover {
+              border: 1px solid #aaa;
             }
 
             #some-tabs .active {
@@ -40,6 +48,10 @@
             #cottage-booking > * {
                 display: inline-block;
             }
+            
+            fieldset > div {
+              border: 1px solid #ccc;
+            }
         </style>
     </head>
     <body>
@@ -54,8 +66,8 @@
             <div class="cf"></div>
         </div>
         <div role="form" id="booking-wrap">
-            <div id="cottage-booking" data-prop-ref="J222A_FB" data-bplugin="bookingPath" data-base-url="" data-debug="true"></div>
-            <div id="calculator" data-prop-ref="J222A_FB" data-bplugin="bookingCalculator"></div>
+            <div id="cottage-booking" data-prop-ref="H931_FB" data-bplugin="bookingPath" data-base-url="" data-debug="true"></div>
+            <div id="calculator" data-prop-ref="H931_FB" data-bplugin="bookingCalculator"></div>
             <div style="clear:both"></div>
         </div>
 
@@ -111,11 +123,8 @@
                                 primaryTravellerCheckboxLocation: 'customerName;partyDetails', // or partyDetails
                                 vouchers: {
                                   show: true,
-                                  title: 'Discount code',
-                                  placeholder: 'Enter your code here',
-                                },
-                                voucher: {
-                                  show: true
+                                  helptext: 'Discount code',
+                                  placeholder: 'Enter your code here'
                                 },
                                 deferPayment: {
                                   show: true,

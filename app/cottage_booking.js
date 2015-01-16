@@ -255,6 +255,13 @@ define([
             }
 
         },
+        
+        ' error': function ( $el, evt, model, errors ) {
+          // we trust that the global jQuery is _not_ the same as our $
+          if( this.options.triggerOnGlobal$ && window.jQuery ) {
+              jQuery( this.element[0] ).trigger('cottage_booking.error', [ $el, evt, model, errors ] );
+          }
+        },
 
         destroyStage: function( stage ) {
             if( stage.attr('control') ) {
