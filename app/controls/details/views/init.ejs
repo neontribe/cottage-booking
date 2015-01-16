@@ -97,15 +97,15 @@
         optionsMap: {
             'price.extras': model.attr('webExtras'),
             'customer.source': sources,
-            'payLater': {
-              'paynow': [ 'false', deferPayment.labels.paynow ],
-              'paylater': [ 'true', deferPayment.labels.paylater ]
-            },
+            'payLater': [
+              [ 'false', deferPayment.labels.paynow ],
+              [ 'true', deferPayment.labels.paylater ]
+            ],
             'showPayLater': deferPayment.show,
-            'autopayment': {
-              'Yes': [ 'true', autoPayment.labels.Yes ],
-              'No': [ 'false', autoPayment.labels.No ]
-            }
+            'autopayment': [
+              [ 'true', autoPayment.labels.autotakebalance ],
+              [ 'false', autoPayment.labels.noautotakebalance ]
+            ]
         },
         display: display,
         customSelect: customSelect,
@@ -143,7 +143,7 @@
             </div>
 
             <div class="autopayment" <%== autoPayment.show ? '' : 'style="display:none;"' %>>
-              <input name="autopayment" type="radio" data-label="<%= autoPayment.label %>" />
+              <input name="autopayment" type="radio" />
               <span class='explanation'>An email will be sent to you shortly before payment is taken as a reminder</span>
             </div>
         </fieldset>

@@ -59,13 +59,13 @@ define([
               'default': 'paylater'
             },
             autoPayment: {
-              show: false,
+              show: true,
               label: 'Would you like us to automatically take your balance, when it\'s due',
               labels: {
-                Yes: 'Yes',
-                No: 'No'
+                autotakebalance: 'Oui',
+                noautotakebalance: 'Non'
               },
-              'default': 'Yes'
+              'default': 'autotakebalance'
             },
             customSelect: true,
             tncUrl: 'bar',

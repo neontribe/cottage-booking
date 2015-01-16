@@ -218,6 +218,10 @@ define([
             this.updateModel($el);
         },
 
+        'textarea blur': function ( $el ) {
+            this.updateModel($el);
+        },
+
         updateModel: function ( $el ) {
             // Add errors when an input is changed
             var type = $el.attr('data-type'),

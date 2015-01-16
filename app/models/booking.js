@@ -34,7 +34,8 @@ define([
                 name: {}
             },
             payLater: 'false',
-            voucher: ''
+            voucher: '',
+            autopayment: 'false'
         },
 
         id: 'bookingId',
@@ -48,7 +49,8 @@ define([
             price: Price,
             totalDueOn: 'date',
             secDepDueOn: 'date',
-            payLater: 'string'
+            payLater: 'string',
+            autopayment: 'string'
         },
 
         convert: {
