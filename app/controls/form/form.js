@@ -218,7 +218,7 @@ define([
             this.updateModel($el);
         },
 
-        'textarea blur': function ( $el ) {
+        'textarea mouseout': function ( $el ) {
             this.updateModel($el);
         },
 
