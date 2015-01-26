@@ -1,4 +1,4 @@
-define(['jquery'], function( jq ) {
+define(function() {
     'use strict';
-    return jq.noConflict( true );
+    return jQuery;
 });
