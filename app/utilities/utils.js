@@ -78,7 +78,7 @@ define([
         },
         getNightsBetween: function( start, end ) {
             if( !start || !end ) {return '';}
-            return Math.floor( end.unix() - start.unix() ) / (60 * 60 * 24);
+            return Math.floor( end.unix() - start.unix() / (60 * 60 * 24));
         },
         modelPick: function( model, keys ) {
             var res = {},
