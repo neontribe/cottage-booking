@@ -139,7 +139,7 @@ define([
                     var adults = [];
                     var children = [];
                     var infants = [];
-                    $.each(this.attr('partyDetails'), function (index, member){
+                    can.$.each(this.attr('partyDetails'), function (index, member){
                       switch (member.type) {
                         case 'infant':
                           infants.push(member);
