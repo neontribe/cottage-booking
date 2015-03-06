@@ -133,33 +133,34 @@ define([
             });
 
             this.validate(['adults', 'children', 'infants'], function() {
-                // quick check
-                if( this.attr('partySize') > this.attr('propertyData.sleeps') ) {
-                    // now hokey logic to allow propertyData.sleeps + 1 infant
-                    var adults = [];
-                    var children = [];
-                    var infants = [];
-                    can.$.each(this.attr('partyDetails'), function (index, member){
-                      switch (member.type) {
-                        case 'infant':
-                          infants.push(member);
-                          break;
-                        case 'child':
-                          children.push(member);
-                          break;
-                        default:
-                        case 'adult':
-                          adults.push(member);
-                          break;                         
-                      }
-                    });
-                    if (adults.length + children.length >= this.attr('propertyData.sleeps')) {
-                      if (infants.length > 1) {
-                        return 'The property only excepts one additional infant.';
-                      } else {
-                        return;
-                      }
+                // now hokey logic to allow propertyData.sleeps + 1 infant
+                var adults = [];
+                var children = [];
+                var infants = [];
+                if (this.attr('partyDetails') !== undefined && this.attr('partyDetails').length > 0 ) {
+                  can.$.each(this.attr('partyDetails'), function (index, member){
+                    switch (member.type) {
+                      case 'infant':
+                        infants.push(member);
+                        break;
+                      case 'child':
+                        children.push(member);
+                        break;
+                      default:
+                      case 'adult':
+                        adults.push(member);
+                        break;                         
                     }
+                  });
+
+                  if (adults.length + children.length === this.attr('propertyData.sleeps')) {
+                    if (infants.length > 1) {
+                      return 'The property only excepts one additional infant.';
+                    }
+                  }
+                }
+                // quick check
+                if( this.attr('partySize') > this.attr('propertyData.sleeps') && infants.length < 1 ) {
                     return 'The party size exceeds the maximum size this property can accommodate';
                 }
             });
