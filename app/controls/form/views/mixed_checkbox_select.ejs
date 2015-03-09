@@ -7,7 +7,7 @@
                         /* This is for LB and it allows us to force a select list.  Remove when we have per-site templates */
                 var forceSelect = option.attr('forceSelect');
 %>
-        <% if( maxLimit <= 1 && !forceSelect) { %>
+        <% if( maxLimit === 1 && !forceSelect) { %>
                 <label for="<%= checkboxId %>" class="field-checkbox">
                         <span><%= text %></span>
                         <input
