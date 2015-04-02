@@ -78,7 +78,8 @@ define([
             }
         },
 
-        vouchers: [],
+        vouchers: {},
+        autopayment: {},
 
         'serialize': {
             date: function( val ) {
@@ -225,7 +226,7 @@ define([
             });
 
             this.validate('autopayment', function( code ) {
-                if (self.autopayment.show && code !== false && code !== true) {
+                if (self.autopayment.show && code !== "false" && code !== "true") {
                     return 'Please select an option.';
                 }
             });

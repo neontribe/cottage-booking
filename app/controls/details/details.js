@@ -104,7 +104,8 @@ define([
                 });
             }
 
-            Booking.vouchers = this.options.vouchers || [];
+            Booking.vouchers = this.options.vouchers || {};
+            Booking.autopayment = this.options.vouchers || {};
 
             this.element.html( views.init({
                 model: this.options.booking,
