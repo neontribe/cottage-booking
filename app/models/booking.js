@@ -225,7 +225,7 @@ define([
             });
 
             this.validate('autopayment', function( code ) {
-                if (code !== false && code !== true) {
+                if (self.autopayment.show && code !== false && code !== true) {
                     return 'Please select an option.';
                 }
             });
