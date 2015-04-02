@@ -228,7 +228,6 @@ define([
                 if (code !== false && code !== true) {
                     return 'Please select an option.';
                 }
-                console.log("code = " + code);
             });
         }
 
