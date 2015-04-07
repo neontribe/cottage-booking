@@ -105,7 +105,7 @@ define([
             }
 
             Booking.vouchers = this.options.vouchers || {};
-            Booking.autopayment = this.options.vouchers || {};
+            Booking.autopayment = this.options.autoPayment || {};
 
             this.element.html( views.init({
                 model: this.options.booking,
