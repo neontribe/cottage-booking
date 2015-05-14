@@ -64,8 +64,7 @@ define([
               labels: {
                 autotakebalance: 'Oui',
                 noautotakebalance: 'Non'
-              },
-              'default': 'autotakebalance'
+              }
             },
             customSelect: true,
             tncUrl: 'bar',

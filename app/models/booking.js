@@ -34,8 +34,7 @@ define([
                 name: {}
             },
             payLater: 'false',
-            voucher: '',
-            autopayment: 'false'
+            voucher: ''
         },
 
         id: 'bookingId',
