@@ -82,6 +82,7 @@
             jQuery('body').on('cottage_booking.details', console.log.bind(console));
             jQuery('body').on('cottage_booking.payment', console.log.bind(console));
             jQuery('body').on('cottage_booking.confirmation', console.log.bind(console));
+            jQuery('body').on('cottage_booking.formErrors', console.log.bind(console));
 
             jQuery('#cottage-booking').attr('data-stages', JSON.stringify({stuffs: true}) );
 

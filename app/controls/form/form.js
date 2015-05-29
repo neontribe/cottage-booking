@@ -361,6 +361,7 @@ define([
             } else {
                 this.element.trigger('error', [ this.options.model, hasErrors ] );
                 can.trigger( this.options.model, 'formErrors', [ hasErrors ] );
+                jQuery( this.element[0] ).trigger('cottage_booking.formErrors', [ this.options.model, hasErrors ] );
             }
         },
 
