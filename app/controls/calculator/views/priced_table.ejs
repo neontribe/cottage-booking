@@ -13,7 +13,7 @@
                 <% if( extra.attr('code') !== 'CCC' ) { %>
                     <tr class="extra">
                         <td><%= extra.attr('description') %> <%= extra.attr('quantity') > 1 ? '(x' + extra.attr('quantity') + ')' : '' %></td>
-                        <td><%= extra.attr('total') == 0 ? money( extra.attr('total') ) : 'free' %></td>
+                        <td><%= extra.attr('total') == 0 ? 'free' : money( extra.attr('total') ) %></td>
                     </tr>
                 <% } %>
             <% }); %>
