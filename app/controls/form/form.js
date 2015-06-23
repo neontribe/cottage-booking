@@ -120,9 +120,13 @@ define([
             this.element.find(':input').attr('title', '');
 
             $selects = this.element.find('select');
-
             if( $selects.length && this.options.customSelect ) {
+                this.selectAttrs = $selects.map(function() {
+                    return can.$(this).attr('name');
+                });
                 _.defer(function() { $selects.customSelect(); });
+            } else {
+                this.selectAttrs = [];
             }
 
             if( this.options.debounceDelay > 0 ) {
@@ -346,6 +350,9 @@ define([
             }
             if( batchEvt.batchNum ) {
                 this.lastBatch = batchEvt.batchNum;
+            }
+            if( _.indexOf(this.selectAttrs, attr) > -1 ) {
+                this.element.find('select[name="' + attr + '"]').change();
             }
         },
         lastBatch: null,
