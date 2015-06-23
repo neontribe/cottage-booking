@@ -121,9 +121,9 @@ define([
 
             $selects = this.element.find('select');
             if( $selects.length && this.options.customSelect ) {
-		this.selectAttrs = $selects.map(function() {
-		    return $(this).attr('name');
-		});
+                this.selectAttrs = $selects.map(function() {
+                    return can.$(this).attr('name');
+                });
                 _.defer(function() { $selects.customSelect(); });
             } else {
                 this.selectAttrs = [];
@@ -351,7 +351,7 @@ define([
             if( batchEvt.batchNum ) {
                 this.lastBatch = batchEvt.batchNum;
             }
-	    if( _.indexOf(this.selectAttrs, attr) > -1 ) {
+            if( _.indexOf(this.selectAttrs, attr) > -1 ) {
                 this.element.find('select[name="' + attr + '"]').change();
             }
         },
