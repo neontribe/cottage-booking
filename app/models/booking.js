@@ -149,19 +149,46 @@ define([
                       default:
                       case 'adult':
                         adults.push(member);
-                        break;                         
+                        break;
                     }
                   });
 
-                  if (adults.length + children.length === this.attr('propertyData.sleeps')) {
-                    if (infants.length > 1) {
-                      return 'The property only excepts one additional infant.';
+                  if (typeof can.getObject('Drupal.behaviors.neontabs.validators.booking.partySize') === 'function') {
+                        var validated = Drupal.behaviors.neontabs.validators.booking.partySize(adults, children, infants);
+                        if (validated !== true) {
+                         return validated.errorMessage;
+                     }
+                  } else { // fail over to default (broken?) behaviour
+                    /*
+                    According to alex castle any number of infants can be added to a property:
+                    "
+                    tabs and the API will allow you to book 4 adults 2 children
+                    and 20 infants for a slps 6 property the age they consider
+                    infants is up to them Ie do they become a child at one or 2
+                    and the number allowed I assume is property specific using
+                    A4293 as an example its a sleeps 2 but the only place I can
+                    see info on kids is the description it says Please note:
+                    Infants under 1 welcome but sorry no children.  they appear
+                    to have a children allowed attribute maybe they need to set
+                    something up for infants then you will at least be able to
+                    see in api other than in description
+                    "
+                    So I'm going to disable existing logic and replace it with a straight adults + children check
+
+                    if (adults.length + children.length === this.attr('propertyData.sleeps')) {
+                      if (infants.length > 1) {
+                        return 'The property only excepts one additional infant.';
+                      }
+                    }
+                    // quick check
+                    if( this.attr('partySize') > this.attr('propertyData.sleeps') && infants.length < 1 ) {
+                        return 'The party size exceeds the maximum size this property can accommodate';
+                    }
+                    */
+                    if (adults.length + children.length > this.attr('propertyData.sleeps')) {
+                        return 'The party size exceeds the maximum size this property can accommodate';
                     }
                   }
-                }
-                // quick check
-                if( this.attr('partySize') > this.attr('propertyData.sleeps') && infants.length < 1 ) {
-                    return 'The party size exceeds the maximum size this property can accommodate';
                 }
             });
 
@@ -208,13 +235,13 @@ define([
                     }
                 }
             });
-            
+
             this.validate('customer.tnc', function( ticked ) {
                 if( !ticked ) {
                     return 'You must accept the Terms and Conditions to proceed.';
                 }
             });
-            
+
             this.validate('voucher', function( code ) {
                 if( code && self.vouchers.show ) {
                     var codes = self.vouchers.validcodes;
@@ -467,7 +494,7 @@ define([
 
             can.trigger( this, 'saving' );
 
-            // if we are already in transit make sure to abort the request 
+            // if we are already in transit make sure to abort the request
             // and return the new one
             if( this.transit ) {
                 this.transit.abort();

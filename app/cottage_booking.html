@@ -14,13 +14,13 @@
             body {
               font-size: 60%;
             }
-            
+
             #some-tabs ul li {
                 float:left;
                 padding:0 1em 0.2em;
                 list-style: none;
             }
-            
+
             .ui-datepicker-calendar .changeover {
               border: 1px solid #aaa;
             }
@@ -48,7 +48,7 @@
             #cottage-booking > * {
                 display: inline-block;
             }
-            
+
             fieldset > div {
               border: 1px solid #ccc;
             }
@@ -66,8 +66,8 @@
             <div class="cf"></div>
         </div>
         <div role="form" id="booking-wrap">
-            <div id="cottage-booking" data-prop-ref="STRAW_BR" data-bplugin="bookingPath" data-base-url="" data-debug="true"></div>
-            <div id="calculator" data-prop-ref="STRAW_BR" data-bplugin="bookingCalculator"></div>
+            <div id="cottage-booking" data-prop-ref="M3927_LB" data-bplugin="bookingPath" data-base-url="" data-debug="true"></div>
+            <div id="calculator" data-prop-ref="M3927_LB" data-bplugin="bookingCalculator"></div>
             <div style="clear:both"></div>
         </div>
 
@@ -91,17 +91,27 @@
                 calendar_help_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel tempus est, a viverra dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac viverra tellus.',
                 details_help_text: 'Fusce tellus lacus, gravida a leo sit amet, euismod tempus mi. Aliquam erat volutpat. Suspendisse mi nibh, sollicitudin ut placerat eget, fermentum a urna.'
             }));
-            
+
             requirejs([
                 'jquery',
                 'cottage_booking',
                 'fixtures/sources',
+                'can',
                 'fixtures/availabilities',
                 'fixtures/enquiries',
                 'fixtures/bookings',
                 'fixtures/countries',
                 'fixtures/payments'
-            ], function( $, bookingPath, sourcesArr ) {
+            ], function( $, bookingPath, sourcesArr, can ) {
+
+                /* Uncomment this to test a custom validator
+                can.getObject('Drupal.behaviors.neontabs.validators.booking.partySize', null, true);
+                Drupal.behaviors.neontabs.validators.booking.partySize = function (adults, children, infants) {
+                    return {
+                        'errorMessage' : 'Dummy validate error'
+                    };
+                };
+                */
 
                 $('#cottage-booking').bookingPath({
                     'stages': {
