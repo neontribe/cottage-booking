@@ -13,5 +13,5 @@ bower_components
 components
 
 docs/*
-/nbproject/private/
-/HTML5Application/nbproject/private/
+/HTML5Application/nbproject/private/npm-debug.log
+nbproject

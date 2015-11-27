@@ -28,9 +28,9 @@
     "jqueryui-amd": "0.0.2",
     "jshint": "~2.3.0",
     "load-grunt-tasks": "~0.2.0",
-    "mocha-phantomjs": "^3.4.0",
+    "mocha-phantomjs": "^3.6.0",
     "myth": "^1.0.2",
-    "phantomjs": "^1.9.7-5",
+    "phantomjs": "1.9.7-15",
     "underscore": "~1.5.2"
   }
 }
