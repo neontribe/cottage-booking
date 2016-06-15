@@ -166,7 +166,8 @@ define([
                 'textAttr'      : 1,
                 'id'            : this.idify( attr ),
                 'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false,
-                'disabledView'  : views.disabledAttr
+                'disabledView'  : views.disabledAttr,
+                'maxlength'     : null
             }, this.options, $el.data());
 
             // Add this attr to the list of attributes we're responsible for

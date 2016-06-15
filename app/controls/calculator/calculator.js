@@ -41,6 +41,7 @@ define([
                 'booking': this.options.booking,
                 'translations': this.options.translations
             }));
+            jQuery( this.element[0] ).trigger( 'cottage_booking.ready', this );
         },
 
         /**

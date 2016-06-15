@@ -5,6 +5,7 @@
     data-type="<%= type %>"
     data-label="<%= label %>"
     class="<%= classes %>"
+    <% if(typeof maxlength === 'number') { %>maxlength="<%= maxlength %>"<% } %>
     <%== required ? 'aria-required="true"' : '' %>
     value="<%= model.attr( attrName ) ? model.attr( attrName ) : '' %>"
     placeholder="<%= this.placeholder && typeof this.placeholder === 'string' ? this.placeholder : '' %>"
