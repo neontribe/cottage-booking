@@ -6,16 +6,16 @@ define(['fixtures/availabilities', 'resources/avail', 'underscore'], function( f
     var chai = requirejs('chai'),
         should = chai.should();
 
-    avail( 'A223_ZZ' );
+    avail( 'MERLIN_BR' );
 
     describe('resource: the state of the avail resource', function () {
         describe('require works', function () {
             it('completes successfully and has expected data', function () {
                 var availability = avail();
 
-                _.size( availability.attr() ).should.be.equal(335);
+                _.size( availability.attr() ).should.be.equal(458);
 
-                availability.attr('2014-02-01').should.have.property('available').be.equal( false );
+                availability.attr('2016-10-01').should.have.property('available').be.equal( false );
 
             });
         });

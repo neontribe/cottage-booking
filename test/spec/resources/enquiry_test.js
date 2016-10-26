@@ -11,12 +11,12 @@ define([
     var chai = requirejs('chai'),
         should = chai.should();
 
-    enq.attr('propRef', 'A223_ZZ');
+    enq.attr('propRef', 'MERLIN_BR');
 
     describe('resource: the state of the enquiry resource', function () {
         describe('enquire produces correct render array', function () {
             it('completes successfully', function () {
-                var date = new Date( 2014, 4, 17),
+                var date = moment( '11-11-2016', 'DD-MM-YYYY' )._d,
                     arr = enq.generateCalendarRenderArray(date);
 
                 enq.should.have.property('avail');
@@ -27,10 +27,10 @@ define([
 
                 arr[0].should.be.equal(true);
 
-                arr[1].should.be.equal('unavailable bookingStart changeover codeW saturday');
+                arr[1].should.be.equal('available changeover code_ friday');
 
                 enq.attr('fromDate', moment( date ) );
-                enq.attr('toDate', moment( new Date( 2014, 4, 18) ));
+                enq.attr('toDate', moment( new Date( 2016, 11, 18) ));
 
                 arr = enq.generateCalendarRenderArray( date );
 
