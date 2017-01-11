@@ -126,11 +126,13 @@ module.exports = function(grunt) {
             },
             writeChangelog: {
                 cmd: function( lastRelease ) {
+	            return '';
+/*	            
                     return  'git fetch --tags && ' +
                             'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
                             'git log --pretty="tformat:+ **%an**: %s" --date=short -E --grep=# --grep=LOG --grep="\\(([A-Z]{2,}-[0-9]{2,})\\)" --no-merges ' +
                             lastRelease + '..HEAD >> app/prod/changelog.txt && ' +
-                            'cat app/prod/changelog.txt';
+                            'cat app/prod/changelog.txt';*/
                 }
             }
         },
