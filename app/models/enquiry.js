@@ -137,7 +137,7 @@ define([
                 if( this.constructor.defaults[ val ] ) {
                     this.attr(val, this.constructor.defaults[ val ] );
                 } else {
-                    this.removeAttr( val );    
+                    this.removeAttr( val );
                 }
             }, this);
         },
@@ -212,8 +212,8 @@ define([
 
         updated: function( attrs ) {
             var cur = _.pick( this.attr(), _.keys( this.constructor.defaults ) );
-
-            return can.Model.prototype.updated.call( this, can.extend(attrs.attr(), cur) );
+            var old = (attrs && typeof attrs.attr === 'function') ? attrs.attr() : attrs;
+            return can.Model.prototype.updated.call( this, can.extend(old, cur) );
         },
 
         /**

@@ -125,7 +125,7 @@ module.exports = function(grunt) {
                 cmd: './node_modules/.bin/jqueryui-amd app/bower_components/jquery-ui'
             },
             writeChangelog: {
-                cmd: function( lastRelease ) {	            
+                cmd: function( lastRelease ) {
                     return  'git fetch --tags && ' +
                             'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
                             'git log --pretty="tformat:+ **%an**: %s" --date=short -E --grep=# --grep=LOG --grep="\\(([A-Z]{2,}-[0-9]{2,})\\)" --no-merges ' +
@@ -147,10 +147,8 @@ module.exports = function(grunt) {
                     mainConfigFile: 'app/requirejsconfig.js',
                     paths: {
                         // Overwrite ejs to use the compiled templates
-                        'ejs': '../.build/ejs'
+                        'ejs': '../node_modules/require-can-renderers/lib/ejs'
                     },
-                    // we don't actually need to compile the generator
-                    exclude: ['ejs'],
                     // Use the almond library as the base, so we don't need requirejs
                     name : 'bower_components/almond/almond',
                     include: [
@@ -159,12 +157,6 @@ module.exports = function(grunt) {
                         'can/view/ejs'
                     ],
                     insertRequire: ['cottage_booking'],
-                    // Wrap the production to make a fake module for ejs
-                    wrap: {
-                        start:  "(function() {",
-                        end:    "   define('ejs', function() {});\n" +
-                                "}());"
-                    },
                     out : 'app/prod/production.js',
                     // optimize: 'none'
                     optimize: 'uglify2'
@@ -321,7 +313,6 @@ module.exports = function(grunt) {
             'exec:mkbuilddir',
             'cancompile',
             'extractViews',
-            'createRenderers',
             'requirejs:compile',
             'exec:rmbuilddir',
             'exec:myth',

@@ -30,7 +30,7 @@ define([
     },{
         'init' : function() {
             this.options.enquiry.attr('propRef', this.options.propRef);
-            
+
             this.element.html( views.init({
                 'enquiry': this.options.enquiry,
                 'datepickerOptions': {
@@ -107,10 +107,12 @@ define([
         },
 
         '{enquiry} updating': function() {
+
             this.loading();
         },
 
         '{enquiry} updated': function() {
+
             this.stopLoading();
         },
 
