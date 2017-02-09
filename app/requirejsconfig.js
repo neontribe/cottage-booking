@@ -41,7 +41,6 @@ requirejs.config({
         can: {
           deps: ['html5shivoverwrite']
         },
-        html5shiv: 'html5shiv',
         idle: ['jquery'],
         customselect: ['jquery']
     },
