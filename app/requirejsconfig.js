@@ -36,6 +36,9 @@ requirejs.config({
                 return _.noConflict();
             }
         },
+        can: {
+          deps: ['html5shivoverwrite']
+        },
         idle: ['jquery'],
         customselect: ['jquery']
     },
