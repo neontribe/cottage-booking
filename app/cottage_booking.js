@@ -21,7 +21,7 @@ define([
     'can/control',
     'can/control/plugin',
     'can/control/route',
-    'jqueryui/tabs',
+    'jqueryui/tabs'
 ], function( can, views, enquiry, book, stages, utils, debug ) {
     'use strict';
 
