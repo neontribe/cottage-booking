@@ -22,8 +22,6 @@ define([
     'can/control/plugin',
     'can/control/route',
     'jqueryui/tabs',
-    'html5shiv',
-    'html5shivoverwrite'
 ], function( can, views, enquiry, book, stages, utils, debug ) {
     'use strict';
 
