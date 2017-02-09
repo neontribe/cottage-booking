@@ -5,7 +5,7 @@
  * @param  {can.compute}    enquiry The compute containing the enquiry used by the app
  * @param  {can.Model}      book    The booking model which is globally available
  * @param  {can.List}       stages  The list of stages used by the app
- * @param  {Object}         utils   The utils object with helper functions 
+ * @param  {Object}         utils   The utils object with helper functions
  * @return {can.control}            The BookingPath constructor
  */
 define([
@@ -21,7 +21,9 @@ define([
     'can/control',
     'can/control/plugin',
     'can/control/route',
-    'jqueryui/tabs'
+    'jqueryui/tabs',
+    'html5shiv',
+    'html5shivoverwrite'
 ], function( can, views, enquiry, book, stages, utils, debug ) {
     'use strict';
 
@@ -255,7 +257,7 @@ define([
             }
 
         },
-        
+
         ' error': function ( $el, evt, model, errors ) {
           // we trust that the global jQuery is _not_ the same as our $
           if( this.options.triggerOnGlobal$ && window.jQuery ) {
@@ -413,11 +415,11 @@ define([
          * attached to this top level controller, importantly it is possible
          * to make changes to the settings used to launch each of the components
          * TODO: add a shorthand for this
-         * For example: 
+         * For example:
          * @codestart
          *
          *      $( element containing booking path ).bookingPath({
-         *      
+         *
          *          'stages': {
          *              'details': {
          *                  'options': {
@@ -428,11 +430,11 @@ define([
          *                  }
          *              }
          *          }
-         * 
+         *
          *      });
-         * 
+         *
          * @codeend
-         * 
+         *
          * @param  {Object} options The object to change the settings
          * @return {undefined}
          */
@@ -487,7 +489,7 @@ define([
             init.call( $this, $this.data() );
         }
     });
-    
+
     if( console && console.warn ) {
         if( !init ) {
             // TODO: investigate a different approach

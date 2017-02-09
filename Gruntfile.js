@@ -125,7 +125,7 @@ module.exports = function(grunt) {
                 cmd: './node_modules/.bin/jqueryui-amd app/bower_components/jquery-ui'
             },
             writeChangelog: {
-                cmd: function( lastRelease ) {	            
+                cmd: function( lastRelease ) {
                     return  'git fetch --tags && ' +
                             'echo "Version: ' + grunt.file.readJSON('package.json').version + ' \\n" > app/prod/changelog.txt && ' +
                             'git log --pretty="tformat:+ **%an**: %s" --date=short -E --grep=# --grep=LOG --grep="\\(([A-Z]{2,}-[0-9]{2,})\\)" --no-merges ' +
@@ -155,6 +155,7 @@ module.exports = function(grunt) {
                     name : 'bower_components/almond/almond',
                     include: [
                         'requirejsconfig',
+                        'html5shivoverwrite',
                         'cottage_booking',
                         'can/view/ejs'
                     ],
