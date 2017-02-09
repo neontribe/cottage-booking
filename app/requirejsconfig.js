@@ -10,6 +10,8 @@ requirejs.config({
         'spin'            : 'bower_components/spin.js/spin',
         'spinner'         : 'bower_components/spin.js/jquery.spin',
         'idle'            : 'bower_components/jquery-idletimer/dist/idle-timer',
+        'html5shiv'       : 'bower_components/html5shiv/dist/html5shiv',
+        'html5shivoverwrite' : 'html5shivoverwrite',
         'utils'           : 'utilities/utils',
         'helpers'         : 'utilities/helpers',
         'customselect'    : 'bower_components/jquery.customSelect/jquery.customSelect.amd',
