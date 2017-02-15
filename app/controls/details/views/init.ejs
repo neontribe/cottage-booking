@@ -65,7 +65,7 @@
 
         <% list( model.attr('partyDetailsTypes'), function( types, title ) { %>
             <legend><%= pretifyString( title, true ) %></legend>
-            <% 
+            <%
                 list( types, function( traveller, i ) {
                     var agesForThisType = ages[ traveller.attr('type') + 'Ages' ];
                     var disabled = {};
@@ -121,7 +121,7 @@
         <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
             <legend><%= notes.title %></legend>
             <div><%== notes.helptext %></div>
-            <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
+            <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" data-type="textarea" />
         </fieldset>
 
         <fieldset>
