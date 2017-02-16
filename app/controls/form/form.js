@@ -150,9 +150,18 @@ define([
         'formElement': function( index, el ) {
             var $el = can.$(el),
                 attr = $el.attr('name'),
-                // default to text input
-                type = $el.attr('type') || 'text',
-                wrapper = views[ type + 'Wrapper' ] || views.wrapper,
+                // Default to text input
+                type = $el.attr('type') || 'text';
+
+            // Fixes IE returning the wrong value for type attributes.
+            // For input fields with the type set to "textarea", "text" is being returned.
+            // This conditional handles it by checking the "data-type" attribute also.
+            if($el.attr('type') === 'text' &&
+                $el.data('type') === 'textarea') {
+                type = 'textarea';
+            }
+
+            var wrapper = views[ type + 'Wrapper' ] || views.wrapper,
                 options;
 
             options = can.extend(true, {
