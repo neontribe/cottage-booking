@@ -50,7 +50,7 @@ define([
               title: 'Voucher discounts',
               placeholder: 'Enter your voucher code'
             },
-            deferPayment: { 
+            deferPayment: {
               show: false,
               labels: {
                 paylater: 'On tick',
@@ -81,7 +81,7 @@ define([
             }
 
             can.each(['ages', 'childAges', 'infantAges', 'titles', 'sources'], function( list ) {
-                // Get the var to turn into an observed list. If they aren't arrays then 
+                // Get the var to turn into an observed list. If they aren't arrays then
                 // use the defaults
                 var oldVal = this.options[ list ];
                 if( oldVal.constructor !== can.List ) {
@@ -154,7 +154,7 @@ define([
                 },
                 tncUrl: this.options.tncUrl
             }) );
-            
+
             // jQuery('body').on('booking.booking.ok', function(el, evt, args){ console.log(arguments); });
             this.element.trigger('cottage_booking.details');
         },
@@ -184,12 +184,23 @@ define([
 
         '{booking} formErrors': function() {
             var $scrollTop = this.element.find('.error:first');
+
             if( !$scrollTop.length ) {
                 $scrollTop = this.element;
             }
-            can.$('html, body').animate({
-                scrollTop: $scrollTop.offset().top
-            }, 350);
+
+            if(this.options.headerSelector) {
+                var $headerElement = can.$(this.options.headerSelector),
+                    headerHeight = $headerElement.height() || 0;
+
+                can.$('html, body').animate({
+                    scrollTop: $scrollTop.offset().top - headerHeight
+                }, 350);
+            } else {
+                can.$('html, body').animate({
+                    scrollTop: $scrollTop.offset().top
+                }, 350);
+            }
         },
 
         '{booking} submit': function() {

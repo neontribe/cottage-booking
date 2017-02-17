@@ -43,6 +43,7 @@ define([
             stages: stages,
             route: can.route,
             baseUrl: utils.baseUrl,
+            headerSelector: '',
             triggerOnGlobal$: true
         }
 
@@ -279,7 +280,7 @@ define([
             }
 
             if( Control && !stage.attr('control') ) {
-                stage.attr('control', new Control( $el, stage.attr('options') ));
+                stage.attr('control', new Control( $el, $.extend({}, stage.attr('options'), this.options) ));
             }
         },
 
