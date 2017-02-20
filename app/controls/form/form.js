@@ -52,7 +52,7 @@ define([
                 'mixedCheckboxSelect': function( $el ) {
                     var val = $el.val();
                     var model = $el.data('formModel');
-                    
+
                     if( $el.is('input') ) {
                       val = this.options.getterMap.checkbox( $el ) ? 1 : 0;
                     }

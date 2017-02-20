@@ -279,7 +279,7 @@ define([
             }
 
             if( Control && !stage.attr('control') ) {
-                stage.attr('control', new Control( $el, stage.attr('options') ));
+                stage.attr('control', new Control( $el, stage.attr('options')));
             }
         },
 
@@ -445,12 +445,12 @@ define([
                         var stage = this.options.stages.getById( id );
                         if( stage ) {
                             stage.attr( settings );
+
                             if( stage.attr('control') ) {
                                 this.renderStage( stage, stage.attr('control').element, true );
                             }
                         }
                     }, this );
-
                 } else {
                     if( this.options[key] ) {
                         if( this.options[key].attr ) {
