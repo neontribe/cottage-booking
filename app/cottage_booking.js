@@ -43,7 +43,6 @@ define([
             stages: stages,
             route: can.route,
             baseUrl: utils.baseUrl,
-            headerSelector: '',
             triggerOnGlobal$: true
         }
 
@@ -441,17 +440,11 @@ define([
             can.each( options, function( value, key ) {
 
                 if( key === 'stages' ) {
-                    var headerSelector = '';
-                    if(value.hasOwnProperty('headerSelector')) {
-                        headerSelector = value.headerSelector || '';
-                    }
 
                     can.each( value, function( settings, id ) {
                         var stage = this.options.stages.getById( id );
                         if( stage ) {
                             stage.attr( settings );
-
-                            stage.attr('options.headerSelector', headerSelector);
 
                             if( stage.attr('control') ) {
                                 this.renderStage( stage, stage.attr('control').element, true );
