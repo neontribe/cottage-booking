@@ -201,6 +201,7 @@ define([
                     scrollTop: $scrollTop.offset().top
                 }, 350);
             }
+            debugger;
         },
 
         '{booking} submit': function() {
