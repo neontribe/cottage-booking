@@ -189,19 +189,12 @@ define([
                 $scrollTop = this.element;
             }
 
-            if(this.options.headerSelector) {
-                var $headerElement = can.$(this.options.headerSelector),
-                    headerHeight = $headerElement.height() || 0;
+            var $headerElement = can.$(this.options.headerSelector),
+                headerHeight = $headerElement.height() || 0;
 
-                can.$('html, body').animate({
-                    scrollTop: $scrollTop.offset().top - headerHeight
-                }, 350);
-            } else {
-                can.$('html, body').animate({
-                    scrollTop: $scrollTop.offset().top
-                }, 350);
-            }
-            debugger;
+            can.$('html, body').animate({
+                scrollTop: $scrollTop.offset().top - headerHeight
+            }, 350);
         },
 
         '{booking} submit': function() {
