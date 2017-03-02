@@ -105,7 +105,6 @@ define([
             this.options.attributes = new can.List();
             this.options.optionsMap = new can.Map( this.options.optionsMap );
 
-
             // We expect these to be computes, so that change events will get properly updated
             this.options.display    = new can.Map( this.options.display );
             this.options.disabled   = new can.Map( this.options.disabled );
