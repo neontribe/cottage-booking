@@ -46,6 +46,7 @@ define([
                 ['4', '4'],
                 ['5', '5']
             ]),
+            petsType: 'number',
             sources: [],
             notes: {
               show: false,
@@ -129,7 +130,7 @@ define([
                 sources: this.options.sources,
                 titles: this.options.titles,
                 petsList: this.options.petsList,
-                petsType: this.options.petsType || 'number',
+                petsType: this.options.petsType,
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
                 notes: this.options.notes,
