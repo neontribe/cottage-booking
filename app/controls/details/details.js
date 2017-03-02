@@ -38,6 +38,14 @@ define([
             ],
             // This means we will share the same country List ( note the capitol L )
             countries: new Country.List(),
+            petsList: new can.List([
+                ['0', '0'],
+                ['1', '1'],
+                ['2', '2'],
+                ['3', '3'],
+                ['4', '4'],
+                ['5', '5']
+            ]),
             sources: [],
             notes: {
               show: false,
@@ -80,7 +88,9 @@ define([
                 }, this));
             }
 
-            can.each(['ages', 'childAges', 'infantAges', 'titles', 'sources'], function( list ) {
+            this.computedPetsDropdown(booking);
+
+            can.each(['ages', 'childAges', 'infantAges', 'titles', 'sources', 'petsList'], function( list ) {
                 // Get the var to turn into an observed list. If they aren't arrays then
                 // use the defaults
                 var oldVal = this.options[ list ];
@@ -118,6 +128,8 @@ define([
                 },
                 sources: this.options.sources,
                 titles: this.options.titles,
+                petsList: this.options.petsList,
+                petsType: this.options.petsType || 'number',
                 // $(controller).<plugin>('update', {})
                 countries: this.options.countries,
                 notes: this.options.notes,
@@ -157,6 +169,25 @@ define([
 
             // jQuery('body').on('booking.booking.ok', function(el, evt, args){ console.log(arguments); });
             this.element.trigger('cottage_booking.details');
+        },
+
+        computedPetsDropdown: function(booking) {
+            if(booking.attr('propertyData')) {
+                var numberOfPets = booking.attr('propertyData').attr('numberOfPets') || 5;
+                var petRange = [];
+
+                for (var i = 1; i <= numberOfPets; i++) {
+                    petRange.push(new can.List([i.toString(), i.toString()]));
+                }
+
+                petRange = new can.List( petRange );
+
+                if( this.options.petsList ) {
+                    this.options.petsList.attr( petRange, true );
+                } else {
+                    this.options.petsList = petRange;
+                }
+            }
         },
 
         displayTravellerCheckboxLocation: function( forLocation ) {
@@ -199,6 +230,10 @@ define([
 
         '{booking} submit': function() {
             this.options.booking.save();
+        },
+
+        '{booking} propertyData.numberOfPets': function( booking, evt, newVal ) {
+            this.computedPetsDropdown(booking);
         },
 
         '{booking} customerIsPrimaryTraveller': function( booking, evt, newVal ) {

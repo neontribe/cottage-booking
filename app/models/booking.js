@@ -34,7 +34,8 @@ define([
                 name: {}
             },
             payLater: 'false',
-            voucher: ''
+            voucher: '',
+            propertyData: {}
         },
 
         id: 'bookingId',

@@ -316,13 +316,14 @@ define([
 
         '{route} booking': function( route, evt, newId, prevId ) {
             var stage;
+            var self = this;
             if( newId ) {
 
                 if( this.options.book.attr('bookingId') !== newId ) {
                     this.options.book.fetchBooking( newId ).fail(function() {
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
-                        this.options.route.attr( 'page', 'calendar' );
+                        self.options.route.attr( 'page', 'calendar' );
                     });
                 }
 
