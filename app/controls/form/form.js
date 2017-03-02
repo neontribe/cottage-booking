@@ -179,12 +179,6 @@ define([
                 'maxlength'     : null
             }, this.options, $el.data());
 
-            // Set the placeholder
-            var placeholder_text = $el.attr('placeholder');
-            if(placeholder_text) {
-                options.placeholder = placeholder_text;
-            }
-
             // Add this attr to the list of attributes we're responsible for
             this.options.attributes.push( attr );
 
