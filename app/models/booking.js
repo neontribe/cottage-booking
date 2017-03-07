@@ -35,6 +35,7 @@ define([
             },
             payLater: 'false',
             voucher: '',
+            webVouchers: {},
             propertyData: {}
         },
 
@@ -245,8 +246,8 @@ define([
 
             this.validate('voucher', function( code ) {
                 if( code && self.vouchers.show ) {
-                    var codes = self.vouchers.validcodes;
-                    if( codes && codes.length && can.$.inArray( code, codes ) === -1 ) {
+                    var codes = self.webVouchers;
+                    if( codes && !codes[code] ) {
                         return 'Invalid voucher code.';
                     }
                 }
