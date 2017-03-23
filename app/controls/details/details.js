@@ -177,7 +177,7 @@ define([
                 var numberOfPets = booking.attr('propertyData').attr('numberOfPets') || 5;
                 var petRange = [];
 
-                for (var i = 0; i <= numberOfPets; i++) {
+                for (var i = 1; i <= numberOfPets; i++) {
                     petRange.push(new can.List([i.toString(), i.toString()]));
                 }
 

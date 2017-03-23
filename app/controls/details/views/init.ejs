@@ -116,7 +116,7 @@
         <fieldset <%== model.attr('canBookExtras') ? '' : 'style="display:none;"' %>>
             <legend>Extras</legend>
             <input name="price.extras" type="mixedCheckboxSelect" data-value-attr="code" data-text-attr="description" />
-            <input name="pets" type="<%= petsType %>" data-placeholder="" data-label="Pets" />
+            <input name="pets" type="<%= petsType %>" data-placeholder="0" data-label="Pets" />
         </fieldset>
 
         <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
