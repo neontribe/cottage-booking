@@ -52,7 +52,8 @@ define([
               show: false,
               title: 'Notes lipsum title',
               placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-              values: []
+              values: [],
+              value: null
             },
             vouchers: {
               show: false,
