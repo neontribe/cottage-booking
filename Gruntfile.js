@@ -155,6 +155,7 @@ module.exports = function(grunt) {
                     name : 'bower_components/almond/almond',
                     include: [
                         'requirejsconfig',
+                        'html5shivoverwrite',
                         'cottage_booking',
                         'can/view/ejs'
                     ],

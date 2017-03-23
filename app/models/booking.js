@@ -34,7 +34,9 @@ define([
                 name: {}
             },
             payLater: 'false',
-            voucher: ''
+            voucher: '',
+            propertyData: {},
+            webVouchers: {}
         },
 
         id: 'bookingId',
@@ -78,6 +80,7 @@ define([
         },
 
         vouchers: {},
+
         autopayment: {},
 
         'serialize': {
@@ -244,8 +247,8 @@ define([
 
             this.validate('voucher', function( code ) {
                 if( code && self.vouchers.show ) {
-                    var codes = self.vouchers.validcodes;
-                    if( codes && codes.length && can.$.inArray( code, codes ) === -1 ) {
+                    var codes = this.webVouchers;
+                    if( codes && !codes[code] ) {
                         return 'Invalid voucher code.';
                     }
                 }
@@ -405,6 +408,7 @@ define([
                         });
 
                         self.attr( bookingData, true );
+
                     });
 
                     //break;

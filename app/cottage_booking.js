@@ -5,7 +5,7 @@
  * @param  {can.compute}    enquiry The compute containing the enquiry used by the app
  * @param  {can.Model}      book    The booking model which is globally available
  * @param  {can.List}       stages  The list of stages used by the app
- * @param  {Object}         utils   The utils object with helper functions 
+ * @param  {Object}         utils   The utils object with helper functions
  * @return {can.control}            The BookingPath constructor
  */
 define([
@@ -255,7 +255,7 @@ define([
             }
 
         },
-        
+
         ' error': function ( $el, evt, model, errors ) {
           // we trust that the global jQuery is _not_ the same as our $
           if( this.options.triggerOnGlobal$ && window.jQuery ) {
@@ -279,7 +279,7 @@ define([
             }
 
             if( Control && !stage.attr('control') ) {
-                stage.attr('control', new Control( $el, stage.attr('options') ));
+                stage.attr('control', new Control( $el, stage.attr('options')));
             }
         },
 
@@ -316,13 +316,14 @@ define([
 
         '{route} booking': function( route, evt, newId, prevId ) {
             var stage;
+            var self = this;
             if( newId ) {
 
                 if( this.options.book.attr('bookingId') !== newId ) {
                     this.options.book.fetchBooking( newId ).fail(function() {
                         // We assume all failures are due to booking not found
                         can.route.removeAttr('booking');
-                        this.options.route.attr( 'page', 'calendar' );
+                        self.options.route.attr( 'page', 'calendar' );
                     });
                 }
 
@@ -413,11 +414,11 @@ define([
          * attached to this top level controller, importantly it is possible
          * to make changes to the settings used to launch each of the components
          * TODO: add a shorthand for this
-         * For example: 
+         * For example:
          * @codestart
          *
          *      $( element containing booking path ).bookingPath({
-         *      
+         *
          *          'stages': {
          *              'details': {
          *                  'options': {
@@ -428,11 +429,11 @@ define([
          *                  }
          *              }
          *          }
-         * 
+         *
          *      });
-         * 
+         *
          * @codeend
-         * 
+         *
          * @param  {Object} options The object to change the settings
          * @return {undefined}
          */
@@ -445,12 +446,12 @@ define([
                         var stage = this.options.stages.getById( id );
                         if( stage ) {
                             stage.attr( settings );
+
                             if( stage.attr('control') ) {
                                 this.renderStage( stage, stage.attr('control').element, true );
                             }
                         }
                     }, this );
-
                 } else {
                     if( this.options[key] ) {
                         if( this.options[key].attr ) {
@@ -487,7 +488,7 @@ define([
             init.call( $this, $this.data() );
         }
     });
-    
+
     if( console && console.warn ) {
         if( !init ) {
             // TODO: investigate a different approach

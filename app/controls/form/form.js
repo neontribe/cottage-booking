@@ -52,7 +52,7 @@ define([
                 'mixedCheckboxSelect': function( $el ) {
                     var val = $el.val();
                     var model = $el.data('formModel');
-                    
+
                     if( $el.is('input') ) {
                       val = this.options.getterMap.checkbox( $el ) ? 1 : 0;
                     }
@@ -104,6 +104,7 @@ define([
             // Set up a new observable as our attributes, so we can magically bind to changes
             this.options.attributes = new can.List();
             this.options.optionsMap = new can.Map( this.options.optionsMap );
+
             // We expect these to be computes, so that change events will get properly updated
             this.options.display    = new can.Map( this.options.display );
             this.options.disabled   = new can.Map( this.options.disabled );
@@ -150,9 +151,18 @@ define([
         'formElement': function( index, el ) {
             var $el = can.$(el),
                 attr = $el.attr('name'),
-                // default to text input
-                type = $el.attr('type') || 'text',
-                wrapper = views[ type + 'Wrapper' ] || views.wrapper,
+                // Default to text input
+                type = $el.attr('type') || 'text';
+
+            // Fixes IE returning the wrong value for type attributes.
+            // For input fields with the type set to "textarea", "text" is being returned.
+            // This conditional handles it by checking the "data-type" attribute also.
+            if($el.attr('type') === 'text' &&
+                $el.data('type') === 'textarea') {
+                type = 'textarea';
+            }
+
+            var wrapper = views[ type + 'Wrapper' ] || views.wrapper,
                 options;
 
             options = can.extend(true, {

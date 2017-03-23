@@ -21,11 +21,11 @@
     </fieldset>
     <fieldset>
         <legend>Address</legend>
-        <input name="customer.address.addr1" data-label="Address Line 1" />
-        <input name="customer.address.addr2" data-label="Address Line 2" />
-        <input name="customer.address.town" data-label="Town/City" />
-        <input name="customer.address.county" data-label="County" />
-        <input name="customer.address.postcode" data-label="Postcode" />
+        <input name="customer.address.addr1" data-maxlength="20" data-label="Address Line 1"  />
+        <input name="customer.address.addr2" data-maxlength="20" data-label="Address Line 2" />
+        <input name="customer.address.town" data-label="Town/City" data-maxlength="20" />
+        <input name="customer.address.county" data-label="County" data-maxlength="20" />
+        <input name="customer.address.postcode" data-label="Postcode" data-maxlength="8" />
         <input name="customer.address.country" type="select" data-value-attr="id" data-text-attr="name" data-label="Country" data-placeholder="Country" />
     </fieldset>
     <fieldset>
@@ -65,7 +65,7 @@
 
         <% list( model.attr('partyDetailsTypes'), function( types, title ) { %>
             <legend><%= pretifyString( title, true ) %></legend>
-            <% 
+            <%
                 list( types, function( traveller, i ) {
                     var agesForThisType = ages[ traveller.attr('type') + 'Ages' ];
                     var disabled = {};
@@ -105,7 +105,8 @@
             'autopayment': [
               [ 'true', autoPayment.labels.autotakebalance ],
               [ 'false', autoPayment.labels.noautotakebalance ]
-            ]
+            ],
+            'pets': petsList
         },
         display: display,
         customSelect: customSelect,
@@ -115,13 +116,13 @@
         <fieldset <%== model.attr('canBookExtras') ? '' : 'style="display:none;"' %>>
             <legend>Extras</legend>
             <input name="price.extras" type="mixedCheckboxSelect" data-value-attr="code" data-text-attr="description" />
-            <input name="pets" type="number" data-min="0" data-label="Pets" />
+            <input name="pets" type="<%= petsType %>" data-min="0" data-label="Pets" />
         </fieldset>
 
         <fieldset <%== notes.show ? '' : 'style="display:none;"' %>>
             <legend><%= notes.title %></legend>
             <div><%== notes.helptext %></div>
-            <input name="notes" data-label="" placeholder="<%= notes.placeholder %>" type="textarea" />
+            <input name="notes" data-label="" data-placeholder="<%= notes.placeholder %>" type="textarea" data-type="textarea" />
         </fieldset>
 
         <fieldset>
