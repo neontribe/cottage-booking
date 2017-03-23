@@ -165,6 +165,15 @@ define([
             var wrapper = views[ type + 'Wrapper' ] || views.wrapper,
                 options;
 
+            var elementsToStringify = ['placeholder'];
+            var elementData = $el.data();
+
+            $.each(elementData, function(key, val) {
+               if(typeof val === 'number' && elementsToStringify.indexOf(key) > -1) {
+                   elementData[key] = val.toString();
+               }
+            });
+
             options = can.extend(true, {
                 'attrName'      : attr,
                 'type'          : type,
@@ -177,8 +186,8 @@ define([
                 'id'            : this.idify( attr ),
                 'required'      : this.options.validations ? this.options.model.errors( attr, '' ) : false,
                 'disabledView'  : views.disabledAttr,
-                'maxlength'     : null
-            }, this.options, $el.data());
+                'maxlength'     : null,
+            }, this.options, elementData);
 
             // Add this attr to the list of attributes we're responsible for
             this.options.attributes.push( attr );

@@ -14,14 +14,6 @@
         <%
             var phValue, phText;
 
-            /*
-             *  This is a fix for falsey placeholder values such as '0' which are converted to 0
-             *  and, as a result, fail the conditional display check for placeholders on line 25..
-            */
-            if(typeof this.placeholder === 'number') {
-              this.placeholder = placeholder = this.placeholder.toString();
-            }
-
             if( this.placeholder ) {
                 phValue = this.placeholderVal || '';
                 phText  = typeof placeholder === 'string' ? placeholder : 'Please select';
