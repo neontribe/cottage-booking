@@ -16,7 +16,7 @@
 
             /*
              *  This is a fix for falsey placeholder values such as '0' which are converted to 0
-             *  and, as a result, display the conditional display check for placeholders on line 25..
+             *  and, as a result, fail the conditional display check for placeholders on line 25..
             */
             if(typeof this.placeholder === 'number') {
               this.placeholder = placeholder = this.placeholder.toString();
