@@ -13,4 +13,4 @@
     <% if( !disabled.attr( attrName + '()' ) && disabled.attr( '**()' ) === false ) {
         %>disabled="disabled"<%
     } %>
-><%= model.attr( attrName ) ? model.attr( attrName ) : '' %></textarea>
+><%= model.attr( attrName ) ? model.attr( attrName ) : value ? value : '' %></textarea>
