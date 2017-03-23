@@ -165,13 +165,14 @@ define([
             var wrapper = views[ type + 'Wrapper' ] || views.wrapper,
                 options;
 
-            var elementsToStringify = ['placeholder'];
+            var attributesToStringify = ['placeholder'];
             var elementData = $el.data();
 
-            $.each(elementData, function(key, val) {
-               if(typeof val === 'number' && elementsToStringify.indexOf(key) > -1) {
-                   elementData[key] = val.toString();
-               }
+            _.forEach(attributesToStringify, function(key) {
+                var currentValue = elementData[key];
+                if(typeof currentValue === 'number') {
+                    elementData[key] = currentValue.toString();
+                }
             });
 
             options = can.extend(true, {
