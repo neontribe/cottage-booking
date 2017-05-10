@@ -233,7 +233,7 @@ define([
         '{booking} submit': function() {
             this.options.booking.save();
 
-            $(this.options.booking).one('savesuccess', function(err, data) {
+            can.$(this.options.booking).one('savesuccess', function() {
                 can.trigger( can.route.data, 'next', [ can.route.attr() ] );
             });
         },
