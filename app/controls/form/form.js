@@ -382,6 +382,11 @@ define([
             evt.stopPropagation();
             evt.preventDefault();
 
+            $('[type=text], textarea').each(can.proxy(function (i, el) {
+                var $el = $(el);
+                this.updateModel($el);
+            }, this));
+
             var hasErrors = this.addErrors();
 
             if( !hasErrors ) {

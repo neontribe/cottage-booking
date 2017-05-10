@@ -493,7 +493,7 @@ define([
          * @return {$.Deferred} The deferred object in transit
          */
         transit: null,
-        save: function() {
+        save: function save() {
             var self = this;
 
             can.trigger( this, 'saving' );
@@ -503,7 +503,7 @@ define([
             if( this.transit ) {
                 this.transit.abort();
                 this.transit = null;
-                return this.save.apply( this, arguments );
+                return save.apply( this, arguments );
             }
 
             this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
@@ -511,6 +511,8 @@ define([
                 // Make sure that we update the party details to the number of travs
                 self.matchTravCountToPartyDetails();
                 can.trigger( self, 'saved' );
+            }).done(function () {
+                $(self).triggerHandler('savesuccess');
             });
 
             return this.transit;

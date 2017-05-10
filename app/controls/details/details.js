@@ -232,6 +232,10 @@ define([
 
         '{booking} submit': function() {
             this.options.booking.save();
+
+            $(this.options.booking).one('savesuccess', function(err, data) {
+                can.trigger( can.route.data, 'next', [ can.route.attr() ] );
+            });
         },
 
         '{booking} propertyData.numberOfPets': function( booking, evt, newVal ) {
