@@ -1,30 +1,21 @@
-{
-    "status":"ok",
-    "message":"Price Found",
-    "bookingFee":25,
-    "bookingdata": {
-        "propref": "A223",
-        "brandcode": "ZZ",
-        "fromdate": 1400284800,
-        "todate": 1400889600,
-        "adults": 4,
-        "children": 0,
-        "infants": 0,
-        "pets": 0
-    },
-    "basicPrice":630,
-    "extras":{
-        "BKFE":{
-            "code":"BKFE",
-            "description":"Booking Fee",
-            "type":"compulsory",
-            "quantity":1,
-            "price":"25",
-            "total":25
-        }
-    },
-    "extraTotal":25,
-    "securityDeposit":250,
-    "totalPrice":655,
-    "depositAmount":164
+{  
+   "status":"ok",
+   "message":"Price Found",
+   "bookingFee":25,
+   "basicPrice":283,
+   "extras":{  
+      "BKFE":{  
+         "code":"BKFE",
+         "description":"Booking Fee",
+         "type":"compulsory",
+         "quantity":1,
+         "price":25,
+         "total":25,
+         "maxLimit":1
+      }
+   },
+   "extraTotal":25,
+   "securityDeposit":0,
+   "totalPrice":308,
+   "depositAmount":308
 }

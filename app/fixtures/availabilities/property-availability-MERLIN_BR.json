@@ -1,0 +1,4572 @@
+{  
+   "2016-10-01":{  
+      "code":"S",
+      "changeover":false,
+      "date":1475276400,
+      "available":false,
+      "class":"unavailable codeS  saturday past ",
+      "id":"01-10-2016",
+      "content":"1",
+      "day":"1"
+   },
+   "2016-10-02":{  
+      "code":"S",
+      "changeover":false,
+      "date":1475362800,
+      "available":false,
+      "class":"unavailable bookingEnd codeS  sunday past ",
+      "id":"02-10-2016",
+      "content":"2",
+      "day":"2"
+   },
+   "2016-10-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1475449200,
+      "available":true,
+      "class":"available code_  monday afterBooking past ",
+      "id":"03-10-2016",
+      "content":"3",
+      "day":"3"
+   },
+   "2016-10-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1475535600,
+      "available":true,
+      "class":"available code_  tuesday past ",
+      "id":"04-10-2016",
+      "content":"4",
+      "day":"4"
+   },
+   "2016-10-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1475622000,
+      "available":true,
+      "class":"available code_  wednesday past ",
+      "id":"05-10-2016",
+      "content":"5",
+      "day":"5"
+   },
+   "2016-10-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1475708400,
+      "available":true,
+      "class":"available code_  thursday beforeBooking past ",
+      "id":"06-10-2016",
+      "content":"6",
+      "day":"6"
+   },
+   "2016-10-07":{  
+      "code":"S",
+      "changeover":true,
+      "date":1475794800,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeS  friday past ",
+      "id":"07-10-2016",
+      "content":"7",
+      "day":"7"
+   },
+   "2016-10-08":{  
+      "code":"S",
+      "changeover":false,
+      "date":1475881200,
+      "available":false,
+      "class":"unavailable bookingEnd codeS  saturday past ",
+      "id":"08-10-2016",
+      "content":"8",
+      "day":"8"
+   },
+   "2016-10-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1475967600,
+      "available":true,
+      "class":"available code_  sunday afterBooking past ",
+      "id":"09-10-2016",
+      "content":"9",
+      "day":"9"
+   },
+   "2016-10-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1476054000,
+      "available":true,
+      "class":"available code_  monday past ",
+      "id":"10-10-2016",
+      "content":"10",
+      "day":"10"
+   },
+   "2016-10-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1476140400,
+      "available":true,
+      "class":"available code_  tuesday past ",
+      "id":"11-10-2016",
+      "content":"11",
+      "day":"11"
+   },
+   "2016-10-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1476226800,
+      "available":true,
+      "class":"available code_  wednesday past ",
+      "id":"12-10-2016",
+      "content":"12",
+      "day":"12"
+   },
+   "2016-10-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1476313200,
+      "available":true,
+      "class":"available code_  thursday beforeBooking past ",
+      "id":"13-10-2016",
+      "content":"13",
+      "day":"13"
+   },
+   "2016-10-14":{  
+      "code":"B",
+      "changeover":true,
+      "date":1476399600,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeB  friday past ",
+      "id":"14-10-2016",
+      "content":"14",
+      "day":"14"
+   },
+   "2016-10-15":{  
+      "code":"B",
+      "changeover":false,
+      "date":1476486000,
+      "available":false,
+      "class":"unavailable codeB  saturday past ",
+      "id":"15-10-2016",
+      "content":"15",
+      "day":"15"
+   },
+   "2016-10-16":{  
+      "code":"B",
+      "changeover":false,
+      "date":1476572400,
+      "available":false,
+      "class":"unavailable codeB  sunday past ",
+      "id":"16-10-2016",
+      "content":"16",
+      "day":"16"
+   },
+   "2016-10-17":{  
+      "code":"B",
+      "changeover":false,
+      "date":1476658800,
+      "available":false,
+      "class":"unavailable codeB  monday past ",
+      "id":"17-10-2016",
+      "content":"17",
+      "day":"17"
+   },
+   "2016-10-18":{  
+      "code":"B",
+      "changeover":false,
+      "date":1476745200,
+      "available":false,
+      "class":"unavailable codeB  tuesday past ",
+      "id":"18-10-2016",
+      "content":"18",
+      "day":"18"
+   },
+   "2016-10-19":{  
+      "code":"B",
+      "changeover":false,
+      "date":1476831600,
+      "available":false,
+      "class":"unavailable codeB  wednesday past ",
+      "id":"19-10-2016",
+      "content":"19",
+      "day":"19"
+   },
+   "2016-10-20":{  
+      "code":"B",
+      "changeover":false,
+      "date":1476918000,
+      "available":false,
+      "class":"unavailable bookingEnd codeB  thursday past ",
+      "id":"20-10-2016",
+      "content":"20",
+      "day":"20"
+   },
+   "2016-10-21":{  
+      "code":"_",
+      "changeover":true,
+      "date":1477004400,
+      "available":true,
+      "class":"available changeover  code_  friday beforeBooking afterBooking past ",
+      "id":"21-10-2016",
+      "content":"21",
+      "day":"21"
+   },
+   "2016-10-22":{  
+      "code":"O",
+      "changeover":false,
+      "date":1477090800,
+      "available":false,
+      "class":"unavailable bookingStart codeO  saturday past ",
+      "id":"22-10-2016",
+      "content":"22",
+      "day":"22"
+   },
+   "2016-10-23":{  
+      "code":"O",
+      "changeover":false,
+      "date":1477177200,
+      "available":false,
+      "class":"unavailable codeO  sunday past ",
+      "id":"23-10-2016",
+      "content":"23",
+      "day":"23"
+   },
+   "2016-10-24":{  
+      "code":"O",
+      "changeover":false,
+      "date":1477263600,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  monday past ",
+      "id":"24-10-2016",
+      "content":"24",
+      "day":"24"
+   },
+   "2016-10-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1477350000,
+      "available":true,
+      "class":"available code_  tuesday afterBooking",
+      "id":"25-10-2016",
+      "content":"25",
+      "day":"25"
+   },
+   "2016-10-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1477436400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"26-10-2016",
+      "content":"26",
+      "day":"26"
+   },
+   "2016-10-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1477522800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"27-10-2016",
+      "content":"27",
+      "day":"27"
+   },
+   "2016-10-28":{  
+      "code":"_",
+      "changeover":true,
+      "date":1477609200,
+      "available":true,
+      "class":"available changeover  code_  friday beforeBooking",
+      "id":"28-10-2016",
+      "content":"28",
+      "day":"28"
+   },
+   "2016-10-29":{  
+      "code":"O",
+      "changeover":false,
+      "date":1477695600,
+      "available":false,
+      "class":"unavailable bookingStart codeO  saturday",
+      "id":"29-10-2016",
+      "content":"29",
+      "day":"29"
+   },
+   "2016-10-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1477782000,
+      "available":true,
+      "class":"available code_  sunday afterBooking",
+      "id":"30-10-2016",
+      "content":"30",
+      "day":"30"
+   },
+   "2016-10-31":{  
+      "code":"_",
+      "changeover":false,
+      "date":1477872000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"31-10-2016",
+      "content":"31",
+      "day":"31"
+   },
+   "2016-11-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1477958400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"01-11-2016",
+      "content":"1",
+      "day":"1"
+   },
+   "2016-11-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478044800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"02-11-2016",
+      "content":"2",
+      "day":"2"
+   },
+   "2016-11-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478131200,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"03-11-2016",
+      "content":"3",
+      "day":"3"
+   },
+   "2016-11-04":{  
+      "code":"O",
+      "changeover":true,
+      "date":1478217600,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"04-11-2016",
+      "content":"4",
+      "day":"4"
+   },
+   "2016-11-05":{  
+      "code":"O",
+      "changeover":false,
+      "date":1478304000,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"05-11-2016",
+      "content":"5",
+      "day":"5"
+   },
+   "2016-11-06":{  
+      "code":"O",
+      "changeover":false,
+      "date":1478390400,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"06-11-2016",
+      "content":"6",
+      "day":"6"
+   },
+   "2016-11-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478476800,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"07-11-2016",
+      "content":"7",
+      "day":"7"
+   },
+   "2016-11-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478563200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"08-11-2016",
+      "content":"8",
+      "day":"8"
+   },
+   "2016-11-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478649600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"09-11-2016",
+      "content":"9",
+      "day":"9"
+   },
+   "2016-11-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478736000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"10-11-2016",
+      "content":"10",
+      "day":"10"
+   },
+   "2016-11-11":{  
+      "code":"_",
+      "changeover":true,
+      "date":1478822400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"11-11-2016",
+      "content":"11",
+      "day":"11"
+   },
+   "2016-11-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478908800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"12-11-2016",
+      "content":"12",
+      "day":"12"
+   },
+   "2016-11-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1478995200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"13-11-2016",
+      "content":"13",
+      "day":"13"
+   },
+   "2016-11-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479081600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"14-11-2016",
+      "content":"14",
+      "day":"14"
+   },
+   "2016-11-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479168000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"15-11-2016",
+      "content":"15",
+      "day":"15"
+   },
+   "2016-11-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479254400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"16-11-2016",
+      "content":"16",
+      "day":"16"
+   },
+   "2016-11-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479340800,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"17-11-2016",
+      "content":"17",
+      "day":"17"
+   },
+   "2016-11-18":{  
+      "code":"O",
+      "changeover":true,
+      "date":1479427200,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"18-11-2016",
+      "content":"18",
+      "day":"18"
+   },
+   "2016-11-19":{  
+      "code":"O",
+      "changeover":false,
+      "date":1479513600,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  saturday",
+      "id":"19-11-2016",
+      "content":"19",
+      "day":"19"
+   },
+   "2016-11-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479600000,
+      "available":true,
+      "class":"available code_  sunday afterBooking",
+      "id":"20-11-2016",
+      "content":"20",
+      "day":"20"
+   },
+   "2016-11-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479686400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"21-11-2016",
+      "content":"21",
+      "day":"21"
+   },
+   "2016-11-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479772800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"22-11-2016",
+      "content":"22",
+      "day":"22"
+   },
+   "2016-11-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479859200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"23-11-2016",
+      "content":"23",
+      "day":"23"
+   },
+   "2016-11-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1479945600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"24-11-2016",
+      "content":"24",
+      "day":"24"
+   },
+   "2016-11-25":{  
+      "code":"_",
+      "changeover":true,
+      "date":1480032000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"25-11-2016",
+      "content":"25",
+      "day":"25"
+   },
+   "2016-11-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480118400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"26-11-2016",
+      "content":"26",
+      "day":"26"
+   },
+   "2016-11-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480204800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"27-11-2016",
+      "content":"27",
+      "day":"27"
+   },
+   "2016-11-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480291200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"28-11-2016",
+      "content":"28",
+      "day":"28"
+   },
+   "2016-11-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480377600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"29-11-2016",
+      "content":"29",
+      "day":"29"
+   },
+   "2016-11-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480464000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"30-11-2016",
+      "content":"30",
+      "day":"30"
+   },
+   "2016-12-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480550400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"01-12-2016",
+      "content":"1",
+      "day":"1"
+   },
+   "2016-12-02":{  
+      "code":"_",
+      "changeover":true,
+      "date":1480636800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"02-12-2016",
+      "content":"2",
+      "day":"2"
+   },
+   "2016-12-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480723200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"03-12-2016",
+      "content":"3",
+      "day":"3"
+   },
+   "2016-12-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480809600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"04-12-2016",
+      "content":"4",
+      "day":"4"
+   },
+   "2016-12-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480896000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"05-12-2016",
+      "content":"5",
+      "day":"5"
+   },
+   "2016-12-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1480982400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"06-12-2016",
+      "content":"6",
+      "day":"6"
+   },
+   "2016-12-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481068800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"07-12-2016",
+      "content":"7",
+      "day":"7"
+   },
+   "2016-12-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481155200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"08-12-2016",
+      "content":"8",
+      "day":"8"
+   },
+   "2016-12-09":{  
+      "code":"_",
+      "changeover":true,
+      "date":1481241600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"09-12-2016",
+      "content":"9",
+      "day":"9"
+   },
+   "2016-12-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481328000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"10-12-2016",
+      "content":"10",
+      "day":"10"
+   },
+   "2016-12-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481414400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"11-12-2016",
+      "content":"11",
+      "day":"11"
+   },
+   "2016-12-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481500800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"12-12-2016",
+      "content":"12",
+      "day":"12"
+   },
+   "2016-12-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481587200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"13-12-2016",
+      "content":"13",
+      "day":"13"
+   },
+   "2016-12-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481673600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"14-12-2016",
+      "content":"14",
+      "day":"14"
+   },
+   "2016-12-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481760000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"15-12-2016",
+      "content":"15",
+      "day":"15"
+   },
+   "2016-12-16":{  
+      "code":"_",
+      "changeover":true,
+      "date":1481846400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"16-12-2016",
+      "content":"16",
+      "day":"16"
+   },
+   "2016-12-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1481932800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"17-12-2016",
+      "content":"17",
+      "day":"17"
+   },
+   "2016-12-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482019200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"18-12-2016",
+      "content":"18",
+      "day":"18"
+   },
+   "2016-12-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482105600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"19-12-2016",
+      "content":"19",
+      "day":"19"
+   },
+   "2016-12-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482192000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"20-12-2016",
+      "content":"20",
+      "day":"20"
+   },
+   "2016-12-21":{  
+      "code":"_",
+      "changeover":true,
+      "date":1482278400,
+      "available":true,
+      "class":"available changeover  code_  wednesday",
+      "id":"21-12-2016",
+      "content":"21",
+      "day":"21"
+   },
+   "2016-12-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482364800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"22-12-2016",
+      "content":"22",
+      "day":"22"
+   },
+   "2016-12-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482451200,
+      "available":true,
+      "class":"available code_  friday",
+      "id":"23-12-2016",
+      "content":"23",
+      "day":"23"
+   },
+   "2016-12-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482537600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"24-12-2016",
+      "content":"24",
+      "day":"24"
+   },
+   "2016-12-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482624000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"25-12-2016",
+      "content":"25",
+      "day":"25"
+   },
+   "2016-12-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482710400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"26-12-2016",
+      "content":"26",
+      "day":"26"
+   },
+   "2016-12-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1482796800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"27-12-2016",
+      "content":"27",
+      "day":"27"
+   },
+   "2016-12-28":{  
+      "code":"_",
+      "changeover":true,
+      "date":1482883200,
+      "available":true,
+      "class":"available changeover  code_  wednesday beforeBooking",
+      "id":"28-12-2016",
+      "content":"28",
+      "day":"28"
+   },
+   "2016-12-29":{  
+      "code":"O",
+      "changeover":false,
+      "date":1482969600,
+      "available":false,
+      "class":"unavailable bookingStart codeO  thursday",
+      "id":"29-12-2016",
+      "content":"29",
+      "day":"29"
+   },
+   "2016-12-30":{  
+      "code":"O",
+      "changeover":false,
+      "date":1483056000,
+      "available":false,
+      "class":"unavailable codeO  friday",
+      "id":"30-12-2016",
+      "content":"30",
+      "day":"30"
+   },
+   "2016-12-31":{  
+      "code":"O",
+      "changeover":false,
+      "date":1483142400,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"31-12-2016",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-01-01":{  
+      "code":"O",
+      "changeover":false,
+      "date":1483228800,
+      "available":false,
+      "class":"unavailable codeO  sunday",
+      "id":"01-01-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-01-02":{  
+      "code":"O",
+      "changeover":false,
+      "date":1483315200,
+      "available":false,
+      "class":"unavailable codeO  monday",
+      "id":"02-01-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-01-03":{  
+      "code":"O",
+      "changeover":false,
+      "date":1483401600,
+      "available":false,
+      "class":"unavailable codeO  tuesday",
+      "id":"03-01-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-01-04":{  
+      "code":"O",
+      "changeover":true,
+      "date":1483488000,
+      "available":false,
+      "class":"unavailable bookingEnd changeover  codeO  wednesday",
+      "id":"04-01-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-01-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1483574400,
+      "available":true,
+      "class":"available code_  thursday afterBooking",
+      "id":"05-01-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-01-06":{  
+      "code":"_",
+      "changeover":true,
+      "date":1483660800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"06-01-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-01-07":{  
+      "code":"_",
+      "changeover":true,
+      "date":1483747200,
+      "available":true,
+      "class":"available changeover  code_  saturday",
+      "id":"07-01-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-01-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1483833600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"08-01-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-01-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1483920000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"09-01-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-01-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484006400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"10-01-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-01-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484092800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"11-01-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-01-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484179200,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"12-01-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-01-13":{  
+      "code":"O",
+      "changeover":true,
+      "date":1484265600,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"13-01-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-01-14":{  
+      "code":"O",
+      "changeover":false,
+      "date":1484352000,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"14-01-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-01-15":{  
+      "code":"O",
+      "changeover":false,
+      "date":1484438400,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"15-01-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-01-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484524800,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"16-01-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-01-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484611200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"17-01-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-01-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484697600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"18-01-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-01-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484784000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"19-01-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-01-20":{  
+      "code":"_",
+      "changeover":true,
+      "date":1484870400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"20-01-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-01-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1484956800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"21-01-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-01-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485043200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"22-01-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-01-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485129600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"23-01-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-01-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485216000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"24-01-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-01-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485302400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"25-01-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-01-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485388800,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"26-01-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-01-27":{  
+      "code":"O",
+      "changeover":true,
+      "date":1485475200,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"27-01-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-01-28":{  
+      "code":"O",
+      "changeover":false,
+      "date":1485561600,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"28-01-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-01-29":{  
+      "code":"O",
+      "changeover":false,
+      "date":1485648000,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"29-01-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-01-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485734400,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"30-01-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-01-31":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485820800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"31-01-2017",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-02-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485907200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"01-02-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-02-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1485993600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"02-02-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-02-03":{  
+      "code":"_",
+      "changeover":true,
+      "date":1486080000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"03-02-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-02-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486166400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"04-02-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-02-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486252800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"05-02-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-02-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486339200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"06-02-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-02-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486425600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"07-02-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-02-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486512000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"08-02-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-02-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486598400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"09-02-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-02-10":{  
+      "code":"_",
+      "changeover":true,
+      "date":1486684800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"10-02-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-02-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486771200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"11-02-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-02-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486857600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"12-02-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-02-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1486944000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"13-02-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-02-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487030400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"14-02-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-02-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487116800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"15-02-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-02-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487203200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"16-02-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-02-17":{  
+      "code":"_",
+      "changeover":true,
+      "date":1487289600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"17-02-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-02-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487376000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"18-02-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-02-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487462400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"19-02-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-02-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487548800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"20-02-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-02-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487635200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"21-02-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-02-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487721600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"22-02-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-02-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487808000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"23-02-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-02-24":{  
+      "code":"_",
+      "changeover":true,
+      "date":1487894400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"24-02-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-02-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1487980800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"25-02-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-02-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488067200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"26-02-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-02-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488153600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"27-02-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-02-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488240000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"28-02-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-03-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488326400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"01-03-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-03-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488412800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"02-03-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-03-03":{  
+      "code":"_",
+      "changeover":true,
+      "date":1488499200,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"03-03-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-03-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488585600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"04-03-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-03-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488672000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"05-03-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-03-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488758400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"06-03-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-03-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488844800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"07-03-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-03-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1488931200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"08-03-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-03-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489017600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"09-03-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-03-10":{  
+      "code":"_",
+      "changeover":true,
+      "date":1489104000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"10-03-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-03-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489190400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"11-03-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-03-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489276800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"12-03-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-03-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489363200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"13-03-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-03-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489449600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"14-03-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-03-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489536000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"15-03-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-03-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489622400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"16-03-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-03-17":{  
+      "code":"_",
+      "changeover":true,
+      "date":1489708800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"17-03-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-03-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489795200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"18-03-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-03-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489881600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"19-03-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-03-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1489968000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"20-03-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-03-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490054400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"21-03-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-03-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490140800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"22-03-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-03-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490227200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"23-03-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-03-24":{  
+      "code":"_",
+      "changeover":true,
+      "date":1490313600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"24-03-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-03-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490400000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"25-03-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-03-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490486400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"26-03-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-03-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490569200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"27-03-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-03-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490655600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"28-03-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-03-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490742000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"29-03-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-03-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1490828400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"30-03-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-03-31":{  
+      "code":"_",
+      "changeover":true,
+      "date":1490914800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"31-03-2017",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-04-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491001200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"01-04-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-04-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491087600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"02-04-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-04-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491174000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"03-04-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-04-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491260400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"04-04-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-04-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491346800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"05-04-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-04-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491433200,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"06-04-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-04-07":{  
+      "code":"O",
+      "changeover":true,
+      "date":1491519600,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"07-04-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-04-08":{  
+      "code":"O",
+      "changeover":false,
+      "date":1491606000,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"08-04-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-04-09":{  
+      "code":"O",
+      "changeover":false,
+      "date":1491692400,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"09-04-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-04-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491778800,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"10-04-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-04-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491865200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"11-04-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-04-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1491951600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"12-04-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-04-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1492038000,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"13-04-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-04-14":{  
+      "code":"O",
+      "changeover":true,
+      "date":1492124400,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"14-04-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-04-15":{  
+      "code":"O",
+      "changeover":false,
+      "date":1492210800,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"15-04-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-04-16":{  
+      "code":"O",
+      "changeover":false,
+      "date":1492297200,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"16-04-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-04-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1492383600,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"17-04-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-04-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1492470000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"18-04-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-04-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1492556400,
+      "available":true,
+      "class":"available code_  wednesday beforeBooking",
+      "id":"19-04-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-04-20":{  
+      "code":"O",
+      "changeover":false,
+      "date":1492642800,
+      "available":false,
+      "class":"unavailable bookingStart codeO  thursday",
+      "id":"20-04-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-04-21":{  
+      "code":"O",
+      "changeover":true,
+      "date":1492729200,
+      "available":false,
+      "class":"unavailable changeover  codeO  friday",
+      "id":"21-04-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-04-22":{  
+      "code":"O",
+      "changeover":false,
+      "date":1492815600,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  saturday",
+      "id":"22-04-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-04-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1492902000,
+      "available":true,
+      "class":"available code_  sunday afterBooking",
+      "id":"23-04-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-04-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1492988400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"24-04-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-04-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493074800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"25-04-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-04-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493161200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"26-04-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-04-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493247600,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"27-04-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-04-28":{  
+      "code":"O",
+      "changeover":true,
+      "date":1493334000,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"28-04-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-04-29":{  
+      "code":"O",
+      "changeover":false,
+      "date":1493420400,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"29-04-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-04-30":{  
+      "code":"O",
+      "changeover":false,
+      "date":1493506800,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"30-04-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-05-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493593200,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"01-05-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-05-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493679600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"02-05-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-05-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493766000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"03-05-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-05-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1493852400,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"04-05-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-05-05":{  
+      "code":"O",
+      "changeover":true,
+      "date":1493938800,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"05-05-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-05-06":{  
+      "code":"O",
+      "changeover":false,
+      "date":1494025200,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  saturday",
+      "id":"06-05-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-05-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494111600,
+      "available":true,
+      "class":"available code_  sunday afterBooking",
+      "id":"07-05-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-05-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494198000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"08-05-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-05-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494284400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"09-05-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-05-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494370800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"10-05-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-05-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494457200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"11-05-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-05-12":{  
+      "code":"_",
+      "changeover":true,
+      "date":1494543600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"12-05-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-05-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494630000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"13-05-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-05-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494716400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"14-05-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-05-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494802800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"15-05-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-05-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494889200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"16-05-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-05-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1494975600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"17-05-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-05-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495062000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"18-05-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-05-19":{  
+      "code":"_",
+      "changeover":true,
+      "date":1495148400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"19-05-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-05-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495234800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"20-05-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-05-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495321200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"21-05-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-05-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495407600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"22-05-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-05-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495494000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"23-05-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-05-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495580400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"24-05-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-05-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1495666800,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"25-05-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-05-26":{  
+      "code":"O",
+      "changeover":true,
+      "date":1495753200,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"26-05-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-05-27":{  
+      "code":"O",
+      "changeover":false,
+      "date":1495839600,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"27-05-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-05-28":{  
+      "code":"O",
+      "changeover":false,
+      "date":1495926000,
+      "available":false,
+      "class":"unavailable codeO  sunday",
+      "id":"28-05-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-05-29":{  
+      "code":"O",
+      "changeover":false,
+      "date":1496012400,
+      "available":false,
+      "class":"unavailable codeO  monday",
+      "id":"29-05-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-05-30":{  
+      "code":"O",
+      "changeover":false,
+      "date":1496098800,
+      "available":false,
+      "class":"unavailable codeO  tuesday",
+      "id":"30-05-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-05-31":{  
+      "code":"O",
+      "changeover":false,
+      "date":1496185200,
+      "available":false,
+      "class":"unavailable codeO  wednesday",
+      "id":"31-05-2017",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-06-01":{  
+      "code":"O",
+      "changeover":false,
+      "date":1496271600,
+      "available":false,
+      "class":"unavailable codeO  thursday",
+      "id":"01-06-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-06-02":{  
+      "code":"O",
+      "changeover":true,
+      "date":1496358000,
+      "available":false,
+      "class":"unavailable changeover  codeO  friday",
+      "id":"02-06-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-06-03":{  
+      "code":"O",
+      "changeover":false,
+      "date":1496444400,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"03-06-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-06-04":{  
+      "code":"O",
+      "changeover":false,
+      "date":1496530800,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"04-06-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-06-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1496617200,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"05-06-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-06-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1496703600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"06-06-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-06-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1496790000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"07-06-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-06-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1496876400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"08-06-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-06-09":{  
+      "code":"_",
+      "changeover":true,
+      "date":1496962800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"09-06-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-06-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497049200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"10-06-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-06-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497135600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"11-06-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-06-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497222000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"12-06-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-06-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497308400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"13-06-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-06-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497394800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"14-06-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-06-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497481200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"15-06-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-06-16":{  
+      "code":"_",
+      "changeover":true,
+      "date":1497567600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"16-06-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-06-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497654000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"17-06-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-06-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497740400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"18-06-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-06-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497826800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"19-06-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-06-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497913200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"20-06-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-06-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1497999600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"21-06-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-06-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498086000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"22-06-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-06-23":{  
+      "code":"_",
+      "changeover":true,
+      "date":1498172400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"23-06-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-06-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498258800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"24-06-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-06-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498345200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"25-06-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-06-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498431600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"26-06-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-06-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498518000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"27-06-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-06-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498604400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"28-06-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-06-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498690800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"29-06-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-06-30":{  
+      "code":"_",
+      "changeover":true,
+      "date":1498777200,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"30-06-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-07-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498863600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"01-07-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-07-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1498950000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"02-07-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-07-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499036400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"03-07-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-07-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499122800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"04-07-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-07-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499209200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"05-07-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-07-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499295600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"06-07-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-07-07":{  
+      "code":"_",
+      "changeover":true,
+      "date":1499382000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"07-07-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-07-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499468400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"08-07-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-07-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499554800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"09-07-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-07-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499641200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"10-07-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-07-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499727600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"11-07-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-07-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499814000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"12-07-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-07-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1499900400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"13-07-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-07-14":{  
+      "code":"_",
+      "changeover":true,
+      "date":1499986800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"14-07-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-07-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500073200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"15-07-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-07-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500159600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"16-07-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-07-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500246000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"17-07-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-07-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500332400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"18-07-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-07-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500418800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"19-07-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-07-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500505200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"20-07-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-07-21":{  
+      "code":"_",
+      "changeover":true,
+      "date":1500591600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"21-07-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-07-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500678000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"22-07-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-07-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500764400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"23-07-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-07-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500850800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"24-07-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-07-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1500937200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"25-07-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-07-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1501023600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"26-07-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-07-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1501110000,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"27-07-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-07-28":{  
+      "code":"D",
+      "changeover":true,
+      "date":1501196400,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeD  friday",
+      "id":"28-07-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-07-29":{  
+      "code":"D",
+      "changeover":false,
+      "date":1501282800,
+      "available":false,
+      "class":"unavailable codeD  saturday",
+      "id":"29-07-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-07-30":{  
+      "code":"D",
+      "changeover":false,
+      "date":1501369200,
+      "available":false,
+      "class":"unavailable codeD  sunday",
+      "id":"30-07-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-07-31":{  
+      "code":"D",
+      "changeover":false,
+      "date":1501455600,
+      "available":false,
+      "class":"unavailable codeD  monday",
+      "id":"31-07-2017",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-08-01":{  
+      "code":"D",
+      "changeover":false,
+      "date":1501542000,
+      "available":false,
+      "class":"unavailable codeD  tuesday",
+      "id":"01-08-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-08-02":{  
+      "code":"D",
+      "changeover":false,
+      "date":1501628400,
+      "available":false,
+      "class":"unavailable codeD  wednesday",
+      "id":"02-08-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-08-03":{  
+      "code":"D",
+      "changeover":false,
+      "date":1501714800,
+      "available":false,
+      "class":"unavailable bookingEnd codeD  thursday",
+      "id":"03-08-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-08-04":{  
+      "code":"_",
+      "changeover":true,
+      "date":1501801200,
+      "available":true,
+      "class":"available changeover  code_  friday afterBooking",
+      "id":"04-08-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-08-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1501887600,
+      "available":true,
+      "class":"available code_  saturday beforeBooking",
+      "id":"05-08-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-08-06":{  
+      "code":"O",
+      "changeover":false,
+      "date":1501974000,
+      "available":false,
+      "class":"unavailable bookingStart codeO  sunday",
+      "id":"06-08-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-08-07":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502060400,
+      "available":false,
+      "class":"unavailable codeO  monday",
+      "id":"07-08-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-08-08":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502146800,
+      "available":false,
+      "class":"unavailable codeO  tuesday",
+      "id":"08-08-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-08-09":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502233200,
+      "available":false,
+      "class":"unavailable codeO  wednesday",
+      "id":"09-08-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-08-10":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502319600,
+      "available":false,
+      "class":"unavailable codeO  thursday",
+      "id":"10-08-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-08-11":{  
+      "code":"O",
+      "changeover":true,
+      "date":1502406000,
+      "available":false,
+      "class":"unavailable changeover  codeO  friday",
+      "id":"11-08-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-08-12":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502492400,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"12-08-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-08-13":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502578800,
+      "available":false,
+      "class":"unavailable codeO  sunday",
+      "id":"13-08-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-08-14":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502665200,
+      "available":false,
+      "class":"unavailable codeO  monday",
+      "id":"14-08-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-08-15":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502751600,
+      "available":false,
+      "class":"unavailable codeO  tuesday",
+      "id":"15-08-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-08-16":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502838000,
+      "available":false,
+      "class":"unavailable codeO  wednesday",
+      "id":"16-08-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-08-17":{  
+      "code":"O",
+      "changeover":false,
+      "date":1502924400,
+      "available":false,
+      "class":"unavailable codeO  thursday",
+      "id":"17-08-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-08-18":{  
+      "code":"O",
+      "changeover":true,
+      "date":1503010800,
+      "available":false,
+      "class":"unavailable changeover  codeO  friday",
+      "id":"18-08-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-08-19":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503097200,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"19-08-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-08-20":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503183600,
+      "available":false,
+      "class":"unavailable codeO  sunday",
+      "id":"20-08-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-08-21":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503270000,
+      "available":false,
+      "class":"unavailable codeO  monday",
+      "id":"21-08-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-08-22":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503356400,
+      "available":false,
+      "class":"unavailable codeO  tuesday",
+      "id":"22-08-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-08-23":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503442800,
+      "available":false,
+      "class":"unavailable codeO  wednesday",
+      "id":"23-08-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-08-24":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503529200,
+      "available":false,
+      "class":"unavailable codeO  thursday",
+      "id":"24-08-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-08-25":{  
+      "code":"O",
+      "changeover":true,
+      "date":1503615600,
+      "available":false,
+      "class":"unavailable changeover  codeO  friday",
+      "id":"25-08-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-08-26":{  
+      "code":"O",
+      "changeover":false,
+      "date":1503702000,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  saturday",
+      "id":"26-08-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-08-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1503788400,
+      "available":true,
+      "class":"available code_  sunday afterBooking",
+      "id":"27-08-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-08-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1503874800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"28-08-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-08-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1503961200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"29-08-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-08-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504047600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"30-08-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-08-31":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504134000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"31-08-2017",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-09-01":{  
+      "code":"_",
+      "changeover":true,
+      "date":1504220400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"01-09-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-09-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504306800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"02-09-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-09-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504393200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"03-09-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-09-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504479600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"04-09-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-09-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504566000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"05-09-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-09-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504652400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"06-09-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-09-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504738800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"07-09-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-09-08":{  
+      "code":"_",
+      "changeover":true,
+      "date":1504825200,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"08-09-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-09-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504911600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"09-09-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-09-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1504998000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"10-09-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-09-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505084400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"11-09-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-09-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505170800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"12-09-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-09-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505257200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"13-09-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-09-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505343600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"14-09-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-09-15":{  
+      "code":"_",
+      "changeover":true,
+      "date":1505430000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"15-09-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-09-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505516400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"16-09-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-09-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505602800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"17-09-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-09-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505689200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"18-09-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-09-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505775600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"19-09-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-09-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505862000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"20-09-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-09-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1505948400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"21-09-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-09-22":{  
+      "code":"_",
+      "changeover":true,
+      "date":1506034800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"22-09-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-09-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506121200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"23-09-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-09-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506207600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"24-09-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-09-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506294000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"25-09-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-09-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506380400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"26-09-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-09-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506466800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"27-09-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-09-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506553200,
+      "available":true,
+      "class":"available code_  thursday beforeBooking",
+      "id":"28-09-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-09-29":{  
+      "code":"O",
+      "changeover":true,
+      "date":1506639600,
+      "available":false,
+      "class":"unavailable bookingStart changeover  codeO  friday",
+      "id":"29-09-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-09-30":{  
+      "code":"O",
+      "changeover":false,
+      "date":1506726000,
+      "available":false,
+      "class":"unavailable codeO  saturday",
+      "id":"30-09-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-10-01":{  
+      "code":"O",
+      "changeover":false,
+      "date":1506812400,
+      "available":false,
+      "class":"unavailable bookingEnd codeO  sunday",
+      "id":"01-10-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-10-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506898800,
+      "available":true,
+      "class":"available code_  monday afterBooking",
+      "id":"02-10-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-10-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1506985200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"03-10-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-10-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507071600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"04-10-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-10-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507158000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"05-10-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-10-06":{  
+      "code":"_",
+      "changeover":true,
+      "date":1507244400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"06-10-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-10-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507330800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"07-10-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-10-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507417200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"08-10-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-10-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507503600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"09-10-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-10-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507590000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"10-10-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-10-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507676400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"11-10-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-10-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507762800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"12-10-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-10-13":{  
+      "code":"_",
+      "changeover":true,
+      "date":1507849200,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"13-10-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-10-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1507935600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"14-10-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-10-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508022000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"15-10-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-10-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508108400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"16-10-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-10-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508194800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"17-10-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-10-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508281200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"18-10-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-10-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508367600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"19-10-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-10-20":{  
+      "code":"_",
+      "changeover":true,
+      "date":1508454000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"20-10-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-10-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508540400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"21-10-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-10-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508626800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"22-10-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-10-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508713200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"23-10-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-10-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508799600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"24-10-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-10-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508886000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"25-10-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-10-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1508972400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"26-10-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-10-27":{  
+      "code":"_",
+      "changeover":true,
+      "date":1509058800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"27-10-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-10-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509145200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"28-10-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-10-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509231600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"29-10-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-10-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509321600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"30-10-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-10-31":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509408000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"31-10-2017",
+      "content":"31",
+      "day":"31"
+   },
+   "2017-11-01":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509494400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"01-11-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-11-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509580800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"02-11-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-11-03":{  
+      "code":"_",
+      "changeover":true,
+      "date":1509667200,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"03-11-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-11-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509753600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"04-11-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-11-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509840000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"05-11-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-11-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1509926400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"06-11-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-11-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510012800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"07-11-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-11-08":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510099200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"08-11-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-11-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510185600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"09-11-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-11-10":{  
+      "code":"_",
+      "changeover":true,
+      "date":1510272000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"10-11-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-11-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510358400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"11-11-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-11-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510444800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"12-11-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-11-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510531200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"13-11-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-11-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510617600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"14-11-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-11-15":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510704000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"15-11-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-11-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510790400,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"16-11-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-11-17":{  
+      "code":"_",
+      "changeover":true,
+      "date":1510876800,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"17-11-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-11-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1510963200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"18-11-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-11-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511049600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"19-11-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-11-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511136000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"20-11-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-11-21":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511222400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"21-11-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-11-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511308800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"22-11-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-11-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511395200,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"23-11-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-11-24":{  
+      "code":"_",
+      "changeover":true,
+      "date":1511481600,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"24-11-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-11-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511568000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"25-11-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-11-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511654400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"26-11-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-11-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511740800,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"27-11-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-11-28":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511827200,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"28-11-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-11-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1511913600,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"29-11-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-11-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512000000,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"30-11-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-12-01":{  
+      "code":"_",
+      "changeover":true,
+      "date":1512086400,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"01-12-2017",
+      "content":"1",
+      "day":"1"
+   },
+   "2017-12-02":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512172800,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"02-12-2017",
+      "content":"2",
+      "day":"2"
+   },
+   "2017-12-03":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512259200,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"03-12-2017",
+      "content":"3",
+      "day":"3"
+   },
+   "2017-12-04":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512345600,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"04-12-2017",
+      "content":"4",
+      "day":"4"
+   },
+   "2017-12-05":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512432000,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"05-12-2017",
+      "content":"5",
+      "day":"5"
+   },
+   "2017-12-06":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512518400,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"06-12-2017",
+      "content":"6",
+      "day":"6"
+   },
+   "2017-12-07":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512604800,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"07-12-2017",
+      "content":"7",
+      "day":"7"
+   },
+   "2017-12-08":{  
+      "code":"_",
+      "changeover":true,
+      "date":1512691200,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"08-12-2017",
+      "content":"8",
+      "day":"8"
+   },
+   "2017-12-09":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512777600,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"09-12-2017",
+      "content":"9",
+      "day":"9"
+   },
+   "2017-12-10":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512864000,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"10-12-2017",
+      "content":"10",
+      "day":"10"
+   },
+   "2017-12-11":{  
+      "code":"_",
+      "changeover":false,
+      "date":1512950400,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"11-12-2017",
+      "content":"11",
+      "day":"11"
+   },
+   "2017-12-12":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513036800,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"12-12-2017",
+      "content":"12",
+      "day":"12"
+   },
+   "2017-12-13":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513123200,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"13-12-2017",
+      "content":"13",
+      "day":"13"
+   },
+   "2017-12-14":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513209600,
+      "available":true,
+      "class":"available code_  thursday",
+      "id":"14-12-2017",
+      "content":"14",
+      "day":"14"
+   },
+   "2017-12-15":{  
+      "code":"_",
+      "changeover":true,
+      "date":1513296000,
+      "available":true,
+      "class":"available changeover  code_  friday",
+      "id":"15-12-2017",
+      "content":"15",
+      "day":"15"
+   },
+   "2017-12-16":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513382400,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"16-12-2017",
+      "content":"16",
+      "day":"16"
+   },
+   "2017-12-17":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513468800,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"17-12-2017",
+      "content":"17",
+      "day":"17"
+   },
+   "2017-12-18":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513555200,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"18-12-2017",
+      "content":"18",
+      "day":"18"
+   },
+   "2017-12-19":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513641600,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"19-12-2017",
+      "content":"19",
+      "day":"19"
+   },
+   "2017-12-20":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513728000,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"20-12-2017",
+      "content":"20",
+      "day":"20"
+   },
+   "2017-12-21":{  
+      "code":"_",
+      "changeover":true,
+      "date":1513814400,
+      "available":true,
+      "class":"available changeover  code_  thursday",
+      "id":"21-12-2017",
+      "content":"21",
+      "day":"21"
+   },
+   "2017-12-22":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513900800,
+      "available":true,
+      "class":"available code_  friday",
+      "id":"22-12-2017",
+      "content":"22",
+      "day":"22"
+   },
+   "2017-12-23":{  
+      "code":"_",
+      "changeover":false,
+      "date":1513987200,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"23-12-2017",
+      "content":"23",
+      "day":"23"
+   },
+   "2017-12-24":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514073600,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"24-12-2017",
+      "content":"24",
+      "day":"24"
+   },
+   "2017-12-25":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514160000,
+      "available":true,
+      "class":"available code_  monday",
+      "id":"25-12-2017",
+      "content":"25",
+      "day":"25"
+   },
+   "2017-12-26":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514246400,
+      "available":true,
+      "class":"available code_  tuesday",
+      "id":"26-12-2017",
+      "content":"26",
+      "day":"26"
+   },
+   "2017-12-27":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514332800,
+      "available":true,
+      "class":"available code_  wednesday",
+      "id":"27-12-2017",
+      "content":"27",
+      "day":"27"
+   },
+   "2017-12-28":{  
+      "code":"_",
+      "changeover":true,
+      "date":1514419200,
+      "available":true,
+      "class":"available changeover  code_  thursday",
+      "id":"28-12-2017",
+      "content":"28",
+      "day":"28"
+   },
+   "2017-12-29":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514505600,
+      "available":true,
+      "class":"available code_  friday",
+      "id":"29-12-2017",
+      "content":"29",
+      "day":"29"
+   },
+   "2017-12-30":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514592000,
+      "available":true,
+      "class":"available code_  saturday",
+      "id":"30-12-2017",
+      "content":"30",
+      "day":"30"
+   },
+   "2017-12-31":{  
+      "code":"_",
+      "changeover":false,
+      "date":1514678400,
+      "available":true,
+      "class":"available code_  sunday",
+      "id":"31-12-2017",
+      "content":"31",
+      "day":"31"
+   }
+}
