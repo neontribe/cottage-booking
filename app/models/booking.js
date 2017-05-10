@@ -512,7 +512,7 @@ define([
                 self.matchTravCountToPartyDetails();
                 can.trigger( self, 'saved' );
             }).done(function () {
-                $(self).triggerHandler('savesuccess');
+                can.$(self).triggerHandler('savesuccess');
             });
 
             return this.transit;
