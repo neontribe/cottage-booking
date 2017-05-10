@@ -382,8 +382,8 @@ define([
             evt.stopPropagation();
             evt.preventDefault();
 
-            $('[type=text], textarea').each(can.proxy(function (i, el) {
-                var $el = $(el);
+            can.$('[type=text], textarea').each(can.proxy(function (i, el) {
+                var $el = can.$(el);
                 this.updateModel($el);
             }, this));
 
