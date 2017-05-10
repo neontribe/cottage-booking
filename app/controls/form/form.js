@@ -382,26 +382,15 @@ define([
             evt.stopPropagation();
             evt.preventDefault();
 
-            // Force an update for the voucher element.
-            this.updateModel($('input[name="voucher"]'));
+            $('[type=text], textarea').each(can.proxy(function (i, el) {
+                var $el = $(el);
+                this.updateModel($el);
+            }, this));
 
-            if(this.options.model.justSaveIt) {
-                var saveStatus = this.options.model.justSaveIt();
-
-                saveStatus.then(function() {
-                    this.submitCheckErrors($el, evt);
-                }.bind(this))
-            } else {
-                this.submitCheckErrors($el, evt);
-            }
-        },
-
-        submitCheckErrors: function($el, evt) {
             var hasErrors = this.addErrors();
 
             if( !hasErrors ) {
                 can.trigger( this.options.model, 'submit' );
-                can.trigger( can.route.data, 'next', [ can.route.attr() ] );
             } else {
                 this.element.trigger('error', [ this.options.model, hasErrors ] );
                 can.trigger( this.options.model, 'formErrors', [ hasErrors ] );

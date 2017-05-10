@@ -215,6 +215,10 @@ define([
             }
         },
 
+
+
+
+
         '{booking} formErrors': function() {
             var $scrollTop = this.element.find('.error:first');
 
@@ -231,7 +235,9 @@ define([
         },
 
         '{booking} submit': function() {
-            this.options.booking.save();
+            this.options.booking.save().then(function(err, data) {
+                can.trigger( can.route.data, 'next', [ can.route.attr() ] );
+            });
         },
 
         '{booking} propertyData.numberOfPets': function( booking, evt, newVal ) {
