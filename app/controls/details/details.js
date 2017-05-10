@@ -215,10 +215,6 @@ define([
             }
         },
 
-
-
-
-
         '{booking} formErrors': function() {
             var $scrollTop = this.element.find('.error:first');
 
