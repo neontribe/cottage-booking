@@ -239,7 +239,13 @@ define([
          * @param  {jQuery} $el jQuery element
          * @return {undefined}
          */
-        ':input change': function ( $el ) {
+        ':input input': function ( $el ) {
+            this.updateModel($el);
+        },
+        '[type="checkbox"] change': function ( $el ) {
+            this.updateModel($el);
+        },
+        '[type="radio"] change': function ( $el ) {
             this.updateModel($el);
         },
 

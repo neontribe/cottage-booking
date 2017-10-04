@@ -250,7 +250,6 @@ define([
             // we trust that the global jQuery is _not_ the same as our $
             if( this.options.triggerOnGlobal$ && window.jQuery ) {
                 var tab = this.options.route.attr('page') || 'calendar';
-                // jQuery('body').on('cottage_booking.confirmation', function(el, evt, args){ console.log(arguments); });
                 jQuery( this.element[0] ).trigger('cottage_booking.' + tab, [ this.options.book ] );
             }
 
