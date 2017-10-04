@@ -6,31 +6,31 @@
     "url": "git@github.com:RpprRoger/cottage-booking.git"
   },
   "dependencies": {
-    "express": "~3.4.6"
+    "express": "^4.16.1"
   },
   "devDependencies": {
     "bower": "^1.3.3",
-    "can-compile": "~0.4.0",
-    "escodegen": "~0.0.22",
-    "esprima": "~1.0.3",
+    "can-compile": "^0.11.0",
+    "escodegen": "^1.9.0",
+    "esprima": "^4.0.0",
     "grel": "~0.1.5",
-    "grunt-bumpup": "~0.5.0",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-compress": "~0.5.3",
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-contrib-requirejs": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-exec": "~0.4.1",
-    "grunt-prompt": "~0.2.0",
+    "grunt-bumpup": "^0.6.3",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-exec": "^3.0.0",
+    "grunt-prompt": "^1.3.3",
     "jqueryui-amd": "0.0.2",
-    "jshint": "~2.3.0",
-    "load-grunt-tasks": "~0.2.0",
-    "mocha-phantomjs": "^3.6.0",
+    "jshint": "^2.9.5",
+    "load-grunt-tasks": "^3.5.2",
+    "mocha-phantomjs": "^4.1.0",
     "myth": "^1.0.2",
-    "phantomjs": "1.9.7-15",
-    "underscore": "~1.5.2"
+    "phantomjs": "^2.1.7",
+    "underscore": "^1.8.3"
   }
 }
