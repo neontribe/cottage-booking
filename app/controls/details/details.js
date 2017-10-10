@@ -13,6 +13,9 @@ define([
 
     return can.Control({
         defaults: {
+            blockingText: 'Please wait, we\'re just fetching your up-to-date pricing',
+            blockingImage: '',
+            enableDisableForm: false,
             booking: booking,
             titles: [
                 ['mr', 'Mr.'],
@@ -128,6 +131,8 @@ define([
                     childAges: this.options.childAges,
                     infantAges: this.options.infantAges
                 },
+                blockingImage: this.options.blockingImage,
+                blockingText: this.options.blockingText,
                 sources: this.options.sources,
                 titles: this.options.titles,
                 petsList: this.options.petsList,
@@ -206,6 +211,41 @@ define([
         '{booking} pets': function( model ) {
             if( !model.errors('pets') ) {
                 model.justSaveIt();
+            }
+        },
+
+        // this should really use the form controller api. But this is a lot quicker...
+        // We don't have to worry about the model changing and our disabled attr setting being undone
+        // as we also hide the form with a spinner (using blockingImage and blockingText)
+        // hopefully this should be sufficient
+        toggleForm: function(enable) {
+            if (this.options.enableDisableForm) {
+                if (enable) {
+                    this.element.find('form :input').removeAttr('disabled');
+                    this.element.find('.party-list .primary').removeAttr('disabled');
+                    this.element.removeClass('loading-blocker').spin(false);
+                    this.element.find('.blocking').hide();
+                } else {
+                    this.element.find('.blocking').show();
+                    this.element.addClass('loading-blocker').spin({
+                        top: '25%'
+                    });
+                    this.element.find('form :input').attr('disabled', true);
+                    this.element.find('.party-list .primary').attr('disabled', true);
+                }
+            }
+        },
+
+        spinning: 0,
+        '{booking} saving': function() {
+            if (++this.spinning) {
+                this.toggleForm();
+            }
+        },
+
+        '{booking} saved': function() {
+            if (--this.spinning === 0) {
+                this.toggleForm(true);
             }
         },
 

@@ -3,7 +3,7 @@
  * information for the cottage this app is constructed for
  * @return {can.compute} The can.compute wrapped object
  */
-define(['can/util/string', 'models/availability'], function( can, Availability ) {
+define(['can/observe', 'can/util/string', 'models/availability'], function( Observe, can, Availability ) {
     'use strict';
 
     // Initialize the avail store and setup the getter using can.compute

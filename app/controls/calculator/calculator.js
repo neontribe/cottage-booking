@@ -28,9 +28,10 @@ define([
             booking: booking
         }
     },{
+        spinning: 0,
         'init' : function() {
             this.options.enquiry.attr('propRef', this.options.propRef);
-            
+
             this.element.html( views.init({
                 'enquiry': this.options.enquiry,
                 'datepickerOptions': {
@@ -107,19 +108,25 @@ define([
         },
 
         '{enquiry} updating': function() {
+            this.spinning++;
             this.loading();
         },
 
         '{enquiry} updated': function() {
-            this.stopLoading();
+            if (--this.spinning === 0) {
+                this.stopLoading();
+            }
         },
 
         '{booking} saving': function() {
+            this.spinning++;
             this.loading();
         },
 
         '{booking} saved': function() {
-            this.stopLoading();
+            if (--this.spinning === 0) {
+                this.stopLoading();
+            }
         }
     });
 

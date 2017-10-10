@@ -158,6 +158,15 @@
 
         <button type="submit">Proceed</button>
     </form>
-
 </div>
 
+<div class="blocking" style="display: none;">
+    <div>
+        <% if (blockingImage) { %>
+            <img src="<%= blockingImage %>" />
+        <% } %>
+        <p aria-live="polite" role="log">
+            <%= blockingText %>
+        </p>
+    </div>
+</div>

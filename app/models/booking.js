@@ -305,10 +305,17 @@ define([
                         this.removeAttr( errors[i] );
                     }
 
-                    return this.save().done(function() {
-                        self.attr( badValues );
-                        // always stop the batch
-                    }).always( can.proxy( can.batch.stop, this ) );
+                    // listen for changes to properties in errors []
+                    // update a cached {} value with the newest props.
+                    // When this.save() finishes re-apply the error-cache values
+
+                    var p = this.save();
+
+                    self.attr(badValues);
+
+                    can.batch.stop();
+
+                    return p;
 
                 } else {
                     return this.save();
@@ -385,7 +392,6 @@ define([
         },
 
         'fetchBooking': function( fetch ) {
-
             var self = this;
             // If we pass anything we can expect the deferred object to be returned, so we can attach done methods
             if( fetch ) {
@@ -496,15 +502,16 @@ define([
         save: function save() {
             var self = this;
 
-            can.trigger( this, 'saving' );
-
             // if we are already in transit make sure to abort the request
             // and return the new one
             if( this.transit ) {
                 this.transit.abort();
                 this.transit = null;
+
                 return save.apply( this, arguments );
             }
+
+            can.trigger( this, 'saving' );
 
             this.transit = can.Model.prototype.save.apply( this, arguments ).always(function() {
                 self.transit = null;
