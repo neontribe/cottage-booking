@@ -135,9 +135,12 @@ module.exports = function(grunt) {
             }
         },
         cancompile: {
+            options: {
+                version: '2.0.0',
+            },
             dist: {
                 src: ['app/**/*.ejs', '!app/bower_components/**'],
-                out: '.build/views.js'
+                dest: '.build/views.js'
             }
         },
         requirejs : {
@@ -296,7 +299,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('extractViews', function(){
-        var file           = fs.readFileSync('.build/views.js'),
+        var file           = fs.readFileSync('.build/views.js').toString(),
             ast            = esprima.parse(file),
             views          = ast.body[0].expression.callee.body.body,
             generatedViews = {};
@@ -304,7 +307,6 @@ module.exports = function(grunt) {
         views.forEach(function(view){
             var filename = view.expression['arguments'][0].value;
             generatedViews[filename] = escodegen.generate(view);
-
         });
         fs.writeFileSync('.build/views.json', JSON.stringify(generatedViews));
     });
