@@ -308,15 +308,14 @@ define([
                     // listen for changes to properties in errors []
                     // update a cached {} value with the newest props.
                     // When this.save() finishes re-apply the error-cache values
-
-                    var p = this.save();
+                    var p = this.save().always(function() {
+                        self.attr(badValues);
+                    });
 
                     self.attr(badValues);
-
                     can.batch.stop();
 
                     return p;
-
                 } else {
                     return this.save();
                 }
