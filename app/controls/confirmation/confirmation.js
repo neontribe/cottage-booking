@@ -9,6 +9,7 @@ define([
     return can.Control({
         defaults: {
             booking: booking,
+            creditCardMessage: '(Includes credit card charge where applicable)',
             deferPayment: { 
               show: false,
               labels: {
@@ -23,7 +24,8 @@ define([
         init: function() {
             this.element.html( views.init({
                 booking: booking,
-                deferPayment: this.options.deferPayment
+                deferPayment: this.options.deferPayment,
+                creditCardMessage: this.options.creditCardMessage
             }) );
         }
     });
