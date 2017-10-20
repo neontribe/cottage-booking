@@ -1,7 +1,10 @@
 var esprima   = require('esprima'),
     fs        = require('fs'),
     escodegen = require('escodegen'),
-    _         = require('underscore');
+    _         = require('underscore'),
+    path = require('path');
+
+var tknPath = path.resolve(process.env.HOME, '.git-token-publish-cottage-booking');
 
 /* jshint quotmark: false, strict: false */
 var getRenderer = function(ext, cwd){
@@ -348,7 +351,20 @@ module.exports = function(grunt) {
         type = type || 'patch';
         args.unshift( type );
 
-        grunt.task.run('prompt:git');
+        var tokenFile;
+        try {
+            tokenFile = fs.readFileSync(tknPath).toString();
+        } catch(e) {
+            console.log('Cannot read "' + tknPath + '". Requesting github username and password');
+            console.warn(e.message);
+        }
+
+        if (!tokenFile) {
+            grunt.task.run('prompt:git');
+        } else {
+            grunt.config('gittoken', tokenFile);
+            console.log('Using token file "' + tknPath + '" to auth during release');
+        }
 
         grunt.task.run('test');
 
@@ -383,12 +399,21 @@ module.exports = function(grunt) {
             version = grunt.file.readJSON('package.json').version,
             message = fs.readFileSync('app/prod/changelog.txt').toString();
 
-        grel = new Grel({
-            user: grunt.config('release.git.username'),
-            password: grunt.config('release.git.password'),
+        var options = {
             owner: 'neontribe',
             repo: 'cottage-booking'
-        });
+        };
+
+        if (grunt.config('gittoken')) {
+            options.token = grunt.config('gittoken');
+        } else {
+            Object.assign(options, {
+                user: grunt.config('release.git.username'),
+                password: grunt.config('release.git.password'),
+            });
+        }
+
+        grel = new Grel(options);
 
         console.log( 'releasing ' + version );
         console.log( message );
