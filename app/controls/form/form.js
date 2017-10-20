@@ -326,15 +326,14 @@ define([
         },
         'removeErrorsForAttr': function( attr ) {
             this.getElementsFor( attr ).each(function() {
-                var $this = can.$( this );
+                var $this = can.$( this ).removeClass('error');
                 if( $this.data('uiTooltip') ) {
                     $this
+                        // force the tooltip to die
+                        .mouseout()
                         .tooltip('option', 'content', '')
-                        .removeClass('error')
                         .attr('aria-invalid', null);
                 }
-                //     .tooltip('option', 'content', '')
-                //
             });
         },
         'getUnHandledErrors': function( omit ) {
