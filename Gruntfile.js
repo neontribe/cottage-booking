@@ -233,7 +233,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     // the out file should have been passed through myth
-                    'app/prod/production.css': ['app/style/style.out.css']
+                    'app/prod/production.css': ['app/style/style.out.css'],
+                    'app/prod/functionalProd.css': ['app/style/func.css'],
                 }
             },
             jqueryui: {

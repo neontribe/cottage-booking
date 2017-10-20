@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.button.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery.ui.tabs.css" />
         <link rel="stylesheet" type="text/css" href="style/style.css" />
+        <link rel="stylesheet" type="text/css" href="style/func.css" />
         <style type="text/css">
             body {
               font-size: 60%;
@@ -117,8 +118,9 @@
                     'stages': {
                         details: {
                             'options': {
-                                blockingImage: 'http://via.placeholder.com/350x150',
+                                blockingImage: '',
                                 headerSelector: 'header',
+                                enableDisableForm: true,
                                 ages: [
                                     ['18-29', '18-29'],
                                     ['30-44', '30-44'],
@@ -132,7 +134,6 @@
                                 ],
                                 'sources': sourcesArr,
                                 customSelect: false,
-                                petsType: 'select',
                                 tncUrl: '/foo',
                                 primaryTravellerCheckboxLocation: 'customerName;partyDetails', // or partyDetails
                                 vouchers: {

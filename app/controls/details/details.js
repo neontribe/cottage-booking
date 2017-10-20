@@ -121,6 +121,8 @@ define([
             Booking.vouchers = this.options.vouchers || {};
             Booking.autopayment = this.options.autoPayment || {};
 
+            this.spinning = 0;
+
             this.element.html( views.init({
                 model: this.options.booking,
                 defaultLabel: true,
@@ -236,7 +238,6 @@ define([
             }
         },
 
-        spinning: 0,
         '{booking} saving': function() {
             if (++this.spinning) {
                 this.toggleForm();
@@ -244,7 +245,8 @@ define([
         },
 
         '{booking} saved': function() {
-            if (--this.spinning === 0) {
+            if (--this.spinning <= 0) {
+                this.spinning = 0;
                 this.toggleForm(true);
             }
         },
@@ -271,9 +273,7 @@ define([
         },
 
         '{booking} submit': function() {
-            this.options.booking.save();
-
-            can.$(this.options.booking).one('savesuccess', function() {
+            this.options.booking.save().then(function() {
                 can.trigger( can.route.data, 'next', [ can.route.attr() ] );
             });
         },
