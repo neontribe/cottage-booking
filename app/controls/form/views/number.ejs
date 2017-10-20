@@ -5,6 +5,7 @@
     data-type="<%= type %>"
     data-label="<%= label %>"
     class="<%= classes %>"
+    autocomplete="off"
     value="<%= typeof model.attr( attrName ) === 'number' ? model.attr( attrName ) : '' %>"
     placeholder="<%= this.placeholder && typeof this.placeholder === 'string' ? this.placeholder : '' %>"
     <%# for some reason the strings max and min are printed with "", so we don't need to include them in the string to be printed %>
