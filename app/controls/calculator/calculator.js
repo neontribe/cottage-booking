@@ -28,8 +28,8 @@ define([
             booking: booking
         }
     },{
-        spinning: 0,
         'init' : function() {
+            this.spinning = 0;
             this.options.enquiry.attr('propRef', this.options.propRef);
 
             this.element.html( views.init({

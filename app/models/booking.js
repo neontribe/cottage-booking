@@ -199,6 +199,10 @@ define([
                 if( val > this.attr('propertyData.numberOfPets') ) {
                     return 'Sorry, the property does not allow that many pets';
                 }
+
+                if (val < 0) {
+                    return 'Invalid number of pets';
+                }
             });
 
             this.validate('status', function( status ) {
@@ -257,6 +261,12 @@ define([
             this.validate('autopayment', function( option ) {
                 if (self.autopayment.show && option !== "false" && option !== "true") {
                     return 'Please select an option.';
+                }
+            });
+
+            this.validate('waiting', function() {
+                if (this.transit) {
+                    return true;
                 }
             });
         }
@@ -406,11 +416,17 @@ define([
                         //self.attr( booking.__get() ); Why did i do this
                         // The following call does mean that we instantiate and throw away stuff ( like travellers )
                         // and also, we throw away anything that doesn't back in the resp
-                        var bookingData = can.$.extend( true, booking.attr(), {
-                            'customer': {
-                                'emailConf': booking.attr('customer.email')
-                            }
-                        });
+                        var confEmail = {};
+
+                        if (booking.attr('customer.email')) {
+                            confEmail = {
+                                'customer': {
+                                    'emailConf': booking.attr('customer.email')
+                                }
+                            };
+                        }
+
+                        var bookingData = can.$.extend( true, booking.attr(), confEmail);
 
                         self.attr( bookingData, true );
 
