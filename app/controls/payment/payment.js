@@ -11,7 +11,7 @@ define([
     'controls/form/form'
 ], function( can, views, booking, Payment, utils ) {
     'use strict';
-    
+
     return can.Control({
         defaults: {
             booking: booking,
@@ -22,7 +22,7 @@ define([
                 ['balance', 'Pay the full amount'],
                 ['deposit', 'Pay the deposit']
             ],
-            deferPayment: { 
+            deferPayment: {
               show: true,
               labels: {
                 paylater: 'On tick',
@@ -55,16 +55,16 @@ define([
 
             // jQuery('body').on('booking.booking.ok', function(el, evt, args){ console.log(arguments); });
             this.element.trigger('cottage_booking.payment');
-    
+
             this.on();
         },
 
         /**
-         * This function is used to reset the control to contain 
+         * This function is used to reset the control to contain
          *
          * use bindAndCallAfter to call the function after
          * the rest of the page has rendered
-         * 
+         *
          * @return {Number} The number returned by the setTimeout
          */
         updatePayment: utils.bindAndCallAfter(function() {
@@ -110,7 +110,7 @@ define([
             this.options.booking.attr('price.paymentType', newVal);
             this.updatePayment();
         },
-        
+
         '{payment} updated': function( model, evt, somedata ) {
             if( model.attr('canProceed') ) {
                 this.options.booking.save();

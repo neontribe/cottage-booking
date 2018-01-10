@@ -123,10 +123,18 @@ define([
             debug('saving booking');
         },
 
+        '{book} saved': function(model, evt) {
+            this.updateRouter(model, evt);
+        },
+
+        '{book} change': function(model, evt) {
+            this.updateRouter(model, evt);
+        },
+
         // Whenever the booking object changes, check for errors and
         // Enable/disable stages
         lastBatchNum: null,
-        '{book} change': function( model, evt ) {
+        updateRouter: function( model, evt ) {
             // Check we haven't already done this
             if( this.lastBatchNum !== evt.batchNum ) {
 
@@ -142,7 +150,6 @@ define([
 
                 //Finally assign the batch num
                 this.lastBatchNum = evt.batchNum || null;
-
             }
         },
 

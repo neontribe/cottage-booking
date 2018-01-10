@@ -131,7 +131,7 @@ define([
             }
 
             if( this.options.debounceDelay > 0 ) {
-                this.setter = _.debounce( this.setter, this.options.debounceDelay );
+                this['[type="number"],[type="text"] keyup'] = _.debounce( this['[type="number"],[type="text"] keyup'], this.options.debounceDelay );
             }
         },
 
@@ -216,7 +216,6 @@ define([
             if( $el.val() < min && !(max < min) ) {
             /* jshint +W018 */
                 $el.val( min );
-                return false;
             }
         },
         ':input[data-type="number"][data-max] change': function( $el ) {
@@ -230,7 +229,6 @@ define([
             if( $el.val() > max && !(max < min) ) {
             /* jshint +W018 */
                 $el.val( $el.data('max') );
-                return false;
             }
         },
 
@@ -241,6 +239,12 @@ define([
          */
         ':input change': function ( $el ) {
             this.updateModel($el);
+        },
+
+        '[type="number"],[type="text"] keyup': function ($el) {
+            if ($el.val()) {
+                this.updateModel($el);
+            }
         },
 
         'textarea mouseout': function ( $el ) {
@@ -322,15 +326,14 @@ define([
         },
         'removeErrorsForAttr': function( attr ) {
             this.getElementsFor( attr ).each(function() {
-                var $this = can.$( this );
+                var $this = can.$( this ).removeClass('error');
                 if( $this.data('uiTooltip') ) {
                     $this
+                        // force the tooltip to die
+                        .mouseout()
                         .tooltip('option', 'content', '')
-                        .removeClass('error')
                         .attr('aria-invalid', null);
                 }
-                //     .tooltip('option', 'content', '')
-                //
             });
         },
         'getUnHandledErrors': function( omit ) {
@@ -381,11 +384,6 @@ define([
         ' submit': function( $el, evt ) {
             evt.stopPropagation();
             evt.preventDefault();
-
-            can.$('[type=text], textarea').each(can.proxy(function (i, el) {
-                var $el = can.$(el);
-                this.updateModel($el);
-            }, this));
 
             var hasErrors = this.addErrors();
 
