@@ -85,5 +85,16 @@
         "sleeps": 4,
         "name": "The Beach House",
         "numberOfPets": 0
+    },
+    "webVouchers": {
+        "JAN25": {
+            "code": "JAN25",
+            "description": "Promotion JAN25",
+            "type": "opt-prop",
+            "quantity": 1,
+            "price": "0.00",
+            "total": 0,
+            "maxLimit": 1
+        }
     }
 }
