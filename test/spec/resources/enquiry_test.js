@@ -16,7 +16,7 @@ define([
     describe('resource: the state of the enquiry resource', function () {
         describe('enquire produces correct render array', function () {
             it('completes successfully', function () {
-                var date = new Date( 2014, 4, 17),
+                var date = new Date( parseInt(moment().year(), 10), 4, 17),
                     arr = enq.generateCalendarRenderArray(date);
 
                 enq.should.have.property('avail');
@@ -30,7 +30,7 @@ define([
                 arr[1].should.be.equal('unavailable bookingStart changeover codeW saturday');
 
                 enq.attr('fromDate', moment( date ) );
-                enq.attr('toDate', moment( new Date( 2014, 4, 18) ));
+                enq.attr('toDate', moment( new Date( parseInt(moment().year(), 10), 4, 18) ));
 
                 arr = enq.generateCalendarRenderArray( date );
 
@@ -42,11 +42,11 @@ define([
         describe('enquiry object reports errors', function () {
             it('should error with bad data', function () {
 
-                var badEnquiryFromDate = new Date( 2014, 4, 1 ),
+                var badEnquiryFromDate = new Date( parseInt(moment().year(), 10), 4, 1 ),
                     errors;
 
                 enq.attr('fromDate', moment( badEnquiryFromDate ) );
-                enq.attr('toDate', moment( new Date( 2014, 3, 8 ) ) );
+                enq.attr('toDate', moment( new Date( parseInt(moment().year(), 10), 3, 8 ) ) );
 
                 errors = enq.errors();
 
