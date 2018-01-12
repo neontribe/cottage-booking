@@ -14,6 +14,7 @@
     "escodegen": "^1.9.0",
     "esprima": "^4.0.0",
     "grel": "git+ssh://git@github.com:nicu/grel.git",
+    "grunt": "^1.0.1",
     "grunt-bumpup": "^0.6.3",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-compress": "^1.4.3",
