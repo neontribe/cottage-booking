@@ -252,7 +252,10 @@ define([
         },
 
         '{booking} change': function( model, evt, attr ) {
-            if( 'price.extras' === attr.slice(0, 12) || attr === 'voucher' ) {
+            if( 'price.extras' === attr.slice(0, 12) ) {
+                model.justSaveIt();
+            }
+            if ( attr === 'voucher' && !model.errors('voucher') ) {
                 model.justSaveIt();
             }
         },

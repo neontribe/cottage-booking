@@ -60,7 +60,7 @@ define([
                     })
                     .done( reply )
                     .fail( reply );
-                
+
                 can.fixture.on = true;
             }, this) );
         }
