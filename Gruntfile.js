@@ -464,7 +464,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('develop', ['exec:bower', 'exec:myth', 'exec:jqueryuiInstall', 'shimCustomSelect']);
+    grunt.registerTask('develop', ['shimCustomSelect']);
 
     grunt.registerTask('shimCustomSelect', function() {
         var code = fs.readFileSync('app/bower_components/jquery.customSelect/jquery.customSelect.js');

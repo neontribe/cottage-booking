@@ -1,6 +1,9 @@
 {
   "name": "cottage-booking",
   "version": "1.5.14",
+  "scripts": {
+    "postinstall": "bower install && myth app/style/style.css app/style/style.out.css && jqueryui-amd app/bower_components/jquery-ui"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:RpprRoger/cottage-booking.git"
