@@ -234,7 +234,8 @@ define([
                 tooltip = '';
 
             // mox it in tests
-            if( date > utils.now() ) {
+            var today = new Date();
+            if( date.getFullYear() >= today.getFullYear() && date.getMonth() >= today.getMonth() && date.getDate() >= today.getDate() ) {
                 if( availability ) {
                     dayData = availability.attr( date );
 
