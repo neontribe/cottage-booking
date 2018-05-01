@@ -77,6 +77,10 @@ var sheets = [
 
 module.exports = function(grunt) {
     'use strict';
+
+    // Load all grunt tasks
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         exec : {
@@ -477,9 +481,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'develop');
 
-    // Load all grunt tasks
-    require('load-grunt-tasks')(grunt);
-
     grunt.loadNpmTasks('can-compile');
-
 };
