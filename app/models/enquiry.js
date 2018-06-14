@@ -76,7 +76,7 @@ define([
                     return 'Invalid date';
                 }
 
-                if( fromDate < utils.now() ) {
+                if( fromDate < utils.now().subtract(1, "days") ) {
                     return 'Your stay should be in the future';
                 }
 
