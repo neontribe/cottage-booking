@@ -1,6 +1,6 @@
 {
   "name": "cottage-booking",
-  "version": "1.5.17",
+  "version": "1.5.18",
   "scripts": {
     "postinstall": "bower install && myth app/style/style.css app/style/style.out.css && jqueryui-amd app/bower_components/jquery-ui"
   },
