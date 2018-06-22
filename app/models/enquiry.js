@@ -137,7 +137,7 @@ define([
                 if( this.constructor.defaults[ val ] ) {
                     this.attr(val, this.constructor.defaults[ val ] );
                 } else {
-                    this.removeAttr( val );    
+                    this.removeAttr( val );
                 }
             }, this);
         },
@@ -235,7 +235,7 @@ define([
 
             // mox it in tests
             var today = new Date();
-            if( date.getFullYear() >= today.getFullYear() && date.getMonth() >= today.getMonth() && date.getDate() >= today.getDate() ) {
+            if( date > utils.now().subtract(1, "days") ) {
                 if( availability ) {
                     dayData = availability.attr( date );
 
